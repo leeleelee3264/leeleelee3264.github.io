@@ -7,12 +7,12 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language><atom:link href="https://leeleelee3264.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title></title>
+      <title>About Me</title>
       <link>https://leeleelee3264.github.io/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 11 Aug 2020 19:15:32 +0800</pubDate>
       
       <guid>https://leeleelee3264.github.io/about/</guid>
-      <description>LeeLee Hi, I&amp;rsquo;m LeeLee. I&amp;rsquo;m a Backend developer who dreams Devops. Here is something about me. 🥇 2022 Goal Try to understand business domain. Implement code with complicated business logic. Attribute to open source projects. 🏛️ Career Kasa Singapore as Backend developer (2021.12 ~ )
+      <description>Hi, I&amp;rsquo;m LeeLee. I&amp;rsquo;m a Backend developer who dreams Devops. Here is something about me. 🥇 2022 Goal Try to understand business domain. Implement code with complicated business logic. Attribute to open source projects. 🏛️ Career Kasa Singapore as Backend developer (2021.12 ~ )
 Launched Kasa Singapore Service (2022-08-25) Implemented API with Django. Designed entire API in deal, offering function. Applied Singapore government&amp;rsquo;s mydata service, Singpass. DNX Korea as Backend developer (2019.08 ~ 2021.11)
 Implemented API with Spring. Implemented Monitoring website. Designed data schema with Mysql. Set infrastructure with AWS and Docker. 💻 Skills 👩‍💻 Interest Skills 📬 Contact Email: absinthe4902@naver.</description>
     </item>
