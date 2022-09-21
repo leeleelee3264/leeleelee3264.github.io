@@ -2,9 +2,36 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://leeleelee3264.github.io/post/2022-08-27-digital-certificate-part-final/</loc>
+    <lastmod>2022-08-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://leeleelee3264.github.io/tags/infra/</loc>
+    <lastmod>2022-08-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://leeleelee3264.github.io/</loc>
+    <lastmod>2022-08-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://leeleelee3264.github.io/post/</loc>
+    <lastmod>2022-08-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://leeleelee3264.github.io/tags/project/</loc>
+    <lastmod>2022-07-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://leeleelee3264.github.io/post/2022-07-23-project-myinfo-connector-python/</loc>
+    <lastmod>2022-07-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://leeleelee3264.github.io/tags/backend/</loc>
+    <lastmod>2022-06-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://leeleelee3264.github.io/post/2022-06-30-python-profiler-decorator/</loc>
+    <lastmod>2022-06-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://leeleelee3264.github.io/post/2022-06-15-digital-certificate-part-one/</loc>
+    <lastmod>2022-06-15T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://leeleelee3264.github.io/about/</loc>
     <lastmod>2020-08-11T19:15:32+08:00</lastmod>
   </url><url>
-    <loc>https://leeleelee3264.github.io/</loc>
+    <loc>https://leeleelee3264.github.io/archives/</loc>
   </url>
 </urlset>

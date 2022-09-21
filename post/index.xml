@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Logging</title>
+    <link>https://leeleelee3264.github.io/post/</link>
+    <description>Recent content in Posts on Logging</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 27 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://leeleelee3264.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Digital certificate 적용하기</title>
+      <link>https://leeleelee3264.github.io/post/2022-08-27-digital-certificate-part-final/</link>
+      <pubDate>Sat, 27 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2022-08-27-digital-certificate-part-final/</guid>
+      <description>CA와 CA에서 Digital Certificate을 발급받아서 적용하는 방법에 대해 설명한다. Index CA CA에서 인증서 생성하기 인증서 적용하기 Chain of Trust (plus) 인증서가 사용되는 프로세스 모식도 CA CA는 신뢰할 수 있는 기관에 의해 운영되는데, 주</description>
+    </item>
+    
+    <item>
+      <title>Python으로 Myinfo oauth2 client connector 구현하기</title>
+      <link>https://leeleelee3264.github.io/post/2022-07-23-project-myinfo-connector-python/</link>
+      <pubDate>Sat, 23 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2022-07-23-project-myinfo-connector-python/</guid>
+      <description>oauth2를 사용하고 있는 Myinfo API 를 사용하는 connector client를 Python/Django로 구현한다. [github] [api document] [quick start] Index Myinfo란? 프로젝트 목표 프로젝트 구현 프로젝트 회고 Myinfo란? 싱가폴 Mydata 서비스 정부가 주도한</description>
+    </item>
+    
+    <item>
+      <title>Python decorator로 간단한 profiler 구현하기</title>
+      <link>https://leeleelee3264.github.io/post/2022-06-30-python-profiler-decorator/</link>
+      <pubDate>Wed, 29 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2022-06-30-python-profiler-decorator/</guid>
+      <description>간단한 프로파일링을 할 수 있는 profiler를 Python decorator로 구현한다. Index profiler 구현 계기 profiler 구현 개선해야 하는 부분 profiler 구현 계기 Django 환경에서 unittest를 하며 간단하게 퍼포먼스를 측정하고 싶었다. 아주 간단하게 프</description>
+    </item>
+    
+    <item>
+      <title>Digital certificate</title>
+      <link>https://leeleelee3264.github.io/post/2022-06-15-digital-certificate-part-one/</link>
+      <pubDate>Wed, 15 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2022-06-15-digital-certificate-part-one/</guid>
+      <description>PKI의 certificate에 대해서 다룬다. Index 인증서에 대해 잘못 알고 있던 점들 인증서의 종류 인증서와 관련된 개념 인증서에 대해 잘못 알고 있던 점들 인증서의 종류 적절하지 않은 인증서 분류 web에서 HTTPS 통신을 하기 위해 사용하</description>
+    </item>
+    
+  </channel>
+</rss>
