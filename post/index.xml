@@ -43,5 +43,50 @@
       <description>PKI의 certificate에 대해서 다룬다. Index 인증서에 대해 잘못 알고 있던 점들 인증서의 종류 인증서와 관련된 개념 인증서에 대해 잘못 알고 있던 점들 인증서의 종류 적절하지 않은 인증서 분류 web에서 HTTPS 통신을 하기 위해 사용하</description>
     </item>
     
+    <item>
+      <title>[Effective Python] Chapter 1: 1장부터 5장까지의 요약</title>
+      <link>https://leeleelee3264.github.io/post/2022-05-06-effective-python-betteryway-1-to5/</link>
+      <pubDate>Fri, 06 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2022-05-06-effective-python-betteryway-1-to5/</guid>
+      <description>책 [Effective Python] better way를 1장부터 5장까지 요약한다. Index 사용중인 파이썬의 버전을 알아두라 PEP8 스타일 가이드를 따르라 bytes와 str의 차이를 알아두라 C 스타일 형식 문자열을 str.format과 쓰기보다는 f-문자열을 통한 인</description>
+    </item>
+    
+    <item>
+      <title>[Introducing Python] part one (1/2)</title>
+      <link>https://leeleelee3264.github.io/post/2022-03-08-introducing-python-part-one/</link>
+      <pubDate>Tue, 08 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2022-03-08-introducing-python-part-one/</guid>
+      <description>책 [Introducing Python] 절반을 요약한다. Index 파이 맛보기 파이 재료: 숫자, 문자열 변수 파이 채우기: 리스트, 튜플, 딕셔너리, 셋 파이 크러스트: 코드 구조 파이 포장하기: 모듈, 패키지, 프로그램 파이 맛보기 파이썬은 인터프리터 언어다. 파이썬이</description>
+    </item>
+    
+    <item>
+      <title>터미널에서 여러 개의 깃허브 계정 사용하기</title>
+      <link>https://leeleelee3264.github.io/post/2022-01-12-git-multi-account/</link>
+      <pubDate>Wed, 12 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2022-01-12-git-multi-account/</guid>
+      <description>터미널에서 여러 개의 깃허브 계정을 사용하는 방법을 다룹니다. Index 깃허브 계정 여러 개 세팅하기 매번 해줘야 하는 작업들 레퍼런스 깃허브 게정 여러 개 세팅하기 디렉터리 세팅하기 복수의 깃허브 계정을 사용 할 때, 각 계정들의 root source direc</description>
+    </item>
+    
+    <item>
+      <title>2021 백엔드 엔지니어 인터뷰 - Python, General</title>
+      <link>https://leeleelee3264.github.io/post/2022-01-01-interview-python/</link>
+      <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2022-01-01-interview-python/</guid>
+      <description>2021 백엔드 엔지니어 인터뷰의 면접질문에 대해서 다룹니다. Index Python DevOps 개발 전반 상식 Python 파이썬 쓰레드 파이썬 쓰레드에 대해 아는 점은 파이썬 자체에서 쓰레드를 지원하는 것은 아니고, 운영체제에서 제공하는 쓰레드를 사용한다는 것과, 쓰레드</description>
+    </item>
+    
+    <item>
+      <title>2021 백엔드 엔지니어 인터뷰 - Java</title>
+      <link>https://leeleelee3264.github.io/post/2021-12-02-interview-java/</link>
+      <pubDate>Thu, 02 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2021-12-02-interview-java/</guid>
+      <description>2021 백엔드 엔지니어 인터뷰의 면접질문에 대해서 다룹니다. Index Intro 기술면접 회고 Java Intro 10월 달 부터 이직을 준비하기 시작하며 Resume 와 Cover Letter 를 썼고, 11월 달에는 면접을 보러 다녔다. 대부분의 면접들이 몇 단계로 이루어져있었는데 기술 면접에</description>
+    </item>
+    
   </channel>
 </rss>
