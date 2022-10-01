@@ -2,13 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://leeleelee3264.github.io/</loc>
+    <lastmod>2022-08-27T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://leeleelee3264.github.io/post/2022-08-27-digital-certificate-part-final/</loc>
     <lastmod>2022-08-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://leeleelee3264.github.io/tags/infra/</loc>
-    <lastmod>2022-08-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://leeleelee3264.github.io/</loc>
     <lastmod>2022-08-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://leeleelee3264.github.io/post/</loc>
@@ -49,6 +49,27 @@
   </url><url>
     <loc>https://leeleelee3264.github.io/post/2021-12-02-interview-java/</loc>
     <lastmod>2021-12-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://leeleelee3264.github.io/post/2021-09-09-linux-shell-db-backup/</loc>
+    <lastmod>2021-09-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://leeleelee3264.github.io/post/2021-07-21-mysql-backup/</loc>
+    <lastmod>2021-07-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://leeleelee3264.github.io/post/2021-07-14-mysql-history-of-join-and-join-set/</loc>
+    <lastmod>2021-07-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://leeleelee3264.github.io/post/2021-07-08-mysql-stringfunction-and-refrential-integrity/</loc>
+    <lastmod>2021-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://leeleelee3264.github.io/post/2021-06-30-mysql-sql-and-key-collection/</loc>
+    <lastmod>2021-06-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://leeleelee3264.github.io/post/2021-06-21-mysql-index/</loc>
+    <lastmod>2021-06-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://leeleelee3264.github.io/post/2021-04-21-linux-server-init-setting/</loc>
+    <lastmod>2021-04-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://leeleelee3264.github.io/about/</loc>
     <lastmod>2020-08-11T19:15:32+08:00</lastmod>
