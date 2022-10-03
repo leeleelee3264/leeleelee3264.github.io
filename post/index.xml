@@ -179,12 +179,21 @@
     </item>
     
     <item>
-      <title>Docker Cheat Sheet</title>
+      <title>(en) Docker Cheat Sheet</title>
       <link>https://leeleelee3264.github.io/post/2021-01-30-docker-cheet-sheet/</link>
       <pubDate>Sat, 30 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2021-01-30-docker-cheet-sheet/</guid>
       <description>Docker Cheat Sheet에 대해서 다룬다. Index DockerFile Cheat Sheet Docker Command Cheat Sheet Dockerfile Cheat Sheet I have to make image before running docker container with the image. How to get images I need? I can just pull images from my/someone else&amp;rsquo;s docker hub repository or I can even make one all by myself. Do this, I must write Dockerfile. Dockerfile is just like a recipe for building images. [Picture 1] DockerFile Cheat Sheet Docker Command Cheat Sheet Docker is working like linux. It&amp;rsquo;s tiny which contains minimum setting to</description>
+    </item>
+    
+    <item>
+      <title>(en) Migration Shiny Server with Docker</title>
+      <link>https://leeleelee3264.github.io/post/2021-01-30-build-server-with-docker/</link>
+      <pubDate>Sat, 30 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2021-01-30-build-server-with-docker/</guid>
+      <description>Docker를 사용해서 Shiny server를 구동하는 것을 다룬다. Index How I got into Docker Making Shiny Docker Troubleshooting with Network Reference How I got into Docker Docker make server infra as a code and we can share anywhere! Nightmare of installing library for Shiny I had wondered why many developers love docker so much for a while. A few days ago, I got a chance to install docker in my company&amp;rsquo;s test server. The thing is that we have</description>
     </item>
     
   </channel>

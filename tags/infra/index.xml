@@ -97,5 +97,14 @@
       <description>Shell Script로 무중단 서버 배포하는 방법을 다룬다. Index 무중단 배포란? 무중단 배포 구현하기 결론 무중단 배포란? 무중단 배포란 업데이트를 위해 배포를 할 때 어플리케이션이 멈추지 않는 것이다. 즉 배포를 할 때 서비스가 중단되는 다운</description>
     </item>
     
+    <item>
+      <title>(en) Migration Shiny Server with Docker</title>
+      <link>https://leeleelee3264.github.io/post/2021-01-30-build-server-with-docker/</link>
+      <pubDate>Sat, 30 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2021-01-30-build-server-with-docker/</guid>
+      <description>Docker를 사용해서 Shiny server를 구동하는 것을 다룬다. Index How I got into Docker Making Shiny Docker Troubleshooting with Network Reference How I got into Docker Docker make server infra as a code and we can share anywhere! Nightmare of installing library for Shiny I had wondered why many developers love docker so much for a while. A few days ago, I got a chance to install docker in my company&amp;rsquo;s test server. The thing is that we have</description>
+    </item>
+    
   </channel>
 </rss>
