@@ -88,5 +88,14 @@
       <description>리눅스 서버 설치와 초기 설정에 대해 다룬다. Index 리눅스 설치 초기 네트워크 설정 SSH 설정 사용자 설정 기타 설정 MariDB 설치/설정 리눅스 설치 리눅스 설치용 usb 리눅스를 설치하려면 설치용 usb를 먼저 만들어야 한다. [리눅스 usb 만들기] 이 블로</description>
     </item>
     
+    <item>
+      <title>Shell Script로 Blue Green Deployment를 흉내낸 무중단 서버 배포하기</title>
+      <link>https://leeleelee3264.github.io/post/2021-03-15-blue-green-deploy/</link>
+      <pubDate>Mon, 15 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2021-03-15-blue-green-deploy/</guid>
+      <description>Shell Script로 무중단 서버 배포하는 방법을 다룬다. Index 무중단 배포란? 무중단 배포 구현하기 결론 무중단 배포란? 무중단 배포란 업데이트를 위해 배포를 할 때 어플리케이션이 멈추지 않는 것이다. 즉 배포를 할 때 서비스가 중단되는 다운</description>
+    </item>
+    
   </channel>
 </rss>

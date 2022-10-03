@@ -131,12 +131,8 @@
 <p>CA는 신뢰할 수 있는 기관에 의해 운영되는데, 주요 업무는 공개키 등록 시 본인 인증과 X.509와 같은 디지털 인증서 생성 및 발생 등이 있다.</p>
 <h3 id="ca의-필요성">CA의 필요성</h3>
 <p>공개키와 비밀키만을 이용해 암호화는 수행하면 보안에 매우 취약해진다. <em>[Picture 1]</em> 에서 해커가 사용자 B에게 해커의 공개키를 사용하여 데이터를 보낼 경우 사용자 B는 사용자 A가 보낸 데이터라착각할 수 있다. 이와 같은 해커의 공격 방식을 MTM(Man in the Middle Attack)이라고 한다. 이와 같은 취약점을 해결하기 위해 CA(Certificate Authority) 라는 인증 노드를 사용하게 된다.</p>
-<figure><img src="/static/img/post/certificate/attachments/4565565736/4669931563.png"
-         alt="[Picture 1] Man in Middle Attack" width="500" height="400"/><figcaption>
-            <p>[Picture 1] Man in Middle Attack</p>
-        </figcaption>
-</figure>
-
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/certificate/attachments/4565565736/4669931563.png" >
+<figcaption align = "center">[Picture 1] Man in Middle Attack</figcaption>
 <br> 
 <h3 id="pki에서-ca가-사용되는-과정">PKI에서 CA가 사용되는 과정</h3>
 <ul>
@@ -145,21 +141,13 @@
 <li>CA는 사용자 A의 공개키를 암화화하여 사용자 B에게 전달한다.</li>
 <li>사용자 B는 해당 공개키만을 사용자 A의 공개키라고 믿게 된다.</li>
 </ul>
-<figure><img src="/static/img/post/certificate/attachments/4565565736/4669997094.png"
-         alt="[Picture 2] PKI에서 CA가 사용되는 과정" width="500" height="400"/><figcaption>
-            <p>[Picture 2] PKI에서 CA가 사용되는 과정</p>
-        </figcaption>
-</figure>
-
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/certificate/attachments/4565565736/4669997094.png" >
+<figcaption align = "center">[Picture 2] PKI에서 CA가 사용되는 과정</figcaption>
 <br>
 <h3 id="ca-업체">CA 업체</h3>
 <p>유명한 CA들은 <em>[Picture 3]</em> 같다. CA의 인증서를 대리 구매해주는 서비스들이 외국에도, 한국에도 있지만 직접 CA에 가서 사는 것이 더 좋다. CA에 직접 가서 구매했을 때 QnA나 대응도 더 빠르고, 자세하며 나중에 인증서를 관리할 때에도 더 편했다.</p>
-<figure><img src="/static/img/post/certificate/attachments/4565565736/4666163323.png"
-         alt="[Picture 3] 유명한 CA" width="500" height="400"/><figcaption>
-            <p>[Picture 3] 유명한 CA</p>
-        </figcaption>
-</figure>
-
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/certificate/attachments/4565565736/4666163323.png" >
+<figcaption align = "center">[Picture 3] 유명한 CA"</figcaption>
 <br>
 <h1 id="ca에서-인증서-생성하기">CA에서 인증서 생성하기</h1>
 <p>CA에서 인증서를 생성하기 위해서는 SAN과 CSR을 제출해야 한다. CA 업체에 따라서 추가 서류를 제출해야 할 수 있으니 발급 전에 확인해야 한다.</p>
@@ -196,12 +184,8 @@ www.thawte.com
 <li>생성한 Private key를 사용하여 CSR을 생성한다.</li>
 <li>CSR을 생성할 때 <em>[Picture 4]</em> 에 대한 정보를 입력해야 한다.</li>
 </ul>
-<figure><img src="/static/img/post/certificate/attachments/4565565736/4632412194.png"
-         alt="[Picture 4] CSR 입력 사항" width="500" height="400"/><figcaption>
-            <p>[Picture 4] CSR 입력 사항</p>
-        </figcaption>
-</figure>
-
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/certificate/attachments/4565565736/4632412194.png" >
+<figcaption align = "center">[Picture 4] CSR 입력 사항</figcaption>
 <br>
 <h4 id="common-name">Common Name</h4>
 <p>SAN이 나오고 나서부터 Common Name은 실제적인 효력 보다는 과거의 레거시 형태로 남아있다. 이번에도 CSR을 작성할 때 OV를 만들어야 하기 때문에 Common Name에 도메인을 쓰지 않고 회사 이름을 넣었다.
@@ -323,12 +307,8 @@ common name: www.domain.com
 </blockquote>
 <pre><code class="language-java">Root CA 인증서 + Intermediate 인증서 + end-entity 인증서 = Certificate Chain
 </code></pre>
-<figure><img src="/static/img/post/certificate/attachments/4565565736/4668522518.png"
-         alt="[Picture 5] CA bundle" width="500" height="400"/><figcaption>
-            <p>[Picture 5] CA bundle</p>
-        </figcaption>
-</figure>
-
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/certificate/attachments/4565565736/4668522518.png" >
+<figcaption align = "center">[Picture 5] CA bundle</figcaption>
 <br>
 <p>CA bundle은 *.ca-bundle 확장자의 zip 파일이나 root, intermediate 개별로 주어진다. CA bundle은 클라이언트에게 순차적으로 제공이 되어야 하기 때문에 대게는 CA에서 이미 하나의 bundle을 만들어서 제공해준다. 만약 개별로 주어졌을 경우에는 하나의 ca-bundle로 합쳐야 한다</p>
 <br>
@@ -353,24 +333,15 @@ common name: www.domain.com
 <li>Intermediate 인증서: GTS CA 1C3</li>
 <li>Root 인증서: GTS Root R1</li>
 </ul>
-<p><figure><img src="/static/img/post/certificate/attachments/4565565736/4665901319.png"
-         alt="[Picture 6] End Entity Certificate" width="500" height="400"/><figcaption>
-            <p>[Picture 6] End Entity Certificate</p>
-        </figcaption>
-</figure>
-
-<figure><img src="/static/img/post/certificate/attachments/4565565736/4666196141.png"
-         alt="[Picture 7] Intermediate Certificate" width="500" height="400"/><figcaption>
-            <p>[Picture 7] Intermediate Certificate</p>
-        </figcaption>
-</figure>
-
-<figure><img src="/static/img/post/certificate/attachments/4565565736/4666687519.png"
-         alt="[Picture 8] Root Certificate" width="500" height="400"/><figcaption>
-            <p>[Picture 8] Root Certificate</p>
-        </figcaption>
-</figure>
-</p>
+<br>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/certificate/attachments/4565565736/4665901319.png" >
+<figcaption align = "center">[Picture 6] End Entity Certificate</figcaption>
+<br>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/certificate/attachments/4565565736/4666196141.png" >
+<figcaption align = "center">[Picture 7] Intermediate Certificate</figcaption>
+<br>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/certificate/attachments/4565565736/4666687519.png" >
+<figcaption align = "center">[Picture 8] Root Certificate</figcaption>
 <br>
 <h3 id="apply-ca-bundle">Apply CA Bundle</h3>
 <p>CA bundle을 서버 호스트 어디엔가 다운로드해두었다면 해당 도메인이 등록되어있는 Nginx 등의 웹서버에 CA Bundle가 있는 path를 적어주면 된다. 그럼 알아서 클라이언트에게 CA Bundle을 한꺼번에 넘겨준다. 클라이언트는 이 Bundle을 통해서 end-entity가 믿을 수 있는지 없는지 여부를 결정한다. 이와 같은 과정을 <strong>Chain of Trust</strong>라고 한다.</p>
@@ -433,12 +404,8 @@ common name: www.domain.com
 <li>Issuer의 Digital Signature (Issuer의 Private key로 서명)</li>
 <li>end-entity (Subject)의 public key</li>
 </ul>
-<figure><img src="/static/img/post/certificate/attachments/4565565736/4666720302.png"
-         alt="[Picture 9] End Entity Certificate 내부 구조" width="500" height="400"/><figcaption>
-            <p>[Picture 9] End Entity Certificate 내부 구조</p>
-        </figcaption>
-</figure>
-
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/certificate/attachments/4565565736/4666720302.png" >
+<figcaption align = "center">[Picture 9] End Entity Certificate 내부 구조</figcaption>
 <br>
 <h3 id="chain-of-trust-과정">Chain of Trust 과정</h3>
 <p>Chain of Trust는 브라우저가 신뢰할 수 있는 CA가 Issuer로 있는 인증서를 찾기 까지 모든 layer의 인증서를 탐색하는 과정이라고 생각하면 된다. 다른 말로 신뢰할 수 있는 CA가 발급한 인증서를 증명하는 과정이다.
@@ -470,20 +437,12 @@ common name: www.domain.com
 </li>
 <li><strong>Root CA → Intermediate CA → End-entity 모두 chain of trust를 통해서 믿을 수 있는 인증서가 된다.</strong></li>
 </ol>
-<figure><img src="/static/img/post/certificate/attachments/4565565736/4668096789.png"
-         alt="[Picture 10] Chain of Trust 과정" width="500" height="400"/><figcaption>
-            <p>[Picture 10] Chain of Trust 과정</p>
-        </figcaption>
-</figure>
-
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/certificate/attachments/4565565736/4668096789.png" >
+<figcaption align = "center">[Picture 10] Chain of Trust 과정</figcaption>
 <br>
 <h3 id="chain-계층">Chain 계층</h3>
-<figure><img src="/static/img/post/certificate/attachments/4565565736/4668719189.png"
-         alt="[Picture 11] Chain 계층" width="500" height="400"/><figcaption>
-            <p>[Picture 11] Chain 계층</p>
-        </figcaption>
-</figure>
-
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/certificate/attachments/4565565736/4668719189.png" >
+<figcaption align = "center">[Picture 11] Chain 계층</figcaption>
 <br>
 <h4 id="root-certificate-aka-trust-anchor">Root Certificate AKA Trust Anchor</h4>
 <ul>
@@ -518,12 +477,8 @@ common name: www.domain.com
 <blockquote>
 <p>브라우저와 서버의 request - response 과정 모식도</p>
 </blockquote>
-<figure><img src="/static/img/post/certificate/attachments/4565565736/4666294308.png"
-         alt="[Picture 11] request - response 과정 모식도" width="500" height="400"/><figcaption>
-            <p>[Picture 11] request - response 과정 모식도</p>
-        </figcaption>
-</figure>
-
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/certificate/attachments/4565565736/4666294308.png" >
+<figcaption align = "center">[Picture 11] request - response 과정 모식도</figcaption>
 <br>
 <ol>
 <li>브라우저가 <a href="http://youtube.com" target="_blank">youtube.com</a> 을 요청한다.</li>
@@ -546,23 +501,14 @@ common name: www.domain.com
 <blockquote>
 <p>CA-signed 인증서 발급 과정 모식도</p>
 </blockquote>
-<figure><img src="/static/img/post/certificate/attachments/4565565736/4666196103.png"
-         alt="[Picture 12] CA-signed 인증서 발급 과정 모식도" width="500" height="400"/><figcaption>
-            <p>[Picture 12] CA-signed 인증서 발급 과정 모식도</p>
-        </figcaption>
-</figure>
-
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/certificate/attachments/4565565736/4666196103.png" >
+<figcaption align = "center">[Picture 12] CA-signed 인증서 발급 과정 모식도</figcaption>
 <br>
 <blockquote>
 <p>Self-signed 인증서 발급 과정 모식도</p>
 </blockquote>
-<figure><img src="/static/img/post/certificate/attachments/4565565736/4666490918.png"
-         alt="[Picture 13] Self-signed 인증서 발급 과정 모식도" width="500" height="400"/><figcaption>
-            <p>[Picture 13] Self-signed 인증서 발급 과정 모식도</p>
-        </figcaption>
-</figure>
-
-
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/certificate/attachments/4565565736/4666490918.png" >
+<figcaption align = "center">[Picture 13] Self-signed 인증서 발급 과정 모식도</figcaption>
     </div>
 </article>
 

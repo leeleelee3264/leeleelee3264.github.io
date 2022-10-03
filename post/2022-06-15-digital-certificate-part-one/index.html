@@ -133,33 +133,21 @@
 <li>digital signature(디지털 서명) 를 하기 위한 code signing 인증서</li>
 </ul>
 <p>디지털 서명을 해야 했기 때문에 code signing 인증서를 발급받으려 했다. 하지만 <strong>SSL 인증서도 디지털 서명을 할 수 있었고</strong>, 목표인 server to server 커뮤니케이션에서 사용하는 <strong>신원 보장용 디지털 서명을 하기 위해서는 SSL 인증서를 발급해야 했다.</strong></p>
-<figure><img src="/static/img/post/certificate/hand_drawing_certificate_simple.png"
-         alt="[Picture 1] 적절하지 않은 인증서 분류" width="500" height="400"/><figcaption>
-            <p>[Picture 1] 적절하지 않은 인증서 분류</p>
-        </figcaption>
-</figure>
-
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/certificate/hand_drawing_certificate_simple.png" >
+<figcaption align = "center">[Picture 1] 적절하지 않은 인증서 분류</figcaption>
 <br>
 <h4 id="적절한-인증서-분류">적절한 인증서 분류</h4>
 <p>SSL 인증서는 웹사이트, 정확히 말하면 브라우저에 한정해서 사용한다고 생각했는데 이는 너무 한정적인 생각이었다. SSL 인증서는 client와 server가 (browser to server / server to server) 데이터를 주고 받을 때 암호화를 하기 위해 쓰이기 때문에 브라우저에 한정적이지 않다.</p>
 <p>결국 인증서는 <em>[Picture 2]</em> 처럼 분류를 해야 한다.</p>
-<figure><img src="/static/img/post/certificate/hand_drawing_certificate.png"
-         alt="[Picture 2] 적절한 인증서 분류" width="500" height="400"/><figcaption>
-            <p>[Picture 2] 적절한 인증서 분류</p>
-        </figcaption>
-</figure>
-
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/certificate/hand_drawing_certificate.png" >
+<figcaption align = "center">[Picture 2] 적절한 인증서 분류</figcaption>
 <br>
 <h4 id="code-signing-인증서">Code Signing 인증서</h4>
 <p>발급받으려 했던 code signing 인증서는 어플리케이션에 서명을 해서 해당 어플리케이션 publisher의 신원을 보장하는데 사용하기 때문에 내가 필요했던 server to server 커뮤니케이션에서 사용되는 인증서가 아니다.</p>
 <p>code signing 인증서로 어플리케이션에 서명을 하게 되면 <em>[Picture 3]</em> 와 같이 사용자에게 어플리케이션 publisher 에 대한 정보가 추가로 제공이 된다.</p>
 <br>
-<figure><img src="/static/img/post/certificate/code_signing_certificate.png"
-         alt="[Picture 3] code signing 인증서로 서명한 application" width="500" height="400"/><figcaption>
-            <p>[Picture 3] code signing 인증서로 서명한 application</p>
-        </figcaption>
-</figure>
-
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/certificate/code_signing_certificate.png" >
+<figcaption align = "center">[Picture 3] code signing 인증서로 서명한 application</figcaption>
 <br>
 <h3 id="csr-생성하기">CSR 생성하기</h3>
 <p>모든 SSL 인증서는 domain validation을 한다. 이 생각에 사로잡혀서 Root CA가 서명한 인증서를 발급받기 위해 제출해야 하는 CSR는 인증서가 사용이 될 서버에서 만들어야 한다고 생각했다.</p>
@@ -190,12 +178,8 @@
 </li>
 </ul>
 <br>
-<figure><img src="/static/img/post/certificate/certificate_difference.png"
-         alt="[Picture 4] 인증서 다이어그램" width="500" height="400"/><figcaption>
-            <p>[Picture 4] 인증서 다이어그램</p>
-        </figcaption>
-</figure>
-
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/certificate/certificate_difference.png" >
+<figcaption align = "center">[Picture 4] 인증서 다이어그램</figcaption>
 <br>
 <h3 id="ssl-certificate">SSL Certificate</h3>
 <p>SSL Certificate는 크게 2가지 기준으로 분류할 수 있다.</p>
@@ -298,12 +282,8 @@ www.sub.leelee.co.kr
 <li>사용자 A의 <code>public key</code>로 암호화된 데이터는 오직 사용자 A의 <code>private key</code>로 복호화 할 수 있다.</li>
 <li>사용자 A의 <code>private key</code>는 사용자 A만 소유하고 있기 때문에 사용자 B는 사용자 A만 볼 수 있는 데이터를 전송하게 된 것이다.</li>
 </ul>
-<figure><img src="/static/img/post/certificate/public_key_example.png"
-         alt="[Picture 5] Public key를 이용한 암호화" width="500" height="400"/><figcaption>
-            <p>[Picture 5] Public key를 이용한 암호화</p>
-        </figcaption>
-</figure>
-
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/certificate/public_key_example.png" >
+<figcaption align = "center">[Picture 5] Public key를 이용한 암호화</figcaption>
 <br>
 <h5 id="private-key를-이용해-암호화--신원인증">Private key를 이용해 암호화 : 신원인증</h5>
 <ul>
@@ -311,23 +291,15 @@ www.sub.leelee.co.kr
 <li>데이터가 사용자 A의 <code>public key</code>로 복호화가 안된다면 사용자A가 보냈다는 것을 인증할 수 없다.</li>
 <li>사용자 A의 <code>public key</code>로 데이터를 복호화할 수 있다면 사용자 A가 보냈다는 것을 인증할 수 있다.</li>
 </ul>
-<figure><img src="/static/img/post/certificate/private_key_example.png"
-         alt="[Picture 6] Private key를 이용한 암호화" width="500" height="400"/><figcaption>
-            <p>[Picture 6] Private key를 이용한 암호화</p>
-        </figcaption>
-</figure>
-
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/certificate/private_key_example.png" >
+<figcaption align = "center">[Picture 6] Private key를 이용한 암호화</figcaption>
 <br>
 <h5 id="해커가-암호화된-데이터를-도청할-경우">해커가 암호화된 데이터를 도청할 경우</h5>
 <ul>
 <li>사용자 A의 private key가 없기 때문에 해커가 중간에서 데이터를 복호화ㅊ할 수 없다.</li>
 </ul>
-<figure><img src="/static/img/post/certificate/haker_example.png"
-         alt="[Picture 7] 해킹 시도" width="500" height="400"/><figcaption>
-            <p>[Picture 7] 해킹 시도</p>
-        </figcaption>
-</figure>
-
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/certificate/haker_example.png" >
+<figcaption align = "center">[Picture 7] 해킹 시도</figcaption>
 <br>
 <h5 id="pki에서-가능한-두-가지-방식의-네트워크-보안">PKI에서 가능한 두 가지 방식의 네트워크 보안</h5>
 <ul>
@@ -348,12 +320,8 @@ www.sub.leelee.co.kr
 <p>X.509는 인터넷의 다양한 분야에서 신원 확인을 위해 광범위하게 사용되고 있는 가장 유명한 디지털 신원 증명 방식이다.</p>
 <br>
 <h4 id="x509-version-3-인증서-양식">X.509 version 3 인증서 양식</h4>
-<figure><img src="/static/img/post/certificate/certificate_format.png"
-         alt="[Picture 8] X.509 인증서 양식" width="500" height="400"/><figcaption>
-            <p>[Picture 8] X.509 인증서 양식</p>
-        </figcaption>
-</figure>
-
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/certificate/certificate_format.png" >
+<figcaption align = "center">[Picture 8] X.509 인증서 양식</figcaption>
 <br>
 <h5 id="key-usage-extension">Key usage extension</h5>
 <p>인증서에 포함되어있는 <code>public key</code>의 목적을 나타낸다. Key usage extension을 설정해 <code>public key</code>의 사용처를 제한할 수 있다.</p>
@@ -365,12 +333,8 @@ www.sub.leelee.co.kr
 <li>인증서가 서명을 하거나 signature를 검증하기 위해 사용된다면 Key usage extension으로 Digital signature와 Non-repudication 를 설정한다.</li>
 <li>인증서가 key 관리를 위해서만 사용이 된다면 key encipherment를 설정한다.</li>
 </ul>
-<figure><img src="/static/img/post/certificate/key_usage.png"
-         alt="[Picture 9] Key usage extension 종류" width="500" height="400"/><figcaption>
-            <p>[Picture 9] Key usage extension 종류</p>
-        </figcaption>
-</figure>
-
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/certificate/key_usage.png" >
+<figcaption align = "center">[Picture 9] Key usage extension 종류</figcaption>
 <br>
 <h5 id="extended-key-usage">Extended key usage</h5>
 <p>Key usage extension이 기본적인 인증서의 사용 목적(purpose)를 나타내는 것이라면 Extended key usage는 인증서의 additional한 사용 목적을 나타낸다. 보통 Extended key usage는 end entity의 인증서에만 표시가 된다.</p>
@@ -382,12 +346,8 @@ www.sub.leelee.co.kr
 <li><code>critical</code>이라면 인증서는 설정되어있는 용도로만 사용을 해야 한다. 해당 인증서를 다른 용도로 사용 했을 경우에는 CA 정책에 위반된다.</li>
 <li><code>non-critical</code> 이라면 설정되어있는 용도 외의 다른 용도로 사용 했을 경우에도 CA의 제한에 걸리지 않는다. 또한 다수의 kye/certificate을 가지고 있는 entity라면 맞는 key/certificate를 찾는데에도 사용이 될 수 있다.</li>
 </ul>
-<figure><img src="/static/img/post/certificate/extend_key_usage.png"
-         alt="[Picture 10] Extend key usage extension 종류" width="500" height="400"/><figcaption>
-            <p>[Picture 10] Extend key usage extension 종류</p>
-        </figcaption>
-</figure>
-
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/certificate/extend_key_usage.png" >
+<figcaption align = "center">[Picture 10] Extend key usage extension 종류</figcaption>
 <br>
 <h3 id="csr">CSR</h3>
 <ul>

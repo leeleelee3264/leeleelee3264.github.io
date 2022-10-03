@@ -284,12 +284,8 @@
 <p>이런식으로 Transaction을 걸면 각 줄이 실행되면서 SELECT로 결과를 보여주고 Rollback 커맨드로인해 테스트를 하기 전의 상태로 데이터베이스가 돌아간다. 일반 SELECT가 아닌 조건이 복잡한 DELETE, UPDATE, INSERT 쿼리를 사용해야 할 때 쓰면 좋아보인다.</p>
 <p><em>그런데 저렇게 짠 쿼리 중에 오류가 있으면 마지막 ROLLBACK까지 오지가 않기 때문에 Transaction 처리가 안된다.</em> 아무리 Transaction을 걸었다고 해도 조심을 해야할 필요가 있어보인다.</p>
 <br>
-<figure><img src="/static/img/post/sql_error_transaction.PNG"
-         alt="[Picture 1] Transaction 실패" width="500" height="400"/><figcaption>
-            <p>[Picture 1] Transaction 실패</p>
-        </figcaption>
-</figure>
-
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/sql_error_transaction.PNG" >
+<figcaption align = "center">[Picture 1] Transaction 실패</figcaption>
 <br>
 <h1 id="key">Key</h1>
 <h3 id="key와-제약조건의-차이">Key와 제약조건의 차이</h3>
@@ -348,12 +344,8 @@
 <li>Primary Key도 Candidate Key 에서 뽑힌다.</li>
 </ul>
 <br>
-<figure><img src="https://www.gatevidyalay.com/wp-content/uploads/2018/04/Super-Key-Candidate-Key-Primary-Key.png"
-         alt="[Picture 2] Key 다이어그램" width="500" height="400"/><figcaption>
-            <p>[Picture 2] Key 다이어그램</p>
-        </figcaption>
-</figure>
-
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="https://www.gatevidyalay.com/wp-content/uploads/2018/04/Super-Key-Candidate-Key-Primary-Key.png" >
+<figcaption align = "center">[Picture 2] Key 다이어그램</figcaption>
 <br>
 <blockquote>
 <p>Super Key와 Candidate Key 예시</p>
@@ -470,12 +462,8 @@
 </div>
 </div>
 <br>
-<figure><img src="/static/img/post/sql_charset.PNG"
-         alt="[Picture 3] SQL Charset" width="500" height="400"/><figcaption>
-            <p>[Picture 3] SQL Charset</p>
-        </figcaption>
-</figure>
-
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/sql_charset.PNG" >
+<figcaption align = "center">[Picture 3] SQL Charset</figcaption>
 <br>
 <h3 id="utf-charset">UTF charset</h3>
 <p>한글을 사용하려면 utf8을 사용하면 된다. 웹에서는 자연스럽게 utf8로만 설정을 하면 되지만, mysql에서는 <code>utf8, utf8mb4, utf16, utf32</code> 로 다양한 utf를 지원한다.</p>

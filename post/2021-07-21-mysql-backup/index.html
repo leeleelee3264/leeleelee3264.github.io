@@ -140,12 +140,8 @@
 <p>앱/웹서버들과 디비서버를 하나에 몰아두는 것은 좋은 구조가 아니다.
 한 곳에 몰아두면 관리는 쉬울 수 있겠지만 하나가 잘못되면 다른 부분까지 영향을 미쳐 결국 서비스를 마비시킬 수 있는 위험부담이 크다. 앱서버에 요청이 몰리거나, 대규모 디비 연산이 수행되면 양쪽이 정상작동 하지 않는 문제가 발행한다.</p>
 <p>대표적인 예가 지금 회사에서 사용하고 있는 개발 서버이다. 상용서버인 API는 서버와 아마존 RDS를 사용하는 디비과 완전히 분리가 되어있기 때문에 구조적 문제가 없다. 그러나 개발서버인 TPI는 디비가 TPI 서버 안에 들어가 있다.</p>
-<figure><img src="https://user-images.githubusercontent.com/35620531/127328546-12fb8880-5f29-47e1-903c-97f4fa2e6d1c.png"
-         alt="[Picture 1] 회사 서버 구조" width="500" height="600"/><figcaption>
-            <p>[Picture 1] 회사 서버 구조</p>
-        </figcaption>
-</figure>
-
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="https://user-images.githubusercontent.com/35620531/127328546-12fb8880-5f29-47e1-903c-97f4fa2e6d1c.png" >
+<figcaption align = "center">[Picture 1] 회사 서버 구조</figcaption>
 <br> 
 <h5 id="문제-발생">문제 발생</h5>
 <p>개발서버다 보니 서버안에 여러가지 앱 서버들을 띄워두었는데 초기에 개발서버가 커질 것을 예상하지 못하고 AWS에서 CPU와 메모리 성능이 작은 인스턴스를 선택해서 서버로 띄웠다. 게다가 위에서 말한 것 처럼 개발에서 사용하는 디비또한 해당 서버 안에 띄워두었다. 앱서버의 갯수가 늘수록 서버의 자원은 부족해졌다.</p>
@@ -161,12 +157,8 @@
 <h5 id="plus-문제-해결-중-느낀-점">(plus) 문제 해결 중 느낀 점</h5>
 <p>이번 문제를 직면하면서 요즘 왜 MSA가 많이 선택을 받는지 이유를 조금이나마 알 것 같았다. MSA를 다룬 글에서는 에자일식으로 빠르게 개발이 가능한게 큰 장점이었는데 이렇게 잘게 나눠두면 서버의 오류가 멀리 퍼지는 것도 최소화 할 수 있는 것도 장점이라고 생각된다. 한군데에 몰려둔 TPI 형태의 아키텍처가 모놀리틱이고 모놀리틱보다는 분리가 되어있는 게 SOA (Service-Orient Architecture) 였다.</p>
 <p>SOA와 MSA의 차이는 여기서 더 자세히 볼 수 있다. <a href="http://wiki.webnori.com/display/devbegin/SOA&#43;VS&#43;MSA" target="_blank">[SOA vs MSA]</a></p>
-<figure><img src="https://user-images.githubusercontent.com/35620531/127329517-f9c0f848-7c05-4796-9ffb-0ee42af67f92.PNG"
-         alt="[Picture 2] 여러가지 아키텍처" width="500" height="400"/><figcaption>
-            <p>[Picture 2] 여러가지 아키텍처</p>
-        </figcaption>
-</figure>
-
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="https://user-images.githubusercontent.com/35620531/127329517-f9c0f848-7c05-4796-9ffb-0ee42af67f92.PNG" >
+<figcaption align = "center">[Picture 2] 여러가지 아키텍처</figcaption>
 <br> 
 <h1 id="백업-개념">백업 개념</h1>
 <p>아래의 컨셉은 데이터베이스 뿐만 아니라 컴퓨터 전반에서 이루어지는 백업에서 통용되는 컨셉이다.</p>
@@ -180,12 +172,8 @@
 <p>디비 이전을 위해 진행하는 백업은 전체 백업이다. 아무 조건 없이 모든 데이터를 덤프 뜨기 때문에 조건이 없어 백업을 진행하기 쉽지만 시간이 제일 오래 걸리고 파일 크기도 제일 크다.</p>
 <br>
 <h3 id="차등-백업">차등 백업</h3>
-<figure><img src="https://www.easeus.com/images/en/screenshot/todo-backup/guide/differential-backup.png"
-         alt="[Picture 3] 차등 백업" width="500" height="400"/><figcaption>
-            <p>[Picture 3] 차등 백업</p>
-        </figcaption>
-</figure>
-
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="https://www.easeus.com/images/en/screenshot/todo-backup/guide/differential-backup.png" >
+<figcaption align = "center">[Picture 3] 차등 백업</figcaption>
 <br> 
 <p>차등 백업은 전체 백업보다 조금 더 정교한 형태의 백업이다. 전체백업은 큰 규묘의 데이터를 백업하다보니 일주일에 한 번 정도 진행이 된다. 만약 저번주의 전체 백업은 잘 마쳤지만 이번주의 전체 백업이 정상적으로 진행이 안되었다면 많은 데이터를 유실하게 된다.</p>
 <p>이런 전체백업의 문제점을 커버하기 위한 차등 백업은 전체 백업 이후 추가된 데이터들만 백업을 하는 방식으로, 그림처럼 일요일에 전체 백업을 한다고 하면</p>
@@ -196,12 +184,8 @@
 <p>이런 식으로 다음 전체 백업이 있는 일요일 전까지 백업이 진행된다. (마지막 차등백업은 무시된다고 한다). 전체 백업보다는 정교하고, 데이터도 비교적 적기 떄문에 크기도 작고 작업 시간도 단축되었으나 다음 전체 백업 날이 다가올수록 파일 크기가 커진다. 그리고 변경된 사항들을 누적해가면서 저장하기 떄문에 하루에 한 번 이상 진행하기에는 무리가 있다.</p>
 <br>
 <h3 id="증분-백업">증분 백업</h3>
-<figure><img src="https://networkencyclopedia.com/wp-content/uploads/2019/10/incremental-backup.png"
-         alt="[Picture 4] 증분 백업" width="500" height="400"/><figcaption>
-            <p>[Picture 4] 증분 백업</p>
-        </figcaption>
-</figure>
-
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="https://networkencyclopedia.com/wp-content/uploads/2019/10/incremental-backup.png" >
+<figcaption align = "center">[Picture 4] 증분 백업</figcaption>
 <br> 
 <p>증분 백업은 차등백업보다 더 작은 규모의 백업을 진행한다. 차등백업이 전체백업 이후의 변경을 하루하루 누적한다면 증분백업은 딱 그날 바뀐 부분만 백업을 한다. 예를 들어 일요일날 전체백업을 진행했다면</p>
 <p>월: 월요일에 추가된 데이터</p>
@@ -212,12 +196,8 @@
 <p>이렇게 보면 증분 백업이 제일 좋아보이지만 백업본이 날아가서 복구를 해야 하거나 할 때 시간이 오래 걸린다. 정교한 백업을 진행한 만큼 데이터를 다시 똑같이 쪼개서 백업을 해야 하기 때문에. 반면 전체백업은 똑같이 통으로 가져오기만 하면 되기 때문에 가장 빠르게 복구할 수 있다.</p>
 <br> 
 <h3 id="표로-정리하는-백업의-장단점">표로 정리하는 백업의 장단점</h3>
-<figure><img src="https://user-images.githubusercontent.com/35620531/127329809-136dcb6b-37aa-48ec-b4ff-7cb08b9ca30c.PNG"
-         alt="[Picture 5] 백업의 장단점" width="600" height="400"/><figcaption>
-            <p>[Picture 5] 백업의 장단점</p>
-        </figcaption>
-</figure>
-
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="https://user-images.githubusercontent.com/35620531/127329809-136dcb6b-37aa-48ec-b4ff-7cb08b9ca30c.PNG" >
+<figcaption align = "center">[Picture 5] 백업의 장단점</figcaption>
 <br>
 <h1 id="mysql의-백업-커맨드">MySQL의 백업 커맨드</h1>
 <p><em>백업 커맨드는 DB서버에 직접 들어가서 실행해야 한다. (DML/DDL/DCL 처럼 DB 콘솔창에서 실행 불가)</em></p>
