@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cheat_Sheet on dev_leelee.log</title>
+    <link>https://leeleelee3264.github.io/tags/cheat_sheet/</link>
+    <description>Recent content in Cheat_Sheet on dev_leelee.log</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 30 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://leeleelee3264.github.io/tags/cheat_sheet/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Docker Cheat Sheet</title>
+      <link>https://leeleelee3264.github.io/post/2021-01-30-docker-cheet-sheet/</link>
+      <pubDate>Sat, 30 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2021-01-30-docker-cheet-sheet/</guid>
+      <description>Docker Cheat Sheet에 대해서 다룬다. Index DockerFile Cheat Sheet Docker Command Cheat Sheet Dockerfile Cheat Sheet I have to make image before running docker container with the image. How to get images I need? I can just pull images from my/someone else&amp;rsquo;s docker hub repository or I can even make one all by myself. Do this, I must write Dockerfile. Dockerfile is just like a recipe for building images. [Picture 1] DockerFile Cheat Sheet Docker Command Cheat Sheet Docker is working like linux. It&amp;rsquo;s tiny which contains minimum setting to</description>
+    </item>
+    
+  </channel>
+</rss>

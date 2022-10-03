@@ -178,5 +178,14 @@
       <description>책 [Modern Java in Action] 중 Chapter 1,2,3 을 요약한다. Index Chapter 1 Java 8, 9, 10, 11 무슨 일이 일어나고 있는가? Chapter 2 동작 파라미터화 코드 전달하기 Chapter 3 람다 표현식 Chapter 1 Java 8, 9, 10, 11 무슨 일이 일어나고 있는가? 지금까지의 대부분의 자바 프로그램은 코어 중 하나만을 사용</description>
     </item>
     
+    <item>
+      <title>Docker Cheat Sheet</title>
+      <link>https://leeleelee3264.github.io/post/2021-01-30-docker-cheet-sheet/</link>
+      <pubDate>Sat, 30 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2021-01-30-docker-cheet-sheet/</guid>
+      <description>Docker Cheat Sheet에 대해서 다룬다. Index DockerFile Cheat Sheet Docker Command Cheat Sheet Dockerfile Cheat Sheet I have to make image before running docker container with the image. How to get images I need? I can just pull images from my/someone else&amp;rsquo;s docker hub repository or I can even make one all by myself. Do this, I must write Dockerfile. Dockerfile is just like a recipe for building images. [Picture 1] DockerFile Cheat Sheet Docker Command Cheat Sheet Docker is working like linux. It&amp;rsquo;s tiny which contains minimum setting to</description>
+    </item>
+    
   </channel>
 </rss>
