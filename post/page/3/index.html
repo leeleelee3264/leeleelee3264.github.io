@@ -100,7 +100,7 @@
 
 <div class="post">
     <h2 class="post-item post-title">
-        <a href="https://leeleelee3264.github.io/post/2021-01-30-build-server-with-docker/">(en) Migration Shiny Server with Docker</a>
+        <a href="https://leeleelee3264.github.io/post/2021-01-30-build-server-with-docker/">(en) Migrate Shiny Server with Docker</a>
     </h2>
     <div class="post-item post-meta">
         <span><i class="iconfont icon-today-sharp"></i>&nbsp;2021-01-30</span>
@@ -112,6 +112,98 @@
     </div>
     <div class="post-item post-summary markdown-body">
         Docker를 사용해서 Shiny server를 구동하는 것을 다룬다. Index How I got into Docker Making Shiny Docker Troubleshooting with Network Reference How I got into Docker Docker make server infra as a code and we can share anywhere! Nightmare of installing library for Shiny I had wondered why many developers love docker so much for a while. A few days ago, I got a chance to install docker in my company&rsquo;s test server. The thing is that we have
+    </div>
+</div>
+
+<div class="post">
+    <h2 class="post-item post-title">
+        <a href="https://leeleelee3264.github.io/post/2021-01-26-spring-unit-test/">(en) Test Spring boot with Junit5</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2021-01-26</span>
+
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;2073 words</span>
+
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/backend">Backend</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        Test Spring boot with Junit5 Index Why unit test? Implement unit test Why unit test? Making test code is always big burden for me. No time for writing test code, and also don&rsquo;t know how. What is @SpringBootTest and Junit? The main point of making test code has to be united! Do not test whole flow! TBH I&rsquo;ve usually done test e2e way. I thought test with spring boot test code is so heavy that I have to wait for server reload a lot. And now I know it happened because I tried to test entire program. It is just
+    </div>
+</div>
+
+<div class="post">
+    <h2 class="post-item post-title">
+        <a href="https://leeleelee3264.github.io/post/2021-01-13-linux-host-name-convention/">(en) Name Convention of Host and URL</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2021-01-13</span>
+
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;671 words</span>
+
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/infra">Infra</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        Let&rsquo;s learn about name convention of host and URL.
+Index
+Troubleshooting for Name Convention Name Convention Troubleshooting for Name Convention How I occurred the trouble Today, I had to be through very awful exception. There is an api server I have to send a request to update meta data. For performance issue, this server just cached meta data and uses it till updated. Usually it&rsquo;s quite simple. Make request with RestTemplate in Spring boot.
+This situation got started two days age. The server which contains api server moved to new ec2 machine, and it had new ip. So I have to send my request to the new ip.
+    </div>
+</div>
+
+<div class="post">
+    <h2 class="post-item post-title">
+        <a href="https://leeleelee3264.github.io/post/2021-01-11-java-regex-cheat-sheet/">(en) Java Regex Cheat Sheet</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2021-01-11</span>
+
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;513 words</span>
+
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/cheat">Cheat</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        Java Regex Cheat Sheet에 대해서 다룬다. Index Change plain text to Korean Phone Number format Extracting SubString Change plain text to Korean Phone Number format 1 2 3 4 5 6 7 8 public static void testNumber(String src) { Pattern SRC_PHONE_FORMAT = Pattern.compile(&#34;(\\d{3})(\\d{4})(\\d{4})&#34;); Pattern DEST_PHONE_FORMAT = Pattern.compile(&#34;$1-$2-$3&#34;); String dest = src.replaceFirst(SRC_PHONE_FORMAT.toString(), DEST_PHONE_FORMAT.toString()); System.out.println(dest); } 맨처음에는 패턴들에 통째로 replaceAll을 걸었는데 그럼 결과가 그냥 DE
+    </div>
+</div>
+
+<div class="post">
+    <h2 class="post-item post-title">
+        <a href="https://leeleelee3264.github.io/post/2021-01-08-spring-resource-load/">(en) Load static/dynamic resource Spring jar</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2021-01-08</span>
+
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;540 words</span>
+
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/backend">Backend</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        Spring jar에서 static/dynamic 리소스를 로드하는 방법을 다룬다 Index How to load static/dynamic resource in Spring jar Fun fact How to load static/dynamic resource in Spring jar First case: Static resource Roughly 4 months age, I was assigned to make function with excel. It was like this. I had made a template excel in advance and my colleagues downloaded it and filled it. After that, I read it and inserted data to database. Point of static resource I have to make and save file before deploying. (making
+    </div>
+</div>
+
+<div class="post">
+    <h2 class="post-item post-title">
+        <a href="https://leeleelee3264.github.io/post/2021-01-05-linux-writing-shell-script/">(en) Write shell script to deploy server and rotate log</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2021-01-05</span>
+
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;993 words</span>
+
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/infra">Infra</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        Write shell script to deploy server and rotate log
+Index
+Shell script to deploy server Shell script to rotate log (plus) /dev/null UPDATE VERSION OF SHELL SCRIPT WITH PASSWORD One month ago, I make this shell script with hard coded user password and I knew that was a bad idea. It is well known fact that leaving password somewhere or some files can be a huge problem with security later. So I decided to fix it.
+How to request password in shell script
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 #!
     </div>
 </div>
 <div class="pagination"><div class="pag-first">
@@ -175,7 +267,7 @@
             </span>
             
             <span>
-                <a href="/tags/cheat_sheet/">Cheat_Sheet</a>
+                <a href="/tags/cheat/">Cheat</a>
             </span>
             
             <span>
@@ -259,7 +351,7 @@
             </span>
             
             <span>
-                <a href="/tags/cheat_sheet/">Cheat_Sheet</a>
+                <a href="/tags/cheat/">Cheat</a>
             </span>
             
             <span>

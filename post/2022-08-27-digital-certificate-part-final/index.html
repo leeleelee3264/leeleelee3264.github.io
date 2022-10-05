@@ -16,7 +16,7 @@
 
 
 
-<title>Digital certificate 적용하기 - dev_leelee.log</title>
+<title>디지털 인증서 심화학습 - CA 부터 Chain of Trust 까지 - dev_leelee.log</title>
 
 
 <meta name="author" content="leeleelee3264" />
@@ -28,8 +28,8 @@
 <meta name="keywords" content="Infra" />
 
 
-<meta property="og:title" content="Digital certificate 적용하기" />
-<meta name="twitter:title" content="Digital certificate 적용하기" />
+<meta property="og:title" content="디지털 인증서 심화학습 - CA 부터 Chain of Trust 까지" />
+<meta name="twitter:title" content="디지털 인증서 심화학습 - CA 부터 Chain of Trust 까지" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://leeleelee3264.github.io/post/2022-08-27-digital-certificate-part-final/" /><meta property="og:description" content="All about CA and apply Digital Certificate." />
 <meta name="twitter:description" content="All about CA and apply Digital Certificate." /><meta property="og:image" content="https://leeleelee3264.github.io/img/og.png" />
@@ -100,12 +100,12 @@
 <article>
     
     <h2 class="post-item post-title">
-        <a href="https://leeleelee3264.github.io/post/2022-08-27-digital-certificate-part-final/">Digital certificate 적용하기</a>
+        <a href="https://leeleelee3264.github.io/post/2022-08-27-digital-certificate-part-final/">디지털 인증서 심화학습 - CA 부터 Chain of Trust 까지</a>
     </h2>
     <div class="post-item post-meta">
         <span><i class="iconfont icon-today-sharp"></i>&nbsp;2022-08-27</span>
 
-<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;4172 words</span>
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;4560 words</span>
 
 <span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/infra">Infra</a>&nbsp;</span>
 
@@ -117,6 +117,16 @@
 <blockquote>
 <p>CA와 CA에서 Digital Certificate을 발급받아서 적용하는 방법에 대해 설명한다.</p>
 </blockquote>
+<br>
+<h1 id="intro">Intro</h1>
+<p><a href="http://localhost:1313/post/2022-06-15-digital-certificate-part-one/" target="_blank">[디지털 인증서 쌩기초 파헤치기]</a> 에서 인증서의 종류, PKI, X.509 와 같은 디지털 인증서의 기초에 대해서 알아봤다.</p>
+<p>기초에 대해서 어느 정도 파악했다면 한 단계 더 나아가서 디지털 인증서를 어떻게 발급받으며, 어떻게 적용하는 지를 알아보자. 또한 클라이언트와 서버가 커넥션을 맺을 때 어떻게 서버가 디지털 인증서를 사용하여 신원을 증명해 내는지를 알아보자.</p>
+<p><em>[Index 1]</em> 에서는 인증서를 발급해주는 기관인 CA에 대해서 다룬다. 더 나아가 <em>[Index 2]</em> 에서는 CA에서 인증서를 발급 받기 위한 requirement를 준비하는 것을 다룬다.
+<em>[Index 3]</em> 에서는 발급받은 인증서를 서버에 적용하는 방법을 다룬다.</p>
+<p>서버에 인증서를 적용하게 되면, 이제 우리 서버는 신원을 증명하기 위해 클라이언트에게 디지털 인증서를 제공한다. 그럼 클라이언트는 여러 단계에 거쳐서 우리 서버의
+신원을 증명하려는 노력을 한다. 이 과정을 Chain of Trust 라고 하며 <em>[Index 4]</em> 에서 다루고 있다. <em>[Index 5]</em> 에서는 본 포스트에서 다루는 내용을 한 눈에 볼 수 있는 모식도를 제공한다.</p>
+<hr>
+<br>
 <br>
 <p><strong>Index</strong></p>
 <ol>
@@ -592,7 +602,7 @@ common name: www.domain.com
             </span>
             
             <span>
-                <a href="/tags/cheat_sheet/">Cheat_Sheet</a>
+                <a href="/tags/cheat/">Cheat</a>
             </span>
             
             <span>
@@ -674,7 +684,7 @@ common name: www.domain.com
             </span>
             
             <span>
-                <a href="/tags/cheat_sheet/">Cheat_Sheet</a>
+                <a href="/tags/cheat/">Cheat</a>
             </span>
             
             <span>
