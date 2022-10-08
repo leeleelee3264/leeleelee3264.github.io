@@ -248,5 +248,90 @@ How to request password in shell script
 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 #!</description>
     </item>
     
+    <item>
+      <title>Linux Command Cheat Sheet</title>
+      <link>https://leeleelee3264.github.io/post/2020-12-12-linux-cheat-sheet/</link>
+      <pubDate>Sat, 12 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2020-12-12-linux-cheat-sheet/</guid>
+      <description>Linux Command Cheatsheet. Index If operation 2021 Cheat Sheet 2020 Cheat Sheet If operation IF operation 2021 Cheat Sheet 압축을 풀지 않고 압축 파일 확인하는 방법 1 2 3 4 5 zcat test2.log.gz # pagination with zcat # cat 커맨드 처럼 less를 뒤에 써주면 된다. zcat test2.log.gz | less 가끔 압축되어있는 gz 파일을 확인할 일이 생긴다. 압축된 파일을 보려</description>
+    </item>
+    
+    <item>
+      <title>(en) MySQL View and UNION/JOIN</title>
+      <link>https://leeleelee3264.github.io/post/2020-10-28-sql-view-union-join/</link>
+      <pubDate>Wed, 28 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2020-10-28-sql-view-union-join/</guid>
+      <description>MySQL View and UNION/JOIN
+Index
+Intro View UNION/JOIN Intro Today, I faced my big mistake with new updated function which is made by me as well. The situation is something like this. We have a message service firing with multiple condition such as accomplish of today&amp;rsquo;s step count or tag reminder of today&amp;rsquo;s goal.
+Table Design When we designed tables, we separate to act_message and goal_message. (Obviously, it&amp;rsquo;s design error. I was supposed to create one table for these two). And there is mp3 file table music_list because the message will be playing designated mp3 file when it gets fired.</description>
+    </item>
+    
+    <item>
+      <title>(en) Divide layout in thymeleaf</title>
+      <link>https://leeleelee3264.github.io/post/2020-10-25-front-thymeleaf-layout/</link>
+      <pubDate>Sun, 25 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2020-10-25-front-thymeleaf-layout/</guid>
+      <description>Divide layout in thymeleaf. Index Trouble with not dividend html layout Divide layout Outro Trouble with not dividend html layout How do I feel about not divide html layout. Suffocating with 2000 line! At first, I didn&amp;rsquo;t know the importance about splitting html and making layout. But when I saw 2000 line html files with so many duplicated code (mostly nav, header, side-bar) I felt like I should change my mind. In my opinion, the good things about such work are &amp;hellip; Pros in dividend html layout I don&amp;rsquo;t have to rewrite every header, footer, side-bar (AKA general frame of</description>
+    </item>
+    
+    <item>
+      <title>(en) Implement Drag and Drop to upload file</title>
+      <link>https://leeleelee3264.github.io/post/2020-10-08-front-dropdown-file/</link>
+      <pubDate>Thu, 08 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2020-10-08-front-dropdown-file/</guid>
+      <description>Implement Drag and Drop to upload file
+Index
+Intro Implement Drag and Drop Intro Upload file with more action! Few days ago, I had to make a function that is about taking excel file from client side and reading it to save to our database. I usually go as simple as possible in terms of HTML/CSS, but this time I did some research and work!
+Instead of using basic file chose button, dragging a file and dropping in to a box. I was very happy when finishing these process because I thought it&amp;rsquo;s quite user friendly interface.
+[Picture 1] Drag and Drop Implement Drag and Drop HTML &amp;lt;div class=&amp;quot;file-upload&amp;quot;&amp;gt; &amp;lt;button class=&amp;quot;file-upload-btn&amp;quot; type=&amp;quot;button&amp;quot; onclick=&amp;quot;$(&#39;.</description>
+    </item>
+    
+    <item>
+      <title>(en) Java Stream Cheat Sheet</title>
+      <link>https://leeleelee3264.github.io/post/2020-10-07-java-stream-cheat/</link>
+      <pubDate>Wed, 07 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2020-10-07-java-stream-cheat/</guid>
+      <description>Java Stream Cheat Sheet
+Index
+Map Stream Map computeIfPresent - update value 1 2 3 4 5 Map&amp;lt;String, Integer&amp;gt; test = new HashMap&amp;lt;&amp;gt;(){{ test.put(&amp;#34;ME&amp;#34;, 25); test.put(&amp;#34;Mom&amp;#34;, 67); }}; test.computeIfPresent(&amp;#34;Me&amp;#34;, (k, v) -&amp;gt; v + 1); computeIfAbsent - put k, v when the key is not there 1 test.computeIfAbsent(&amp;#34;Sister&amp;#34;, k -&amp;gt; 25); Once, I wanted to use computeIfPresent and computeIfAbsent at once. My intend was putting (key, value) in specific map when ther is no key. And later, when the map meet the same key again, then update value.
+But I missed the point. Thoese two method cannot be used at the same time.</description>
+    </item>
+    
+    <item>
+      <title>(en) Git Cheat Sheet</title>
+      <link>https://leeleelee3264.github.io/post/2020-09-24-git-cheat-sheet/</link>
+      <pubDate>Thu, 24 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2020-09-24-git-cheat-sheet/</guid>
+      <description>Git Cheat Sheet Index Git Cheat Sheet Git Cheat Sheet make annotated tag 1 git tag -a v1.0.0 -m &amp;#34;leave message here for tag&amp;#34; git log 1 2 3 4 5 6 7 8 # show log with one line git log --oneline # show log with graph tree git log --graph # show log with both git log --oneline --graph compare file between two branches 1 2 3 git diff branch1..branch2 -- &amp;#34;file_name&amp;#34; ex) diff 2021_0405_user..master -- build.gradle change branch name 1 git branch -m &amp;#34;branch_name&amp;#34; making branch with specific commit 1 2 3 git branch branch_name commit_version ex)</description>
+    </item>
+    
+    <item>
+      <title>(en) Make Forked repo to Standalone repo</title>
+      <link>https://leeleelee3264.github.io/post/2020-09-19-forked-repo-commit/</link>
+      <pubDate>Sat, 19 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2020-09-19-forked-repo-commit/</guid>
+      <description>Make Forked repo to Standalone repo.
+Index
+Contribution not showing up on forked repo! Make forked repo to standalone repo Reference Contribution not showing up on forked repo! This started with one day one commit It&amp;rsquo;s been a graceful four days since starting one day one commit project. But something weird happen with yesterday commit data. I certainly updated a repo for github.io. I could see the record of it in the repo.
+However, the commit wasn&amp;rsquo;t recording in the contribution table in overview page. This contribution table is everything about one day one commit, so I have to dig in to see what&amp;rsquo;s going wrong.</description>
+    </item>
+    
+    <item>
+      <title>(en) Handle SQL Exception in Spring boot</title>
+      <link>https://leeleelee3264.github.io/post/2020-09-18-java-checkuncheck-exception/</link>
+      <pubDate>Fri, 18 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2020-09-18-java-checkuncheck-exception/</guid>
+      <description>Handle SQL Exception in Spring boot. Index Exception in Java Handle SQL Exception Reference Exception in Java A week ago, I felt maybe I need to adjust exception of sql. At that time, I just used try-catch with Exception and print stacktrace for backend, passed some certain value to let front know something went wrong with request. I&amp;rsquo;ve never went deep down to Exception and how to handle, so let&amp;rsquo;s first check what kind of Exception java has. Exception hierarchy [Picture 1] Java Exception Java use Throwable type when something goes wrong. The highest type Throwable then separate to three</description>
+    </item>
+    
   </channel>
 </rss>

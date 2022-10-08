@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="HandheldFriendly" content="True" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="generator" content="Hugo 0.102.3" />
+
+
+<link rel="shortcut icon" href="https://raw.githubusercontent.com/leeleelee3264/twitter_project/master/favicon.ico" />
+
+
+
+<title>(en) Handle SQL Exception in Spring boot - dev_leelee.log</title>
+
+
+<meta name="author" content="leeleelee3264" />
+
+
+<meta name="description" content="Handle SQL Exception in Spring boot" />
+
+
+<meta name="keywords" content="Backend" />
+
+
+<meta property="og:title" content="(en) Handle SQL Exception in Spring boot" />
+<meta name="twitter:title" content="(en) Handle SQL Exception in Spring boot" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://leeleelee3264.github.io/post/2020-09-18-java-checkuncheck-exception/" /><meta property="og:description" content="Handle SQL Exception in Spring boot" />
+<meta name="twitter:description" content="Handle SQL Exception in Spring boot" /><meta property="og:image" content="https://leeleelee3264.github.io/img/og.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://leeleelee3264.github.io/img/og.png" /><meta property="article:published_time" content="2020-09-18T00:00:00+00:00" /><meta property="article:modified_time" content="2020-09-18T00:00:00+00:00" />
+
+
+<style>
+    @media (prefers-color-scheme: dark) {
+        body[data-theme='auto'] img {
+            filter: brightness(60%);
+        }
+    }
+
+    body[data-theme='dark'] img {
+        filter: brightness(60%);
+    }
+</style>
+
+
+
+
+<link rel="stylesheet" href="https://leeleelee3264.github.io/assets/css/fuji.min.css" />
+
+
+
+
+
+
+
+
+</head>
+
+<body
+  data-theme="auto"
+  data-theme-auto='true'
+  >
+    <script data-cfasync="false">
+  
+  var fujiThemeData = localStorage.getItem('fuji_data-theme');
+  
+  if (!fujiThemeData) {
+    localStorage.setItem('fuji_data-theme', 'auto');
+  } else {
+    
+    if (fujiThemeData !== 'auto') {
+      document.body.setAttribute('data-theme', fujiThemeData === 'dark' ? 'dark' : 'light');
+    }
+  }
+</script>
+
+    <header>
+    <div class="container-lg clearfix">
+        <div class="col-12 header">
+            <a class="title-main" href="https://leeleelee3264.github.io/">dev_leelee.log</a>
+            
+            <span class="title-sub">Logfile of Developer LeeLee</span>
+            
+        </div>
+    </div>
+</header>
+
+    <main>
+        <div class="container-lg clearfix">
+            
+            <div class="col-12 col-md-9 float-left content">
+                
+<article>
+    
+    <h2 class="post-item post-title">
+        <a href="https://leeleelee3264.github.io/post/2020-09-18-java-checkuncheck-exception/">(en) Handle SQL Exception in Spring boot</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2020-09-18</span>
+
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;1292 words</span>
+
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/backend">Backend</a>&nbsp;</span>
+
+    </div>
+    
+    <div class="post-content markdown-body">
+        <br>
+<br> 
+<blockquote>
+<p>Handle SQL Exception in Spring boot.</p>
+</blockquote>
+<br> 
+<p><strong>Index</strong></p>
+<ol>
+<li>Exception in Java</li>
+<li>Handle SQL Exception</li>
+<li>Reference</li>
+</ol>
+<br> 
+<h1 id="exception-in-java">Exception in Java</h1>
+<p>A week ago, I felt maybe I need to adjust exception of sql. At that time, I just used try-catch with Exception and print stacktrace for backend, passed some certain value to let front know something went wrong with request. I&rsquo;ve never went deep down to Exception and how to handle, so let&rsquo;s first check what kind of Exception java has.</p>
+<br> 
+<h3 id="exception-hierarchy">Exception hierarchy</h3>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/checked_unchecked.png" >
+<figcaption align = "center">[Picture 1] Java Exception</figcaption>
+<br> 
+<p>Java use <code>Throwable</code> type when something goes wrong. The highest type Throwable then separate to three pieces. <code>Error</code>, <code>Checked Exception</code> and <code>Unchecked Exception</code>.</p>
+<p><em>Error is just error.</em> We cannot actually do something with error. It means, we don&rsquo;t have to (and can&rsquo;t) handle error. Then what about unchecked exception and checked exception?</p>
+<br>
+<h4 id="checked-exception">Checked Exception</h4>
+<p>If I want to run program, I have to compile code first. Compiling is like translating. Translating human friendly language such as Java, C, Python to computer friendly language which contains 0 and 1.</p>
+<p>If I make a mistake like opening not exist file, using not existing class or method then compiler will tell me. What should I do next? Without any choice, I must fix it. If not, I won&rsquo;t be able to run the program I made. Straight forwardly, <strong>checked exception will be checked by compiler at the very first time</strong>.</p>
+<br>  
+<h4 id="unchecked-exception">Unchecked Exception</h4>
+<p>On the other hand, <em>compiler can&rsquo;t catch unchecked exception</em> which will happen in the future. And I also can&rsquo;t catch them either. I can only predict and try to prevent code from exception with Exception handling.</p>
+<p><strong>These are happend when program is actually running</strong>. We have certain rules about programming. Using legal argument, not accessing out of arrays, casting variable with proper  casting method, not using null as value etc. However, these kind of exception sometimes happens due to client passing wrong value, server using mistaken code ect. We shell see them after running program.</p>
+<p>And here is the point! Can you see <code>SQLException</code> under Exception tree? SQLException is one of checked exception. And it&rsquo;s today&rsquo;s topic. Now let&rsquo;s dig in to SQLException.</p>
+<br>  
+<h1 id="handle-sql-exception">Handle SQL Exception</h1>
+<h3 id="why-sqlexception-is-checked-exception">Why SQLException is checked exception?</h3>
+<p>What I understand is that checked exception always pop up at compiler time. But in my ordinary code, exception related to sql pop up run time and compiler time both.</p>
+<h4 id="checked-exception-in-sql">Checked Exception in SQL</h4>
+<p>When I miss or don&rsquo;t configure setting about sql, compiler give me lots of error and stop right there. It were mostly about connection with spring and sql.</p>
+<h4 id="runtime-exception-in-sql">Runtime Exception in SQL</h4>
+<p>On the other hand, If I made bad sql grammar or try to use invalid value in sql sentence, then I got runtime exception. I didn&rsquo;t get value I&rsquo;d expected, but program was still running.</p>
+<p>I did some research and found out there are <code>SQLException</code> and <code>DataAccessException</code> in spring. <em>SQLException is checked exception and DataAccessException implements RuntimeException.</em></p>
+<br>
+<h3 id="change-sqlexception-to-dataaccessexception">Change SQLException to DataAccessException</h3>
+<p><em>Now it&rsquo;s a trend to change checked exception to unchecked exception in standard spec and open source framework.</em></p>
+<p>Most of the time, we can&rsquo;t react to checked exception right away. Because Java stepped into server area, we have to go through couple of step to fix exceptions. (coding, building, uploading, running&hellip;)</p>
+<p>People changed mind. If we can&rsquo;t fix exceptions fast, then at least we can make exceptions not too critical. Let&rsquo;s make checked exception to unchecked exception! It&rsquo;s bad hobby but sometimes we just ignore runtime exception and got ugly exception notification. I&rsquo;ll summarize it.</p>
+<br> 
+<h4 id="goal-of-exception-handler">Goal of Exception Handler</h4>
+<ul>
+<li><strong>Turn checked exception to unchecked exception when caller (programmer) cannot fix, recover exception.</strong></li>
+<li>Then what can I do with exception with sql? connection failure, bad sql grammar&hellip; obviously not many things.</li>
+<li>So let&rsquo;s just wrap it to unchecked exception to prevent stop running program.</li>
+<li>We still can use try-catch with runtime exception if we want.</li>
+<li>It even reduces writing throws and try-catch as well.</li>
+</ul>
+<br> 
+<h4 id="reason-of-wrapping-sqlexception-to-dataaccessexception">Reason of wrapping SQLException to DataAccessException</h4>
+<ul>
+<li>Only DAO has SQLException</li>
+<li>We should not pass sqlexception all the way through with bunch of throws.</li>
+<li>Wrap SqlException to DataAccessException</li>
+<li>With DataAccessException, we can chose using exception handling when we really need.</li>
+<li><strong>It called abstraction of exception. make low level to high level.</strong></li>
+<li>With high level exception, we can get more detail about the occurred exception.</li>
+</ul>
+<br>
+<h3 id="implement-exception-handler">Implement Exception Handler</h3>
+<p>When I wrote this code, it looked decent. But I feel like I have to change a couple of things to improve. It&rsquo;s prototype anyway.</p>
+<p>Now the code&rsquo;s flow is very simple. <code>Meeting exception</code>, <code>logging exception</code>. I might need to handle individual case of exception later. At that moment, I&rsquo;ll use this code quite useful. And for good measure, I separate exception from mybatis and general concept of sql exception. Just in case.</p>
+<br> 
+<blockquote>
+<p>Implementation</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">55
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Created By Seungmin lee
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * User: ***
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Date: 2020-09-15
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Description: 각종 Exception 을 logging 하고 처리할 목적으로 만든 Util
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Slf4j</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ExceptionUtil</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * mybatis 와 mysql에서 발생하는 error 들의 상세 logging 을 위한 메소드. 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * 추후에 로깅뿐 아니라 예외처리 로직도 넣어둘 예정. 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * @param ex MVC 단에서 던지는 예외 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">sqlException</span><span style="color:#f92672">(</span>Exception ex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>Objects<span style="color:#f92672">.</span><span style="color:#a6e22e">isNull</span><span style="color:#f92672">(</span>ex<span style="color:#f92672">.</span><span style="color:#a6e22e">getCause</span><span style="color:#f92672">())</span> <span style="color:#f92672">||</span> Objects<span style="color:#f92672">.</span><span style="color:#a6e22e">isNull</span><span style="color:#f92672">(</span>ex<span style="color:#f92672">.</span><span style="color:#a6e22e">getMessage</span><span style="color:#f92672">()))</span> <span style="color:#66d9ef">return</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Mybatis 라이브러리 내부에 어떤 오류둘이 있는지 몰라 일단 한 번에 처리 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>ex <span style="color:#66d9ef">instanceof</span> MyBatisSystemException<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            log<span style="color:#f92672">.</span><span style="color:#a6e22e">error</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;**** Mybatis inner exception :{} ****&#34;</span><span style="color:#f92672">,</span>  <span style="color:#f92672">((</span>MyBatisSystemException<span style="color:#f92672">)</span> ex<span style="color:#f92672">).</span><span style="color:#a6e22e">getRootCause</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getMessage</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// TODO: DataAccessException 과 SQLException 은 같은 수준인데 Spring에서는 DataAcessException 이 더 제너럴해서 나중에 바꿀 수 있다. 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        SQLException higherEx<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>ex <span style="color:#66d9ef">instanceof</span> DataAccessException<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            higherEx <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>SQLException<span style="color:#f92672">)</span> <span style="color:#f92672">((</span>DataAccessException<span style="color:#f92672">)</span> ex<span style="color:#f92672">).</span><span style="color:#a6e22e">getRootCause</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>            log<span style="color:#f92672">.</span><span style="color:#a6e22e">error</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;**** DataAccessException :{} // : {} ****&#34;</span><span style="color:#f92672">,</span> higherEx<span style="color:#f92672">.</span><span style="color:#a6e22e">getErrorCode</span><span style="color:#f92672">(),</span> higherEx<span style="color:#f92672">.</span><span style="color:#a6e22e">getMessage</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>ex <span style="color:#66d9ef">instanceof</span> BadSqlGrammarException<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            higherEx <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>SQLException<span style="color:#f92672">)</span> <span style="color:#f92672">((</span>BadSqlGrammarException<span style="color:#f92672">)</span> ex<span style="color:#f92672">).</span><span style="color:#a6e22e">getRootCause</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>            log<span style="color:#f92672">.</span><span style="color:#a6e22e">error</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;**** BadSqlGrammarException :{} // : {} ****&#34;</span><span style="color:#f92672">,</span> higherEx<span style="color:#f92672">.</span><span style="color:#a6e22e">getErrorCode</span><span style="color:#f92672">(),</span> higherEx<span style="color:#f92672">.</span><span style="color:#a6e22e">getMessage</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>ex <span style="color:#66d9ef">instanceof</span> InvalidResultSetAccessException<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            higherEx <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>SQLException<span style="color:#f92672">)</span> <span style="color:#f92672">((</span>InvalidResultSetAccessException<span style="color:#f92672">)</span> ex<span style="color:#f92672">).</span><span style="color:#a6e22e">getRootCause</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>            log<span style="color:#f92672">.</span><span style="color:#a6e22e">error</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;**** InvalidResultSetAccessException :{} // : {} ****&#34;</span><span style="color:#f92672">,</span> higherEx<span style="color:#f92672">.</span><span style="color:#a6e22e">getErrorCode</span><span style="color:#f92672">(),</span> higherEx<span style="color:#f92672">.</span><span style="color:#a6e22e">getMessage</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>ex <span style="color:#66d9ef">instanceof</span> DuplicateKeyException<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            higherEx <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>SQLException<span style="color:#f92672">)</span> <span style="color:#f92672">((</span>DuplicateKeyException<span style="color:#f92672">)</span> ex<span style="color:#f92672">).</span><span style="color:#a6e22e">getRootCause</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>            log<span style="color:#f92672">.</span><span style="color:#a6e22e">error</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;**** DuplicateKeyException :{} // : {} ****&#34;</span><span style="color:#f92672">,</span> higherEx<span style="color:#f92672">.</span><span style="color:#a6e22e">getErrorCode</span><span style="color:#f92672">(),</span> higherEx<span style="color:#f92672">.</span><span style="color:#a6e22e">getMessage</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>ex <span style="color:#66d9ef">instanceof</span> DataIntegrityViolationException<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            higherEx <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>SQLException<span style="color:#f92672">)</span> <span style="color:#f92672">((</span>DataIntegrityViolationException<span style="color:#f92672">)</span> ex<span style="color:#f92672">).</span><span style="color:#a6e22e">getRootCause</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>            log<span style="color:#f92672">.</span><span style="color:#a6e22e">error</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;**** DataIntegrityViolationException :{} // : {} ****&#34;</span><span style="color:#f92672">,</span> higherEx<span style="color:#f92672">.</span><span style="color:#a6e22e">getErrorCode</span><span style="color:#f92672">(),</span> higherEx<span style="color:#f92672">.</span><span style="color:#a6e22e">getMessage</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>ex <span style="color:#66d9ef">instanceof</span> DataAccessResourceFailureException<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            higherEx <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>SQLException<span style="color:#f92672">)</span> <span style="color:#f92672">((</span>DataAccessResourceFailureException<span style="color:#f92672">)</span> ex<span style="color:#f92672">).</span><span style="color:#a6e22e">getRootCause</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>            log<span style="color:#f92672">.</span><span style="color:#a6e22e">error</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;**** DataAccessResourceFailureException :{} // : {} ****&#34;</span><span style="color:#f92672">,</span> higherEx<span style="color:#f92672">.</span><span style="color:#a6e22e">getErrorCode</span><span style="color:#f92672">(),</span> higherEx<span style="color:#f92672">.</span><span style="color:#a6e22e">getMessage</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>ex <span style="color:#66d9ef">instanceof</span> CannotAcquireLockException<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            higherEx <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>SQLException<span style="color:#f92672">)</span> <span style="color:#f92672">((</span>CannotAcquireLockException<span style="color:#f92672">)</span> ex<span style="color:#f92672">).</span><span style="color:#a6e22e">getRootCause</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>            log<span style="color:#f92672">.</span><span style="color:#a6e22e">error</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;**** CannotAcquireLockException :{} // : {} ****&#34;</span><span style="color:#f92672">,</span> higherEx<span style="color:#f92672">.</span><span style="color:#a6e22e">getErrorCode</span><span style="color:#f92672">(),</span> higherEx<span style="color:#f92672">.</span><span style="color:#a6e22e">getMessage</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>ex <span style="color:#66d9ef">instanceof</span> DeadlockLoserDataAccessException<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            higherEx <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>SQLException<span style="color:#f92672">)</span> <span style="color:#f92672">((</span>DeadlockLoserDataAccessException<span style="color:#f92672">)</span> ex<span style="color:#f92672">).</span><span style="color:#a6e22e">getRootCause</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>            log<span style="color:#f92672">.</span><span style="color:#a6e22e">error</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;**** DeadlockLoserDataAccessException :{} // : {} ****&#34;</span><span style="color:#f92672">,</span> higherEx<span style="color:#f92672">.</span><span style="color:#a6e22e">getErrorCode</span><span style="color:#f92672">(),</span> higherEx<span style="color:#f92672">.</span><span style="color:#a6e22e">getMessage</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>ex <span style="color:#66d9ef">instanceof</span> CannotSerializeTransactionException<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            higherEx <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>SQLException<span style="color:#f92672">)</span> <span style="color:#f92672">((</span>CannotSerializeTransactionException<span style="color:#f92672">)</span> ex<span style="color:#f92672">).</span><span style="color:#a6e22e">getRootCause</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>            log<span style="color:#f92672">.</span><span style="color:#a6e22e">error</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;**** CannotSerializeTransactionException :{} // : {} ****&#34;</span><span style="color:#f92672">,</span> higherEx<span style="color:#f92672">.</span><span style="color:#a6e22e">getErrorCode</span><span style="color:#f92672">(),</span> higherEx<span style="color:#f92672">.</span><span style="color:#a6e22e">getMessage</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            log<span style="color:#f92672">.</span><span style="color:#a6e22e">error</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;**** Exception :{} ****&#34;</span><span style="color:#f92672">,</span> ex<span style="color:#f92672">.</span><span style="color:#a6e22e">getMessage</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br> 
+<blockquote>
+<p>TODO List</p>
+</blockquote>
+<ul>
+<li>Stop using SQLException. Use DataAccessException instead.</li>
+<li>Do not use DataAccessException at the top of if statement. If is the lowest exception.</li>
+<li>Do I really need to print detailed logging? I could just print stack trace. It even has more info.</li>
+</ul>
+<br> 
+<h1 id="reference">Reference</h1>
+<ul>
+<li><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/RuntimeException.html?is-external=true" target="_blank">[RuntimeException and higher exception]</a></li>
+<li><a href="https://jongmin92.github.io/2018/04/04/Spring/toby-4/" target="_blank">[SQLException to DataAccessException]</a></li>
+<li><a href="https://dd-corp.tistory.com/9" target="_blank">[Runtime and Compile time]</a></li>
+<li><a href="https://webprogrammer.tistory.com/m/2448?category=149261" target="_blank">[Spring SQLException Handling]</a></li>
+</ul>
+
+    </div>
+</article>
+
+
+
+<div class="post-comment" data-comment="utterances">
+    <span class="post-comment-notloaded">
+        <i class="iconfont icon-chatbox-ellipses-sharp"></i>&nbsp;Load comments
+    </span>
+    <script>
+        function loadComment() {
+            var commentArea = document.querySelector('.post-comment');
+            var utterancesTheme = document.body.getAttribute('data-theme');
+            if (utterancesTheme === 'auto') {
+                utterancesTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'photon-dark' :
+                    'github-light';
+            } else {
+                utterancesTheme = utterancesTheme === 'dark' ? 'photon-dark' : 'github-light';
+            }
+            var s = document.createElement('script');
+            s.src = 'https://utteranc.es/client.js';
+            s.setAttribute('repo', 'leeleelee3264\/github_io_comment');
+            s.setAttribute('issue-term', 'pathname');
+            s.setAttribute('theme', utterancesTheme);
+            s.setAttribute('crossorigin', 'anonymous');
+            s.setAttribute('async', '');
+            document.querySelector('.post-comment').appendChild(s);
+            document.querySelector('span.post-comment-notloaded').setAttribute('style', 'display: none;');
+        }
+    </script>
+</div>
+
+
+            </div>
+            <aside class="col-12 col-md-3 float-left sidebar">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://github.com/leeleelee3264" target="_blank"><span>GitHub</span></a>
+            </li>
+            
+            <li>
+                <a href="https://www.linkedin.com/in/seungmin4035/" target="_blank"><span>LinkedIn</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/backend/">Backend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/book/">Book</a>
+            </span>
+            
+            <span>
+                <a href="/tags/cheat/">Cheat</a>
+            </span>
+            
+            <span>
+                <a href="/tags/frontend/">Frontend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/general/">General</a>
+            </span>
+            
+            <span>
+                <a href="/tags/infra/">Infra</a>
+            </span>
+            
+            <span>
+                <a href="/tags/project/">Project</a>
+            </span>
+            
+        </div>
+    </div>
+    
+</aside>
+
+        </div>
+        <div class="btn">
+    <div class="btn-menu" id="btn-menu">
+        <i class="iconfont icon-grid-sharp"></i>
+    </div>
+    <div class="btn-toggle-mode">
+        <i class="iconfont icon-contrast-sharp"></i>
+    </div>
+    <div class="btn-scroll-top">
+        <i class="iconfont icon-chevron-up-circle-sharp"></i>
+    </div>
+</div>
+<aside class="sidebar-mobile" style="display: none;">
+  <div class="sidebar-wrapper">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://github.com/leeleelee3264" target="_blank"><span>GitHub</span></a>
+            </li>
+            
+            <li>
+                <a href="https://www.linkedin.com/in/seungmin4035/" target="_blank"><span>LinkedIn</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/backend/">Backend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/book/">Book</a>
+            </span>
+            
+            <span>
+                <a href="/tags/cheat/">Cheat</a>
+            </span>
+            
+            <span>
+                <a href="/tags/frontend/">Frontend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/general/">General</a>
+            </span>
+            
+            <span>
+                <a href="/tags/infra/">Infra</a>
+            </span>
+            
+            <span>
+                <a href="/tags/project/">Project</a>
+            </span>
+            
+        </div>
+    </div>
+    
+    
+    
+    
+  </div>
+</aside>
+    </main>
+
+    <footer>
+    <div class="container-lg clearfix">
+        <div class="col-12 footer">
+            
+            <span>&copy; 2020-2022
+                <a href="https://leeleelee3264.github.io/">leeleelee3264</a>
+                 | <a href="https://github.com/leeleelee3264/leeleelee3264.github.io">Source code</a> 
+                | Powered by <a href="https://github.com/dsrkafuu/hugo-theme-fuji/"
+                   target="_blank">Fuji-v2</a> &amp; <a href="https://gohugo.io/"
+                                                    target="_blank">Hugo</a> 
+            </span>
+        </div>
+    </div>
+</footer>
+
+    
+<script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/components/prism-core.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+
+
+<script defer src="/assets/js/fuji.min.js"></script>
+
+
+
+</body>
+
+</html>

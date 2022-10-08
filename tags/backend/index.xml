@@ -34,5 +34,14 @@
       <description>Spring jar에서 static/dynamic 리소스를 로드하는 방법을 다룬다 Index How to load static/dynamic resource in Spring jar Fun fact How to load static/dynamic resource in Spring jar First case: Static resource Roughly 4 months age, I was assigned to make function with excel. It was like this. I had made a template excel in advance and my colleagues downloaded it and filled it. After that, I read it and inserted data to database. Point of static resource I have to make and save file before deploying. (making</description>
     </item>
     
+    <item>
+      <title>(en) Handle SQL Exception in Spring boot</title>
+      <link>https://leeleelee3264.github.io/post/2020-09-18-java-checkuncheck-exception/</link>
+      <pubDate>Fri, 18 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2020-09-18-java-checkuncheck-exception/</guid>
+      <description>Handle SQL Exception in Spring boot. Index Exception in Java Handle SQL Exception Reference Exception in Java A week ago, I felt maybe I need to adjust exception of sql. At that time, I just used try-catch with Exception and print stacktrace for backend, passed some certain value to let front know something went wrong with request. I&amp;rsquo;ve never went deep down to Exception and how to handle, so let&amp;rsquo;s first check what kind of Exception java has. Exception hierarchy [Picture 1] Java Exception Java use Throwable type when something goes wrong. The highest type Throwable then separate to three</description>
+    </item>
+    
   </channel>
 </rss>

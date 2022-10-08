@@ -131,5 +131,17 @@ How to request password in shell script
 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 #!</description>
     </item>
     
+    <item>
+      <title>(en) MySQL View and UNION/JOIN</title>
+      <link>https://leeleelee3264.github.io/post/2020-10-28-sql-view-union-join/</link>
+      <pubDate>Wed, 28 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2020-10-28-sql-view-union-join/</guid>
+      <description>MySQL View and UNION/JOIN
+Index
+Intro View UNION/JOIN Intro Today, I faced my big mistake with new updated function which is made by me as well. The situation is something like this. We have a message service firing with multiple condition such as accomplish of today&amp;rsquo;s step count or tag reminder of today&amp;rsquo;s goal.
+Table Design When we designed tables, we separate to act_message and goal_message. (Obviously, it&amp;rsquo;s design error. I was supposed to create one table for these two). And there is mp3 file table music_list because the message will be playing designated mp3 file when it gets fired.</description>
+    </item>
+    
   </channel>
 </rss>

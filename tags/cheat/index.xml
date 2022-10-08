@@ -25,5 +25,35 @@
       <description>Java Regex Cheat Sheet에 대해서 다룬다. Index Change plain text to Korean Phone Number format Extracting SubString Change plain text to Korean Phone Number format 1 2 3 4 5 6 7 8 public static void testNumber(String src) { Pattern SRC_PHONE_FORMAT = Pattern.compile(&amp;#34;(\\d{3})(\\d{4})(\\d{4})&amp;#34;); Pattern DEST_PHONE_FORMAT = Pattern.compile(&amp;#34;$1-$2-$3&amp;#34;); String dest = src.replaceFirst(SRC_PHONE_FORMAT.toString(), DEST_PHONE_FORMAT.toString()); System.out.println(dest); } 맨처음에는 패턴들에 통째로 replaceAll을 걸었는데 그럼 결과가 그냥 DE</description>
     </item>
     
+    <item>
+      <title>Linux Command Cheat Sheet</title>
+      <link>https://leeleelee3264.github.io/post/2020-12-12-linux-cheat-sheet/</link>
+      <pubDate>Sat, 12 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2020-12-12-linux-cheat-sheet/</guid>
+      <description>Linux Command Cheatsheet. Index If operation 2021 Cheat Sheet 2020 Cheat Sheet If operation IF operation 2021 Cheat Sheet 압축을 풀지 않고 압축 파일 확인하는 방법 1 2 3 4 5 zcat test2.log.gz # pagination with zcat # cat 커맨드 처럼 less를 뒤에 써주면 된다. zcat test2.log.gz | less 가끔 압축되어있는 gz 파일을 확인할 일이 생긴다. 압축된 파일을 보려</description>
+    </item>
+    
+    <item>
+      <title>(en) Java Stream Cheat Sheet</title>
+      <link>https://leeleelee3264.github.io/post/2020-10-07-java-stream-cheat/</link>
+      <pubDate>Wed, 07 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2020-10-07-java-stream-cheat/</guid>
+      <description>Java Stream Cheat Sheet
+Index
+Map Stream Map computeIfPresent - update value 1 2 3 4 5 Map&amp;lt;String, Integer&amp;gt; test = new HashMap&amp;lt;&amp;gt;(){{ test.put(&amp;#34;ME&amp;#34;, 25); test.put(&amp;#34;Mom&amp;#34;, 67); }}; test.computeIfPresent(&amp;#34;Me&amp;#34;, (k, v) -&amp;gt; v + 1); computeIfAbsent - put k, v when the key is not there 1 test.computeIfAbsent(&amp;#34;Sister&amp;#34;, k -&amp;gt; 25); Once, I wanted to use computeIfPresent and computeIfAbsent at once. My intend was putting (key, value) in specific map when ther is no key. And later, when the map meet the same key again, then update value.
+But I missed the point. Thoese two method cannot be used at the same time.</description>
+    </item>
+    
+    <item>
+      <title>(en) Git Cheat Sheet</title>
+      <link>https://leeleelee3264.github.io/post/2020-09-24-git-cheat-sheet/</link>
+      <pubDate>Thu, 24 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2020-09-24-git-cheat-sheet/</guid>
+      <description>Git Cheat Sheet Index Git Cheat Sheet Git Cheat Sheet make annotated tag 1 git tag -a v1.0.0 -m &amp;#34;leave message here for tag&amp;#34; git log 1 2 3 4 5 6 7 8 # show log with one line git log --oneline # show log with graph tree git log --graph # show log with both git log --oneline --graph compare file between two branches 1 2 3 git diff branch1..branch2 -- &amp;#34;file_name&amp;#34; ex) diff 2021_0405_user..master -- build.gradle change branch name 1 git branch -m &amp;#34;branch_name&amp;#34; making branch with specific commit 1 2 3 git branch branch_name commit_version ex)</description>
+    </item>
+    
   </channel>
 </rss>

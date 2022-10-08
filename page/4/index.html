@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="HandheldFriendly" content="True" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="generator" content="Hugo 0.102.3" />
+
+
+<link rel="shortcut icon" href="https://raw.githubusercontent.com/leeleelee3264/twitter_project/master/favicon.ico" />
+
+
+
+<title>dev_leelee.log - Logfile of Developer LeeLee</title>
+
+
+<meta name="author" content="leeleelee3264" />
+
+
+<meta name="description" content="A minimal Hugo theme with nice theme color." />
+
+
+<link rel="alternate" type="application/rss+xml" href="https://leeleelee3264.github.io/index.xml" title="dev_leelee.log" />
+
+<meta property="og:title" content="dev_leelee.log" />
+<meta name="twitter:title" content="dev_leelee.log" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://leeleelee3264.github.io/" /><meta property="og:image" content="https://leeleelee3264.github.io/img/og.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://leeleelee3264.github.io/img/og.png" /><meta property="og:updated_time" content="2022-08-27T00:00:00+00:00" />
+
+
+<style>
+    @media (prefers-color-scheme: dark) {
+        body[data-theme='auto'] img {
+            filter: brightness(60%);
+        }
+    }
+
+    body[data-theme='dark'] img {
+        filter: brightness(60%);
+    }
+</style>
+
+
+
+
+<link rel="stylesheet" href="https://leeleelee3264.github.io/assets/css/fuji.min.css" />
+
+
+
+
+
+
+
+
+</head>
+
+<body
+  data-theme="auto"
+  data-theme-auto='true'
+  >
+    <script data-cfasync="false">
+  
+  var fujiThemeData = localStorage.getItem('fuji_data-theme');
+  
+  if (!fujiThemeData) {
+    localStorage.setItem('fuji_data-theme', 'auto');
+  } else {
+    
+    if (fujiThemeData !== 'auto') {
+      document.body.setAttribute('data-theme', fujiThemeData === 'dark' ? 'dark' : 'light');
+    }
+  }
+</script>
+
+    <header>
+    <div class="container-lg clearfix">
+        <div class="col-12 header">
+            <a class="title-main" href="https://leeleelee3264.github.io/">dev_leelee.log</a>
+            
+            <span class="title-sub">Logfile of Developer LeeLee</span>
+            
+        </div>
+    </div>
+</header>
+
+    <main>
+        <div class="container-lg clearfix">
+            
+            <div class="col-12 col-md-9 float-left content">
+                
+
+
+
+<div class="post">
+    <h2 class="post-item post-title">
+        <a href="https://leeleelee3264.github.io/post/2020-10-07-java-stream-cheat/">(en) Java Stream Cheat Sheet</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2020-10-07</span>
+
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;1218 words</span>
+
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/cheat">Cheat</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        Java Stream Cheat Sheet
+Index
+Map Stream Map computeIfPresent - update value 1 2 3 4 5 Map&lt;String, Integer&gt; test = new HashMap&lt;&gt;(){{ test.put(&#34;ME&#34;, 25); test.put(&#34;Mom&#34;, 67); }}; test.computeIfPresent(&#34;Me&#34;, (k, v) -&gt; v + 1); computeIfAbsent - put k, v when the key is not there 1 test.computeIfAbsent(&#34;Sister&#34;, k -&gt; 25); Once, I wanted to use computeIfPresent and computeIfAbsent at once. My intend was putting (key, value) in specific map when ther is no key. And later, when the map meet the same key again, then update value.
+But I missed the point. Thoese two method cannot be used at the same time.
+    </div>
+</div>
+
+<div class="post">
+    <h2 class="post-item post-title">
+        <a href="https://leeleelee3264.github.io/post/2020-09-24-git-cheat-sheet/">(en) Git Cheat Sheet</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2020-09-24</span>
+
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;1820 words</span>
+
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/cheat">Cheat</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        Git Cheat Sheet Index Git Cheat Sheet Git Cheat Sheet make annotated tag 1 git tag -a v1.0.0 -m &#34;leave message here for tag&#34; git log 1 2 3 4 5 6 7 8 # show log with one line git log --oneline # show log with graph tree git log --graph # show log with both git log --oneline --graph compare file between two branches 1 2 3 git diff branch1..branch2 -- &#34;file_name&#34; ex) diff 2021_0405_user..master -- build.gradle change branch name 1 git branch -m &#34;branch_name&#34; making branch with specific commit 1 2 3 git branch branch_name commit_version ex)
+    </div>
+</div>
+
+<div class="post">
+    <h2 class="post-item post-title">
+        <a href="https://leeleelee3264.github.io/post/2020-09-19-forked-repo-commit/">(en) Make Forked repo to Standalone repo</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2020-09-19</span>
+
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;339 words</span>
+
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/general">General</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        Make Forked repo to Standalone repo.
+Index
+Contribution not showing up on forked repo! Make forked repo to standalone repo Reference Contribution not showing up on forked repo! This started with one day one commit It&rsquo;s been a graceful four days since starting one day one commit project. But something weird happen with yesterday commit data. I certainly updated a repo for github.io. I could see the record of it in the repo.
+However, the commit wasn&rsquo;t recording in the contribution table in overview page. This contribution table is everything about one day one commit, so I have to dig in to see what&rsquo;s going wrong.
+    </div>
+</div>
+
+<div class="post">
+    <h2 class="post-item post-title">
+        <a href="https://leeleelee3264.github.io/post/2020-09-18-java-checkuncheck-exception/">(en) Handle SQL Exception in Spring boot</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2020-09-18</span>
+
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;1292 words</span>
+
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/backend">Backend</a>&nbsp;</span>
+
+    </div>
+    <div class="post-item post-summary markdown-body">
+        Handle SQL Exception in Spring boot. Index Exception in Java Handle SQL Exception Reference Exception in Java A week ago, I felt maybe I need to adjust exception of sql. At that time, I just used try-catch with Exception and print stacktrace for backend, passed some certain value to let front know something went wrong with request. I&rsquo;ve never went deep down to Exception and how to handle, so let&rsquo;s first check what kind of Exception java has. Exception hierarchy [Picture 1] Java Exception Java use Throwable type when something goes wrong. The highest type Throwable then separate to three
+    </div>
+</div>
+<div class="pagination"><div class="pag-first">
+    <a href="/"><i class="iconfont icon-caret-back-circle-sharp"></i></a>
+  </div><div class="pag-previous">
+    <a href="/page/3/"><i class="iconfont icon-chevron-back-circle-sharp"></i></a>
+  </div><div class="pag-item">
+    <a href="/">1</a>
+  </div><div class="pag-item">
+    <a href="/page/2/">2</a>
+  </div><div class="pag-item">
+    <a href="/page/3/">3</a>
+  </div><div class="pag-item pag-current">
+    <a href="/page/4/">4</a>
+  </div></div>
+            </div>
+            <aside class="col-12 col-md-3 float-left sidebar">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://github.com/leeleelee3264" target="_blank"><span>GitHub</span></a>
+            </li>
+            
+            <li>
+                <a href="https://www.linkedin.com/in/seungmin4035/" target="_blank"><span>LinkedIn</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/backend/">Backend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/book/">Book</a>
+            </span>
+            
+            <span>
+                <a href="/tags/cheat/">Cheat</a>
+            </span>
+            
+            <span>
+                <a href="/tags/frontend/">Frontend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/general/">General</a>
+            </span>
+            
+            <span>
+                <a href="/tags/infra/">Infra</a>
+            </span>
+            
+            <span>
+                <a href="/tags/project/">Project</a>
+            </span>
+            
+        </div>
+    </div>
+    
+    
+    
+</aside>
+
+        </div>
+        <div class="btn">
+    <div class="btn-menu" id="btn-menu">
+        <i class="iconfont icon-grid-sharp"></i>
+    </div>
+    <div class="btn-toggle-mode">
+        <i class="iconfont icon-contrast-sharp"></i>
+    </div>
+    <div class="btn-scroll-top">
+        <i class="iconfont icon-chevron-up-circle-sharp"></i>
+    </div>
+</div>
+<aside class="sidebar-mobile" style="display: none;">
+  <div class="sidebar-wrapper">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://github.com/leeleelee3264" target="_blank"><span>GitHub</span></a>
+            </li>
+            
+            <li>
+                <a href="https://www.linkedin.com/in/seungmin4035/" target="_blank"><span>LinkedIn</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/backend/">Backend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/book/">Book</a>
+            </span>
+            
+            <span>
+                <a href="/tags/cheat/">Cheat</a>
+            </span>
+            
+            <span>
+                <a href="/tags/frontend/">Frontend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/general/">General</a>
+            </span>
+            
+            <span>
+                <a href="/tags/infra/">Infra</a>
+            </span>
+            
+            <span>
+                <a href="/tags/project/">Project</a>
+            </span>
+            
+        </div>
+    </div>
+    
+    
+  </div>
+</aside>
+    </main>
+
+    <footer>
+    <div class="container-lg clearfix">
+        <div class="col-12 footer">
+            
+            <span>&copy; 2020-2022
+                <a href="https://leeleelee3264.github.io/">leeleelee3264</a>
+                 | <a href="https://github.com/leeleelee3264/leeleelee3264.github.io">Source code</a> 
+                | Powered by <a href="https://github.com/dsrkafuu/hugo-theme-fuji/"
+                   target="_blank">Fuji-v2</a> &amp; <a href="https://gohugo.io/"
+                                                    target="_blank">Hugo</a> 
+            </span>
+        </div>
+    </div>
+</footer>
+
+    
+<script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/components/prism-core.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+
+
+<script defer src="/assets/js/fuji.min.js"></script>
+
+
+
+</body>
+
+</html>

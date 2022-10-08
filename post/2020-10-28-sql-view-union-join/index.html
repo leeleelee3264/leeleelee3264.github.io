@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="HandheldFriendly" content="True" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="generator" content="Hugo 0.102.3" />
+
+
+<link rel="shortcut icon" href="https://raw.githubusercontent.com/leeleelee3264/twitter_project/master/favicon.ico" />
+
+
+
+<title>(en) MySQL View and UNION/JOIN - dev_leelee.log</title>
+
+
+<meta name="author" content="leeleelee3264" />
+
+
+<meta name="description" content="MySQL View and UNION/JOIN" />
+
+
+<meta name="keywords" content="Infra" />
+
+
+<meta property="og:title" content="(en) MySQL View and UNION/JOIN" />
+<meta name="twitter:title" content="(en) MySQL View and UNION/JOIN" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://leeleelee3264.github.io/post/2020-10-28-sql-view-union-join/" /><meta property="og:description" content="MySQL View and UNION/JOIN" />
+<meta name="twitter:description" content="MySQL View and UNION/JOIN" /><meta property="og:image" content="https://leeleelee3264.github.io/img/og.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://leeleelee3264.github.io/img/og.png" /><meta property="article:published_time" content="2020-10-28T00:00:00+00:00" /><meta property="article:modified_time" content="2020-10-28T00:00:00+00:00" />
+
+
+<style>
+    @media (prefers-color-scheme: dark) {
+        body[data-theme='auto'] img {
+            filter: brightness(60%);
+        }
+    }
+
+    body[data-theme='dark'] img {
+        filter: brightness(60%);
+    }
+</style>
+
+
+
+
+<link rel="stylesheet" href="https://leeleelee3264.github.io/assets/css/fuji.min.css" />
+
+
+
+
+
+
+
+
+</head>
+
+<body
+  data-theme="auto"
+  data-theme-auto='true'
+  >
+    <script data-cfasync="false">
+  
+  var fujiThemeData = localStorage.getItem('fuji_data-theme');
+  
+  if (!fujiThemeData) {
+    localStorage.setItem('fuji_data-theme', 'auto');
+  } else {
+    
+    if (fujiThemeData !== 'auto') {
+      document.body.setAttribute('data-theme', fujiThemeData === 'dark' ? 'dark' : 'light');
+    }
+  }
+</script>
+
+    <header>
+    <div class="container-lg clearfix">
+        <div class="col-12 header">
+            <a class="title-main" href="https://leeleelee3264.github.io/">dev_leelee.log</a>
+            
+            <span class="title-sub">Logfile of Developer LeeLee</span>
+            
+        </div>
+    </div>
+</header>
+
+    <main>
+        <div class="container-lg clearfix">
+            
+            <div class="col-12 col-md-9 float-left content">
+                
+<article>
+    
+    <h2 class="post-item post-title">
+        <a href="https://leeleelee3264.github.io/post/2020-10-28-sql-view-union-join/">(en) MySQL View and UNION/JOIN</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2020-10-28</span>
+
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;1065 words</span>
+
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/infra">Infra</a>&nbsp;</span>
+
+    </div>
+    
+    <div class="post-content markdown-body">
+        <br>
+<br> 
+<blockquote>
+<p>MySQL View and UNION/JOIN</p>
+</blockquote>
+<br> 
+<p><strong>Index</strong></p>
+<ol>
+<li>Intro</li>
+<li>View</li>
+<li>UNION/JOIN</li>
+</ol>
+<br> 
+<h1 id="intro">Intro</h1>
+<p>Today, I faced my big mistake with new updated function which is made by me as well. The situation is something like this. We have a message service firing with multiple condition such as accomplish of today&rsquo;s step count or tag reminder of today&rsquo;s goal.</p>
+<br> 
+<h3 id="table-design">Table Design</h3>
+<p>When we designed tables, we separate to act_message and goal_message. (Obviously, it&rsquo;s design error. I was supposed to create one table for these two). And there is mp3 file table music_list because the message will be playing designated mp3 file when it gets fired.</p>
+<p>In act_message and goal_message, voice_id is recorded and it stands for the id of music in music_list.</p>
+<br> 
+<blockquote>
+<p>Tables</p>
+</blockquote>
+<ul>
+<li>act_message</li>
+<li>goal_message (structure is the same with act_message)</li>
+<li>music_list</li>
+</ul>
+<br> 
+<blockquote>
+<p>Tables&rsquo; Columns</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> act_message, goal_message table
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>| id | voice_id | message_type | is_active |
+</span></span><span style="display:flex;"><span>|----|----------|--------------|-----------|
+</span></span><span style="display:flex;"><span>| 1  | 100      | V            | N         |
+</span></span><span style="display:flex;"><span>| 2  | 43       | V            | Y         |
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> music_list 
+</span></span><span style="display:flex;"><span>| id  | title        | url                |
+</span></span><span style="display:flex;"><span>|-----|--------------|--------------------|
+</span></span><span style="display:flex;"><span>| 43  | Oh happy day | https://something1 |
+</span></span><span style="display:flex;"><span>| 100 | 43           | https://something2 |
+</span></span><span style="display:flex;"><span>   </span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br> 
+<h3 id="troubleshooting">Troubleshooting</h3>
+<p>So, the new updated function was that <em>delete mp3 file in music_list</em>.</p>
+<p>What I forgot was that messages will not send when they cannot find recorded voice_id in music_list. Finally, mp3 file was removed clearly and messages which were supposed to be sent just stay calm.</p>
+<p>I should have checked the mp3 usage before removing. For this, I thought about how to gather voice id in all the separated message tables.<br>
+As you can predict, I decided to go with <code>UNION</code> query. <em>But the query statement won&rsquo;t be short due to combine many message tables</em>. At that moment my project manager recommended me to use <code>View</code>!</p>
+<br> 
+<h1 id="view">View</h1>
+<p>I had never used VIEW command before. I did some research and found out VIEW is more like result of reserved select statement which is not a real table but fake one.<br>
+As far as I remember, VIEW table is literally for view. It cannot work with <code>delete</code>, <code>update</code> and <code>insert</code>. For short, it cannot manipulate real data in database.</p>
+<br> 
+<blockquote>
+<p>View</p>
+</blockquote>
+<ul>
+<li>View is basically reserved select statement.</li>
+<li>View table will be made when the view table called in query.</li>
+<li>So you don&rsquo;t have to worry about updating data in View table. It will be updated every single time you call the table.</li>
+<li>There is no performance benefit of using view. It&rsquo;s the same with select query.</li>
+<li>The good thing is that you don&rsquo;t have to execute complicated select query. It&rsquo;s already made with View.</li>
+</ul>
+<br> 
+<h1 id="union-and-join">UNION and JOIN</h1>
+<p>Now let&rsquo;s talk about union a bit more. As you can see, I will use <code>UNION</code> command in the former query to collect all the voice id in tables. Collecting data in one place&hellip; Familiar for you?</p>
+<p>Yes! It sounds like <code>JOIN</code>. I used join many times, mostly when I have to combine two tables with one same value. For example, I have a table for user&rsquo;s birthday and a table for user&rsquo;s name and they both have user_id in the data. Then I can connect them with user_id and will get user&rsquo;s name and birthday at once.</p>
+<br> 
+<h3 id="join-vs-union">JOIN VS UNION</h3>
+<p>I want to think about the difference between UNION and JOIN. It&rsquo;s quite simple. UNION combine data to column when JOIN combine data to row. What I mean is, UNION will extend top to bottom and JOIN will extend left to right.</p>
+<ul>
+<li>If you want to have <code>additional data</code> in other table, go for JOIN.</li>
+<li>If you want to combine data in other table as <code>same value</code>, go for UNION.</li>
+</ul>
+<br> 
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="https://i.stack.imgur.com/LSPyQ.png" >
+<figcaption align = "center">[Picture 1] Join process</figcaption>
+<br> 
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="https://i.stack.imgur.com/l4hxo.png" >
+<figcaption align = "center">[Picture 2] Union process</figcaption>
+<br> 
+<p>There is an excellent explanation of <a href="https://stackoverflow.com/questions/905379/what-is-the-difference-between-join-and-union#" target="_blank">[What is the difference between JOIN and UNION?]</a></p>
+<br> 
+<h3 id="final-query-with-view-and-union">Final Query with View and Union</h3>
+<p>Here is my final query! I made v_voice_usage which contains only one column &lsquo;voice_id&rsquo;. I can use v_voice_usage as a normal table when it comes to using select command. And as I said, the view query will build table when I&rsquo;m looking for v_vocie_usage.</p>
+<br>
+<blockquote>
+<p>Query</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">VIEW</span> v_voice_usage <span style="color:#66d9ef">AS</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> voice_id 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> act_message
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> message_type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;V&#39;</span> <span style="color:#66d9ef">AND</span> voice_id <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">UNION</span> <span style="color:#66d9ef">ALL</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> voice_id 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> goal_message 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> message_type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;V&#39;</span> <span style="color:#66d9ef">AND</span> voice_id <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">//</span> Let<span style="color:#e6db74">&#39;s say if I have two voice id &#39;</span>voice_id<span style="color:#e6db74">&#39; and &#39;</span>voice_id2<span style="color:#e6db74">&#39;, I can use this way too. 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">SELECT voice_id 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">FROM act_message 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">WHERE message_type = &#39;</span>V<span style="color:#e6db74">&#39; AND voice_id &gt; 0
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">UNION ALL
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">SELECT voice_id2 AS voice_id
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">FROM act_message
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">WHERE message_type = &#39;</span>V<span style="color:#e6db74">&#39; AND voice_id2 &gt; 0</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br> 
+<blockquote>
+<p>Query Result</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>| voice_id |
+</span></span><span style="display:flex;"><span>|----------|
+</span></span><span style="display:flex;"><span>| 1        |
+</span></span><span style="display:flex;"><span>| 43       |
+</span></span><span style="display:flex;"><span>| 100      |
+</span></span><span style="display:flex;"><span>| 5223     |</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br> 
+<h3 id="union-all-or-union">UNION ALL or UNION?</h3>
+<p>If I write <code>UNION</code> query, I wouldn&rsquo;t get duplicated value. <em>UNION command will distinct the same values.</em> It&rsquo;s pretty awesome function. However, it comes with price just like <code>DISTINCT</code> command. As you know <em>DISTINCT is not cheap</em>. It will make your program become quite slowly.</p>
+<p>If I don&rsquo;t care about duplicated values or you can handle it in server side, then I would go with <code>UNION ALL</code>.
+It doesn&rsquo;t contain distinct process. Less work, faster query result.</p>
+<br> 
+<h3 id="where-to-put-where-for-performance">Where to put WHERE for performance</h3>
+<ul>
+<li><code>The worst case</code>
+<ul>
+<li>use WHERE on the result of UNION.</li>
+<li>all the distinct work and meaningless combine</li>
+</ul>
+</li>
+<li><code>Slightly better case</code>
+<ul>
+<li>use WHERE before UNION.</li>
+<li>at least query will sort the data which is suitable with condition</li>
+</ul>
+</li>
+<li><code>Better case</code>
+<ul>
+<li>use WHERE before UNION ALL</li>
+<li>less work + less wok</li>
+</ul>
+</li>
+</ul>
+<br> 
+<blockquote>
+<p>Put WHERE</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#f92672">//</span> <span style="color:#ae81ff">1</span>. the worst
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> v_voice_usage <span style="color:#66d9ef">AS</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> voice_id 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> act_message
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">UNION</span> 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> voice_id 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> goal_message 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> v_voice_usage
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> voice_id <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">//</span> <span style="color:#ae81ff">2</span>. better <span style="color:#66d9ef">case</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> voice_id 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> act_message
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> message_type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;V&#39;</span> <span style="color:#66d9ef">AND</span> voice_id <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">UNION</span> 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> voice_id 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> goal_message 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> message_type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;V&#39;</span> <span style="color:#66d9ef">AND</span> voice_id <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">//</span> <span style="color:#ae81ff">3</span>. Better <span style="color:#66d9ef">case</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> voice_id 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> act_message
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> message_type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;V&#39;</span> <span style="color:#66d9ef">AND</span> voice_id <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">UNION</span> <span style="color:#66d9ef">ALL</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> voice_id 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> goal_message 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> message_type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;V&#39;</span> <span style="color:#66d9ef">AND</span> voice_id <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+
+    </div>
+</article>
+
+
+
+<div class="post-comment" data-comment="utterances">
+    <span class="post-comment-notloaded">
+        <i class="iconfont icon-chatbox-ellipses-sharp"></i>&nbsp;Load comments
+    </span>
+    <script>
+        function loadComment() {
+            var commentArea = document.querySelector('.post-comment');
+            var utterancesTheme = document.body.getAttribute('data-theme');
+            if (utterancesTheme === 'auto') {
+                utterancesTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'photon-dark' :
+                    'github-light';
+            } else {
+                utterancesTheme = utterancesTheme === 'dark' ? 'photon-dark' : 'github-light';
+            }
+            var s = document.createElement('script');
+            s.src = 'https://utteranc.es/client.js';
+            s.setAttribute('repo', 'leeleelee3264\/github_io_comment');
+            s.setAttribute('issue-term', 'pathname');
+            s.setAttribute('theme', utterancesTheme);
+            s.setAttribute('crossorigin', 'anonymous');
+            s.setAttribute('async', '');
+            document.querySelector('.post-comment').appendChild(s);
+            document.querySelector('span.post-comment-notloaded').setAttribute('style', 'display: none;');
+        }
+    </script>
+</div>
+
+
+            </div>
+            <aside class="col-12 col-md-3 float-left sidebar">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://github.com/leeleelee3264" target="_blank"><span>GitHub</span></a>
+            </li>
+            
+            <li>
+                <a href="https://www.linkedin.com/in/seungmin4035/" target="_blank"><span>LinkedIn</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/backend/">Backend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/book/">Book</a>
+            </span>
+            
+            <span>
+                <a href="/tags/cheat/">Cheat</a>
+            </span>
+            
+            <span>
+                <a href="/tags/frontend/">Frontend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/general/">General</a>
+            </span>
+            
+            <span>
+                <a href="/tags/infra/">Infra</a>
+            </span>
+            
+            <span>
+                <a href="/tags/project/">Project</a>
+            </span>
+            
+        </div>
+    </div>
+    
+</aside>
+
+        </div>
+        <div class="btn">
+    <div class="btn-menu" id="btn-menu">
+        <i class="iconfont icon-grid-sharp"></i>
+    </div>
+    <div class="btn-toggle-mode">
+        <i class="iconfont icon-contrast-sharp"></i>
+    </div>
+    <div class="btn-scroll-top">
+        <i class="iconfont icon-chevron-up-circle-sharp"></i>
+    </div>
+</div>
+<aside class="sidebar-mobile" style="display: none;">
+  <div class="sidebar-wrapper">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://github.com/leeleelee3264" target="_blank"><span>GitHub</span></a>
+            </li>
+            
+            <li>
+                <a href="https://www.linkedin.com/in/seungmin4035/" target="_blank"><span>LinkedIn</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/backend/">Backend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/book/">Book</a>
+            </span>
+            
+            <span>
+                <a href="/tags/cheat/">Cheat</a>
+            </span>
+            
+            <span>
+                <a href="/tags/frontend/">Frontend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/general/">General</a>
+            </span>
+            
+            <span>
+                <a href="/tags/infra/">Infra</a>
+            </span>
+            
+            <span>
+                <a href="/tags/project/">Project</a>
+            </span>
+            
+        </div>
+    </div>
+    
+    
+    
+    
+  </div>
+</aside>
+    </main>
+
+    <footer>
+    <div class="container-lg clearfix">
+        <div class="col-12 footer">
+            
+            <span>&copy; 2020-2022
+                <a href="https://leeleelee3264.github.io/">leeleelee3264</a>
+                 | <a href="https://github.com/leeleelee3264/leeleelee3264.github.io">Source code</a> 
+                | Powered by <a href="https://github.com/dsrkafuu/hugo-theme-fuji/"
+                   target="_blank">Fuji-v2</a> &amp; <a href="https://gohugo.io/"
+                                                    target="_blank">Hugo</a> 
+            </span>
+        </div>
+    </div>
+</footer>
+
+    
+<script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/components/prism-core.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+
+
+<script defer src="/assets/js/fuji.min.js"></script>
+
+
+
+</body>
+
+</html>

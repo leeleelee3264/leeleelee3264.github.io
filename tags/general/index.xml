@@ -34,5 +34,17 @@
       <description>2021 백엔드 엔지니어 인터뷰의 면접질문에 대해서 다룹니다. Index Intro 기술면접 회고 Java Intro 10월 달 부터 이직을 준비하기 시작하며 Resume 와 Cover Letter 를 썼고, 11월 달에는 면접을 보러 다녔다. 대부분의 면접들이 몇 단계로 이루어져있었는데 기술 면접에</description>
     </item>
     
+    <item>
+      <title>(en) Make Forked repo to Standalone repo</title>
+      <link>https://leeleelee3264.github.io/post/2020-09-19-forked-repo-commit/</link>
+      <pubDate>Sat, 19 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2020-09-19-forked-repo-commit/</guid>
+      <description>Make Forked repo to Standalone repo.
+Index
+Contribution not showing up on forked repo! Make forked repo to standalone repo Reference Contribution not showing up on forked repo! This started with one day one commit It&amp;rsquo;s been a graceful four days since starting one day one commit project. But something weird happen with yesterday commit data. I certainly updated a repo for github.io. I could see the record of it in the repo.
+However, the commit wasn&amp;rsquo;t recording in the contribution table in overview page. This contribution table is everything about one day one commit, so I have to dig in to see what&amp;rsquo;s going wrong.</description>
+    </item>
+    
   </channel>
 </rss>
