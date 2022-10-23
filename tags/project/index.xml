@@ -8,7 +8,7 @@
     <language>en</language>
     <lastBuildDate>Sat, 23 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://leeleelee3264.github.io/tags/project/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Python으로 Myinfo oauth2 client connector 구현하기</title>
+      <title>Implement Myinfo Oauth2 Client Connector with Python</title>
       <link>https://leeleelee3264.github.io/post/2022-07-23-project-myinfo-connector-python/</link>
       <pubDate>Sat, 23 Jul 2022 00:00:00 +0000</pubDate>
       
@@ -17,7 +17,7 @@
     </item>
     
     <item>
-      <title>Github action으로 넷플릭스 상영 알림 트위터 봇 만들기</title>
+      <title>Implement Netflix On-Air Twitter Bot witt Github Action</title>
       <link>https://leeleelee3264.github.io/post/2021-04-16-twitterbot-with-git-action/</link>
       <pubDate>Fri, 16 Apr 2021 00:00:00 +0000</pubDate>
       

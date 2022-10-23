@@ -8,7 +8,7 @@
     <language>en</language>
     <lastBuildDate>Wed, 19 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://leeleelee3264.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>[Effective Python] Betterway 6,7,8,9,10 요약</title>
+      <title>[Effective Python] Betterway 6,7,8,9,10 Summary</title>
       <link>https://leeleelee3264.github.io/post/2022-10-19-effective-python-betterway-6-10/</link>
       <pubDate>Wed, 19 Oct 2022 00:00:00 +0000</pubDate>
       
@@ -17,7 +17,7 @@
     </item>
     
     <item>
-      <title>디지털 인증서 심화학습 - CA 부터 Chain of Trust 까지</title>
+      <title>Dive into Digital Certificate - from CA to Chain of Trust</title>
       <link>https://leeleelee3264.github.io/post/2022-08-27-digital-certificate-part-final/</link>
       <pubDate>Sat, 27 Aug 2022 00:00:00 +0000</pubDate>
       
@@ -26,7 +26,7 @@
     </item>
     
     <item>
-      <title>Python으로 Myinfo oauth2 client connector 구현하기</title>
+      <title>Implement Myinfo Oauth2 Client Connector with Python</title>
       <link>https://leeleelee3264.github.io/post/2022-07-23-project-myinfo-connector-python/</link>
       <pubDate>Sat, 23 Jul 2022 00:00:00 +0000</pubDate>
       
@@ -35,7 +35,7 @@
     </item>
     
     <item>
-      <title>Python decorator로 간단한 profiler 구현하기</title>
+      <title>Implement Simple Profiler with Python Decorator</title>
       <link>https://leeleelee3264.github.io/post/2022-06-30-python-profiler-decorator/</link>
       <pubDate>Wed, 29 Jun 2022 00:00:00 +0000</pubDate>
       
@@ -44,7 +44,7 @@
     </item>
     
     <item>
-      <title>디지털 인증서 쌩기초 파헤치기</title>
+      <title>Dive into Digital Certificate - Very Basic</title>
       <link>https://leeleelee3264.github.io/post/2022-06-15-digital-certificate-part-one/</link>
       <pubDate>Wed, 15 Jun 2022 00:00:00 +0000</pubDate>
       
@@ -53,7 +53,7 @@
     </item>
     
     <item>
-      <title>[Effective Python] Betterway 1,2,3,4,5 요약</title>
+      <title>[Effective Python] Betterway 1,2,3,4,5 Summary</title>
       <link>https://leeleelee3264.github.io/post/2022-05-06-effective-python-betteryway-1-to5/</link>
       <pubDate>Fri, 06 May 2022 00:00:00 +0000</pubDate>
       
@@ -62,7 +62,7 @@
     </item>
     
     <item>
-      <title>[Introducing Python] part one (1/2) 요약</title>
+      <title>[Introducing Python] part one (1/2) Summary</title>
       <link>https://leeleelee3264.github.io/post/2022-03-08-introducing-python-part-one/</link>
       <pubDate>Tue, 08 Mar 2022 00:00:00 +0000</pubDate>
       
@@ -71,7 +71,7 @@
     </item>
     
     <item>
-      <title>터미널에서 여러 개의 깃허브 계정 사용하기</title>
+      <title>Use Multiple Github Account in Terminal</title>
       <link>https://leeleelee3264.github.io/post/2022-01-12-git-multi-account/</link>
       <pubDate>Wed, 12 Jan 2022 00:00:00 +0000</pubDate>
       
@@ -80,7 +80,7 @@
     </item>
     
     <item>
-      <title>2021 백엔드 엔지니어 인터뷰 - Python, General</title>
+      <title>2021 Backend Engineer Job Interview - Python, General</title>
       <link>https://leeleelee3264.github.io/post/2022-01-01-interview-python/</link>
       <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
       
@@ -89,7 +89,7 @@
     </item>
     
     <item>
-      <title>2021 백엔드 엔지니어 인터뷰 - Java</title>
+      <title>2021 Backend Engineer Job Interview - Java</title>
       <link>https://leeleelee3264.github.io/post/2021-12-02-interview-java/</link>
       <pubDate>Thu, 02 Dec 2021 00:00:00 +0000</pubDate>
       
@@ -98,7 +98,7 @@
     </item>
     
     <item>
-      <title>Shell Script 로 MySQL db 전체백업하기</title>
+      <title>Implement MySQL DB Full Backup with Shell Script</title>
       <link>https://leeleelee3264.github.io/post/2021-09-09-linux-shell-db-backup/</link>
       <pubDate>Thu, 09 Sep 2021 00:00:00 +0000</pubDate>
       
@@ -107,7 +107,7 @@
     </item>
     
     <item>
-      <title>SQL 백업 종류</title>
+      <title>Dive into MySQL - Backup</title>
       <link>https://leeleelee3264.github.io/post/2021-07-21-mysql-backup/</link>
       <pubDate>Wed, 21 Jul 2021 00:00:00 +0000</pubDate>
       
@@ -116,7 +116,7 @@
     </item>
     
     <item>
-      <title>MySQL Join &amp; Join Set</title>
+      <title>Dive into MySQL - Join &amp; Join Set</title>
       <link>https://leeleelee3264.github.io/post/2021-07-14-mysql-history-of-join-and-join-set/</link>
       <pubDate>Wed, 14 Jul 2021 00:00:00 +0000</pubDate>
       
@@ -125,7 +125,7 @@
     </item>
     
     <item>
-      <title>MySQL String 함수와 참조 무결성</title>
+      <title>Dive into MySQL - String Function &amp; Referential Integrity</title>
       <link>https://leeleelee3264.github.io/post/2021-07-08-mysql-stringfunction-and-refrential-integrity/</link>
       <pubDate>Thu, 08 Jul 2021 00:00:00 +0000</pubDate>
       
@@ -134,7 +134,7 @@
     </item>
     
     <item>
-      <title>MySQL SQL과 key, collation</title>
+      <title>Dive into MySQL - SQL &amp; key &amp; collation</title>
       <link>https://leeleelee3264.github.io/post/2021-06-30-mysql-sql-and-key-collection/</link>
       <pubDate>Wed, 30 Jun 2021 00:00:00 +0000</pubDate>
       
@@ -143,7 +143,7 @@
     </item>
     
     <item>
-      <title>MySQL Index</title>
+      <title>Dive into MySQL - Index</title>
       <link>https://leeleelee3264.github.io/post/2021-06-21-mysql-index/</link>
       <pubDate>Mon, 21 Jun 2021 00:00:00 +0000</pubDate>
       
@@ -152,7 +152,7 @@
     </item>
     
     <item>
-      <title>리눅스 서버 설치와 초기 설정하기</title>
+      <title>Install Linux Server and Initial Setting</title>
       <link>https://leeleelee3264.github.io/post/2021-04-21-linux-server-init-setting/</link>
       <pubDate>Wed, 21 Apr 2021 00:00:00 +0000</pubDate>
       
@@ -161,7 +161,7 @@
     </item>
     
     <item>
-      <title>Github action으로 넷플릭스 상영 알림 트위터 봇 만들기</title>
+      <title>Implement Netflix On-Air Twitter Bot witt Github Action</title>
       <link>https://leeleelee3264.github.io/post/2021-04-16-twitterbot-with-git-action/</link>
       <pubDate>Fri, 16 Apr 2021 00:00:00 +0000</pubDate>
       
@@ -170,7 +170,7 @@
     </item>
     
     <item>
-      <title>Shell Script로 Blue Green Deployment를 흉내낸 무중단 서버 배포하기</title>
+      <title>Implement Shell Script which works like Blue Green Deployment</title>
       <link>https://leeleelee3264.github.io/post/2021-03-15-blue-green-deploy/</link>
       <pubDate>Mon, 15 Mar 2021 00:00:00 +0000</pubDate>
       
@@ -179,7 +179,7 @@
     </item>
     
     <item>
-      <title>[Modern Java in Action] Chapter 1,2,3 요약</title>
+      <title>[Modern Java in Action] Chapter 1,2,3 Summary</title>
       <link>https://leeleelee3264.github.io/post/2021-02-14-java-in-action-part1/</link>
       <pubDate>Sun, 14 Feb 2021 00:00:00 +0000</pubDate>
       
@@ -206,7 +206,7 @@
     </item>
     
     <item>
-      <title>(en) Test Spring boot with Junit5</title>
+      <title>(en) Test Spring Boot with Junit5</title>
       <link>https://leeleelee3264.github.io/post/2021-01-26-spring-unit-test/</link>
       <pubDate>Tue, 26 Jan 2021 00:00:00 +0000</pubDate>
       
@@ -236,7 +236,7 @@ This situation got started two days age. The server which contains api server mo
     </item>
     
     <item>
-      <title>(en) Load static/dynamic resource Spring jar</title>
+      <title>(en) Load Static/Dynamic Resource Spring Jar</title>
       <link>https://leeleelee3264.github.io/post/2021-01-08-spring-resource-load/</link>
       <pubDate>Fri, 08 Jan 2021 00:00:00 +0000</pubDate>
       
@@ -245,7 +245,7 @@ This situation got started two days age. The server which contains api server mo
     </item>
     
     <item>
-      <title>(en) Write shell script to deploy server and rotate log</title>
+      <title>(en) Write Shell Script to Deploy Server and Rotate Log</title>
       <link>https://leeleelee3264.github.io/post/2021-01-05-linux-writing-shell-script/</link>
       <pubDate>Tue, 05 Jan 2021 00:00:00 +0000</pubDate>
       
@@ -258,7 +258,7 @@ How to request password in shell script
     </item>
     
     <item>
-      <title>Linux Command Cheat Sheet</title>
+      <title> Linux Command Cheat Sheet</title>
       <link>https://leeleelee3264.github.io/post/2020-12-12-linux-cheat-sheet/</link>
       <pubDate>Sat, 12 Dec 2020 00:00:00 +0000</pubDate>
       
@@ -279,7 +279,7 @@ Table Design When we designed tables, we separate to act_message and goal_messag
     </item>
     
     <item>
-      <title>(en) Divide layout in thymeleaf</title>
+      <title>(en) Divide Layout in Thymeleaf</title>
       <link>https://leeleelee3264.github.io/post/2020-10-25-front-thymeleaf-layout/</link>
       <pubDate>Sun, 25 Oct 2020 00:00:00 +0000</pubDate>
       
@@ -288,7 +288,7 @@ Table Design When we designed tables, we separate to act_message and goal_messag
     </item>
     
     <item>
-      <title>(en) Implement Drag and Drop to upload file</title>
+      <title>(en) Implement Drag and Drop to Upload File</title>
       <link>https://leeleelee3264.github.io/post/2020-10-08-front-dropdown-file/</link>
       <pubDate>Thu, 08 Oct 2020 00:00:00 +0000</pubDate>
       

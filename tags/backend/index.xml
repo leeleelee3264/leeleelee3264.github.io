@@ -8,7 +8,7 @@
     <language>en</language>
     <lastBuildDate>Wed, 29 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://leeleelee3264.github.io/tags/backend/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Python decorator로 간단한 profiler 구현하기</title>
+      <title>Implement Simple Profiler with Python Decorator</title>
       <link>https://leeleelee3264.github.io/post/2022-06-30-python-profiler-decorator/</link>
       <pubDate>Wed, 29 Jun 2022 00:00:00 +0000</pubDate>
       
@@ -17,7 +17,7 @@
     </item>
     
     <item>
-      <title>(en) Test Spring boot with Junit5</title>
+      <title>(en) Test Spring Boot with Junit5</title>
       <link>https://leeleelee3264.github.io/post/2021-01-26-spring-unit-test/</link>
       <pubDate>Tue, 26 Jan 2021 00:00:00 +0000</pubDate>
       
@@ -26,7 +26,7 @@
     </item>
     
     <item>
-      <title>(en) Load static/dynamic resource Spring jar</title>
+      <title>(en) Load Static/Dynamic Resource Spring Jar</title>
       <link>https://leeleelee3264.github.io/post/2021-01-08-spring-resource-load/</link>
       <pubDate>Fri, 08 Jan 2021 00:00:00 +0000</pubDate>
       
