@@ -6,7 +6,16 @@
     <description>Recent content in Infra on dev_leelee.log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 27 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://leeleelee3264.github.io/tags/infra/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 24 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://leeleelee3264.github.io/tags/infra/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Essential in Cloud: Load Balancer</title>
+      <link>https://leeleelee3264.github.io/post/2022-10-24-load-balancer/</link>
+      <pubDate>Mon, 24 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2022-10-24-load-balancer/</guid>
+      <description>로드 밸런서에 대해서 간략하게 알아본다. Index Intro: 터져버린 서버에 우아하게 대처하기 로드밸런서 (plus) 리버스 프록시 Intro: 터져버린 서버에 우아하게 대처하기 몇 년 전에 Spring Boot로 어드민 모니터링 사이트를 개발하는데 사용자 활동 데이터를 봐야</description>
+    </item>
+    
     <item>
       <title>Dive into Digital Certificate - from CA to Chain of Trust</title>
       <link>https://leeleelee3264.github.io/post/2022-08-27-digital-certificate-part-final/</link>

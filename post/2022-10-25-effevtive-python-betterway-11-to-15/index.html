@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="HandheldFriendly" content="True" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="generator" content="Hugo 0.102.3" />
+
+
+<link rel="shortcut icon" href="https://raw.githubusercontent.com/leeleelee3264/twitter_project/master/favicon.ico" />
+
+
+
+<title>[Effective Python] Betterway 11 to 15 Summary - dev_leelee.log</title>
+
+
+<meta name="author" content="leeleelee3264" />
+
+
+<meta name="description" content="책 [Effective Python] Chapter 2 중 better way 11장부터 15장까지 요약한다." />
+
+
+<meta name="keywords" content="Book" />
+
+
+<meta property="og:title" content="[Effective Python] Betterway 11 to 15 Summary" />
+<meta name="twitter:title" content="[Effective Python] Betterway 11 to 15 Summary" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://leeleelee3264.github.io/post/2022-10-25-effevtive-python-betterway-11-to-15/" /><meta property="og:description" content="책 [Effective Python] Chapter 2 중 better way 11장부터 15장까지 요약한다." />
+<meta name="twitter:description" content="책 [Effective Python] Chapter 2 중 better way 11장부터 15장까지 요약한다." /><meta property="og:image" content="https://leeleelee3264.github.io/img/og.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://leeleelee3264.github.io/img/og.png" /><meta property="article:published_time" content="2022-10-25T00:00:00+00:00" /><meta property="article:modified_time" content="2022-10-25T00:00:00+00:00" />
+
+
+<style>
+    @media (prefers-color-scheme: dark) {
+        body[data-theme='auto'] img {
+            filter: brightness(60%);
+        }
+    }
+
+    body[data-theme='dark'] img {
+        filter: brightness(60%);
+    }
+</style>
+
+
+
+
+<link rel="stylesheet" href="https://leeleelee3264.github.io/assets/css/fuji.min.css" />
+
+
+
+
+
+
+
+
+</head>
+
+<body
+  data-theme="auto"
+  data-theme-auto='true'
+  >
+    <script data-cfasync="false">
+  
+  var fujiThemeData = localStorage.getItem('fuji_data-theme');
+  
+  if (!fujiThemeData) {
+    localStorage.setItem('fuji_data-theme', 'auto');
+  } else {
+    
+    if (fujiThemeData !== 'auto') {
+      document.body.setAttribute('data-theme', fujiThemeData === 'dark' ? 'dark' : 'light');
+    }
+  }
+</script>
+
+    <header>
+    <div class="container-lg clearfix">
+        <div class="col-12 header">
+            <a class="title-main" href="https://leeleelee3264.github.io/">dev_leelee.log</a>
+            
+            <span class="title-sub">Logfile of Developer LeeLee</span>
+            
+        </div>
+    </div>
+</header>
+
+    <main>
+        <div class="container-lg clearfix">
+            
+            <div class="col-12 col-md-9 float-left content">
+                
+<article>
+    
+    <h2 class="post-item post-title">
+        <a href="https://leeleelee3264.github.io/post/2022-10-25-effevtive-python-betterway-11-to-15/">[Effective Python] Betterway 11 to 15 Summary</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2022-10-25</span>
+
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;4515 words</span>
+
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/book">Book</a>&nbsp;</span>
+
+    </div>
+    
+    <div class="post-content markdown-body">
+        <br>
+<br> 
+<blockquote>
+<p>책 [Effective Python] betterway를 11장부터 15장까지 요약한다.</p>
+</blockquote>
+<br> 
+<p><strong>Index</strong></p>
+<ol>
+<li>Better way 11 시퀸스를 슬라이싱하는 방법을 익혀라</li>
+<li>Better way 12 스트라이드와 슬라이스를 한 식에 함께 사용하지 말라</li>
+<li>Better way 13 슬라이싱보다는 나머지를 모두 잡아내는 언패킹을 사용하라</li>
+<li>Better way 14 복잡한 기준을 사용해 정렬할 때는 key 파라메터를 사용하라</li>
+<li>Better way 15 딕셔너리 삽입 순서에 의존할 때는 조심하라</li>
+</ol>
+<br> 
+<h1 id="better-way-11-시퀸스를-슬라이싱하는-방법을-익혀라">Better way 11 시퀸스를 슬라이싱하는 방법을 익혀라</h1>
+<p>슬라이싱을 사용하면 최소한의 노력으로 시퀸스에 들어있는 아이템의 부분집합에 쉽게 접근할 수 있다. 모든 파이썬 클래스는 <code>__getitem__</code> <code>__setitem__</code> 을 구현해서 슬라이싱을 사용할 수 있다.</p>
+<p>슬라이싱 구문의 기본 형태는 <code>리스트[시작:끝]</code> 인데 끝 인덱스에 있는 원소는 <em>포함되지 않는 걸</em> 꼭 기억하자. 또한 슬라이싱을 할 때 <em>리스트의 인덱스 범위를 넘어가면 Exception을 발생시키지 않고</em>, 인덱스 범위 내의 리스트로 잘려진다.</p>
+<br> 
+<blockquote>
+<p>슬라이싱 예제</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>a <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;a&#39;</span>, <span style="color:#e6db74">&#39;b&#39;</span>, <span style="color:#e6db74">&#39;c&#39;</span>, <span style="color:#e6db74">&#39;d&#39;</span>, <span style="color:#e6db74">&#39;e&#39;</span>, <span style="color:#e6db74">&#39;f&#39;</span>, <span style="color:#e6db74">&#39;g&#39;</span>, <span style="color:#e6db74">&#39;h&#39;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>a[:] 
+</span></span><span style="display:flex;"><span>a[:<span style="color:#ae81ff">5</span>]
+</span></span><span style="display:flex;"><span>a[:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]      <span style="color:#75715e"># [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;, &#39;f&#39;, &#39;g&#39;]</span>
+</span></span><span style="display:flex;"><span>a[<span style="color:#f92672">-</span><span style="color:#ae81ff">3</span>:]      <span style="color:#75715e"># [&#39;f&#39;, &#39;g&#39;, &#39;h&#39;]</span>
+</span></span><span style="display:flex;"><span>a[<span style="color:#ae81ff">2</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]     <span style="color:#75715e"># [&#39;c&#39;, &#39;d&#39;, &#39;e&#39;, &#39;f&#39;, &#39;g&#39;]</span>
+</span></span><span style="display:flex;"><span>a[<span style="color:#f92672">-</span><span style="color:#ae81ff">3</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]    <span style="color:#75715e"># [&#39;f&#39;, &#39;g&#39;]</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br> 
+<blockquote>
+<p>음수 인덱스 사용시 주의할 점</p>
+</blockquote>
+<ul>
+<li>리스트가 0보다 클 때에는 잘 작동한다.</li>
+<li>리스트가 0이면 <code>somelist[-n:]</code>이 결국 <code>somelist[:]</code> 와 같아져 전체 리스트가 복사된다.</li>
+</ul>
+<br> 
+<blockquote>
+<p>슬라이싱 컨벤션</p>
+</blockquote>
+<ul>
+<li>리스트의 맨 앞부터 슬라이싱 할 떄에는 0을 생략하라. <code>a[:5]</code></li>
+<li>리스트의 끝까지 슬라이싱 할 때는 끝 인덱스를 생략하라. <code>a[5:]</code></li>
+</ul>
+<br> 
+<h4 id="슬라이싱으로-대입-했을-때">슬라이싱으로 대입 했을 때</h4>
+<p><em>슬라이스 대입에서는 슬라이스와 대입이 되는 리스트의 길이가 같을 필요가 없다.</em> 슬라이스가 리스트보다 길면 리스트가 늘어나고, 슬라이스가 리스트보다 짧으면 리스트가 짧아진다.</p>
+<br> 
+<blockquote>
+<p>슬라이싱이 리스트보다 길 때</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>a[<span style="color:#ae81ff">2</span>:<span style="color:#ae81ff">3</span>] <span style="color:#f92672">=</span> [<span style="color:#ae81ff">47</span>, <span style="color:#ae81ff">11</span>]   <span style="color:#75715e"># 슬라이싱은 2 자리 하나 뿐인데 값은 2개가 있다. </span>
+</span></span><span style="display:flex;"><span>print(a)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> 
+</span></span><span style="display:flex;"><span>[<span style="color:#e6db74">&#39;a&#39;</span>, <span style="color:#e6db74">&#39;b&#39;</span>, <span style="color:#ae81ff">47</span>, <span style="color:#ae81ff">11</span>, <span style="color:#e6db74">&#39;d&#39;</span>, <span style="color:#e6db74">&#39;e&#39;</span>, <span style="color:#e6db74">&#39;f&#39;</span>, <span style="color:#e6db74">&#39;g&#39;</span>]</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br> 
+<blockquote>
+<p>슬라이싱이 리스트보다 짧을 때</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>a[<span style="color:#ae81ff">2</span>:<span style="color:#ae81ff">7</span>] <span style="color:#f92672">=</span> [<span style="color:#ae81ff">99</span>, <span style="color:#ae81ff">22</span>, <span style="color:#ae81ff">14</span>]   <span style="color:#75715e"># 슬라이싱은 2,3,4,5,6 자리인데 값은 3개 밖에 없다. </span>
+</span></span><span style="display:flex;"><span>print(a)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> 
+</span></span><span style="display:flex;"><span>[<span style="color:#e6db74">&#39;a&#39;</span>, <span style="color:#e6db74">&#39;b&#39;</span>, <span style="color:#ae81ff">99</span>, <span style="color:#ae81ff">22</span>, <span style="color:#ae81ff">14</span>, <span style="color:#e6db74">&#39;h&#39;</span>]</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br> 
+<h4 id="리스트-복사">리스트 복사</h4>
+<blockquote>
+<p>슬라이싱으로 대입해서 call-by-value 로 복사가 될 때</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>b <span style="color:#f92672">=</span> a[:]
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">assert</span> b <span style="color:#f92672">==</span> a <span style="color:#f92672">and</span> b <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> a    <span style="color:#75715e"># 값은 같지만 같은 객체는 아니다.</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>원본에 변경이 있어도 복사본에는 변경이 없다.</p>
+<br>
+<blockquote>
+<p>원본을 대입해서 call-by-reference 로 복사가 될 때</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>b <span style="color:#f92672">=</span> a 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">assert</span> a <span style="color:#f92672">is</span> b   <span style="color:#75715e"># 같은 객체다. </span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>원본에 변경이 있으면 그걸 참조하는 복사본에도 변경이 적용된다.</p>
+<br> 
+<h1 id="better-way-12-스트라이드와-슬라이스를-한-식에-함께-사용하지-말라">Better way 12 스트라이드와 슬라이스를 한 식에 함께 사용하지 말라</h1>
+<p><code>리스트[시작:끝:중간값]</code> 으로 일정한 간격을 두고 슬라이싱을 할 수 있는 것을 <code>스트라이드</code>라고 한다.
+스트라이드를 사용하면 시퀸스를 슬라이싱하면서 매 n 번째 원소만 가져올 수 있다.</p>
+<br> 
+<blockquote>
+<p>스트라이드 예제</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>x <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>]
+</span></span><span style="display:flex;"><span>odds <span style="color:#f92672">=</span> x[::<span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>evens <span style="color:#f92672">=</span> x[<span style="color:#ae81ff">1</span>::<span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(odds)
+</span></span><span style="display:flex;"><span>print(evens)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> 
+</span></span><span style="display:flex;"><span>[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">5</span>]
+</span></span><span style="display:flex;"><span>[<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">6</span>]</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br>
+<blockquote>
+<p>혼란스러운 스트라이드</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>x[<span style="color:#ae81ff">2</span>::<span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>x[<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>::<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>x[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>:<span style="color:#ae81ff">2</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>]</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p><em>중요한 점은 슬라이싱 구문에 스트라이딩까지 들어가면 아주 혼란스럽다는 것이다.</em> 각괄호 안에 수가 세 개나 들어 있으면 코드 밀도가 너무 높아서 읽기 어렵다.
+특히 증가값이 <code>음수</code>인 경우는 더 그렇다.</p>
+<p>이런 혼란스러움을 방지하기 위해 시작값이나 끝값을 증가값과 함께 사용하지 말 것을 권한다. <em>즉, 스트라이드와 슬라이스를 한 식에 두지 않는 것이 좋다.</em></p>
+<br> 
+<h4 id="스트라이드-권장-사항">스트라이드 권장 사항</h4>
+<ul>
+<li>증가값을 사용해야 하는 경우에는 <code>양수</code>값으로 만들고, <code>시작</code>과 <code>끝</code> 인덱스를 <code>생략</code>하라.</li>
+<li>시작이나 끝 인덱스와 함께 증가값을 사용해야 한다면 <code>스트라이딩</code>한 결과를 변수에 <code>대입</code>한 다음 <code>슬라이싱</code>하라.</li>
+</ul>
+<br> 
+<blockquote>
+<p>스트라이드 권장 사항 예제</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>y <span style="color:#f92672">=</span> x[::<span style="color:#ae81ff">2</span>]      <span style="color:#75715e"># 스트라이드</span>
+</span></span><span style="display:flex;"><span>z <span style="color:#f92672">=</span> y[<span style="color:#ae81ff">1</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]     <span style="color:#75715e"># 슬라이드 </span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br> 
+<h1 id="better-way-13-슬라이싱보다는-나머지를-모두-잡아내는-언패킹을-사용하라">Better way 13 슬라이싱보다는 나머지를 모두 잡아내는 언패킹을 사용하라</h1>
+<blockquote>
+<p>인덱스와 슬라이싱으로 목표한 원소 &amp; 나머지 원소 처리하기</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>oldest <span style="color:#f92672">=</span> car[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>second_oldest <span style="color:#f92672">=</span> car[<span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>others <span style="color:#f92672">=</span> car[<span style="color:#ae81ff">2</span>:]</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>파이썬을 처음 사용하는 사람은 목표한 원소와 나머지 원소를 가져올 때 슬라이싱을 자주 사용한다. 하지만 이런 방법은 인덱스와 슬라이스로 인해 시각적 잡음이 많다.
+또한 인덱스 관련 오류를 낼 확률도 높아진다.</p>
+<br> 
+<blockquote>
+<p>별표 식과 언패킹으로 목표한 원소 &amp; 나머지 원소 처리하기</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>oldest, second_oldest, <span style="color:#f92672">*</span>others <span style="color:#f92672">=</span> car 
+</span></span><span style="display:flex;"><span>print(oldest, second_oldest, others)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> 
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">20</span> <span style="color:#ae81ff">19</span> [<span style="color:#ae81ff">15</span>, <span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">8</span>]</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p><code>별표 식</code>을 사용하면 언패킹 패턴의 다른 부분에 들어가지 못하는 모든 값을 <code>별</code>이 붙은 부분에 다 담을 수 있다.
+별표는 여러 위치에서 사용이 가능하다. <em>단, 단독으로 사용하는 것은 안된다.</em></p>
+<br> 
+<blockquote>
+<p>여러 위치에서 사용하는 별표 식</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>oldest, <span style="color:#f92672">*</span>others, youngest <span style="color:#f92672">=</span> car 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">*</span>others, second_youngest, youngest <span style="color:#f92672">=</span> car</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>별표 식은 항상 <code>list</code> 인스턴스가 된다. 언패킹하는 시퀸스에 남는 원소가 없으면 별표 식 부분은 <code>빈 리스트</code>가 된다.
+이런 특징은 원소가 최소 <code>N</code>개 들어 있다는 사실을 미리 아는 시퀸스를 처리할 때 유용하다.</p>
+<br> 
+<h4 id="별표-식-활용">별표 식 활용</h4>
+<p>별표 식의 장점은 언패킹할 리스트를 깔끔하게 가져올 수 있다는 것이다.</p>
+<blockquote>
+<p>인덱스와 슬라이스를 쓸 때</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>csv <span style="color:#f92672">=</span> list(csv_file)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>header <span style="color:#f92672">=</span> csv[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>rows <span style="color:#f92672">=</span> csv[<span style="color:#ae81ff">1</span>:]</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br> 
+<blockquote>
+<p>별표 식을 쓸 때</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>csv <span style="color:#f92672">=</span> list(csv_file)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>header, <span style="color:#f92672">*</span>rows <span style="color:#f92672">=</span> csv_file</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br> 
+<h4 id="별표-식-주의점">별표 식 주의점</h4>
+<p>별표 식은 항상 <code>리스트</code>를 만들어내기 때문에 별표 식을 사용해서 언패킹을 하고 <em>리스트 연산을 할 경우 메모리를 다 사용해서 프로그램이 멈출 수 있다</em>.
+꼭 결과 데이터가 모두 메모리에 들어갈 수 있다고 확신할 때만 별표 식을 사용하도록 해야 한다.</p>
+<br> 
+<h1 id="better-way-14-복잡한-기준을-사용해-정렬할-때는-key-파라메터를-사용하라">Better way 14 복잡한 기준을 사용해 정렬할 때는 key 파라메터를 사용하라</h1>
+<p>정렬에 사용하고 싶은 애트리뷰트가 객체에 들어있는 경우가 많다. 이런 상황을 지원하기 위헤 <code>sort()</code> 는 <code>key</code> 라는 파라메터가 있다.
+key 함수에는 정렬 중인 리스트의 원소가 전달된다. key는 함수이기 때문에 <code>lambda</code>와 함께 사용한다.</p>
+<br> 
+<blockquote>
+<p>lambda로 key 사용하기</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>tools<span style="color:#f92672">.</span>sort(key<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> x:x<span style="color:#f92672">.</span>name)</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br> 
+<h4 id="여러-기준을-사용해-정렬해야-할-때">여러 기준을 사용해 정렬해야 할 때</h4>
+<p><code>튜플</code>은 기본적으로 비교가 가능하며 자연스러운 순서가 정해져있다. 이는 sort에 필요한 <code>__lt__</code> 정의가 들어있다는 뜻이다. __lt__는 튜플의 각
+위치를 이터레이션하면서 각 인덱스에 해당하는 원서를 한 번에 하나씩 비교한다.</p>
+<br> 
+<blockquote>
+<p>튜플 정렬</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>drill <span style="color:#f92672">=</span> (<span style="color:#ae81ff">4</span>, <span style="color:#e6db74">&#39;드릴&#39;</span>)
+</span></span><span style="display:flex;"><span>sander <span style="color:#f92672">=</span> (<span style="color:#ae81ff">4</span>, <span style="color:#e6db74">&#39;연마기&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">assert</span> drill[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">===</span> sander[<span style="color:#ae81ff">0</span>]   <span style="color:#75715e"># 무게가 같다 </span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">assert</span> drill[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">&lt;</span> sander[<span style="color:#ae81ff">1</span>]     <span style="color:#75715e"># o 보다 ㄷ 이 더 먼저와서 drill이 더 작다</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">assert</span> drill <span style="color:#f92672">&lt;</span> sander           <span style="color:#75715e"># 그러므로 드릴이 더 먼저다 </span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>비교하는 두 튜플의 첫 번째 위치에 있는 값이 서로 같으면 두 번째 위치에 있는 값을 비교하고, 또 같으면 세 번째 위치 값을 비교하고 결정이 날 때까지 이 과정을 반복한다.</p>
+<br> 
+<blockquote>
+<p>튜플 정렬을 활용한 애트리뷰트 비교</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>tools<span style="color:#f92672">.</span>sort(key<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> x : (x<span style="color:#f92672">.</span>weight, x<span style="color:#f92672">.</span>name))</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br>
+<blockquote>
+<p>튜플 정렬을 활용한 애트리뷰트 비교 내림차순 ver</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>tools<span style="color:#f92672">.</span>sort(key<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> x : (x<span style="color:#f92672">.</span>weight, x<span style="color:#f92672">.</span>name), reverse<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br> 
+<h4 id="여러-기준-사용할-때-정렬에-내림차순-오름차순-모두-사용하기">여러 기준 사용할 때 정렬에 내림차순, 오름차순 모두 사용하기</h4>
+<blockquote>
+<p><code>-</code> 연산자로 무게는 내림차순하고 이름은 오름차순 하기</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>tools<span style="color:#f92672">.</span>sort(key<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> x: (<span style="color:#f92672">-</span>x<span style="color:#f92672">.</span>weight, x<span style="color:#f92672">.</span>name))</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>튜플을 활용한 여러 기준 정렬의 제약 사항은 <em>모든 비교 기준의 정렬 순서가 같아야 한다</em>. 예를들어 무게가 오름차순 정렬이라면 이름도 오름차순 정렬이어야 한다.
+But 만약 <code>숫자</code> 값일 경우 <code>-</code> 연산자를 사용해서 내림차순 정렬을 해, 정렬 방향을 혼합할 수 있다. 오직 숫자 값 일때만 가능하다.</p>
+<br> 
+<blockquote>
+<p><code>-</code> 연산자가 통하지 않을 때</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>tools<span style="color:#f92672">.</span>sort(key<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> x: x<span style="color:#f92672">.</span>name)                    <span style="color:#75715e"># name 기준 오름차순 </span>
+</span></span><span style="display:flex;"><span>tools<span style="color:#f92672">.</span>sort(key<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> x: x<span style="color:#f92672">.</span>weight, reverse<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)    <span style="color:#75715e"># weight 기준 내림차순  </span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p><em>최종적으로 리스트에서 얻어내고 싶은 정렬 기준 역순으로 정렬을 수행해야 한다.</em>
+즉 예제에서는 weight으로 내림차순 후 name으로 오름차순을 하고 싶었기 때문에 name으로 오름차순을 먼저 해주고 weight 내림차순을 해줬다.</p>
+<p>이러듯 제약사항이 있기 때문에 평소에는 <code>튜플 + - 연산자</code>를 사용하고, sort를 여러 번 호출하는 방법은 꼭 필요한 때에만 사용해야 한다.</p>
+<br> 
+<h1 id="better-way-15-딕셔너리-삽입-순서에-의존할-때는-조심하라">Better way 15 딕셔너리 삽입 순서에 의존할 때는 조심하라</h1>
+<p><em>파이썬 3.5 이전에는 딕셔너리로 이터레이션을 수행할 때 삽입 순서에 상관 없이 키를 임의의 순서로 돌려줬다.</em></p>
+<p>딕셔너리 구현이 내장 hash 함수와 파이썬 인터프리터가
+<code>시작할 때 초기화되는 난수의 seed</code>를 사용하는 해시 테이블 알고리즘을 사용했고, 그래서 인터프리터 실행 시마다 난수의 seed가 달라져 임의의 순서로 돌려줄 수 밖에 없었다.</p>
+<p><code>파이썬 3.6</code> 부터는 딕셔너리가 삽입 순서를 보존하도록 변경 되었고, 3,7 부터는 아예 명세에 포함시켜 두었다.</p>
+<br> 
+<blockquote>
+<p>3.6 이후 부터 삽입 순서를 보장하는 딕셔너리</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>baby_names <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;cat&#39;</span>: <span style="color:#e6db74">&#39;kitten&#39;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;dog&#39;</span>: <span style="color:#e6db74">&#39;puppy&#39;</span>,
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(baby_names)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span>
+</span></span><span style="display:flex;"><span>{<span style="color:#e6db74">&#39;cat&#39;</span>: <span style="color:#e6db74">&#39;kitten&#39;</span>, <span style="color:#e6db74">&#39;dog&#39;</span>: <span style="color:#e6db74">&#39;puppy&#39;</span>}</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br> 
+<blockquote>
+<p>3.6 이후 부터 삽입 순서를 보장하는 딕셔너리 built-in 메서드</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>baby_names<span style="color:#f92672">.</span>keys()
+</span></span><span style="display:flex;"><span>baby_names<span style="color:#f92672">.</span>values()
+</span></span><span style="display:flex;"><span>baby_names<span style="color:#f92672">.</span>items()
+</span></span><span style="display:flex;"><span>baby_names<span style="color:#f92672">.</span>popitem()    <span style="color:#75715e"># 마지막에 삽입된 원소를 리턴하는 메서드</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>삽입 순서를 보장하면서 부터 딕셔너리에 빌트인 되어있는 메서드들 또한 삽입 순서가 보장이 된다.</p>
+<br> 
+<blockquote>
+<p>3.6 이후부터 삽입 순서를 보장하는 키워드 인자</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">my_func</span>(<span style="color:#f92672">**</span>kwargs):
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> key, value <span style="color:#f92672">in</span> kwargs<span style="color:#f92672">.</span>items():
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>key<span style="color:#e6db74">}</span><span style="color:#e6db74"> = </span><span style="color:#e6db74">{</span>value<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>my func(goose<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;gosling&#39;</span>, kangaroo<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;joey&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span>
+</span></span><span style="display:flex;"><span>goose <span style="color:#f92672">=</span> gosling
+</span></span><span style="display:flex;"><span>kangaroo <span style="color:#f92672">=</span> joey</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>3.6의 변경은 dict 타입과 이 타입의 특정 구현에 의존하는 여러 다른 파이썬 기능에 영향을 미쳤고, dict 형식으로 인자를 전달하는 <code>키워드 인자</code> **kwargs 도 순서를 보장하게 되었다.</p>
+<br> 
+<blockquote>
+<p>딕셔너리가 삽입 순러를 유지하는 방식은 파이썬 언어 명세의 일부가 되었기 떄문에 앞에 예제로 나왔던 기능은 코드에서 항상 이런 식으로 동작한다고 가정해도 안전하다.</p>
+</blockquote>
+<br> 
+<h4 id="딕셔너리가-삽입-순서를-보장하지-않을-때">딕셔너리가 삽입 순서를 보장하지 않을 때</h4>
+<p>파이썬은 정적 타입 지정 언어가 아니고, 대부분의 경우 엄격한 클래스 계층보다는 <code>객체의 동작</code>이 <code>객체의 실질적인 타입</code>을 결정하는 <code>덕 타이핑</code>에 의존한다.</p>
+<blockquote>
+<p>덕 타이핑이란 객체가 실행 시점에 어떻게 행동하는지를 기준으로 객체의 타입을 판단하는 타입 지정방식이다. 하지만 실제 행동을 모두 검증하기는 어렵다. 때문에 실질적으로 이 말은 <em>아무런 타이핑을 하지 않고, 런타임에 객체가 제공하는 애트리뷰트와 메서드가 없는 경우에는 그냥 오류를 내겠다는 말이다</em>.</p>
+</blockquote>
+<br> 
+<p>파이썬에서는 list, dict 등의 <code>표준 프로토콜</code>을 흉내 내는 커스텀 컨테이너 타입을 쉽게 정의할 수 있고, 이럴 때 덕 타이핑으로 인해 문제가 야기될 수 있다. 딕셔너리가 삽입 순서를 보장하지 않는 문제도 이것의 일종이다.<br>
+<em>즉, dict 를 인자로 넣었을 때 순서를 보장했던 함수가 이 커스텀 컨테이너를 넣었을 때에도 순서를 보장한다고 생각하면 안된다.</em> 덕 타이핑으로 타입 검사를 넘어갔을 뿐이지 이 컨테이너가 dict 이라는 말은 아니다.</p>
+<br> 
+<h5 id="커스텀-컨테이너의-삽입-순서-미보장-예제">커스텀 컨테이너의 삽입 순서 미보장 예제</h5>
+<blockquote>
+<p>dict을 넣었을 떄 삽입 순서를 보장하는 함수</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">populate_ranks</span>(votes, ranks):
+</span></span><span style="display:flex;"><span>names <span style="color:#f92672">=</span> list(votes<span style="color:#f92672">.</span>keys())
+</span></span><span style="display:flex;"><span>names<span style="color:#f92672">.</span>sort(key<span style="color:#f92672">=</span>votes<span style="color:#f92672">.</span>get, reverse<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i, name <span style="color:#f92672">in</span> enumerate(names, <span style="color:#ae81ff">1</span>):
+</span></span><span style="display:flex;"><span>ranks[name] <span style="color:#f92672">=</span> i
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_winner</span>(ranks):
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">return</span> next(iter(ranks))</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>populate_ranks는 dict을 순환하며 득표가 많은 순으로 삽입을 하고 있다. 따라서 get_winner 에서 제일 먼저 삽입된 원소를 뽑아옴으로 최다 득표 원소를 리턴할 수 있다.</p>
+<br> 
+<blockquote>
+<p>알파벳 순으로 순서를 보장하게 구현된 SortedDict</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SortedDict</span>(MutableMapping)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> __init__(self):
+</span></span><span style="display:flex;"><span>self<span style="color:#f92672">.</span>data <span style="color:#f92672">=</span> {}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __getitem__(self, key): 
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>data[key]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __setitem__(self, key, value): 
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>data[key] <span style="color:#f92672">=</span> value 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __iter__(self):                 <span style="color:#75715e"># 이터레이션을 할 때 알파벳 순서로 돌려주는 함수  </span>
+</span></span><span style="display:flex;"><span>        keys <span style="color:#f92672">=</span> list(self<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>keys())
+</span></span><span style="display:flex;"><span>        keys<span style="color:#f92672">.</span>sort() 
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> key <span style="color:#f92672">in</span> keys: 
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">yield</span> key 
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">...</span> </span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>MutableMapping을 사용한 SortedDict는 <code>__getitem__</code>, <code>__setitem__</code> 등을 구현하여 dict의 프로토콜을 지키므로 dict을 파라메터로 받는 populate_ranks와 get_winner를 사용할 수 있다.</p>
+<br> 
+<blockquote>
+<p>실제로 함수를 호출 했을 때</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>votes <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;otter&#39;</span>: <span style="color:#ae81ff">1281</span>,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;polar bear&#39;</span>: <span style="color:#ae81ff">587</span>,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;fox&#39;</span>: <span style="color:#ae81ff">863</span>,
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 일반 dict를 사용할 때</span>
+</span></span><span style="display:flex;"><span>ranks <span style="color:#f92672">=</span> {}
+</span></span><span style="display:flex;"><span>populate_ranks(votes, ranks)
+</span></span><span style="display:flex;"><span>winner <span style="color:#f92672">=</span> get_winner(ranks)
+</span></span><span style="display:flex;"><span>print(winner)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># sortedDict를 사용할 때</span>
+</span></span><span style="display:flex;"><span>sorted_ranks <span style="color:#f92672">=</span> sortedDict()
+</span></span><span style="display:flex;"><span>winner <span style="color:#f92672">=</span> get_winner(sorted_ranks)
+</span></span><span style="display:flex;"><span>print(winner)</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>이렇게 해도 덕 타이핑으로 무사히 넘어가기 때문에 아무런 오류가 발생하지 않는다. 다만 원했던 결과가 나오지 않을 뿐이다. get_winner 에서 <code>next(iter(ranks))</code> 로 값을 뽑아 올 때 SortedDict 내부에 구현된 <code>__iter__</code> 때문에 득표와는 관련없이 알파벳 순으로 원소를 돌려주기 때문이다.</p>
+<br> 
+<h5 id="해결방법">해결방법</h5>
+<h6 id="방법1-get_winner를-특정-순서가-보장되지-않는-형태로-변경하기">방법1: get_winner를 특정 순서가 보장되지 않는 형태로 변경하기</h6>
+<p>기존에는 get_winner가 득표수가 많은 순서대로 삽입을 진행했다고, 순서가 보장되었다고 판단을 하고 구현을 했다면 이제는 순서가 보장되지 않는 형태로 변경한다. <em>가장 보수적이고 가장 튼튼한 해법이다.</em></p>
+<blockquote>
+<p>예제</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_winner</span>(ranks):
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> name, rank <span style="color:#f92672">in</span> ranks<span style="color:#f92672">.</span>item():
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> rank <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>:
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">return</span> name</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br> 
+<h6 id="방법2-get_winner에서-ranks-타입-검사-넣기">방법2: get_winner에서 ranks 타입 검사 넣기</h6>
+<p>get_winner가 우리의 예상에 맞게 동작하려면 ranks가 꼭 dict 타입으로 구현되어 있어야 한다. 그래서 ranks가 dict 타입이 맞는지 검사를 넣는다. <em>보수적인 접근 방법보다 실행 성능이 더 좋다.</em></p>
+<blockquote>
+<p>예제</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_winner</span>(ranks):
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> isinstance(ranks, dict):
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">TypeError</span>(<span style="color:#e6db74">&#39;dict 인스턴스가 필요합니다.&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">return</span> next(iter(ranks))</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br> 
+<h6 id="방법3-typing으로-타입을-명시하고-mypy로-검사">방법3: typing으로 타입을 명시하고 mypy로 검사</h6>
+<p>이렇게 타입을 명시 했는데 SortedDict() 타입을 넣으면 mypy에서 에러를 보내줘, 함수에 명시된 타입 이외의 타입으로 함수 호출하는 것을 예방할 수 있다. (mypy 에러가 나면 수정을 해야 하니까.) <em>정적 타입 안정성과 런타임 성능을 가장 잘 조합한 해법이다.</em></p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">populate_ranks</span>(votes: Dict[str, int], ranks: Dict[str, int]) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span><span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_winner</span>(ranks: Dict[str, int]) <span style="color:#f92672">-&gt;</span> str:
+</span></span><span style="display:flex;"><span><span style="color:#f92672">...</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br>
+
+    </div>
+</article>
+
+
+
+<div class="post-comment" data-comment="utterances">
+    <span class="post-comment-notloaded">
+        <i class="iconfont icon-chatbox-ellipses-sharp"></i>&nbsp;Load comments
+    </span>
+    <script>
+        function loadComment() {
+            var commentArea = document.querySelector('.post-comment');
+            var utterancesTheme = document.body.getAttribute('data-theme');
+            if (utterancesTheme === 'auto') {
+                utterancesTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'photon-dark' :
+                    'github-light';
+            } else {
+                utterancesTheme = utterancesTheme === 'dark' ? 'photon-dark' : 'github-light';
+            }
+            var s = document.createElement('script');
+            s.src = 'https://utteranc.es/client.js';
+            s.setAttribute('repo', 'leeleelee3264\/github_io_comment');
+            s.setAttribute('issue-term', 'pathname');
+            s.setAttribute('theme', utterancesTheme);
+            s.setAttribute('crossorigin', 'anonymous');
+            s.setAttribute('async', '');
+            document.querySelector('.post-comment').appendChild(s);
+            document.querySelector('span.post-comment-notloaded').setAttribute('style', 'display: none;');
+        }
+    </script>
+</div>
+
+
+            </div>
+            <aside class="col-12 col-md-3 float-left sidebar">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://github.com/leeleelee3264" target="_blank"><span>GitHub</span></a>
+            </li>
+            
+            <li>
+                <a href="https://www.linkedin.com/in/seungmin4035/" target="_blank"><span>LinkedIn</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/backend/">Backend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/book/">Book</a>
+            </span>
+            
+            <span>
+                <a href="/tags/cheat/">Cheat</a>
+            </span>
+            
+            <span>
+                <a href="/tags/frontend/">Frontend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/general/">General</a>
+            </span>
+            
+            <span>
+                <a href="/tags/infra/">Infra</a>
+            </span>
+            
+            <span>
+                <a href="/tags/project/">Project</a>
+            </span>
+            
+        </div>
+    </div>
+    
+</aside>
+
+        </div>
+        <div class="btn">
+    <div class="btn-menu" id="btn-menu">
+        <i class="iconfont icon-grid-sharp"></i>
+    </div>
+    <div class="btn-toggle-mode">
+        <i class="iconfont icon-contrast-sharp"></i>
+    </div>
+    <div class="btn-scroll-top">
+        <i class="iconfont icon-chevron-up-circle-sharp"></i>
+    </div>
+</div>
+<aside class="sidebar-mobile" style="display: none;">
+  <div class="sidebar-wrapper">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://github.com/leeleelee3264" target="_blank"><span>GitHub</span></a>
+            </li>
+            
+            <li>
+                <a href="https://www.linkedin.com/in/seungmin4035/" target="_blank"><span>LinkedIn</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/backend/">Backend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/book/">Book</a>
+            </span>
+            
+            <span>
+                <a href="/tags/cheat/">Cheat</a>
+            </span>
+            
+            <span>
+                <a href="/tags/frontend/">Frontend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/general/">General</a>
+            </span>
+            
+            <span>
+                <a href="/tags/infra/">Infra</a>
+            </span>
+            
+            <span>
+                <a href="/tags/project/">Project</a>
+            </span>
+            
+        </div>
+    </div>
+    
+    
+    
+    
+  </div>
+</aside>
+    </main>
+
+    <footer>
+    <div class="container-lg clearfix">
+        <div class="col-12 footer">
+            
+            <span>&copy; 2020-2022
+                <a href="https://leeleelee3264.github.io/">leeleelee3264</a>
+                 | <a href="https://github.com/leeleelee3264/leeleelee3264.github.io">Source code</a> 
+                | Powered by <a href="https://github.com/dsrkafuu/hugo-theme-fuji/"
+                   target="_blank">Fuji-v2</a> &amp; <a href="https://gohugo.io/"
+                                                    target="_blank">Hugo</a> 
+            </span>
+        </div>
+    </div>
+</footer>
+
+    
+<script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/components/prism-core.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+
+
+<script defer src="/assets/js/fuji.min.js"></script>
+
+
+
+</body>
+
+</html>
