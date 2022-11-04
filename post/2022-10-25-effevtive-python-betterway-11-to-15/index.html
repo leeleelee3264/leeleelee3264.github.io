@@ -16,23 +16,23 @@
 
 
 
-<title>[Effective Python] Betterway 11 to 15 Summary - dev_leelee.log</title>
+<title>[Book] Effective Python (2/10) - 리스트와 딕셔너리 - dev_leelee.log</title>
 
 
 <meta name="author" content="leeleelee3264" />
 
 
-<meta name="description" content="책 [Effective Python] Chapter 2 중 better way 11장부터 15장까지 요약한다." />
+<meta name="description" content="책 [Effective Python] Chapter 2를 요약한다." />
 
 
 <meta name="keywords" content="Book" />
 
 
-<meta property="og:title" content="[Effective Python] Betterway 11 to 15 Summary" />
-<meta name="twitter:title" content="[Effective Python] Betterway 11 to 15 Summary" />
+<meta property="og:title" content="[Book] Effective Python (2/10) - 리스트와 딕셔너리" />
+<meta name="twitter:title" content="[Book] Effective Python (2/10) - 리스트와 딕셔너리" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://leeleelee3264.github.io/post/2022-10-25-effevtive-python-betterway-11-to-15/" /><meta property="og:description" content="책 [Effective Python] Chapter 2 중 better way 11장부터 15장까지 요약한다." />
-<meta name="twitter:description" content="책 [Effective Python] Chapter 2 중 better way 11장부터 15장까지 요약한다." /><meta property="og:image" content="https://leeleelee3264.github.io/img/og.png" />
+<meta property="og:url" content="https://leeleelee3264.github.io/post/2022-10-25-effevtive-python-betterway-11-to-15/" /><meta property="og:description" content="책 [Effective Python] Chapter 2를 요약한다." />
+<meta name="twitter:description" content="책 [Effective Python] Chapter 2를 요약한다." /><meta property="og:image" content="https://leeleelee3264.github.io/img/og.png" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="https://leeleelee3264.github.io/img/og.png" /><meta property="article:published_time" content="2022-10-25T00:00:00+00:00" /><meta property="article:modified_time" content="2022-10-25T00:00:00+00:00" />
 
@@ -100,12 +100,12 @@
 <article>
     
     <h2 class="post-item post-title">
-        <a href="https://leeleelee3264.github.io/post/2022-10-25-effevtive-python-betterway-11-to-15/">[Effective Python] Betterway 11 to 15 Summary</a>
+        <a href="https://leeleelee3264.github.io/post/2022-10-25-effevtive-python-betterway-11-to-15/">[Book] Effective Python (2/10) - 리스트와 딕셔너리</a>
     </h2>
     <div class="post-item post-meta">
         <span><i class="iconfont icon-today-sharp"></i>&nbsp;2022-10-25</span>
 
-<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;4515 words</span>
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;6977 words</span>
 
 <span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/book">Book</a>&nbsp;</span>
 
@@ -125,6 +125,9 @@
 <li>Better way 13 슬라이싱보다는 나머지를 모두 잡아내는 언패킹을 사용하라</li>
 <li>Better way 14 복잡한 기준을 사용해 정렬할 때는 key 파라메터를 사용하라</li>
 <li>Better way 15 딕셔너리 삽입 순서에 의존할 때는 조심하라</li>
+<li>Better way 16 in을 사용하고 딕셔너리 키가 없을 때 KeyError를 처리하기보다는 get을 사용하라</li>
+<li>Better way 17 내부 상태에서 원소가 없는 경우를 처리할 때는 setdefault 보다 defaultdict를 사용하라</li>
+<li>Better way 18 <code>__missing__</code> 을 사용해 키에 따라 다른 디폴트 값을 생성하는 방법을 알아두라</li>
 </ol>
 <br> 
 <h1 id="better-way-11-시퀸스를-슬라이싱하는-방법을-익혀라">Better way 11 시퀸스를 슬라이싱하는 방법을 익혀라</h1>
@@ -789,6 +792,399 @@ But 만약 <code>숫자</code> 값일 경우 <code>-</code> 연산자를 사용�
 </div>
 </div>
 <br>
+<br> 
+<h1 id="better-way-16-in을-사용하고-딕셔너리-키가-없을-때-keyerror를-처리하기보다는-get을-사용하라">Better way 16 in을 사용하고 딕셔너리 키가 없을 때 KeyError를 처리하기보다는 get을 사용하라</h1>
+<p>딕셔너리의 세 가지 기본 연산은 키 또는 키에 연관된 값에 접근하고, 대입하고, 삭제하는 것이다. 그런데 딕셔너리의 내용은 동적이므로 어떤 키에 접근하거나 키를 삭제할 때 그 키가 딕셔너리에 없을 수도 있다.
+이럴때 처리할 수 있는 방법이 3 가지가 있다.</p>
+<br> 
+<blockquote>
+<p>in을 사용</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> key <span style="color:#f92672">in</span> counters:
+</span></span><span style="display:flex;"><span>count <span style="color:#f92672">=</span> counters[key]
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>count <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>counters[key] <span style="color:#f92672">=</span> count <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>이렇게 처리하면 딕셔너리에서 키를 두 번 읽고, 키에 대한 값을 한 번 대입해야 한다.</p>
+<br> 
+<blockquote>
+<p>KeyError를 사용</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>count <span style="color:#f92672">=</span> counters[key]
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">except</span> <span style="color:#a6e22e">KeyError</span>:
+</span></span><span style="display:flex;"><span>count <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>counters[key] <span style="color:#f92672">=</span> count <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>키를 한 번만 읽고, 값을 한 번 만 대입하면 되기 때문에 <code>in</code> 을 사용할 때 보다 효율적이다.</p>
+<br> 
+<blockquote>
+<p>get을 사용 (권장)</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>count <span style="color:#f92672">=</span> counters<span style="color:#f92672">.</span>get(key, <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>counters[key] <span style="color:#f92672">=</span> count <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>키를 한 번만 읽고, 값을 한 번 만 대입한다. 하지만 <code>KeyError</code> 방식보다 코드가 훨씬 짧다.</p>
+<p>in 과 KeyError 를 사용해도 코드를 줄일 수 있는 방법이 있지만 가독성이 떨어진다. <em>따라서 간단한 타입의 값이 들어있는 경우 get 메서드를 사용하는 방법이 가장 코드가 짧고 깔끔하다.</em></p>
+<br> 
+<h4 id="딕셔너리에-저장된-값이-리스트처럼-복잡한-값이라면">딕셔너리에 저장된 값이 리스트처럼 복잡한 값이라면?</h4>
+<p>리스트가 들어간다고 해도 처리할 수 있는 방법은 위와 같은 3가지이다.</p>
+<blockquote>
+<p>리스트 처리 방법</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>votes <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;바게트&#39;</span>: [<span style="color:#e6db74">&#39;철수&#39;</span>, <span style="color:#e6db74">&#39;순이&#39;</span>],
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;치아바타&#39;</span>: [<span style="color:#e6db74">&#39;하니&#39;</span>, <span style="color:#e6db74">&#39;유리&#39;</span>],
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## in ## </span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> key <span style="color:#f92672">in</span> votes:
+</span></span><span style="display:flex;"><span>names <span style="color:#f92672">=</span> votes[key]
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>votes[key] <span style="color:#f92672">=</span> names <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>names<span style="color:#f92672">.</span>append(who)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## KeyError ## </span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>names <span style="color:#f92672">=</span> votes[key]
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">except</span> <span style="color:#a6e22e">KeyError</span>:
+</span></span><span style="display:flex;"><span>votes[key] <span style="color:#f92672">=</span> names <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>names<span style="color:#f92672">.</span>append(who)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## get ## </span>
+</span></span><span style="display:flex;"><span>names <span style="color:#f92672">=</span> votes<span style="color:#f92672">.</span>get(key)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> names <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>votes[key] <span style="color:#f92672">=</span> names <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>names<span style="color:#f92672">.</span>append(who)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## (심화) get 왈러스 연산자 사용하기 ## </span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (names <span style="color:#f92672">:=</span> votes<span style="color:#f92672">.</span>get(key)) <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>votes[key] <span style="color:#f92672">=</span> names <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>names<span style="color:#f92672">.</span>append(who)</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>세가지 경우 모두 <code>참조</code>를 통해 딕셔너리에 넣은 빈 리스트의 내용을 변경할 수 있어 한 번 만 대입을 하면 된다.</p>
+<br> 
+<p>dict 에는 이런 연산을 간소화해주는 <code>setdefault</code> 메서드를 제공한다. <em>하지만 결론부터 말하자면 setdefault 사용을 권장하지 않는다.</em></p>
+<br> 
+<blockquote>
+<p>setdefault</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>names <span style="color:#f92672">=</span> votes<span style="color:#f92672">.</span>setdefault(key, [])
+</span></span><span style="display:flex;"><span>names<span style="color:#f92672">.</span>append(who)</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br> 
+<blockquote>
+<p>setdefault 동작 방식</p>
+</blockquote>
+<ul>
+<li>setdefault는 키를 사용해 딕셔너리의 값을 가져오려고 시도한다.</li>
+<li>키가 없으면 제공받은 디폴트 값을 딕셔너리에 대입한 다음, 키를 사용하여 딕셔러니 값을 반환한다.</li>
+<li>따라서 이 값은 새로 저장된 디폴트 값 일 수도 있고, 이미 딕셔너리에 있던 키 값일 수도 있다.</li>
+</ul>
+<br> 
+<p>치명적인 단점은 메서드 이름인 <code>setdefault</code>가 <em>메서드의 동작을 직접적으로 드러내지 못하는 것이다</em>.
+값을 얻는 동작도 포함이 되어있지만 이름이 set 이라서 마치 값을 넣어주는 동작만 할 것 같아 코드를
+읽자마자 무슨 역할을 하려는지 모를 수 있다.</p>
+<br> 
+<h1 id="better-way-17-내부-상태에서-원소가-없는-경우를-처리할-때는-setdefault-보다-defaultdict를-사용하라">Better way 17 내부 상태에서 원소가 없는 경우를 처리할 때는 setdefault 보다 defaultdict를 사용하라</h1>
+<p>직접 만들지 않는 딕셔너리를 다룰 때 <code>get</code> 을 쓰거나 상황을 고려하여 <code>setdefault</code>를 쓰는 것이 좋다. 하지만 직접 딕셔너리 생성을 제어할 수 있다면,
+예를 들어 클래스 내부에서 딕셔너리 인스턴스를 사용한다면 setdefault도 있지만 <code>collections</code> 내장 모듈에 있는 <code>defaultdict</code> 클래스 사용을 고려할 수 있다.</p>
+<p><em>defaultdict 클래스는 키가 없을 때 자동으로 디폴트 값을 지정해준다.</em></p>
+<br> 
+<blockquote>
+<p>setdefault를 사용하는 클래스 내부 딕셔너리</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Visits</span>:
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> __init__(self):
+</span></span><span style="display:flex;"><span>self<span style="color:#f92672">.</span>data <span style="color:#f92672">=</span> {}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">add</span>(self, country, city): 
+</span></span><span style="display:flex;"><span>        city_set <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>setdefault(country, set()) 
+</span></span><span style="display:flex;"><span>        city_set<span style="color:#f92672">.</span>add(city) 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## example ## </span>
+</span></span><span style="display:flex;"><span>visits <span style="color:#f92672">=</span> Visits()
+</span></span><span style="display:flex;"><span>visits<span style="color:#f92672">.</span>add(<span style="color:#e6db74">&#39;영국&#39;</span>, <span style="color:#e6db74">&#39;런던&#39;</span>)
+</span></span><span style="display:flex;"><span>visits<span style="color:#f92672">.</span>add(<span style="color:#e6db74">&#39;캐나다&#39;</span>, <span style="color:#e6db74">&#39;오타와&#39;</span>)</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>새로 만든 클래스의 add는 setdefault의 복잡도를 제대로 감춰, 더 나은 인터페이스를 제공한다.
+하지만 여전히 setdefault의 이름은 직관적이지 못하고, <em>주어진 나라가 data 딕셔너리에 있든 없든 호출할 때마다 새로운
+set 인스턴스를 만들기 때문에 효율적이지 못하다.</em></p>
+<br> 
+<blockquote>
+<p>defaultdict를 사용하는 클래스 내부 딕셔너리</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> collections <span style="color:#f92672">import</span> defaultdict
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Visits</span>:
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> __init__(self):
+</span></span><span style="display:flex;"><span>self<span style="color:#f92672">.</span>data <span style="color:#f92672">=</span> defaultdict(set)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">add</span>(self, country, city): 
+</span></span><span style="display:flex;"><span>        set<span style="color:#f92672">.</span>data[country]<span style="color:#f92672">.</span>add(city) 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## example ## </span>
+</span></span><span style="display:flex;"><span>visits <span style="color:#f92672">=</span> Visits()
+</span></span><span style="display:flex;"><span>visits<span style="color:#f92672">.</span>add(<span style="color:#e6db74">&#39;영국&#39;</span>, <span style="color:#e6db74">&#39;런던&#39;</span>)
+</span></span><span style="display:flex;"><span>visits<span style="color:#f92672">.</span>add(<span style="color:#e6db74">&#39;영국&#39;</span>, <span style="color:#e6db74">&#39;버스&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(visits<span style="color:#f92672">.</span>data)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span>
+</span></span><span style="display:flex;"><span>defaultdict(<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#a6e22e">set</span><span style="color:#e6db74">&#39;&gt;, {&#39;</span>영국<span style="color:#e6db74">&#39;: {&#39;</span>버스<span style="color:#e6db74">&#39;, &#39;</span>런던<span style="color:#e6db74">&#39;}})</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>이제 add 코드는 data 딕셔너리에 있는 키에 접근하면 항상 기존 set 인스턴스가 반환된다.
+이전 코드에서는 add 메서드가 아주 많이 호출되면 집합 생성에 따른 비용도 커지는데, 이 구현에서는 불필요한 set이 만들어지는 경우는 없다.</p>
+<br> 
+<h1 id="better-way-18-__missing__-을-사용해-키에-따라-다른-디폴트-값을-생성하는-방법을-알아두라">Better way 18 <code>__missing__</code> 을 사용해 키에 따라 다른 디폴트 값을 생성하는 방법을 알아두라</h1>
+<p>앞에서 키가 없는 경우 <code>get</code> 또는 <code>setdefault</code>, <code>defaultdict</code> 를 사용하는 방법을 알아봤지만 이 모든 것을 사용하기가 적당하지 않은 경우도 있다.</p>
+<p>저자가 제일 추천하는 방법인 defaultdict을 써서 문제를 해결해보도록 하겠다.</p>
+<br> 
+<blockquote>
+<p>defaultdict</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> collections <span style="color:#f92672">import</span> defaultdict 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">open_picture</span>(profile_path): 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>: 
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> open(profile_path, <span style="color:#e6db74">&#39;a+b&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">OSError</span>: 
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#39;경로를 열 수 없습니다: </span><span style="color:#e6db74">{profile_path}</span><span style="color:#e6db74">&#39;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">raise</span> 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>pictures <span style="color:#f92672">=</span> defaultdict(open_picture)
+</span></span><span style="display:flex;"><span>handle <span style="color:#f92672">=</span> pictures[path]
+</span></span><span style="display:flex;"><span>handle<span style="color:#f92672">.</span>seek(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>image_data <span style="color:#f92672">=</span> handle<span style="color:#f92672">.</span>read()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> 
+</span></span><span style="display:flex;"><span>Traceback <span style="color:#f92672">...</span> 
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">TypeError</span>: open_picture() missing <span style="color:#ae81ff">1</span> required positional argument: <span style="color:#e6db74">&#39;profile_path&#39;</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p><em>defaultdict 생성자에 전달한 함수는 인자를 받을 수 없다.</em> 이로 인해 파일 경로를 사용해 open을 호출할 방법이 없다.</p>
+<br> 
+<blockquote>
+<p>setdefault</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">try</span>: 
+</span></span><span style="display:flex;"><span>    handle <span style="color:#f92672">=</span> pictures<span style="color:#f92672">.</span>setdefault(path, open(path, <span style="color:#e6db74">&#39;a+b&#39;</span>))
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">except</span> <span style="color:#a6e22e">OSError</span>:
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#39;경로를 열 수 없습니다: </span><span style="color:#e6db74">{profile_path}</span><span style="color:#e6db74">&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">raise</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>: 
+</span></span><span style="display:flex;"><span>    handle<span style="color:#f92672">.</span>seek(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>    image_data <span style="color:#f92672">=</span> handle<span style="color:#f92672">.</span>read()</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>그렇다고 setdefault를 쓴다고 상황을 해결할 수 있지는 않다.</p>
+<p><em>setdefault의 고질적인 문제로 딕셔너리에 경로가 있는지 여부와 관계없이 open이 항상 호출된다.</em>
+이로 인해 같은 프로그램상에 존재하던 열린 파일 핸들과 혼동될 수 있는 새로운 파일 핸들이 생길 수 도 있다.</p>
+<br> 
+<blockquote>
+<p><code>__missing__</code></p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Pictures</span>(dict): 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __missing__(self, key): 
+</span></span><span style="display:flex;"><span>        value <span style="color:#f92672">=</span> open_picture(key)
+</span></span><span style="display:flex;"><span>        self[key] <span style="color:#f92672">=</span> value 
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> value 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>pictures <span style="color:#f92672">=</span> Pictures()
+</span></span><span style="display:flex;"><span>handle <span style="color:#f92672">=</span> pictures[path]
+</span></span><span style="display:flex;"><span>handle<span style="color:#f92672">.</span>seek(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>image_data <span style="color:#f92672">=</span> handle<span style="color:#f92672">.</span>read()</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p><em>dict 타입의 하위 클래스를 만들고 <code>__missing__</code> 특별 메서드를 구현하면 키가 없는 경우를 처리하는 로직을 커스텀화 할 수 있다.</em></p>
+<br> 
+<blockquote>
+<p><code>__missing__</code> 동작 방식</p>
+</blockquote>
+<ul>
+<li>pictures[path]라는 딕셔너리 접근에서 path가 딕셔너리에 없으면 <code>__missing__</code> 메서드가 호출된다.</li>
+<li><code>__missing__</code> 은 키에 해당하는 <em>디폴트 값을 생성해 딕셔너리에 넣어준</em> 다음에 호출한 쪽에 그 값을 반환해야 한다.</li>
+<li>그 이후 딕셔너리에 같은 key로 접근하면 이미 해당 원소가 딕셔너리에 들어 있으므로 <code>__missing__</code> 이 호출되지 않는다.</li>
+</ul>
+<br> 
 
     </div>
 </article>

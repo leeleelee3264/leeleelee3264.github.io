@@ -8,7 +8,7 @@
     <language>en</language>
     <lastBuildDate>Tue, 25 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://leeleelee3264.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>[Effective Python] Betterway 11 to 15 Summary</title>
+      <title>[Book] Effective Python (2/10) - 리스트와 딕셔너리</title>
       <link>https://leeleelee3264.github.io/post/2022-10-25-effevtive-python-betterway-11-to-15/</link>
       <pubDate>Tue, 25 Oct 2022 00:00:00 +0000</pubDate>
       
@@ -17,16 +17,7 @@
     </item>
     
     <item>
-      <title>[Effective Python] Betterway 16 to 20 Summary</title>
-      <link>https://leeleelee3264.github.io/post/2022-10-29-effevtive-python-betterway-16-to-20/</link>
-      <pubDate>Tue, 25 Oct 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://leeleelee3264.github.io/post/2022-10-29-effevtive-python-betterway-16-to-20/</guid>
-      <description>책 [Effective Python] betterway를 16장부터 20장 까지 요약한다. Index index1 index2 Big title</description>
-    </item>
-    
-    <item>
-      <title>Essential in Cloud: Load Balancer</title>
+      <title>클라우드 필수 교양 - 로드밸런서</title>
       <link>https://leeleelee3264.github.io/post/2022-10-24-load-balancer/</link>
       <pubDate>Mon, 24 Oct 2022 00:00:00 +0000</pubDate>
       
@@ -35,16 +26,7 @@
     </item>
     
     <item>
-      <title>[Effective Python] Betterway 6 to 10 Summary</title>
-      <link>https://leeleelee3264.github.io/post/2022-10-19-effective-python-betterway-6-10/</link>
-      <pubDate>Wed, 19 Oct 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://leeleelee3264.github.io/post/2022-10-19-effective-python-betterway-6-10/</guid>
-      <description>책 [Effective Python] betterway를 6장부터 10장까지 요약한다. Index Better way 6 인덱스를 사용하는 대신 대입을 사용해 데이터를 언패킹하라 Better way 7 range보다는 enumerate를 사용하라 Better way 8 여러 이터레이터에 대해 나란히 루프를</description>
-    </item>
-    
-    <item>
-      <title>Dive into Digital Certificate - from CA to Chain of Trust</title>
+      <title>디지털 인증서 파헤치기 (2/2) - 심화: from CA to Chain of Trust</title>
       <link>https://leeleelee3264.github.io/post/2022-08-27-digital-certificate-part-final/</link>
       <pubDate>Sat, 27 Aug 2022 00:00:00 +0000</pubDate>
       
@@ -53,7 +35,7 @@
     </item>
     
     <item>
-      <title>Implement Myinfo Oauth2 Client Connector with Python</title>
+      <title>[Project] Python으로 Myinfo Oauth 클라이언트 커넥터 만들기</title>
       <link>https://leeleelee3264.github.io/post/2022-07-23-project-myinfo-connector-python/</link>
       <pubDate>Sat, 23 Jul 2022 00:00:00 +0000</pubDate>
       
@@ -62,7 +44,7 @@
     </item>
     
     <item>
-      <title>Implement Simple Profiler with Python Decorator</title>
+      <title>[Project] Python 데코레이터로 초간단 Profiler 만들기</title>
       <link>https://leeleelee3264.github.io/post/2022-06-30-python-profiler-decorator/</link>
       <pubDate>Wed, 29 Jun 2022 00:00:00 +0000</pubDate>
       
@@ -71,7 +53,7 @@
     </item>
     
     <item>
-      <title>Dive into Digital Certificate - Very Basic</title>
+      <title>디지털 인증서 파헤치기 (1/2) - 쌩기초</title>
       <link>https://leeleelee3264.github.io/post/2022-06-15-digital-certificate-part-one/</link>
       <pubDate>Wed, 15 Jun 2022 00:00:00 +0000</pubDate>
       
@@ -80,16 +62,16 @@
     </item>
     
     <item>
-      <title>[Effective Python] Betterway 1 to 5 Summary</title>
+      <title>[Book] Effective Python (1/10) - 파이썬답게 생각하기</title>
       <link>https://leeleelee3264.github.io/post/2022-05-06-effective-python-betteryway-1-to5/</link>
       <pubDate>Fri, 06 May 2022 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2022-05-06-effective-python-betteryway-1-to5/</guid>
-      <description>책 [Effective Python] better way를 1장부터 5장까지 요약한다. Index Better way 1 사용중인 파이썬의 버전을 알아두라 Better way 2 PEP8 스타일 가이드를 따르라 Better way 3 bytes와 str의 차이를 알아두라 Better way 4 C 스타일 형식 문자열을 str.format과 쓰기</description>
+      <description>책 [Effective Python] better way를 1장부터 10장까지 요약한다. Index Better way 1 사용중인 파이썬의 버전을 알아두라 Better way 2 PEP8 스타일 가이드를 따르라 Better way 3 bytes와 str의 차이를 알아두라 Better way 4 C 스타일 형식 문자열을 str.format과 쓰</description>
     </item>
     
     <item>
-      <title>[Introducing Python] part one (1/2) Summary</title>
+      <title>[Book] Introducing Python 정리 (1/2)</title>
       <link>https://leeleelee3264.github.io/post/2022-03-08-introducing-python-part-one/</link>
       <pubDate>Tue, 08 Mar 2022 00:00:00 +0000</pubDate>
       
@@ -98,7 +80,7 @@
     </item>
     
     <item>
-      <title>Use Multiple Github Account in Terminal</title>
+      <title>터미널에서 여러 개의 깃허브 계정 쓰는 방법</title>
       <link>https://leeleelee3264.github.io/post/2022-01-12-git-multi-account/</link>
       <pubDate>Wed, 12 Jan 2022 00:00:00 +0000</pubDate>
       
@@ -107,7 +89,7 @@
     </item>
     
     <item>
-      <title>2021 Backend Engineer Job Interview - Python, General</title>
+      <title>2021 백엔드 개발자 인터뷰 (2/2) - Python, General</title>
       <link>https://leeleelee3264.github.io/post/2022-01-01-interview-python/</link>
       <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
       
@@ -116,7 +98,7 @@
     </item>
     
     <item>
-      <title>2021 Backend Engineer Job Interview - Java</title>
+      <title>2021 백엔드 개발자 인터뷰 (1/2) - Java</title>
       <link>https://leeleelee3264.github.io/post/2021-12-02-interview-java/</link>
       <pubDate>Thu, 02 Dec 2021 00:00:00 +0000</pubDate>
       
@@ -125,7 +107,7 @@
     </item>
     
     <item>
-      <title>Implement MySQL DB Full Backup with Shell Script</title>
+      <title>[Project] Shell Script로 MySQL DB 전체백업 구현하기</title>
       <link>https://leeleelee3264.github.io/post/2021-09-09-linux-shell-db-backup/</link>
       <pubDate>Thu, 09 Sep 2021 00:00:00 +0000</pubDate>
       
@@ -134,7 +116,7 @@
     </item>
     
     <item>
-      <title>Dive into MySQL - Backup</title>
+      <title>MySQL 스터디 (5/5) - Backup</title>
       <link>https://leeleelee3264.github.io/post/2021-07-21-mysql-backup/</link>
       <pubDate>Wed, 21 Jul 2021 00:00:00 +0000</pubDate>
       
@@ -143,7 +125,7 @@
     </item>
     
     <item>
-      <title>Dive into MySQL - Join &amp; Join Set</title>
+      <title>MySQL 스터디 (4/5) - Join &amp; Join Set</title>
       <link>https://leeleelee3264.github.io/post/2021-07-14-mysql-history-of-join-and-join-set/</link>
       <pubDate>Wed, 14 Jul 2021 00:00:00 +0000</pubDate>
       
@@ -152,7 +134,7 @@
     </item>
     
     <item>
-      <title>Dive into MySQL - String Function &amp; Referential Integrity</title>
+      <title>MySQL 스터디 (3/5) - String Function &amp; Referential Integrity</title>
       <link>https://leeleelee3264.github.io/post/2021-07-08-mysql-stringfunction-and-refrential-integrity/</link>
       <pubDate>Thu, 08 Jul 2021 00:00:00 +0000</pubDate>
       
@@ -161,7 +143,7 @@
     </item>
     
     <item>
-      <title>Dive into MySQL - SQL &amp; key &amp; collation</title>
+      <title>MySQL 스터디 (2/5) - SQL &amp; key &amp; collation</title>
       <link>https://leeleelee3264.github.io/post/2021-06-30-mysql-sql-and-key-collection/</link>
       <pubDate>Wed, 30 Jun 2021 00:00:00 +0000</pubDate>
       
@@ -170,7 +152,7 @@
     </item>
     
     <item>
-      <title>Dive into MySQL - Index</title>
+      <title>MySQL 스터디 (1/5) - Index</title>
       <link>https://leeleelee3264.github.io/post/2021-06-21-mysql-index/</link>
       <pubDate>Mon, 21 Jun 2021 00:00:00 +0000</pubDate>
       
@@ -179,7 +161,7 @@
     </item>
     
     <item>
-      <title>Install Linux Server and Initial Setting</title>
+      <title>리눅스 설치 및 초기 세팅하기</title>
       <link>https://leeleelee3264.github.io/post/2021-04-21-linux-server-init-setting/</link>
       <pubDate>Wed, 21 Apr 2021 00:00:00 +0000</pubDate>
       
@@ -188,7 +170,7 @@
     </item>
     
     <item>
-      <title>Implement Netflix On-Air Twitter Bot witt Github Action</title>
+      <title>[Project] 깃허브 액션으로 넷플릭스 트위터 봇 만들기</title>
       <link>https://leeleelee3264.github.io/post/2021-04-16-twitterbot-with-git-action/</link>
       <pubDate>Fri, 16 Apr 2021 00:00:00 +0000</pubDate>
       
@@ -197,7 +179,7 @@
     </item>
     
     <item>
-      <title>Implement Shell Script which works like Blue Green Deployment</title>
+      <title>[Project] Shell Script로 무중단 배포 흉내내기</title>
       <link>https://leeleelee3264.github.io/post/2021-03-15-blue-green-deploy/</link>
       <pubDate>Mon, 15 Mar 2021 00:00:00 +0000</pubDate>
       
@@ -206,7 +188,7 @@
     </item>
     
     <item>
-      <title>[Modern Java in Action] Chapter 1,2,3 Summary</title>
+      <title>[Modern Java in Action] Chapter 1,2,3 요약</title>
       <link>https://leeleelee3264.github.io/post/2021-02-14-java-in-action-part1/</link>
       <pubDate>Sun, 14 Feb 2021 00:00:00 +0000</pubDate>
       
@@ -285,7 +267,7 @@ How to request password in shell script
     </item>
     
     <item>
-      <title> Linux Command Cheat Sheet</title>
+      <title>Linux Command Cheat Sheet</title>
       <link>https://leeleelee3264.github.io/post/2020-12-12-linux-cheat-sheet/</link>
       <pubDate>Sat, 12 Dec 2020 00:00:00 +0000</pubDate>
       

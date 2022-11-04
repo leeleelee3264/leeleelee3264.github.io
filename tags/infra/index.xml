@@ -8,7 +8,7 @@
     <language>en</language>
     <lastBuildDate>Mon, 24 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://leeleelee3264.github.io/tags/infra/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Essential in Cloud: Load Balancer</title>
+      <title>클라우드 필수 교양 - 로드밸런서</title>
       <link>https://leeleelee3264.github.io/post/2022-10-24-load-balancer/</link>
       <pubDate>Mon, 24 Oct 2022 00:00:00 +0000</pubDate>
       
@@ -17,7 +17,7 @@
     </item>
     
     <item>
-      <title>Dive into Digital Certificate - from CA to Chain of Trust</title>
+      <title>디지털 인증서 파헤치기 (2/2) - 심화: from CA to Chain of Trust</title>
       <link>https://leeleelee3264.github.io/post/2022-08-27-digital-certificate-part-final/</link>
       <pubDate>Sat, 27 Aug 2022 00:00:00 +0000</pubDate>
       
@@ -26,7 +26,7 @@
     </item>
     
     <item>
-      <title>Dive into Digital Certificate - Very Basic</title>
+      <title>디지털 인증서 파헤치기 (1/2) - 쌩기초</title>
       <link>https://leeleelee3264.github.io/post/2022-06-15-digital-certificate-part-one/</link>
       <pubDate>Wed, 15 Jun 2022 00:00:00 +0000</pubDate>
       
@@ -35,16 +35,7 @@
     </item>
     
     <item>
-      <title>Implement MySQL DB Full Backup with Shell Script</title>
-      <link>https://leeleelee3264.github.io/post/2021-09-09-linux-shell-db-backup/</link>
-      <pubDate>Thu, 09 Sep 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://leeleelee3264.github.io/post/2021-09-09-linux-shell-db-backup/</guid>
-      <description>Shell Script 로 Mysql db 전체백업하기에 대해 다룬다. Index 백업 진행 순서 백업에 사용된 스크립트 &amp;amp; 세부 사항 개선해야 할 점과 참고자료 백업 진행 순서 Intro: 백업의 종류 SQL 백업에는 전체백업, 증분백업, 차등백업이 있다. 백업 종류에 대한 더 자세한 정보는</description>
-    </item>
-    
-    <item>
-      <title>Dive into MySQL - Backup</title>
+      <title>MySQL 스터디 (5/5) - Backup</title>
       <link>https://leeleelee3264.github.io/post/2021-07-21-mysql-backup/</link>
       <pubDate>Wed, 21 Jul 2021 00:00:00 +0000</pubDate>
       
@@ -53,7 +44,7 @@
     </item>
     
     <item>
-      <title>Dive into MySQL - Join &amp; Join Set</title>
+      <title>MySQL 스터디 (4/5) - Join &amp; Join Set</title>
       <link>https://leeleelee3264.github.io/post/2021-07-14-mysql-history-of-join-and-join-set/</link>
       <pubDate>Wed, 14 Jul 2021 00:00:00 +0000</pubDate>
       
@@ -62,7 +53,7 @@
     </item>
     
     <item>
-      <title>Dive into MySQL - String Function &amp; Referential Integrity</title>
+      <title>MySQL 스터디 (3/5) - String Function &amp; Referential Integrity</title>
       <link>https://leeleelee3264.github.io/post/2021-07-08-mysql-stringfunction-and-refrential-integrity/</link>
       <pubDate>Thu, 08 Jul 2021 00:00:00 +0000</pubDate>
       
@@ -71,7 +62,7 @@
     </item>
     
     <item>
-      <title>Dive into MySQL - SQL &amp; key &amp; collation</title>
+      <title>MySQL 스터디 (2/5) - SQL &amp; key &amp; collation</title>
       <link>https://leeleelee3264.github.io/post/2021-06-30-mysql-sql-and-key-collection/</link>
       <pubDate>Wed, 30 Jun 2021 00:00:00 +0000</pubDate>
       
@@ -80,7 +71,7 @@
     </item>
     
     <item>
-      <title>Dive into MySQL - Index</title>
+      <title>MySQL 스터디 (1/5) - Index</title>
       <link>https://leeleelee3264.github.io/post/2021-06-21-mysql-index/</link>
       <pubDate>Mon, 21 Jun 2021 00:00:00 +0000</pubDate>
       
@@ -89,21 +80,12 @@
     </item>
     
     <item>
-      <title>Install Linux Server and Initial Setting</title>
+      <title>리눅스 설치 및 초기 세팅하기</title>
       <link>https://leeleelee3264.github.io/post/2021-04-21-linux-server-init-setting/</link>
       <pubDate>Wed, 21 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2021-04-21-linux-server-init-setting/</guid>
       <description>리눅스 서버 설치와 초기 설정에 대해 다룬다. Index 리눅스 설치 초기 네트워크 설정 SSH 설정 사용자 설정 기타 설정 MariDB 설치/설정 리눅스 설치 리눅스 설치용 usb 리눅스를 설치하려면 설치용 usb를 먼저 만들어야 한다. [리눅스 usb 만들기] 이 블로</description>
-    </item>
-    
-    <item>
-      <title>Implement Shell Script which works like Blue Green Deployment</title>
-      <link>https://leeleelee3264.github.io/post/2021-03-15-blue-green-deploy/</link>
-      <pubDate>Mon, 15 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://leeleelee3264.github.io/post/2021-03-15-blue-green-deploy/</guid>
-      <description>Shell Script로 무중단 서버 배포하는 방법을 다룬다. Index 무중단 배포란? 무중단 배포 구현하기 결론 무중단 배포란? 무중단 배포란 업데이트를 위해 배포를 할 때 어플리케이션이 멈추지 않는 것이다. 즉 배포를 할 때 서비스가 중단되는 다운</description>
     </item>
     
     <item>
