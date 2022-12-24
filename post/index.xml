@@ -6,7 +6,16 @@
     <description>Recent content in Posts on dev_leelee.log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 25 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://leeleelee3264.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 22 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://leeleelee3264.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>블로그 리팩토링: Hugo 도입과 읽고 싶어지는 기술 블로그 만들기</title>
+      <link>https://leeleelee3264.github.io/post/2022-12-22-tech-blog-readability/</link>
+      <pubDate>Thu, 22 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2022-12-22-tech-blog-readability/</guid>
+      <description>2022-09-16 부터 2022-10-08 동안 진행한 블로그 리팩토링에 대해 다룬다. [티스토리 블로그] [Jekyll 블로그] Index Intro: 기술 블로그, 이대로 괜찮은가? Hugo 도입기 읽고 싶은 기술 블로그 만들기 프로젝트 회고 Intro: 기술 블로그, 이대로 괜찮은가? 문서화의 중요성 요즘들</description>
+    </item>
+    
     <item>
       <title>[Book] Effective Python (2/10) - 리스트와 딕셔너리</title>
       <link>https://leeleelee3264.github.io/post/2022-10-25-effevtive-python-betterway-11-to-15/</link>
@@ -17,7 +26,7 @@
     </item>
     
     <item>
-      <title>클라우드 필수 교양 - 로드밸런서</title>
+      <title>클라우드 필수 교양: 로드밸런서</title>
       <link>https://leeleelee3264.github.io/post/2022-10-24-load-balancer/</link>
       <pubDate>Mon, 24 Oct 2022 00:00:00 +0000</pubDate>
       
@@ -35,7 +44,7 @@
     </item>
     
     <item>
-      <title>[Project] Python으로 Myinfo Oauth 클라이언트 커넥터 만들기</title>
+      <title>Python으로 Myinfo Oauth 클라이언트 커넥터 만들기</title>
       <link>https://leeleelee3264.github.io/post/2022-07-23-project-myinfo-connector-python/</link>
       <pubDate>Sat, 23 Jul 2022 00:00:00 +0000</pubDate>
       
@@ -44,7 +53,7 @@
     </item>
     
     <item>
-      <title>[Project] Python 데코레이터로 초간단 Profiler 만들기</title>
+      <title>Python 데코레이터로 초간단 Profiler 만들기</title>
       <link>https://leeleelee3264.github.io/post/2022-06-30-python-profiler-decorator/</link>
       <pubDate>Wed, 29 Jun 2022 00:00:00 +0000</pubDate>
       
@@ -107,7 +116,7 @@
     </item>
     
     <item>
-      <title>[Project] Shell Script로 MySQL DB 전체백업 구현하기</title>
+      <title>Shell Script로 MySQL DB 전체백업 구현하기</title>
       <link>https://leeleelee3264.github.io/post/2021-09-09-linux-shell-db-backup/</link>
       <pubDate>Thu, 09 Sep 2021 00:00:00 +0000</pubDate>
       
@@ -170,7 +179,7 @@
     </item>
     
     <item>
-      <title>[Project] 깃허브 액션으로 넷플릭스 트위터 봇 만들기</title>
+      <title>깃허브 액션으로 넷플릭스 트위터 봇 만들기</title>
       <link>https://leeleelee3264.github.io/post/2021-04-16-twitterbot-with-git-action/</link>
       <pubDate>Fri, 16 Apr 2021 00:00:00 +0000</pubDate>
       
@@ -179,7 +188,7 @@
     </item>
     
     <item>
-      <title>[Project] Shell Script로 무중단 배포 흉내내기</title>
+      <title>Shell Script로 무중단 배포 흉내내기</title>
       <link>https://leeleelee3264.github.io/post/2021-03-15-blue-green-deploy/</link>
       <pubDate>Mon, 15 Mar 2021 00:00:00 +0000</pubDate>
       

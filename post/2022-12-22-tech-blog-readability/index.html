@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="HandheldFriendly" content="True" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="generator" content="Hugo 0.102.3" />
+
+
+<link rel="shortcut icon" href="https://raw.githubusercontent.com/leeleelee3264/twitter_project/master/favicon.ico" />
+
+
+
+<title>블로그 리팩토링: Hugo 도입과 읽고 싶어지는 기술 블로그 만들기 - dev_leelee.log</title>
+
+
+<meta name="author" content="leeleelee3264" />
+
+
+<meta name="description" content="개인 기술 블로그 가독성 향상 프로젝트에 대해 다룬다." />
+
+
+<meta name="keywords" content="Project" />
+
+
+<meta property="og:title" content="블로그 리팩토링: Hugo 도입과 읽고 싶어지는 기술 블로그 만들기" />
+<meta name="twitter:title" content="블로그 리팩토링: Hugo 도입과 읽고 싶어지는 기술 블로그 만들기" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://leeleelee3264.github.io/post/2022-12-22-tech-blog-readability/" /><meta property="og:description" content="개인 기술 블로그 가독성 향상 프로젝트에 대해 다룬다." />
+<meta name="twitter:description" content="개인 기술 블로그 가독성 향상 프로젝트에 대해 다룬다." /><meta property="og:image" content="https://leeleelee3264.github.io/img/og.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://leeleelee3264.github.io/img/og.png" /><meta property="article:published_time" content="2022-12-22T00:00:00+00:00" /><meta property="article:modified_time" content="2022-12-22T00:00:00+00:00" />
+
+
+<style>
+    @media (prefers-color-scheme: dark) {
+        body[data-theme='auto'] img {
+            filter: brightness(60%);
+        }
+    }
+
+    body[data-theme='dark'] img {
+        filter: brightness(60%);
+    }
+</style>
+
+
+
+
+<link rel="stylesheet" href="https://leeleelee3264.github.io/assets/css/fuji.min.css" />
+
+
+
+
+
+
+
+
+</head>
+
+<body
+  data-theme="auto"
+  data-theme-auto='true'
+  >
+    <script data-cfasync="false">
+  
+  var fujiThemeData = localStorage.getItem('fuji_data-theme');
+  
+  if (!fujiThemeData) {
+    localStorage.setItem('fuji_data-theme', 'auto');
+  } else {
+    
+    if (fujiThemeData !== 'auto') {
+      document.body.setAttribute('data-theme', fujiThemeData === 'dark' ? 'dark' : 'light');
+    }
+  }
+</script>
+
+    <header>
+    <div class="container-lg clearfix">
+        <div class="col-12 header">
+            <a class="title-main" href="https://leeleelee3264.github.io/">dev_leelee.log</a>
+            
+            <span class="title-sub">Logfile of Developer LeeLee</span>
+            
+        </div>
+    </div>
+</header>
+
+    <main>
+        <div class="container-lg clearfix">
+            
+            <div class="col-12 col-md-9 float-left content">
+                
+<article>
+    
+    <h2 class="post-item post-title">
+        <a href="https://leeleelee3264.github.io/post/2022-12-22-tech-blog-readability/">블로그 리팩토링: Hugo 도입과 읽고 싶어지는 기술 블로그 만들기</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2022-12-22</span>
+
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;5362 words</span>
+
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/project">Project</a>&nbsp;</span>
+
+    </div>
+    
+    <div class="post-content markdown-body">
+        <br>
+<br> 
+<blockquote>
+<p>2022-09-16 부터 2022-10-08 동안 진행한 블로그 리팩토링에 대해 다룬다.</p>
+<blockquote>
+<p><a href="https://calgaryhomeless.tistory.com/?page=1" target="_blank">[티스토리 블로그]</a><br>
+<a href="https://leeleelee3264.github.io/old-blog/" target="_blank">[Jekyll 블로그]</a></p>
+</blockquote>
+</blockquote>
+<br> 
+<br> 
+<p><strong>Index</strong></p>
+<ol>
+<li>Intro: 기술 블로그, 이대로 괜찮은가?</li>
+<li>Hugo 도입기</li>
+<li>읽고 싶은 기술 블로그 만들기</li>
+<li>프로젝트 회고</li>
+</ol>
+<br> 
+<h1 id="intro-기술-블로그-이대로-괜찮은가">Intro: 기술 블로그, 이대로 괜찮은가?</h1>
+<h3 id="문서화의-중요성">문서화의 중요성</h3>
+<p>요즘들어 개발자의 업무에서 <code>개발</code> 말고도 중요한 부분들이 많다는 생각이 자주 든다. 특히 <code>문서화</code>의 중요성을 다시금 환기하고 있다.</p>
+<p>2022년 1년간 회사에 들어와서 많은 문서들을 작성해왔다. 어떤 문서는 개발자들과 공유하기 위해 만들었고, 또 다른 문서는 기획자와 같은 비개발자들과 소통을 하기 위해 만들었다.
+점점 문서로 소통하는 일이 많아지다보니 자연스럽게 <em>문서가 담고 있는 내용도 중요하지만, 가독성과 구성도 신경을 써야 할 필요를 느꼈다.</em></p>
+<p>잘 작성된 문서는 매끄러운 소통을 하게 해주는 동시에 자료로의 역할도 하기 떄문에 가능한 읽기 좋고 잘 정리된 문서를 만들려고 노력하고 있다.</p>
+<br> 
+<h3 id="기술-블로그-점검">기술 블로그 점검</h3>
+<p>그러던 중 내가 운영하던 기술 블로그의 포스팅들을 하나씩 살펴봤다. 이전에는 보이지 않았던 좋지 않은 가독성, 부자연스러운 구성들이 많이 눈에 들어왔다.
+고민을 하던 중, 마침 기존에 사용하던 <code>Jekyll</code>에서 불편 사항들을 느끼는 것들도 많아서 대대적으로 블로그를 손보는 프로젝트를 진행했다.</p>
+<p>이제부터 2020년 1월부터 지금까지 어떤 플랫폼을 사용하여 블로그를 운영했고, 어떤 문제점이 있어 2022년 09월 16일부터 10월 08일, 약 한 달 동안 <code>블로그 리팩토링 프로젝트</code>를 진행했는지 다뤄보도록 하겠다.</p>
+<br> 
+<h3 id="블로그-연대기">블로그 연대기</h3>
+<h4 id="2020년-티스토리">2020년: 티스토리</h4>
+<p><a href="https://calgaryhomeless.tistory.com/?page=1" target="_blank">[<em>티스토리 블로그 링크</em>]</a></p>
+<br> 
+<blockquote>
+<p>티스토리를 선택한 이유</p>
+</blockquote>
+<ul>
+<li>익숙한 블로그 플랫폼이라 초기에 빠르게 기술 블로그를 만들 수 있다.</li>
+<li>Git 사용도 제대로 모르던 시절이라 Github page에 진입장벽이 느껴졌다.</li>
+<li>호스팅과 검색어 노출 등을 티스토리 자체에서 관리해 줘, 따로 신경을 쓸 필요가 없다.</li>
+<li>에디터 지원이 잘 되어있어 편하게 글을 쓸 수 있다.</li>
+</ul>
+<br> 
+<blockquote>
+<p>티스토리의 문제점</p>
+</blockquote>
+<ul>
+<li>Github Page를 사용해 기술 블로그를 만드는 게 유행이어서, 유행에 조금 뒤떨어졌다.</li>
+</ul>
+<br> 
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/blog/ti.png" >
+<figcaption align = "center">[Picture 1] 직관적인 블로그 이름과 다소 도발적인 닉네임</figcaption>
+<br> 
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/blog/tistory_cal.png" >
+<figcaption align = "center">[Picture 2] 현재까지도 꾸준한 티스토리 방문자 유입</figcaption>
+<br> 
+<p>2021년 09월 이후로 새로운 포스팅이 없는데도 방문자 수가 꾸준한 걸 보면, 손쉽게 많은 사람들이 보게 만들기 위해서는 티스토리가 좋은 선택지임이 틀림없다.
+티스토리를 사용했을 때 호스팅과 검색어 노출을 신경쓰지 않았고, 에디터도 편리해서 블로그 포스팅을 하는 데 거부감이 없었다.</p>
+<p>사실 이번 리팩토링 프로젝트를 진행했을 때 다시 티스토리로 돌아갈까 고민하기도 했다. 방문자 유입이 많아야 글을 쓰는 재미와 보람도 있기 때문이다.</p>
+<br> 
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/blog/tistory.png" >
+<figcaption align = "center">[Picture 3] 좋지 않은 가독성</figcaption>
+<br> 
+<p>하지만 이때도 가독성은 신경을 쓰지 않아 읽기가 조금 불편했고 구성 또한 마찬가지였다. 하고 싶은 말만 가득 써둔, 냅다 기술 지식을 전하는 포스트였던 것이다. <em>얼마나 읽기도 불편하고 재미도 없는지,
+사실은 나도 이때 써둔 글을 다시 읽으러 가거나 하지 않는다..</em></p>
+<br> 
+<h4 id="2021-2022년-jekyll">2021-2022년: Jekyll</h4>
+<p><a href="https://leeleelee3264.github.io/old-blog/" target="_blank">[Jekyll 블로그 링크]</a></p>
+<br> 
+<p>티스토리를 잘 쓰던 중, 갑자기 Github Page를 사용해 기술 블로그를 운영하기로 마음먹는다. 계기는 단순하다. <code>One Day One Commit</code>을 해서 Github에 <code>잔디심기</code>를 하고 싶었다.
+티스토리를 사용하면 매일 잔디를 심기가 어렵기 때문에 과감하게 포기하고, Github Page로 옮겨가는 프로젝트를 진행했다.</p>
+<p>티스토리 블로그에 <a href="https://calgaryhomeless.tistory.com/1" target="_blank">[Jekyll로 이전하는 방법]</a>에 대해서도 포스팅을 했다.</p>
+<br> 
+<blockquote>
+<p>Jekyll를 선택한 이유</p>
+</blockquote>
+<ul>
+<li>마음에 드는 테마가 Jekyll로 구현이 되어있었다.</li>
+<li>Jekyll로 Github Page를 만드는 튜토리얼이 많았다. (사실 Jekyll로 하는 방법 밖에 없었다.)</li>
+</ul>
+<br> 
+<blockquote>
+<p>Jekyll의 문제점</p>
+</blockquote>
+<ul>
+<li>Github Page, Jekyll 자체의 진입장벽이 있다.</li>
+<li>검색 노출이 잘 안되어 방문자 수가 별로 없다. (Github Page의 문제점)</li>
+<li>설치를 잘못해서 내 로컬에서 Jekyll을 실행할 수 없었다.
+<ul>
+<li>결과적으로 Github에 배포를 완료해야만 포스팅을 볼 수 있었다. <em>즉, 로컬에서 프리뷰를 할 수 없었다.</em></li>
+</ul>
+</li>
+</ul>
+<br> 
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/blog/old_blog.png" >
+<figcaption align = "center">[Picture 4] 좋지 않은 가독성2</figcaption>
+<br> 
+<p>(참고로 Jekyll은 <code>Ruby</code>로 작성되었다). 로컬에서 바로 바로 프리뷰를 보며 에디팅을 할 수 없었기 때문에 가독성은 더 엉망이 되었다. 그 당시에는 포스팅이 어떻게 보일지 미리 고민을 하지 않고 무작정 글을 쓰기만 했다.
+그리고 이때에도 구성에 대해서 고민하지 않았다. 돌이켜보면 그 때는 재미있는 글, 읽고 싶은 글을 쓰는 것에 전혀 관심이 없었나 싶다.</p>
+<br> 
+<h1 id="hugo-도입기">Hugo 도입기</h1>
+<p>로컬에서 실행이 안된다는 치명적인 Jekyll을 계속 사용하기는 쉽지 않았다. 블로그 리팩토링을 진행하며 어떤 플랫폼으로 이전을 해야 할까 고민을 하던 중 <code>Hugo</code>를 선택했다.</p>
+<p>Hugo를 선택한 이유로 <em>Go를 기반으로 만들어졌다</em> 가 있는데 마침 Go를 배워보고 싶어서 선택했다. 하지만 지금 와서 생각을 하면 Hugo를 쓴다고 해서 Go에 대해 알게 되거나 하는 것은 아닌 것 같다.</p>
+<br> 
+<blockquote>
+<p>Hugo를 선택한 이유</p>
+</blockquote>
+<ul>
+<li>Jekyll 대안으로 Github Page에 사용이 가능하다. (잔디심기를 계속 할 수 있다)</li>
+<li>Jekyll 만큼은 아니지만 꽤 많은 테마가 구현되어 있다.</li>
+<li>페이지를 빌드하는 속도가 굉장히 빠르다.</li>
+<li><code>Go</code>를 기반으로 만들어졌다.</li>
+</ul>
+<br> 
+<blockquote>
+<p>Hugo의 문제점</p>
+</blockquote>
+<ul>
+<li>검색 노출이 잘 안되어 방문자 수가 별로 없다. (Github Page의 문제점)</li>
+</ul>
+<br> 
+<h3 id="테마-선택">테마 선택</h3>
+<p>블로그 리팩토링에서 블로그 테마도 중요한 부분을 차지한다. 테마를 바꾸는 게 소소한 재미이기도 하고 블로그의 인상과 가독성을 크게 좌지우지 하기 때문에 심사숙고 해서 선택해야 했다. 한참 테마 쇼핑을 하다가 <a href="https://themes.gohugo.io/themes/hugo-theme-fuji/" target="_blank">[Fuji]</a> 라는 테마를 선택했다.</p>
+<br> 
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/blog/fuji.png" >
+<figcaption align = "center">[Picture 5] Fuji 테마</figcaption>
+<br> 
+<p><code>다크모드</code>도 지원을 하고 테마 자체가 군더더기 없이 깔끔해서 마음에 들었다. 그리고 개발자가 Introduction을 상세하게 써줘서 그대로 보고 따라하기 좋아보였다.
+또한 <code>Tag</code>를 설정하면 사이드 바에 노출이 되는 것도 좋았고, <code>Archives</code> 라는 메뉴에서 페이지네이션 없이 모든 포스트를 보여주는 것도 좋았다.</p>
+<p>가끔 내가 쓴 글을 찾아보면서 페이지네이션이 들어가 있어 넘기기 귀찮을 때가 많았는데 아주 편리하게 쓸 수 있을 거 같았다.</p>
+<br> 
+<h3 id="hugo-설치-및-블로그-생성">Hugo 설치 및 블로그 생성</h3>
+<p>Jekyll과 마찬가지로 Hugo로 블로그를 운영하기 위해서는 로컬에 Hugo를 설치해야 한다. Hugo는 공식문서가 굉장히 잘 되어있는데, <a href="https://gohugo.io/getting-started/quick-start/" target="_blank">[공식문서 quick-start]</a> 를
+보면서 하나씩 따라하면 빠르게 Hugo 블로그를 생성할 수 있다.</p>
+<br> 
+<blockquote>
+<p>Go 설치하기</p>
+</blockquote>
+<p>아직 Homebrew에서 Go 설치를 지원하지 않아서, 공식 홈페이지인 <a href="https://go.dev/doc/install" target="_blank">[Go 다운로드]</a>에 가서 패키지 파일을 다운로드 받아야 한다.
+다운로드 후, 압축을 풀고 <code>.pkg</code> 로 끝나는 파일을 클릭하면 설치 화면이 나와, 순차적으로 설치를 진행하면 된다.</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 완료 후, 설치가 잘 되었나 버전을 찍어본다</span>
+</span></span><span style="display:flex;"><span>go version</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br> 
+<blockquote>
+<p>Hugo 설치하기</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>brew install hugo
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 설치가 잘 되었나 버전을 찍어본다</span>
+</span></span><span style="display:flex;"><span>hugo version </span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br>
+<p>이제부터는 위에서 선택한 테마를 적용해서 나만의 블로그를 생성하는 방법에 대해 다뤄보겠다.
+테마 사이트에 들어가보면 각각 테마의 Introduction에 해당 테마를 <code>git</code>의 <code>submodule</code>로 가져오라고 하고 있다.
+내가 선택한 Fuji 테마의 깃허브 주소인 <code>https://github.com/dsrkafuu/hugo-theme-fuji.git</code> 예시로 사용하겠다.</p>
+<br> 
+<blockquote>
+<p>블로그 만들기</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 블로그 레포지토리를 만들어준다 </span>
+</span></span><span style="display:flex;"><span>mkdir my-hugo-tech-blog  
+</span></span><span style="display:flex;"><span>cd my-hugo-tech-blog 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># hugo 블로그를 만들어준다</span>
+</span></span><span style="display:flex;"><span>hugo new site quickstart</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br> 
+<blockquote>
+<p>블로그에 테마 적용하기</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git init 
+</span></span><span style="display:flex;"><span>git submodule https://github.com/dsrkafuu/hugo-theme-fuji.git
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 테마의 configuration 복사해준다</span>
+</span></span><span style="display:flex;"><span>cp themes/fugi/config.toml . </span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Hugo에서 블로그의 configuration은 <code>config.toml</code> 이라는 파일에서 관리가 된다. 각 테마 안에 config.toml 파일이 존재하는데 내가 만든 사이트에 해당 테마를 적용하고 싶다면 테마의 config.toml을
+그대로 <code>복사</code>해서 나의 블로그 디렉터리에 넣어주면 된다.</p>
+<br> 
+<blockquote>
+<p>로컬에서 블로그 실행하기</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo server </span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br> 
+<blockquote>
+<p>Webstorm에서 블로그 실행하기</p>
+</blockquote>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/blog/hugo.png" >
+<figcaption align = "center">[Picture 6] Webstrom Run Configuration</figcaption>
+<br> 
+<p>Jetbrains의 Webstorm은 Hugo를 지원하고 있다. <code>Run Configuration</code> 에서 Hugo를 위한 새로운 Configuration을 만들고 <code>Command to run</code> 항목에
+<code>hugo server</code> 를 선택하면 Webstorm에서도 손쉽게 Hugo 블로그를 실행할 수 있다.</p>
+<br> 
+<blockquote>
+<p>새 페이지 만들기</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo new <span style="color:#f92672">{</span>파일 이름<span style="color:#f92672">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>위의 커맨드로 설정된 테마가 적용된 hugo 페이지를 만들 수 있다.</p>
+<br> 
+<h3 id="hugo로-github-page에-베포하기">Hugo로 Github Page에 베포하기</h3>
+<p>Jekyll은 Github에서 공식 지원을 하기 때문에 Github Page를 배포 하려면 github.io 레포지토리를 만들고 Push만 해주면 끝이었다.
+<u>하지만 Hugo는 공식 지원을 하지 않다보니 몇 가지 세팅을 해줘야 한다.</u> 세팅이 끝나면 아래의 3가지 결과물이 나온다. 순서에 따라서 한 번 만들어보도록 하겠다.</p>
+<br> 
+<blockquote>
+<p>결과물</p>
+</blockquote>
+<ol>
+<li>블로그 레포지토리 (이전 단계에서 이미 생성)</li>
+<li>{username}.github.io 레포지토리</li>
+<li>배포 스크립트</li>
+</ol>
+<br> 
+<h4 id="블로그-레포지토리">블로그 레포지토리</h4>
+<p>위에서 <code>my-hugo-tech-blog</code> 라는 이름의 Blog 레포지토리를 이미 로컬에 만들었다. github 사이트에서 블로그 레포지토리를 만들고, 연결만 해주면 된다.</p>
+<br> 
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/blog/my_hugo.png" >
+<figcaption align = "center">[Picture 7] Github에 만든 블로그 레포지토리</figcaption>
+<br> 
+<blockquote>
+<p>github 연결</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd my-hugo-tech-blog
+</span></span><span style="display:flex;"><span>git remote add origin https://github.com/my-hugo-tech-blog.git public
+</span></span><span style="display:flex;"><span>git push</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br> 
+<h4 id="usernamegithubio-레포지토리">{username}.github.io 레포지토리</h4>
+<p>{username} 은 <code>github 계정의 username</code>을 넣어준다. 나의 github 계정 username인 <code>leeleelee3264</code>를 예시로 사용하겠다.
+github 사이트에서 leeleelee.github.io 레포지토리를 만들어, 연결해준다.</p>
+<br>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/blog/leelee.png" >
+<figcaption align = "center">[Picture 7] Github에 만든 github.io 레포지토리</figcaption>
+<br> 
+<blockquote>
+<p>로컬에 github.io 레포지토리 생성 후, github 연결</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir leeleelee3264.github.io
+</span></span><span style="display:flex;"><span>cd leeleelee3264.github.io
+</span></span><span style="display:flex;"><span>git init 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 미리 만들어둔 github의 {username}.github.io 레포지토리에 연결한다. </span>
+</span></span><span style="display:flex;"><span>git remote add origin https://github.com/leeleelee3264@github.io.git public
+</span></span><span style="display:flex;"><span>git push </span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br> 
+<h4 id="배포-스크립트">배포 스크립트</h4>
+<p>레포지토리 2개를 모두 만들었다면 마지막으로 중요한 작업이 하나 더 남았다. 바로 <code>github.io 레포지토리</code>를 <code>블로그 레포지토리</code>의 <code>서브 모듈</code>로 추가해줘야 한다.</p>
+<p>배포를 위해서는 블로그 레포지토리에서 hugo로 블로그를 빌드해야 한다. hugo로 블로그를 빌드하면 <code>public</code>이라는 결과물 폴더가 만들어진다. 이 폴더를 github.io 레포지토리에 내보내야 Github Page로 배포가 된다.
+처음에 이 과정을 잘 이해하지 못해 많은 시간을 소요했다.</p>
+<br> 
+<blockquote>
+<p>Github Page 배포 과정</p>
+</blockquote>
+<ol>
+<li>블로그 레포지토리에서 hugo로 블로그 빌드하여 public 폴더 생성</li>
+<li>public 폴더를 github.io 레포지토리로 내보내기</li>
+<li>Github가 github.io의 내용물을 Github Page로 배포</li>
+</ol>
+<br> 
+<blockquote>
+<p>[중요!] github.io 레포지토리를 블로그 레포지토리 서브 모듈로 추가</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd my-hugo-tech-blog
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># public 폴더를 서브모듈로 추가해준다</span>
+</span></span><span style="display:flex;"><span>git submodule add https://github.com/leeleelee3264/leeleelee3264.github.io.git public</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br> 
+<p>이렇게 서브모듈로 추가를 해주면 포스팅을 작성 완료 했을 때 마다 hugo 블로그를 빌드하고 커밋하고, 서브 모듈인 github.io 레포지토리에도 커밋을 해줘야 한다.
+매번 배포를 할 때 마다 두 개의 레포지토리를 커밋하기가 번거롭기 때문에 쉘 스크립트를 작성했다.</p>
+<br> 
+<blockquote>
+<p>배포 스크립트 blog_build.sh</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#! /bin/sh
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++&#34;</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Build blog with hugo&#34;</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Author: LeeLee&#34;</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Date: 2022-09-17&#34;</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;This script is for build blog and commit to git.&#34;</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++&#34;</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>TODAY<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>date<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># build blog</span>
+</span></span><span style="display:flex;"><span>hugo -t fuji
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># commit and push build result to github.io</span>
+</span></span><span style="display:flex;"><span>cd public <span style="color:#f92672">||</span> exit
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># shellcheck disable=SC2094</span>
+</span></span><span style="display:flex;"><span>touch date.txt | date &gt;&gt; date.txt
+</span></span><span style="display:flex;"><span>git add .
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;Publish blog to github.io Date: </span>$TODAY<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>git push origin master
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># commit and push posting resource</span>
+</span></span><span style="display:flex;"><span>cd ..
+</span></span><span style="display:flex;"><span>git add .
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;Add posting resource after publishing Date: </span>$TODAY<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>git push</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br> 
+<p>이제 배포를 할 일이 있으면 작성한 쉘 스크립트를 실행하기만 하면 된다.</p>
+<blockquote>
+<p>스크립트 실행</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./blog_build.sh</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br> 
+<h1 id="읽고-싶은-기술-블로그-만들기">읽고 싶은 기술 블로그 만들기</h1>
+<p>Hugo 를 도입한 게 기술적 리팩토링이었다면 이제는 글쓰기적 리팩토링인 읽고 싶은 기술 블로그 만들기 에 대해 언급하도록 하겠다.</p>
+<br> 
+<h3 id="포스트-규칙-만들기">포스트 규칙 만들기</h3>
+<p><u>가독성 향상</u>을 위해 모든 포스트가 따라야 하는 규칙, 즉 컨벤션을 만들고 기존에 작성했던 포스트들을
+새로운 규칙을 적용하여 전면 수정을 진행했다. 결과적으로 통일감 있고, 포스트에 내용들이 번잡스럽게 담기지 않아 가독성이 많이 좋아졌다.</p>
+<br> 
+<blockquote>
+<p>규칙</p>
+</blockquote>
+<ol>
+<li>포스트 앞에는 항상 <code>1줄 summary</code>와 <code>index</code>를 작성한다.</li>
+<li>middle title, small title, image, example 사이에 적절하게 <code>br</code>를 두어 공간을 확보한다.</li>
+<li>image caption은 [Picture 1] 설명설명 식으로 작성한다.</li>
+<li>여러 줄의 코드를 쓸 때에는 Hugo의 <code>highlight</code>를 사용한다. 넘버링이 default로 되어있다.</li>
+<li>한 줄의 코드를 쓰거나 코드가 아닐 경우에 (url 등) <code>markdown code block</code>을 사용한다.</li>
+<li>link 를 할 때에는 링크에 대괄호를 써 [링크] 로 표기해 식별할 수 있도록 한다.</li>
+<li>정렬을 할 때는 1,2,3,4 보다는 <code>-</code> 을 사용하는 <code>dot</code> 정렬을 사용한다.</li>
+</ol>
+<br>
+<blockquote>
+<p>규칙을 적용해 수정한 포스트 예시</p>
+</blockquote>
+  <img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/blog/shiny.png" >
+  <figcaption align = "center">[Picture 7] 규칙 적용 포스트</figcaption>
+<br> 
+<h3 id="셀장님의-피드백">셀장님의 피드백</h3>
+<p>본격적인 글쓰기 리팩토링을 하기 전에 기존에 작성했던 포스트 중 하나를 회사의 셀장님께 피드백을 부탁드렸다. 워낙 글을 잘 쓰시는 분이라 정말 필요한 피드백을 주셨다. 셀장님의 리뷰를 십분 반영해서 완성한 포스트가 <a href="https://leeleelee3264.github.io/post/2022-08-27-digital-certificate-part-final/" target="_blank">[디지털 인증서 파헤치기 (2/2) - 심화: from CA to Chain of Trust]</a>이다.</p>
+<br> 
+<blockquote>
+<p>피드백 핵심</p>
+</blockquote>
+<ol>
+<li>제목이 명확하면서 구미를 당겨야 한다.
+<ol>
+<li>정직한 이름의 <u>Digital Certificate</u> 보다는 <u>Digital Certificate 쌩기초</u> 이런 식으로 작명한다.</li>
+</ol>
+</li>
+<li>글의 흐름이 너무 길면 읽기 힘들다.
+<ol>
+<li>길면 끊어서 여러 편으로 작성한다.</li>
+<li>웬만하면 <code>4000</code>자가 넘어가지 않도록 한다.</li>
+</ol>
+</li>
+<li>글이 너무 정보 전달만 하려 하면 안된다. <u>이야기를 한다는 느낌으로 글을 써야 한다.</u></li>
+<li>왜 이러한 주제와 목차를 다루게 되었는지 <code>배경 설명</code>을 하면 좋다.</li>
+</ol>
+<br>
+<p>모든 포스트에 통용되는 규칙을 만드는 것은 가독성 향상에 큰 도움이 된다. 하지만 이런 규칙 외에도 필요한 것은 구성이다. 결국 블로그 구성이 엉망으로 되어있으면 읽기 싫어지기 때문이다.
+셀장님의 피드백을 적극 받아드려 포스트의 구성을 수정했다. 대표적으로 <u>이야기를 한다는 느낌으로 글은 전개하기 위해 배경을 설명하는 Intro를 도입했다.</u></p>
+<br> 
+<blockquote>
+<p>Intro의 도입</p>
+</blockquote>
+  <img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/blog/intro.png" >
+  <figcaption align = "center">[Picture 8] Intro 적용 포스트 </figcaption>
+<br> 
+<h1 id="프로젝트-회고">프로젝트 회고</h1>
+<h3 id="마음의-짐을-내려놓으며">마음의 짐을 내려놓으며</h3>
+<p>막 경력을 시작하여 아무것도 모를 때 만들었던 기술 블로그라 미흡한 부분이 많았지만, 이번에 리팩토링을 거치면서 제법 보완을 해 뿌듯하다.
+매번 내 블로그에 들어올 때 마다 마음이 묘하게 무거웠는데 이제 한 결 가벼워진 기분이다. <em>리팩토링의 가장 큰 수확은 내가 쓴 글을 나중에 읽어도
+읽기 싫거나 지루하지 않다는 점이다.</em></p>
+<p>앞으로도 나뿐만 아니라 다른 사람들에게도 지루하지 않고, 나중에 생각이 나서 다시 들어와서 읽는 기술 블로그가 되도록 노력해야 겠다.</p>
+<br> 
+<h3 id="새로운-과제-조금-더-근면성실하게-포스팅-하기">새로운 과제: 조금 더 근면성실하게 포스팅 하기</h3>
+<p>2022년에는 겨우겨우 <em>12</em>개의 포스팅을 했다. 바쁘다는 핑계로 2021년보다 훨씬 못한 숫자의 포스팅을 하게 되어 안타깝다.
+포스팅의 빈도가 낮아지니 더불어 잔디도 많이 심지 못했다. 2023년에는 딱 이것의 2배인 <em>24</em>개의 포스팅을 하고, 잔디도 더 많이 심도록 노력하겠다.</p>
+<br> 
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/blog/green.png" >
+  <figcaption align = "center">[Picture 9] 듬성듬성 잔디</figcaption>
+<br> 
+<p>항상 블로그 포스팅에는 사소한 주제보다는 의미있는, 큰 규모의 글을 다뤄야 한다는 부담 때문에 더 자주 포스팅을 하지 못한다.
+앞으로는 부담을 내려두고 정말 기록을 위한 사소한 주제를 다뤄야겠다.</p>
+
+    </div>
+</article>
+
+
+
+<div class="post-comment" data-comment="utterances">
+    <span class="post-comment-notloaded">
+        <i class="iconfont icon-chatbox-ellipses-sharp"></i>&nbsp;Load comments
+    </span>
+    <script>
+        function loadComment() {
+            var commentArea = document.querySelector('.post-comment');
+            var utterancesTheme = document.body.getAttribute('data-theme');
+            if (utterancesTheme === 'auto') {
+                utterancesTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'photon-dark' :
+                    'github-light';
+            } else {
+                utterancesTheme = utterancesTheme === 'dark' ? 'photon-dark' : 'github-light';
+            }
+            var s = document.createElement('script');
+            s.src = 'https://utteranc.es/client.js';
+            s.setAttribute('repo', 'leeleelee3264\/github_io_comment');
+            s.setAttribute('issue-term', 'pathname');
+            s.setAttribute('theme', utterancesTheme);
+            s.setAttribute('crossorigin', 'anonymous');
+            s.setAttribute('async', '');
+            document.querySelector('.post-comment').appendChild(s);
+            document.querySelector('span.post-comment-notloaded').setAttribute('style', 'display: none;');
+        }
+    </script>
+</div>
+
+
+            </div>
+            <aside class="col-12 col-md-3 float-left sidebar">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://github.com/leeleelee3264" target="_blank"><span>GitHub</span></a>
+            </li>
+            
+            <li>
+                <a href="https://www.linkedin.com/in/seungmin4035/" target="_blank"><span>LinkedIn</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/backend/">Backend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/book/">Book</a>
+            </span>
+            
+            <span>
+                <a href="/tags/cheat/">Cheat</a>
+            </span>
+            
+            <span>
+                <a href="/tags/frontend/">Frontend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/general/">General</a>
+            </span>
+            
+            <span>
+                <a href="/tags/infra/">Infra</a>
+            </span>
+            
+            <span>
+                <a href="/tags/project/">Project</a>
+            </span>
+            
+        </div>
+    </div>
+    
+</aside>
+
+        </div>
+        <div class="btn">
+    <div class="btn-menu" id="btn-menu">
+        <i class="iconfont icon-grid-sharp"></i>
+    </div>
+    <div class="btn-toggle-mode">
+        <i class="iconfont icon-contrast-sharp"></i>
+    </div>
+    <div class="btn-scroll-top">
+        <i class="iconfont icon-chevron-up-circle-sharp"></i>
+    </div>
+</div>
+<aside class="sidebar-mobile" style="display: none;">
+  <div class="sidebar-wrapper">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://github.com/leeleelee3264" target="_blank"><span>GitHub</span></a>
+            </li>
+            
+            <li>
+                <a href="https://www.linkedin.com/in/seungmin4035/" target="_blank"><span>LinkedIn</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/backend/">Backend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/book/">Book</a>
+            </span>
+            
+            <span>
+                <a href="/tags/cheat/">Cheat</a>
+            </span>
+            
+            <span>
+                <a href="/tags/frontend/">Frontend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/general/">General</a>
+            </span>
+            
+            <span>
+                <a href="/tags/infra/">Infra</a>
+            </span>
+            
+            <span>
+                <a href="/tags/project/">Project</a>
+            </span>
+            
+        </div>
+    </div>
+    
+    
+    
+    
+  </div>
+</aside>
+    </main>
+
+    <footer>
+    <div class="container-lg clearfix">
+        <div class="col-12 footer">
+            
+            <span>&copy; 2020-2022
+                <a href="https://leeleelee3264.github.io/">leeleelee3264</a>
+                 | <a href="https://github.com/leeleelee3264/leeleelee3264.github.io">Source code</a> 
+                | Powered by <a href="https://github.com/dsrkafuu/hugo-theme-fuji/"
+                   target="_blank">Fuji-v2</a> &amp; <a href="https://gohugo.io/"
+                                                    target="_blank">Hugo</a> 
+            </span>
+        </div>
+    </div>
+</footer>
+
+    
+<script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/components/prism-core.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+
+
+<script defer src="/assets/js/fuji.min.js"></script>
+
+
+
+</body>
+
+</html>
