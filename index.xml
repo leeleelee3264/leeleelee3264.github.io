@@ -6,9 +6,18 @@
     <description>Recent content on dev_leelee.log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 22 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://leeleelee3264.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 26 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://leeleelee3264.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>블로그 리팩토링: Hugo 도입과 읽고 싶어지는 기술 블로그 만들기</title>
+      <title>Seminar by LeeLee - Handling Concurrent Request in Django</title>
+      <link>https://leeleelee3264.github.io/post/2022-12-26-kasa-concurrency-seminar/</link>
+      <pubDate>Mon, 26 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2022-12-26-kasa-concurrency-seminar/</guid>
+      <description>2022-11-30 사내에서 진행한 세미나 - Handling Concurrent Request in Django를 다룬다. Index Intro: 네? 저보고 세미나를 진행하라구요? 세미나 - Handling Concurrent Request in Django 세미나 회고 참고 자료 Intro: 네? 저보고 세미나를 진행하라구요? 얼마 전부터 회사에서 주니어들이 돌아가면서 세</description>
+    </item>
+    
+    <item>
+      <title>블로그 리팩토링 - Hugo 도입과 읽고 싶어지는 기술 블로그 만들기</title>
       <link>https://leeleelee3264.github.io/post/2022-12-22-tech-blog-readability/</link>
       <pubDate>Thu, 22 Dec 2022 00:00:00 +0000</pubDate>
       
@@ -26,7 +35,7 @@
     </item>
     
     <item>
-      <title>클라우드 필수 교양: 로드밸런서</title>
+      <title>클라우드 필수 교양 - 로드밸런서</title>
       <link>https://leeleelee3264.github.io/post/2022-10-24-load-balancer/</link>
       <pubDate>Mon, 24 Oct 2022 00:00:00 +0000</pubDate>
       
