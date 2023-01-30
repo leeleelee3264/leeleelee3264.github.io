@@ -8,48 +8,48 @@
     <language>en</language>
     <lastBuildDate>Mon, 26 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://leeleelee3264.github.io/tags/project/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Seminar by LeeLee - Handling Concurrent Request in Django</title>
+      <title>[Seminar] Handling concurrency in Django</title>
       <link>https://leeleelee3264.github.io/post/2022-12-26-kasa-concurrency-seminar/</link>
       <pubDate>Mon, 26 Dec 2022 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2022-12-26-kasa-concurrency-seminar/</guid>
-      <description>2022-11-30 사내에서 진행한 세미나 - Handling Concurrent Request in Django를 다룬다. Index Intro: 네? 저보고 세미나를 진행하라구요? 세미나 - Handling Concurrent Request in Django 세미나 회고 참고 자료 Intro: 네? 저보고 세미나를 진행하라구요? 얼마 전부터 회사에서 주니어들이 돌아가면서 세</description>
+      <description>Seminar for handling concurrent request in Django in Kasa 2022-11-30. Keys of handling concurrent request are 1) using queue, 2) using Django ORM, 3) using Redis. Especially in 2), Django ORM support select_or_update with @transaction.atomic. Index Intro: 네? 저보고 세미나를 진행하라구요? 세미나 - Handling Concurrent Request in Django 세미나 회고 참고 자료 Intro: 네? 저보고 세미나를 진행하라구요? 얼마 전부터 회사에서 주니어</description>
     </item>
     
     <item>
-      <title>블로그 리팩토링 - Hugo 도입과 읽고 싶어지는 기술 블로그 만들기</title>
+      <title>[Project] How to make a readable tech blog with Hugo</title>
       <link>https://leeleelee3264.github.io/post/2022-12-22-tech-blog-readability/</link>
       <pubDate>Thu, 22 Dec 2022 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2022-12-22-tech-blog-readability/</guid>
-      <description>2022-09-16 부터 2022-10-08 동안 진행한 블로그 리팩토링에 대해 다룬다. [티스토리 블로그] [Jekyll 블로그] Index Intro: 기술 블로그, 이대로 괜찮은가? Hugo 도입기 읽고 싶은 기술 블로그 만들기 프로젝트 회고 Intro: 기술 블로그, 이대로 괜찮은가? 문서화의 중요성 요즘들</description>
+      <description>Making a readable, fun, useful tech blog is not an easy job. How we can accomplish the job? This is a project for renew my tech blog from Jekyll to Hugo to make more readable blog. [티스토리 블로그] [Jekyll 블로그] Index Intro: 기술 블로그, 이대로 괜찮은가? Hugo 도입기 읽고 싶은 기술 블로그 만들기 프로젝트 회고 Intro: 기술 블로그, 이대로 괜찮</description>
     </item>
     
     <item>
-      <title>Python으로 Myinfo Oauth 클라이언트 커넥터 만들기</title>
+      <title>[Project] Building Myinfo oauth2 client with Django</title>
       <link>https://leeleelee3264.github.io/post/2022-07-23-project-myinfo-connector-python/</link>
       <pubDate>Sat, 23 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2022-07-23-project-myinfo-connector-python/</guid>
-      <description>oauth2를 사용하고 있는 Myinfo API 를 사용하는 connector client를 Python/Django로 구현한다. [github] [api document] [quick start] Index Myinfo란? 프로젝트 목표 프로젝트 구현 프로젝트 회고 Myinfo란? 싱가폴 Mydata 서비스 정부가 주도한</description>
+      <description>Building Singpass Myinfo oauth2 client with Django. At the end, check PKI digital signature in python with jwcrypto and Crypto.. [github] [api document] [quick start] Index Myinfo란? 프로젝트 목표 프로젝트 구현 프로젝트 회고 Myinfo란? 싱가폴 Mydata 서비스 정부가 주도한 Mydata 서비스가 몇 개의 나라에 있다고 하는데, 싱가폴 정부의 Sin</description>
     </item>
     
     <item>
-      <title>Python 데코레이터로 초간단 Profiler 만들기</title>
+      <title>[Project] Making simple profiler with Python decorator</title>
       <link>https://leeleelee3264.github.io/post/2022-06-30-python-profiler-decorator/</link>
       <pubDate>Wed, 29 Jun 2022 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2022-06-30-python-profiler-decorator/</guid>
-      <description>간단한 프로파일링을 할 수 있는 profiler를 Python decorator로 구현한다. Index profiler 구현 계기 profiler 구현 개선해야 하는 부분 profiler 구현 계기 Django 환경에서 unittest를 하며 간단하게 퍼포먼스를 측정하고 싶었다. 아주 간단하게 프</description>
+      <description>Making simple profiler with Python decorator to check memory performance, executed query and elapsed time. Index profiler 구현 계기 profiler 구현 개선해야 하는 부분 profiler 구현 계기 Django 환경에서 unittest를 하며 간단하게 퍼포먼스를 측정하고 싶었다. 아주 간단하게 프로파일링을 하면 되기 때문에 Middleware 같은 것은 만들지 않았다</description>
     </item>
     
     <item>
-      <title>Shell Script로 MySQL DB 전체백업 구현하기</title>
+      <title>[Project] MySQL DB full backup with shell script</title>
       <link>https://leeleelee3264.github.io/post/2021-09-09-linux-shell-db-backup/</link>
       <pubDate>Thu, 09 Sep 2021 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2021-09-09-linux-shell-db-backup/</guid>
-      <description>Shell Script 로 Mysql db 전체백업하기에 대해 다룬다. Index 백업 진행 순서 백업에 사용된 스크립트 &amp;amp; 세부 사항 개선해야 할 점과 참고자료 백업 진행 순서 Intro: 백업의 종류 SQL 백업에는 전체백업, 증분백업, 차등백업이 있다. 백업 종류에 대한 더 자세한 정보는</description>
+      <description>Implement shell script for MySQL DB full backup with mysql command options. Index 백업 진행 순서 백업에 사용된 스크립트 &amp;amp; 세부 사항 개선해야 할 점과 참고자료 백업 진행 순서 Intro: 백업의 종류 SQL 백업에는 전체백업, 증분백업, 차등백업이 있다. 백업 종류에 대한 더 자세한 정보는 이전의 포스팅</description>
     </item>
     
     <item>

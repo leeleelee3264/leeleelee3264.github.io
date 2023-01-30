@@ -8,147 +8,147 @@
     <language>en</language>
     <lastBuildDate>Mon, 26 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://leeleelee3264.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Seminar by LeeLee - Handling Concurrent Request in Django</title>
+      <title>[Seminar] Handling concurrency in Django</title>
       <link>https://leeleelee3264.github.io/post/2022-12-26-kasa-concurrency-seminar/</link>
       <pubDate>Mon, 26 Dec 2022 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2022-12-26-kasa-concurrency-seminar/</guid>
-      <description>2022-11-30 사내에서 진행한 세미나 - Handling Concurrent Request in Django를 다룬다. Index Intro: 네? 저보고 세미나를 진행하라구요? 세미나 - Handling Concurrent Request in Django 세미나 회고 참고 자료 Intro: 네? 저보고 세미나를 진행하라구요? 얼마 전부터 회사에서 주니어들이 돌아가면서 세</description>
+      <description>Seminar for handling concurrent request in Django in Kasa 2022-11-30. Keys of handling concurrent request are 1) using queue, 2) using Django ORM, 3) using Redis. Especially in 2), Django ORM support select_or_update with @transaction.atomic. Index Intro: 네? 저보고 세미나를 진행하라구요? 세미나 - Handling Concurrent Request in Django 세미나 회고 참고 자료 Intro: 네? 저보고 세미나를 진행하라구요? 얼마 전부터 회사에서 주니어</description>
     </item>
     
     <item>
-      <title>블로그 리팩토링 - Hugo 도입과 읽고 싶어지는 기술 블로그 만들기</title>
+      <title>[Project] How to make a readable tech blog with Hugo</title>
       <link>https://leeleelee3264.github.io/post/2022-12-22-tech-blog-readability/</link>
       <pubDate>Thu, 22 Dec 2022 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2022-12-22-tech-blog-readability/</guid>
-      <description>2022-09-16 부터 2022-10-08 동안 진행한 블로그 리팩토링에 대해 다룬다. [티스토리 블로그] [Jekyll 블로그] Index Intro: 기술 블로그, 이대로 괜찮은가? Hugo 도입기 읽고 싶은 기술 블로그 만들기 프로젝트 회고 Intro: 기술 블로그, 이대로 괜찮은가? 문서화의 중요성 요즘들</description>
+      <description>Making a readable, fun, useful tech blog is not an easy job. How we can accomplish the job? This is a project for renew my tech blog from Jekyll to Hugo to make more readable blog. [티스토리 블로그] [Jekyll 블로그] Index Intro: 기술 블로그, 이대로 괜찮은가? Hugo 도입기 읽고 싶은 기술 블로그 만들기 프로젝트 회고 Intro: 기술 블로그, 이대로 괜찮</description>
     </item>
     
     <item>
-      <title>[Book] Effective Python (2/10) - 리스트와 딕셔너리</title>
+      <title>[Book] Effective Python (2/10) - List &amp; Dictionary</title>
       <link>https://leeleelee3264.github.io/post/2022-10-25-effevtive-python-betterway-11-to-15/</link>
       <pubDate>Tue, 25 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2022-10-25-effevtive-python-betterway-11-to-15/</guid>
-      <description>책 [Effective Python] betterway를 11장부터 15장까지 요약한다. Index Better way 11 시퀸스를 슬라이싱하는 방법을 익혀라 Better way 12 스트라이드와 슬라이스를 한 식에 함께 사용하지 말라 Better way 13 슬라이싱보다는 나머지를 모두 잡아내는 언패킹을 사용하</description>
+      <description>Summary of Effective Python written by Breet Slatkin. This chapter covers List and Dictionary. In List, sequence slicing, unpacking. In Dictionary, get, defaultdict, missing. Index Better way 11 시퀸스를 슬라이싱하는 방법을 익혀라 Better way 12 스트라이드와 슬라이스를 한 식에 함께 사용하지 말라 Better way 13 슬라이싱보다는 나머지를 모두 잡아내는 언패킹을 사용하라 Better way 14</description>
     </item>
     
     <item>
-      <title>클라우드 필수 교양 - 로드밸런서</title>
+      <title>[Infra] Load balancer</title>
       <link>https://leeleelee3264.github.io/post/2022-10-24-load-balancer/</link>
       <pubDate>Mon, 24 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2022-10-24-load-balancer/</guid>
-      <description>로드 밸런서에 대해서 간략하게 알아본다. Index Intro: 터져버린 서버에 우아하게 대처하기 로드밸런서 (plus) 리버스 프록시 Intro: 터져버린 서버에 우아하게 대처하기 몇 년 전에 Spring Boot로 어드민 모니터링 사이트를 개발하는데 사용자 활동 데이터를 봐야</description>
+      <description>The post handles general knowledge of load balancer with concept of scale up, scale out and traffic. At the end, compares load balance to reverse proxy. Index Intro: 터져버린 서버에 우아하게 대처하기 로드밸런서 (plus) 리버스 프록시 Intro: 터져버린 서버에 우아하게 대처하기 몇 년 전에 Spring Boot로 어드민 모니터링 사이트를 개발하는데 사용자</description>
     </item>
     
     <item>
-      <title>디지털 인증서 파헤치기 (2/2) - 심화: from CA to Chain of Trust</title>
+      <title>[Infra] Digital certificate (2/2) - Advanced</title>
       <link>https://leeleelee3264.github.io/post/2022-08-27-digital-certificate-part-final/</link>
       <pubDate>Sat, 27 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2022-08-27-digital-certificate-part-final/</guid>
-      <description>CA와 CA에서 Digital Certificate을 발급받아서 적용하는 방법에 대해 설명한다. Intro [디지털 인증서 쌩기초 파헤치기] 에서 인증서의 종류, PKI, X.509 와 같은 디지털 인증서의 기초에 대해서 알아봤다. 기초에 대해서 어느 정도 파악했</description>
+      <description>The post handle advanced concepts of digital certificate. Such as certificate Authority, root ca, ca bundle, chain of trust. Intro [디지털 인증서 쌩기초 파헤치기] 에서 인증서의 종류, PKI, X.509 와 같은 디지털 인증서의 기초에 대해서 알아봤다. 기초에 대해서 어느 정도 파악했다면 한 단계 더 나아가서 디지털 인증서를 어떻게</description>
     </item>
     
     <item>
-      <title>Python으로 Myinfo Oauth 클라이언트 커넥터 만들기</title>
+      <title>[Project] Building Myinfo oauth2 client with Django</title>
       <link>https://leeleelee3264.github.io/post/2022-07-23-project-myinfo-connector-python/</link>
       <pubDate>Sat, 23 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2022-07-23-project-myinfo-connector-python/</guid>
-      <description>oauth2를 사용하고 있는 Myinfo API 를 사용하는 connector client를 Python/Django로 구현한다. [github] [api document] [quick start] Index Myinfo란? 프로젝트 목표 프로젝트 구현 프로젝트 회고 Myinfo란? 싱가폴 Mydata 서비스 정부가 주도한</description>
+      <description>Building Singpass Myinfo oauth2 client with Django. At the end, check PKI digital signature in python with jwcrypto and Crypto.. [github] [api document] [quick start] Index Myinfo란? 프로젝트 목표 프로젝트 구현 프로젝트 회고 Myinfo란? 싱가폴 Mydata 서비스 정부가 주도한 Mydata 서비스가 몇 개의 나라에 있다고 하는데, 싱가폴 정부의 Sin</description>
     </item>
     
     <item>
-      <title>Python 데코레이터로 초간단 Profiler 만들기</title>
+      <title>[Project] Making simple profiler with Python decorator</title>
       <link>https://leeleelee3264.github.io/post/2022-06-30-python-profiler-decorator/</link>
       <pubDate>Wed, 29 Jun 2022 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2022-06-30-python-profiler-decorator/</guid>
-      <description>간단한 프로파일링을 할 수 있는 profiler를 Python decorator로 구현한다. Index profiler 구현 계기 profiler 구현 개선해야 하는 부분 profiler 구현 계기 Django 환경에서 unittest를 하며 간단하게 퍼포먼스를 측정하고 싶었다. 아주 간단하게 프</description>
+      <description>Making simple profiler with Python decorator to check memory performance, executed query and elapsed time. Index profiler 구현 계기 profiler 구현 개선해야 하는 부분 profiler 구현 계기 Django 환경에서 unittest를 하며 간단하게 퍼포먼스를 측정하고 싶었다. 아주 간단하게 프로파일링을 하면 되기 때문에 Middleware 같은 것은 만들지 않았다</description>
     </item>
     
     <item>
-      <title>디지털 인증서 파헤치기 (1/2) - 쌩기초</title>
+      <title>[Infra] Digital certificate (1/2) - Very basic</title>
       <link>https://leeleelee3264.github.io/post/2022-06-15-digital-certificate-part-one/</link>
       <pubDate>Wed, 15 Jun 2022 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2022-06-15-digital-certificate-part-one/</guid>
-      <description>PKI의 certificate에 대해서 다룬다. Index 인증서에 대해 잘못 알고 있던 점들 인증서의 종류 인증서와 관련된 개념 인증서에 대해 잘못 알고 있던 점들 인증서의 종류 적절하지 않은 인증서 분류 web에서 HTTPS 통신을 하기 위해 사용하</description>
+      <description>The post handle very basic concepts of digital certificate. Such as CSR, SSL certificate, code signing certificate, FQDN, PKI, X.509. Index 인증서에 대해 잘못 알고 있던 점들 인증서의 종류 인증서와 관련된 개념 인증서에 대해 잘못 알고 있던 점들 인증서의 종류 적절하지 않은 인증서 분류 web에서 HTTPS 통신을 하기 위해 사용하는 web s</description>
     </item>
     
     <item>
-      <title>[Book] Effective Python (1/10) - 파이썬답게 생각하기</title>
+      <title>[Book] Effective Python (1/10) - Think like Python</title>
       <link>https://leeleelee3264.github.io/post/2022-05-06-effective-python-betteryway-1-to5/</link>
       <pubDate>Fri, 06 May 2022 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2022-05-06-effective-python-betteryway-1-to5/</guid>
-      <description>책 [Effective Python] better way를 1장부터 10장까지 요약한다. Index Better way 1 사용중인 파이썬의 버전을 알아두라 Better way 2 PEP8 스타일 가이드를 따르라 Better way 3 bytes와 str의 차이를 알아두라 Better way 4 C 스타일 형식 문자열을 str.format과 쓰</description>
+      <description>Summary of Effective Python written by Breet Slatkin. This chapter covers PEP8, bytes and str, f formatter, range, enumerate, zip. Index Better way 1 사용중인 파이썬의 버전을 알아두라 Better way 2 PEP8 스타일 가이드를 따르라 Better way 3 bytes와 str의 차이를 알아두라 Better way 4 C 스타일 형식 문자열을 str.format과 쓰기보</description>
     </item>
     
     <item>
-      <title>[Book] Introducing Python 정리 (1/2)</title>
+      <title>[Book] Introducing Python (1/2)</title>
       <link>https://leeleelee3264.github.io/post/2022-03-08-introducing-python-part-one/</link>
       <pubDate>Tue, 08 Mar 2022 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2022-03-08-introducing-python-part-one/</guid>
-      <description>책 [Introducing Python] 절반을 요약한다. Index 파이 맛보기 파이 재료: 숫자, 문자열 변수 파이 채우기: 리스트, 튜플, 딕셔너리, 셋 파이 크러스트: 코드 구조 파이 포장하기: 모듈, 패키지, 프로그램 파이 맛보기 파이썬은 인터프리터 언어다. 파이썬이</description>
+      <description>Summary of Introducing python written by Bill Lubanovic. It covers data type list, tuple, dictionary and set. Also covers code structure and module, package. Index 파이 맛보기 파이 재료: 숫자, 문자열 변수 파이 채우기: 리스트, 튜플, 딕셔너리, 셋 파이 크러스트: 코드 구조 파이 포장하기: 모듈, 패키지, 프로그램 파이 맛보기 파이썬은</description>
     </item>
     
     <item>
-      <title>터미널에서 여러 개의 깃허브 계정 쓰는 방법</title>
+      <title>[General] Using multiple Github account in terminal</title>
       <link>https://leeleelee3264.github.io/post/2022-01-12-git-multi-account/</link>
       <pubDate>Wed, 12 Jan 2022 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2022-01-12-git-multi-account/</guid>
-      <description>터미널에서 여러 개의 깃허브 계정을 사용하는 방법을 다룹니다. Index 깃허브 계정 여러 개 세팅하기 매번 해줘야 하는 작업들 레퍼런스 깃허브 게정 여러 개 세팅하기 디렉터리 세팅하기 복수의 깃허브 계정을 사용 할 때, 각 계정들의 root source direc</description>
+      <description>This post in about how to use Github multiple account in terminal with SSH key, ssh config and ssh-keygen Index 깃허브 계정 여러 개 세팅하기 매번 해줘야 하는 작업들 레퍼런스 깃허브 게정 여러 개 세팅하기 디렉터리 세팅하기 복수의 깃허브 계정을 사용 할 때, 각 계정들의 root source directory를 나누어</description>
     </item>
     
     <item>
-      <title>2021 백엔드 개발자 인터뷰 (2/2) - Python, General</title>
+      <title>[General] 2021 Backend developer job interview (2/2) - Python, General</title>
       <link>https://leeleelee3264.github.io/post/2022-01-01-interview-python/</link>
       <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2022-01-01-interview-python/</guid>
-      <description>2021 백엔드 엔지니어 인터뷰의 면접질문에 대해서 다룹니다. Index Python DevOps 개발 전반 상식 Python 파이썬 쓰레드 파이썬 쓰레드에 대해 아는 점은 파이썬 자체에서 쓰레드를 지원하는 것은 아니고, 운영체제에서 제공하는 쓰레드를 사용한다는 것과, 쓰레드</description>
+      <description>Handling 2021 backend developer job interview question with python and general knowledge. In Python, thread, concurrency and parallelism, Django and ORM. In general, DDD architecture, DAO, DTO and Entity, request method. Index Python DevOps 개발 전반 상식 Python 파이썬 쓰레드 파이썬 쓰레드에 대해 아는 점은 파이썬 자체에서 쓰레드를 지원하는 것은 아니고, 운영체제에서 제공하는 쓰레드를 사용한다는</description>
     </item>
     
     <item>
-      <title>2021 백엔드 개발자 인터뷰 (1/2) - Java</title>
+      <title>[General] 2021 Backend developer job interview (1/2) - Java</title>
       <link>https://leeleelee3264.github.io/post/2021-12-02-interview-java/</link>
       <pubDate>Thu, 02 Dec 2021 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2021-12-02-interview-java/</guid>
-      <description>2021 백엔드 엔지니어 인터뷰의 면접질문에 대해서 다룹니다. Index Intro 기술면접 회고 Java Intro 10월 달 부터 이직을 준비하기 시작하며 Resume 와 Cover Letter 를 썼고, 11월 달에는 면접을 보러 다녔다. 대부분의 면접들이 몇 단계로 이루어져있었는데 기술 면접에</description>
+      <description>Handling 2021 backend developer job interview question with Java. Questions for Spring boot, JDBC, serializer, interface and abstract class, DI and IOC, static. Index Intro 기술면접 회고 Java Intro 10월 달 부터 이직을 준비하기 시작하며 Resume 와 Cover Letter 를 썼고, 11월 달에는 면접을 보러 다녔다. 대부분의 면접들이 몇 단계로 이루어져있었는데 기술 면접에서 면</description>
     </item>
     
     <item>
-      <title>Shell Script로 MySQL DB 전체백업 구현하기</title>
+      <title>[Project] MySQL DB full backup with shell script</title>
       <link>https://leeleelee3264.github.io/post/2021-09-09-linux-shell-db-backup/</link>
       <pubDate>Thu, 09 Sep 2021 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2021-09-09-linux-shell-db-backup/</guid>
-      <description>Shell Script 로 Mysql db 전체백업하기에 대해 다룬다. Index 백업 진행 순서 백업에 사용된 스크립트 &amp;amp; 세부 사항 개선해야 할 점과 참고자료 백업 진행 순서 Intro: 백업의 종류 SQL 백업에는 전체백업, 증분백업, 차등백업이 있다. 백업 종류에 대한 더 자세한 정보는</description>
+      <description>Implement shell script for MySQL DB full backup with mysql command options. Index 백업 진행 순서 백업에 사용된 스크립트 &amp;amp; 세부 사항 개선해야 할 점과 참고자료 백업 진행 순서 Intro: 백업의 종류 SQL 백업에는 전체백업, 증분백업, 차등백업이 있다. 백업 종류에 대한 더 자세한 정보는 이전의 포스팅</description>
     </item>
     
     <item>
-      <title>MySQL 스터디 (5/5) - Backup</title>
+      <title>[Infra] MySQL Study (5/5) - Backup</title>
       <link>https://leeleelee3264.github.io/post/2021-07-21-mysql-backup/</link>
       <pubDate>Wed, 21 Jul 2021 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2021-07-21-mysql-backup/</guid>
-      <description>SQL 백업 종류에 대해 다룬다. Index 언제 DB 백업을 해야 하나? 백업 개념 MySQL의 백업 커맨드 Linux DB Migration 언제 DB 백업을 해야 하나? 백업의 용도 내가 실무에서 접할 수 있는 디비 백업의 용도는 2가지가 정도이다. (보관) 데이터 유실을 막기 위해</description>
+      <description>Handles MySQL backup: Full backup, differential backup, incremental backup. Index 언제 DB 백업을 해야 하나? 백업 개념 MySQL의 백업 커맨드 Linux DB Migration 언제 DB 백업을 해야 하나? 백업의 용도 내가 실무에서 접할 수 있는 디비 백업의 용도는 2가지가 정도이다. (보관) 데이터 유실을 막기 위해 서비스</description>
     </item>
     
     <item>
-      <title>MySQL 스터디 (4/5) - Join &amp; Join Set</title>
+      <title>MySQL Study (4/5) - Join &amp; Join Set</title>
       <link>https://leeleelee3264.github.io/post/2021-07-14-mysql-history-of-join-and-join-set/</link>
       <pubDate>Wed, 14 Jul 2021 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2021-07-14-mysql-history-of-join-and-join-set/</guid>
-      <description>MySQL의 Join &amp;amp; Join Set에 대해서 다룬다. Index History of Join Join Set Reference 리뷰 후에 알게된 부분들 비등가 조인. Oracle에서는 지원을 하는데 Mysql이 지원을 하는지 모르겠다. 일반 조인이랑 비등가 조인 쿼리를 직접 짜서 결과를 보고 비교</description>
+      <description>Handles MySQL join &amp;amp; join set: Inner join, left join, right join and full outer join. Index History of Join Join Set Reference 리뷰 후에 알게된 부분들 비등가 조인. Oracle에서는 지원을 하는데 Mysql이 지원을 하는지 모르겠다. 일반 조인이랑 비등가 조인 쿼리를 직접 짜서 결과를 보고 비교해야 할 것</description>
     </item>
     
     <item>

@@ -8,48 +8,48 @@
     <language>en</language>
     <lastBuildDate>Mon, 24 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://leeleelee3264.github.io/tags/infra/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>클라우드 필수 교양 - 로드밸런서</title>
+      <title>[Infra] Load balancer</title>
       <link>https://leeleelee3264.github.io/post/2022-10-24-load-balancer/</link>
       <pubDate>Mon, 24 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2022-10-24-load-balancer/</guid>
-      <description>로드 밸런서에 대해서 간략하게 알아본다. Index Intro: 터져버린 서버에 우아하게 대처하기 로드밸런서 (plus) 리버스 프록시 Intro: 터져버린 서버에 우아하게 대처하기 몇 년 전에 Spring Boot로 어드민 모니터링 사이트를 개발하는데 사용자 활동 데이터를 봐야</description>
+      <description>The post handles general knowledge of load balancer with concept of scale up, scale out and traffic. At the end, compares load balance to reverse proxy. Index Intro: 터져버린 서버에 우아하게 대처하기 로드밸런서 (plus) 리버스 프록시 Intro: 터져버린 서버에 우아하게 대처하기 몇 년 전에 Spring Boot로 어드민 모니터링 사이트를 개발하는데 사용자</description>
     </item>
     
     <item>
-      <title>디지털 인증서 파헤치기 (2/2) - 심화: from CA to Chain of Trust</title>
+      <title>[Infra] Digital certificate (2/2) - Advanced</title>
       <link>https://leeleelee3264.github.io/post/2022-08-27-digital-certificate-part-final/</link>
       <pubDate>Sat, 27 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2022-08-27-digital-certificate-part-final/</guid>
-      <description>CA와 CA에서 Digital Certificate을 발급받아서 적용하는 방법에 대해 설명한다. Intro [디지털 인증서 쌩기초 파헤치기] 에서 인증서의 종류, PKI, X.509 와 같은 디지털 인증서의 기초에 대해서 알아봤다. 기초에 대해서 어느 정도 파악했</description>
+      <description>The post handle advanced concepts of digital certificate. Such as certificate Authority, root ca, ca bundle, chain of trust. Intro [디지털 인증서 쌩기초 파헤치기] 에서 인증서의 종류, PKI, X.509 와 같은 디지털 인증서의 기초에 대해서 알아봤다. 기초에 대해서 어느 정도 파악했다면 한 단계 더 나아가서 디지털 인증서를 어떻게</description>
     </item>
     
     <item>
-      <title>디지털 인증서 파헤치기 (1/2) - 쌩기초</title>
+      <title>[Infra] Digital certificate (1/2) - Very basic</title>
       <link>https://leeleelee3264.github.io/post/2022-06-15-digital-certificate-part-one/</link>
       <pubDate>Wed, 15 Jun 2022 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2022-06-15-digital-certificate-part-one/</guid>
-      <description>PKI의 certificate에 대해서 다룬다. Index 인증서에 대해 잘못 알고 있던 점들 인증서의 종류 인증서와 관련된 개념 인증서에 대해 잘못 알고 있던 점들 인증서의 종류 적절하지 않은 인증서 분류 web에서 HTTPS 통신을 하기 위해 사용하</description>
+      <description>The post handle very basic concepts of digital certificate. Such as CSR, SSL certificate, code signing certificate, FQDN, PKI, X.509. Index 인증서에 대해 잘못 알고 있던 점들 인증서의 종류 인증서와 관련된 개념 인증서에 대해 잘못 알고 있던 점들 인증서의 종류 적절하지 않은 인증서 분류 web에서 HTTPS 통신을 하기 위해 사용하는 web s</description>
     </item>
     
     <item>
-      <title>MySQL 스터디 (5/5) - Backup</title>
+      <title>[Infra] MySQL Study (5/5) - Backup</title>
       <link>https://leeleelee3264.github.io/post/2021-07-21-mysql-backup/</link>
       <pubDate>Wed, 21 Jul 2021 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2021-07-21-mysql-backup/</guid>
-      <description>SQL 백업 종류에 대해 다룬다. Index 언제 DB 백업을 해야 하나? 백업 개념 MySQL의 백업 커맨드 Linux DB Migration 언제 DB 백업을 해야 하나? 백업의 용도 내가 실무에서 접할 수 있는 디비 백업의 용도는 2가지가 정도이다. (보관) 데이터 유실을 막기 위해</description>
+      <description>Handles MySQL backup: Full backup, differential backup, incremental backup. Index 언제 DB 백업을 해야 하나? 백업 개념 MySQL의 백업 커맨드 Linux DB Migration 언제 DB 백업을 해야 하나? 백업의 용도 내가 실무에서 접할 수 있는 디비 백업의 용도는 2가지가 정도이다. (보관) 데이터 유실을 막기 위해 서비스</description>
     </item>
     
     <item>
-      <title>MySQL 스터디 (4/5) - Join &amp; Join Set</title>
+      <title>MySQL Study (4/5) - Join &amp; Join Set</title>
       <link>https://leeleelee3264.github.io/post/2021-07-14-mysql-history-of-join-and-join-set/</link>
       <pubDate>Wed, 14 Jul 2021 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2021-07-14-mysql-history-of-join-and-join-set/</guid>
-      <description>MySQL의 Join &amp;amp; Join Set에 대해서 다룬다. Index History of Join Join Set Reference 리뷰 후에 알게된 부분들 비등가 조인. Oracle에서는 지원을 하는데 Mysql이 지원을 하는지 모르겠다. 일반 조인이랑 비등가 조인 쿼리를 직접 짜서 결과를 보고 비교</description>
+      <description>Handles MySQL join &amp;amp; join set: Inner join, left join, right join and full outer join. Index History of Join Join Set Reference 리뷰 후에 알게된 부분들 비등가 조인. Oracle에서는 지원을 하는데 Mysql이 지원을 하는지 모르겠다. 일반 조인이랑 비등가 조인 쿼리를 직접 짜서 결과를 보고 비교해야 할 것</description>
     </item>
     
     <item>

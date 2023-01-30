@@ -8,30 +8,30 @@
     <language>en</language>
     <lastBuildDate>Tue, 25 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://leeleelee3264.github.io/tags/book/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>[Book] Effective Python (2/10) - 리스트와 딕셔너리</title>
+      <title>[Book] Effective Python (2/10) - List &amp; Dictionary</title>
       <link>https://leeleelee3264.github.io/post/2022-10-25-effevtive-python-betterway-11-to-15/</link>
       <pubDate>Tue, 25 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2022-10-25-effevtive-python-betterway-11-to-15/</guid>
-      <description>책 [Effective Python] betterway를 11장부터 15장까지 요약한다. Index Better way 11 시퀸스를 슬라이싱하는 방법을 익혀라 Better way 12 스트라이드와 슬라이스를 한 식에 함께 사용하지 말라 Better way 13 슬라이싱보다는 나머지를 모두 잡아내는 언패킹을 사용하</description>
+      <description>Summary of Effective Python written by Breet Slatkin. This chapter covers List and Dictionary. In List, sequence slicing, unpacking. In Dictionary, get, defaultdict, missing. Index Better way 11 시퀸스를 슬라이싱하는 방법을 익혀라 Better way 12 스트라이드와 슬라이스를 한 식에 함께 사용하지 말라 Better way 13 슬라이싱보다는 나머지를 모두 잡아내는 언패킹을 사용하라 Better way 14</description>
     </item>
     
     <item>
-      <title>[Book] Effective Python (1/10) - 파이썬답게 생각하기</title>
+      <title>[Book] Effective Python (1/10) - Think like Python</title>
       <link>https://leeleelee3264.github.io/post/2022-05-06-effective-python-betteryway-1-to5/</link>
       <pubDate>Fri, 06 May 2022 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2022-05-06-effective-python-betteryway-1-to5/</guid>
-      <description>책 [Effective Python] better way를 1장부터 10장까지 요약한다. Index Better way 1 사용중인 파이썬의 버전을 알아두라 Better way 2 PEP8 스타일 가이드를 따르라 Better way 3 bytes와 str의 차이를 알아두라 Better way 4 C 스타일 형식 문자열을 str.format과 쓰</description>
+      <description>Summary of Effective Python written by Breet Slatkin. This chapter covers PEP8, bytes and str, f formatter, range, enumerate, zip. Index Better way 1 사용중인 파이썬의 버전을 알아두라 Better way 2 PEP8 스타일 가이드를 따르라 Better way 3 bytes와 str의 차이를 알아두라 Better way 4 C 스타일 형식 문자열을 str.format과 쓰기보</description>
     </item>
     
     <item>
-      <title>[Book] Introducing Python 정리 (1/2)</title>
+      <title>[Book] Introducing Python (1/2)</title>
       <link>https://leeleelee3264.github.io/post/2022-03-08-introducing-python-part-one/</link>
       <pubDate>Tue, 08 Mar 2022 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2022-03-08-introducing-python-part-one/</guid>
-      <description>책 [Introducing Python] 절반을 요약한다. Index 파이 맛보기 파이 재료: 숫자, 문자열 변수 파이 채우기: 리스트, 튜플, 딕셔너리, 셋 파이 크러스트: 코드 구조 파이 포장하기: 모듈, 패키지, 프로그램 파이 맛보기 파이썬은 인터프리터 언어다. 파이썬이</description>
+      <description>Summary of Introducing python written by Bill Lubanovic. It covers data type list, tuple, dictionary and set. Also covers code structure and module, package. Index 파이 맛보기 파이 재료: 숫자, 문자열 변수 파이 채우기: 리스트, 튜플, 딕셔너리, 셋 파이 크러스트: 코드 구조 파이 포장하기: 모듈, 패키지, 프로그램 파이 맛보기 파이썬은</description>
     </item>
     
     <item>
