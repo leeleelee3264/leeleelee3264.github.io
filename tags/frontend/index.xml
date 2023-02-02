@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Frontend on dev_leelee.log</title>
+    <title>Frontend on leelee.log</title>
     <link>https://leeleelee3264.github.io/tags/frontend/</link>
-    <description>Recent content in Frontend on dev_leelee.log</description>
+    <description>Recent content in Frontend on leelee.log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sun, 25 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://leeleelee3264.github.io/tags/frontend/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>(en) Divide Layout in Thymeleaf</title>
+      <title>[Frontend] (en) How to divide Layout in Thymeleaf</title>
       <link>https://leeleelee3264.github.io/post/2020-10-25-front-thymeleaf-layout/</link>
       <pubDate>Sun, 25 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2020-10-25-front-thymeleaf-layout/</guid>
-      <description>Divide layout in thymeleaf. Index Trouble with not dividend html layout Divide layout Outro Trouble with not dividend html layout How do I feel about not divide html layout. Suffocating with 2000 line! At first, I didn&amp;rsquo;t know the importance about splitting html and making layout. But when I saw 2000 line html files with so many duplicated code (mostly nav, header, side-bar) I felt like I should change my mind. In my opinion, the good things about such work are &amp;hellip; Pros in dividend html layout I don&amp;rsquo;t have to rewrite every header, footer, side-bar (AKA general frame of</description>
+      <description>Handles dividing layout in thymeleaf. Index Trouble with not dividend html layout Divide layout Outro Trouble with not dividend html layout How do I feel about not divide html layout. Suffocating with 2000 line! At first, I didn&amp;rsquo;t know the importance about splitting html and making layout. But when I saw 2000 line html files with so many duplicated code (mostly nav, header, side-bar) I felt like I should change my mind. In my opinion, the good things about such work are &amp;hellip; Pros in dividend html layout I don&amp;rsquo;t have to rewrite every header, footer, side-bar (AKA general frame</description>
     </item>
     
     <item>
-      <title>(en) Implement Drag and Drop to Upload File</title>
+      <title>[Frontend] (en) How to implement drag and drop?</title>
       <link>https://leeleelee3264.github.io/post/2020-10-08-front-dropdown-file/</link>
       <pubDate>Thu, 08 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2020-10-08-front-dropdown-file/</guid>
-      <description>Implement Drag and Drop to upload file
+      <description>Implement drag and drop to upload file.
 Index
 Intro Implement Drag and Drop Intro Upload file with more action! Few days ago, I had to make a function that is about taking excel file from client side and reading it to save to our database. I usually go as simple as possible in terms of HTML/CSS, but this time I did some research and work!
 Instead of using basic file chose button, dragging a file and dropping in to a box. I was very happy when finishing these process because I thought it&amp;rsquo;s quite user friendly interface.

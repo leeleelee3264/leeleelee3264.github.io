@@ -9,30 +9,30 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta http-equiv="Cache-Control" content="no-transform" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
-<meta name="generator" content="Hugo 0.102.3" />
+<meta name="generator" content="Hugo 0.101.0" />
 
 
 <link rel="shortcut icon" href="https://raw.githubusercontent.com/leeleelee3264/twitter_project/master/favicon.ico" />
 
 
 
-<title>MySQL 스터디 (1/5) - Index - dev_leelee.log</title>
+<title>[Infra] MySQL Study (1/5) - Index - leelee.log</title>
 
 
 <meta name="author" content="leeleelee3264" />
 
 
-<meta name="description" content="MySQL Index에 대해서 다룬다." />
+<meta name="description" content="Handles MySQL Index: clustered, non-clustered structure and algorithm. B-Tree, R-Tree. Side effect of index." />
 
 
 <meta name="keywords" content="Infra" />
 
 
-<meta property="og:title" content="MySQL 스터디 (1/5) - Index" />
-<meta name="twitter:title" content="MySQL 스터디 (1/5) - Index" />
+<meta property="og:title" content="[Infra] MySQL Study (1/5) - Index" />
+<meta name="twitter:title" content="[Infra] MySQL Study (1/5) - Index" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://leeleelee3264.github.io/post/2021-06-21-mysql-index/" /><meta property="og:description" content="MySQL Index에 대해서 다룬다." />
-<meta name="twitter:description" content="MySQL Index에 대해서 다룬다." /><meta property="og:image" content="https://leeleelee3264.github.io/static/img/og.png" />
+<meta property="og:url" content="https://leeleelee3264.github.io/post/2021-06-21-mysql-index/" /><meta property="og:description" content="Handles MySQL Index: clustered, non-clustered structure and algorithm. B-Tree, R-Tree. Side effect of index." />
+<meta name="twitter:description" content="Handles MySQL Index: clustered, non-clustered structure and algorithm. B-Tree, R-Tree. Side effect of index." /><meta property="og:image" content="https://leeleelee3264.github.io/static/img/og.png" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="https://leeleelee3264.github.io/static/img/og.png" /><meta property="article:published_time" content="2021-06-21T00:00:00+00:00" /><meta property="article:modified_time" content="2021-06-21T00:00:00+00:00" />
 
@@ -84,9 +84,7 @@
     <header>
     <div class="container-lg clearfix">
         <div class="col-12 header">
-            <a class="title-main" href="https://leeleelee3264.github.io/">dev_leelee.log</a>
-            
-            <span class="title-sub">Logfile of Developer LeeLee</span>
+            <a class="title-main" href="https://leeleelee3264.github.io/">leelee.log</a>
             
         </div>
     </div>
@@ -100,12 +98,12 @@
 <article>
     
     <h2 class="post-item post-title">
-        <a href="https://leeleelee3264.github.io/post/2021-06-21-mysql-index/">MySQL 스터디 (1/5) - Index</a>
+        <a href="https://leeleelee3264.github.io/post/2021-06-21-mysql-index/">[Infra] MySQL Study (1/5) - Index</a>
     </h2>
     <div class="post-item post-meta">
         <span><i class="iconfont icon-today-sharp"></i>&nbsp;2021-06-21</span>
 
-<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;2394 words</span>
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;2405 words</span>
 
 <span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/infra">Infra</a>&nbsp;</span>
 
@@ -115,7 +113,7 @@
         <br>
 <br> 
 <blockquote>
-<p>Summary of post</p>
+<p>Handles MySQL Index: clustered, non-clustered structure and algorithm. B-Tree, R-Tree. Side effect of index.</p>
 </blockquote>
 <br> 
 <p><strong>Index</strong></p>

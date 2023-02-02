@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on dev_leelee.log</title>
+    <title>Posts on leelee.log</title>
     <link>https://leeleelee3264.github.io/post/</link>
-    <description>Recent content in Posts on dev_leelee.log</description>
+    <description>Recent content in Posts on leelee.log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Mon, 26 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://leeleelee3264.github.io/post/index.xml" rel="self" type="application/rss+xml" />
@@ -13,11 +13,11 @@
       <pubDate>Mon, 26 Dec 2022 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2022-12-26-kasa-concurrency-seminar/</guid>
-      <description>Seminar for handling concurrent request in Django in Kasa 2022-11-30. Keys of handling concurrent request are 1) using queue, 2) using Django ORM, 3) using Redis. Especially in 2), Django ORM support select_or_update with @transaction.atomic. Index Intro: 네? 저보고 세미나를 진행하라구요? 세미나 - Handling Concurrent Request in Django 세미나 회고 참고 자료 Intro: 네? 저보고 세미나를 진행하라구요? 얼마 전부터 회사에서 주니어</description>
+      <description>Seminar for handling concurrent request in Django in Kasa 2022-11-30. Index Intro: 네? 저보고 세미나를 진행하라구요? 세미나 - Handling Concurrent Request in Django 세미나 회고 참고 자료 Intro: 네? 저보고 세미나를 진행하라구요? 얼마 전부터 회사에서 주니어들이 돌아가면서 세미나를 진행하고 있었다. 내 차례가 올 것</description>
     </item>
     
     <item>
-      <title>[Project] How to make a readable tech blog with Hugo</title>
+      <title>[Project] How to make a readable tech blog with Hugo?</title>
       <link>https://leeleelee3264.github.io/post/2022-12-22-tech-blog-readability/</link>
       <pubDate>Thu, 22 Dec 2022 00:00:00 +0000</pubDate>
       
@@ -31,11 +31,11 @@
       <pubDate>Tue, 25 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2022-10-25-effevtive-python-betterway-11-to-15/</guid>
-      <description>Summary of Effective Python written by Breet Slatkin. This chapter covers List and Dictionary. In List, sequence slicing, unpacking. In Dictionary, get, defaultdict, missing. Index Better way 11 시퀸스를 슬라이싱하는 방법을 익혀라 Better way 12 스트라이드와 슬라이스를 한 식에 함께 사용하지 말라 Better way 13 슬라이싱보다는 나머지를 모두 잡아내는 언패킹을 사용하라 Better way 14</description>
+      <description>Summary of Effective Python written by Breet Slatkin. In this post, we covers List &amp;amp; Dictionary. Index Better way 11 시퀸스를 슬라이싱하는 방법을 익혀라 Better way 12 스트라이드와 슬라이스를 한 식에 함께 사용하지 말라 Better way 13 슬라이싱보다는 나머지를 모두 잡아내는 언패킹을 사용하라 Better way 14 복잡한 기준을 사용</description>
     </item>
     
     <item>
-      <title>[Infra] Load balancer</title>
+      <title>[Infra] What is Load balancer</title>
       <link>https://leeleelee3264.github.io/post/2022-10-24-load-balancer/</link>
       <pubDate>Mon, 24 Oct 2022 00:00:00 +0000</pubDate>
       
@@ -53,7 +53,7 @@
     </item>
     
     <item>
-      <title>[Project] Building Myinfo oauth2 client with Django</title>
+      <title>[Project] How to build Myinfo oauth2 client with Django</title>
       <link>https://leeleelee3264.github.io/post/2022-07-23-project-myinfo-connector-python/</link>
       <pubDate>Sat, 23 Jul 2022 00:00:00 +0000</pubDate>
       
@@ -112,7 +112,7 @@
       <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2022-01-01-interview-python/</guid>
-      <description>Handling 2021 backend developer job interview question with python and general knowledge. In Python, thread, concurrency and parallelism, Django and ORM. In general, DDD architecture, DAO, DTO and Entity, request method. Index Python DevOps 개발 전반 상식 Python 파이썬 쓰레드 파이썬 쓰레드에 대해 아는 점은 파이썬 자체에서 쓰레드를 지원하는 것은 아니고, 운영체제에서 제공하는 쓰레드를 사용한다는</description>
+      <description>Handling 2021 backend developer job interview question with python and general knowledge. Index Python DevOps 개발 전반 상식 Python 파이썬 쓰레드 파이썬 쓰레드에 대해 아는 점은 파이썬 자체에서 쓰레드를 지원하는 것은 아니고, 운영체제에서 제공하는 쓰레드를 사용한다는 것과, 쓰레드가 있다고 해도 한 타임에 한 쓰레</description>
     </item>
     
     <item>
@@ -121,7 +121,7 @@
       <pubDate>Thu, 02 Dec 2021 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2021-12-02-interview-java/</guid>
-      <description>Handling 2021 backend developer job interview question with Java. Questions for Spring boot, JDBC, serializer, interface and abstract class, DI and IOC, static. Index Intro 기술면접 회고 Java Intro 10월 달 부터 이직을 준비하기 시작하며 Resume 와 Cover Letter 를 썼고, 11월 달에는 면접을 보러 다녔다. 대부분의 면접들이 몇 단계로 이루어져있었는데 기술 면접에서 면</description>
+      <description>Handling 2021 backend developer job interview question with Java. Index Intro 기술면접 회고 Java Intro 10월 달 부터 이직을 준비하기 시작하며 Resume 와 Cover Letter 를 썼고, 11월 달에는 면접을 보러 다녔다. 대부분의 면접들이 몇 단계로 이루어져있었는데 기술 면접에서 면접관들이 물어봤던 질문들을 기록</description>
     </item>
     
     <item>
@@ -143,7 +143,7 @@
     </item>
     
     <item>
-      <title>MySQL Study (4/5) - Join &amp; Join Set</title>
+      <title>[Infra] MySQL Study (4/5) - Join &amp; Join Set</title>
       <link>https://leeleelee3264.github.io/post/2021-07-14-mysql-history-of-join-and-join-set/</link>
       <pubDate>Wed, 14 Jul 2021 00:00:00 +0000</pubDate>
       
@@ -152,132 +152,139 @@
     </item>
     
     <item>
-      <title>MySQL 스터디 (3/5) - String Function &amp; Referential Integrity</title>
+      <title>[Infra] MySQL Study (3/5) - String Function &amp; Referential Integrity</title>
       <link>https://leeleelee3264.github.io/post/2021-07-08-mysql-stringfunction-and-refrential-integrity/</link>
       <pubDate>Thu, 08 Jul 2021 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2021-07-08-mysql-stringfunction-and-refrential-integrity/</guid>
-      <description>MySQL String 함수와 참조 무결성 (Referential Integrity) 에 대해서 다룹니다. Index MySQL에서 String 함수 참조 무결정 소소한 하이디 SQL &amp;amp; markdown 팁 Reference 리뷰 후에 알게된 부분들 [Markdown 각주/미주 달기] 1 SUBSTRING_INDEX(문자열, 구분자, 가져올 구문 갯수)</description>
+      <description>Handles MySQL string function: LENGTH(), RIGHT(), MID(), INSERT() and referential integrity: Restrict, No Action, Cascade, Set NULL. Index MySQL에서 String 함수 참조 무결정 소소한 하이디 SQL &amp;amp; markdown 팁 Reference 리뷰 후에 알게된 부분들 [Markdown 각주/미주 달기] 1 SUBSTRING_INDEX(문자열, 구분자, 가져올 구문 갯수) 1 2 3 4</description>
     </item>
     
     <item>
-      <title>MySQL 스터디 (2/5) - SQL &amp; key &amp; collation</title>
+      <title>[Infra] MySQL Study (2/5) - SQL &amp; key &amp; collation</title>
       <link>https://leeleelee3264.github.io/post/2021-06-30-mysql-sql-and-key-collection/</link>
       <pubDate>Wed, 30 Jun 2021 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2021-06-30-mysql-sql-and-key-collection/</guid>
-      <description>MySQL SQL과 key, collation에 대해 다룬다. Index Structured Query Language Key Collation Reference 리뷰 후에 알게된 부분들 Primary Key가 들어간 column 의 이름도 아닌 제약조건에 이름을 만드는 이유 주임님이 주신 의견: 기본키를 항상 하나의 column으로 만드는 건 아니고</description>
+      <description>Handles MySQL SQL &amp;amp; key &amp;amp; collation. SQL: DML, DDL, DCL. Key: primary, foreign, super, candidate, alternative, surrogate. Collation: utf8, utf8mb4. Index Structured Query Language Key Collation Reference 리뷰 후에 알게된 부분들 Primary Key가 들어간 column 의 이름도 아닌 제약조건에 이름을 만드는 이유 주임님이 주신 의견: 기본키를 항상 하나의 column으로 만드는 건 아니고 여</description>
     </item>
     
     <item>
-      <title>MySQL 스터디 (1/5) - Index</title>
+      <title>[Infra] MySQL Study (1/5) - Index</title>
       <link>https://leeleelee3264.github.io/post/2021-06-21-mysql-index/</link>
       <pubDate>Mon, 21 Jun 2021 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2021-06-21-mysql-index/</guid>
-      <description>Summary of post Index Clustered Index / Non-Clustered Index - Concept Clustered Index / Non-Clustered Index - Structure and Index algorithm Side effects of Indexes Related SQL Command with Indexes Reference 리뷰 후에 알게된 부분들 Non-Clustered Index가 여러 개 생성이 가능하지만 무제한으로 만들 수 있는 것은 아니다. 조회는 Clustered Index가 빠르지만, 수정과 입력은 Non-Clustered Ind</description>
+      <description>Handles MySQL Index: clustered, non-clustered structure and algorithm. B-Tree, R-Tree. Side effect of index. Index Clustered Index / Non-Clustered Index - Concept Clustered Index / Non-Clustered Index - Structure and Index algorithm Side effects of Indexes Related SQL Command with Indexes Reference 리뷰 후에 알게된 부분들 Non-Clustered Index가 여러 개 생성이 가능하지만 무제한으로 만들 수 있는 것은 아니다. 조회는 Clustered Index가 빠르지만</description>
     </item>
     
     <item>
-      <title>리눅스 설치 및 초기 세팅하기</title>
+      <title>[Infra] Installation and setup Ubuntu</title>
       <link>https://leeleelee3264.github.io/post/2021-04-21-linux-server-init-setting/</link>
       <pubDate>Wed, 21 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2021-04-21-linux-server-init-setting/</guid>
-      <description>리눅스 서버 설치와 초기 설정에 대해 다룬다. Index 리눅스 설치 초기 네트워크 설정 SSH 설정 사용자 설정 기타 설정 MariDB 설치/설정 리눅스 설치 리눅스 설치용 usb 리눅스를 설치하려면 설치용 usb를 먼저 만들어야 한다. [리눅스 usb 만들기] 이 블로</description>
+      <description>Handles installation and setting for Ubuntu. From basic: installation USB, network, static ip, SSH, user and sudoer to custom: prompt, build-essential, installation Maria DB. Index 리눅스 설치 초기 네트워크 설정 SSH 설정 사용자 설정 기타 설정 MariDB 설치/설정 리눅스 설치 리눅스 설치용 usb 리눅스를 설치하려면 설치용 usb를 먼저 만들어야 한다. [리눅스 usb 만들</description>
     </item>
     
     <item>
-      <title>깃허브 액션으로 넷플릭스 트위터 봇 만들기</title>
+      <title>[Project] Making Netflix Twitter bot with Github action</title>
       <link>https://leeleelee3264.github.io/post/2021-04-16-twitterbot-with-git-action/</link>
       <pubDate>Fri, 16 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2021-04-16-twitterbot-with-git-action/</guid>
-      <description>Twitter API 와 Github Action을 사용하는 트위터 봇을 Python으로 구현한다. [github] [트위터 계정] Index 프로젝트 목표 프로젝트 구현 다음 프로젝트 목표 프로젝트 목표 프로젝트 진행 동기 예전부터 자동으로 응답을 해주는 카톡봇이나 자동으로 트</description>
+      <description>Handles project of making Netflix Twitter bot with Github action: Python, tweepy, Twitter API, auth, Github action, Github action workflow. [github] [트위터 계정] Index 프로젝트 목표 프로젝트 구현 다음 프로젝트 목표 프로젝트 목표 프로젝트 진행 동기 예전부터 자동으로 응답을 해주는 카톡봇이나 자동으로 트윗을 해주는 트윗봇을 만드는 프</description>
     </item>
     
     <item>
-      <title>Shell Script로 무중단 배포 흉내내기</title>
+      <title>[Project] Making blue green deployment with Shell script</title>
       <link>https://leeleelee3264.github.io/post/2021-03-15-blue-green-deploy/</link>
       <pubDate>Mon, 15 Mar 2021 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2021-03-15-blue-green-deploy/</guid>
-      <description>Shell Script로 무중단 서버 배포하는 방법을 다룬다. Index 무중단 배포란? 무중단 배포 구현하기 결론 무중단 배포란? 무중단 배포란 업데이트를 위해 배포를 할 때 어플리케이션이 멈추지 않는 것이다. 즉 배포를 할 때 서비스가 중단되는 다운</description>
+      <description>Handles making blue green deployment with Shell script and Nginx. Also covers deployment method: Blue Green Deployment, Rolling Development, Canary Deployment. Index 무중단 배포란? 무중단 배포 구현하기 결론 무중단 배포란? 무중단 배포란 업데이트를 위해 배포를 할 때 어플리케이션이 멈추지 않는 것이다. 즉 배포를 할 때 서비스가 중단되는 다운타임이</description>
     </item>
     
     <item>
-      <title>[Modern Java in Action] Chapter 1,2,3 요약</title>
+      <title>[Book] Modern Java in Action - Chapter 1,2,3</title>
       <link>https://leeleelee3264.github.io/post/2021-02-14-java-in-action-part1/</link>
       <pubDate>Sun, 14 Feb 2021 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2021-02-14-java-in-action-part1/</guid>
-      <description>책 [Modern Java in Action] 중 Chapter 1,2,3 을 요약한다. Index Chapter 1 Java 8, 9, 10, 11 무슨 일이 일어나고 있는가? Chapter 2 동작 파라미터화 코드 전달하기 Chapter 3 람다 표현식 Chapter 1 Java 8, 9, 10, 11 무슨 일이 일어나고 있는가? 지금까지의 대부분의 자바 프로그램은 코어 중 하나만을 사용</description>
+      <description>Summary of Modern Java in Action written by Raoul-Gabriel Urma. Chapter 1 covers new trend of Java 8. Chapter 2 covers behavior parameterization. Chapter 3 covers lambda. Index Chapter 1 Java 8, 9, 10, 11 무슨 일이 일어나고 있는가? Chapter 2 동작 파라미터화 코드 전달하기 Chapter 3 람다 표현식 Chapter 1 Java 8, 9, 10, 11 무슨 일이 일어나고 있는가? 지금까지의 대부분의 자바 프</description>
     </item>
     
     <item>
-      <title>(en) Docker Cheat Sheet</title>
+      <title>[Cheat Sheet] (en) Docker Cheat Sheet</title>
       <link>https://leeleelee3264.github.io/post/2021-01-30-docker-cheet-sheet/</link>
       <pubDate>Sat, 30 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2021-01-30-docker-cheet-sheet/</guid>
-      <description>Docker Cheat Sheet에 대해서 다룬다. Index DockerFile Cheat Sheet Docker Command Cheat Sheet Dockerfile Cheat Sheet I have to make image before running docker container with the image. How to get images I need? I can just pull images from my/someone else&amp;rsquo;s docker hub repository or I can even make one all by myself. Do this, I must write Dockerfile. Dockerfile is just like a recipe for building images. [Picture 1] DockerFile Cheat Sheet Docker Command Cheat Sheet Docker is working like linux. It&amp;rsquo;s tiny which contains minimum setting to</description>
+      <description>Cheat sheet for Docker. It consists of Dockerfile like FROM, RUN, ENTRYPOINT, VOLUME and Docker command like docker build, docker image, docker run.
+Index
+DockerFile Cheat Sheet Docker Command Cheat Sheet Dockerfile Cheat Sheet I have to make image before running docker container with the image. How to get images I need? I can just pull images from my/someone else&amp;rsquo;s docker hub repository or I can even make one all by myself.
+Do this, I must write Dockerfile. Dockerfile is just like a recipe for building images.
+[Picture 1] DockerFile Cheat Sheet Docker Command Cheat Sheet Docker is working like linux.</description>
     </item>
     
     <item>
-      <title>(en) Migrate Shiny Server with Docker</title>
+      <title>[Infra] (en) Running Shiny server with Docker</title>
       <link>https://leeleelee3264.github.io/post/2021-01-30-build-server-with-docker/</link>
       <pubDate>Sat, 30 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2021-01-30-build-server-with-docker/</guid>
-      <description>Docker를 사용해서 Shiny server를 구동하는 것을 다룬다. Index How I got into Docker Making Shiny Docker Troubleshooting with Network Reference How I got into Docker Docker make server infra as a code and we can share anywhere! Nightmare of installing library for Shiny I had wondered why many developers love docker so much for a while. A few days ago, I got a chance to install docker in my company&amp;rsquo;s test server. The thing is that we have</description>
+      <description>Handles running Shiny server with Docker. Index How I got into Docker Making Shiny Docker Troubleshooting with Network Reference How I got into Docker Docker make server infra as a code and we can share anywhere! Nightmare of installing library for Shiny I had wondered why many developers love docker so much for a while. A few days ago, I got a chance to install docker in my company&amp;rsquo;s test server. The thing is that we have shiny server written in R in the test server. I still remember I had to be though install a bunch of library to</description>
     </item>
     
     <item>
-      <title>(en) Test Spring Boot with Junit5</title>
+      <title>[Backend] (en) Test Spring Boot with Junit5</title>
       <link>https://leeleelee3264.github.io/post/2021-01-26-spring-unit-test/</link>
       <pubDate>Tue, 26 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2021-01-26-spring-unit-test/</guid>
-      <description>Test Spring boot with Junit5 Index Why unit test? Implement unit test Why unit test? Making test code is always big burden for me. No time for writing test code, and also don&amp;rsquo;t know how. What is @SpringBootTest and Junit? The main point of making test code has to be united! Do not test whole flow! TBH I&amp;rsquo;ve usually done test e2e way. I thought test with spring boot test code is so heavy that I have to wait for server reload a lot. And now I know it happened because I tried to test entire program. It is just</description>
+      <description>Test Spring boot with Junit5: Repository test, service test, controller test, integration test. Index Why unit test? Implement unit test Why unit test? Making test code is always big burden for me. No time for writing test code, and also don&amp;rsquo;t know how. What is @SpringBootTest and Junit? The main point of making test code has to be united! Do not test whole flow! TBH I&amp;rsquo;ve usually done test e2e way. I thought test with spring boot test code is so heavy that I have to wait for server reload a lot. And now I know it happened because I</description>
     </item>
     
     <item>
-      <title>(en) Name Convention of Host and URL</title>
+      <title>[Infra] (en) Name convention of host and URL</title>
       <link>https://leeleelee3264.github.io/post/2021-01-13-linux-host-name-convention/</link>
       <pubDate>Wed, 13 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2021-01-13-linux-host-name-convention/</guid>
-      <description>Let&amp;rsquo;s learn about name convention of host and URL.
+      <description>Name Convention of Host and URL: Reserved characters and unsafe characters.
 Index
 Troubleshooting for Name Convention Name Convention Troubleshooting for Name Convention How I occurred the trouble Today, I had to be through very awful exception. There is an api server I have to send a request to update meta data. For performance issue, this server just cached meta data and uses it till updated. Usually it&amp;rsquo;s quite simple. Make request with RestTemplate in Spring boot.
 This situation got started two days age. The server which contains api server moved to new ec2 machine, and it had new ip. So I have to send my request to the new ip.</description>
     </item>
     
     <item>
-      <title>(en) Java Regex Cheat Sheet</title>
+      <title>[Cheat Sheet] (en) Java regex cheat sheet</title>
       <link>https://leeleelee3264.github.io/post/2021-01-11-java-regex-cheat-sheet/</link>
       <pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2021-01-11-java-regex-cheat-sheet/</guid>
-      <description>Java Regex Cheat Sheet에 대해서 다룬다. Index Change plain text to Korean Phone Number format Extracting SubString Change plain text to Korean Phone Number format 1 2 3 4 5 6 7 8 public static void testNumber(String src) { Pattern SRC_PHONE_FORMAT = Pattern.compile(&amp;#34;(\\d{3})(\\d{4})(\\d{4})&amp;#34;); Pattern DEST_PHONE_FORMAT = Pattern.compile(&amp;#34;$1-$2-$3&amp;#34;); String dest = src.replaceFirst(SRC_PHONE_FORMAT.toString(), DEST_PHONE_FORMAT.toString()); System.out.println(dest); } 맨처음에는 패턴들에 통째로 replaceAll을 걸었는데 그럼 결과가 그냥 DE</description>
+      <description>Cheat sheet for Java Regex: Changing plain text, extracting substring. Index Change plain text to Korean Phone Number format Extracting SubString Change plain text to Korean Phone Number format 1 2 3 4 5 6 7 8 public static void testNumber(String src) { Pattern SRC_PHONE_FORMAT = Pattern.compile(&amp;#34;(\\d{3})(\\d{4})(\\d{4})&amp;#34;); Pattern DEST_PHONE_FORMAT = Pattern.compile(&amp;#34;$1-$2-$3&amp;#34;); String dest = src.replaceFirst(SRC_PHONE_FORMAT.toString(), DEST_PHONE_FORMAT.toString()); System.out.println(dest); } 맨처음에는 패턴들에 통째로 replaceAll을 걸었는데 그럼 결과가 그냥 DEST_PHO</description>
     </item>
     
     <item>
-      <title>(en) Load Static/Dynamic Resource Spring Jar</title>
+      <title>[Backend] (en) Load static/dynamic resource Spring Jar</title>
       <link>https://leeleelee3264.github.io/post/2021-01-08-spring-resource-load/</link>
       <pubDate>Fri, 08 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2021-01-08-spring-resource-load/</guid>
-      <description>Spring jar에서 static/dynamic 리소스를 로드하는 방법을 다룬다 Index How to load static/dynamic resource in Spring jar Fun fact How to load static/dynamic resource in Spring jar First case: Static resource Roughly 4 months age, I was assigned to make function with excel. It was like this. I had made a template excel in advance and my colleagues downloaded it and filled it. After that, I read it and inserted data to database. Point of static resource I have to make and save file before deploying. (making</description>
+      <description>Handles how to load static or dynamic resource in Spring jar: ClassPathResource, ResourceLoader.
+Index
+How to load static/dynamic resource in Spring jar Fun fact How to load static/dynamic resource in Spring jar First case: Static resource Roughly 4 months age, I was assigned to make function with excel. It was like this. I had made a template excel in advance and my colleagues downloaded it and filled it. After that, I read it and inserted data to database.
+Point of static resource I have to make and save file before deploying. (making jar file) Never got changed, because it&amp;rsquo;s a template!</description>
     </item>
     
     <item>
-      <title>(en) Write Shell Script to Deploy Server and Rotate Log</title>
+      <title>[Infra] (en) Write Shell script to deploy server and rotate log</title>
       <link>https://leeleelee3264.github.io/post/2021-01-05-linux-writing-shell-script/</link>
       <pubDate>Tue, 05 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2021-01-05-linux-writing-shell-script/</guid>
-      <description>Write shell script to deploy server and rotate log
+      <description>Write shell script to deploy server and rotate log.
 Index
 Shell script to deploy server Shell script to rotate log (plus) /dev/null UPDATE VERSION OF SHELL SCRIPT WITH PASSWORD One month ago, I make this shell script with hard coded user password and I knew that was a bad idea. It is well known fact that leaving password somewhere or some files can be a huge problem with security later. So I decided to fix it.
 How to request password in shell script
@@ -285,42 +292,42 @@ How to request password in shell script
     </item>
     
     <item>
-      <title>Linux Command Cheat Sheet</title>
+      <title>[Cheat Sheet] Linux command cheat sheet</title>
       <link>https://leeleelee3264.github.io/post/2020-12-12-linux-cheat-sheet/</link>
       <pubDate>Sat, 12 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2020-12-12-linux-cheat-sheet/</guid>
-      <description>Linux Command Cheatsheet. Index If operation 2021 Cheat Sheet 2020 Cheat Sheet If operation IF operation 2021 Cheat Sheet 압축을 풀지 않고 압축 파일 확인하는 방법 1 2 3 4 5 zcat test2.log.gz # pagination with zcat # cat 커맨드 처럼 less를 뒤에 써주면 된다. zcat test2.log.gz | less 가끔 압축되어있는 gz 파일을 확인할 일이 생긴다. 압축된 파일을 보려</description>
+      <description>Cheat sheet for Linux command: zcat, grep, jar, apt-cache, pgrep, route, ip, watch, wc, ss etc. Index If operation 2021 Cheat Sheet 2020 Cheat Sheet If operation IF operation 2021 Cheat Sheet 압축을 풀지 않고 압축 파일 확인하는 방법 1 2 3 4 5 zcat test2.log.gz # pagination with zcat # cat 커맨드 처럼 less를 뒤에 써주면 된다. zcat test2.log.gz | less 가끔 압축되어있는 gz 파일을 확인할 일</description>
     </item>
     
     <item>
-      <title>(en) MySQL View and UNION/JOIN</title>
+      <title>[Infra] (en) MySQL View and UNION/JOIN</title>
       <link>https://leeleelee3264.github.io/post/2020-10-28-sql-view-union-join/</link>
       <pubDate>Wed, 28 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2020-10-28-sql-view-union-join/</guid>
-      <description>MySQL View and UNION/JOIN
+      <description>Handles MySQL View and UNION/JOIN
 Index
 Intro View UNION/JOIN Intro Today, I faced my big mistake with new updated function which is made by me as well. The situation is something like this. We have a message service firing with multiple condition such as accomplish of today&amp;rsquo;s step count or tag reminder of today&amp;rsquo;s goal.
 Table Design When we designed tables, we separate to act_message and goal_message. (Obviously, it&amp;rsquo;s design error. I was supposed to create one table for these two). And there is mp3 file table music_list because the message will be playing designated mp3 file when it gets fired.</description>
     </item>
     
     <item>
-      <title>(en) Divide Layout in Thymeleaf</title>
+      <title>[Frontend] (en) How to divide Layout in Thymeleaf</title>
       <link>https://leeleelee3264.github.io/post/2020-10-25-front-thymeleaf-layout/</link>
       <pubDate>Sun, 25 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2020-10-25-front-thymeleaf-layout/</guid>
-      <description>Divide layout in thymeleaf. Index Trouble with not dividend html layout Divide layout Outro Trouble with not dividend html layout How do I feel about not divide html layout. Suffocating with 2000 line! At first, I didn&amp;rsquo;t know the importance about splitting html and making layout. But when I saw 2000 line html files with so many duplicated code (mostly nav, header, side-bar) I felt like I should change my mind. In my opinion, the good things about such work are &amp;hellip; Pros in dividend html layout I don&amp;rsquo;t have to rewrite every header, footer, side-bar (AKA general frame of</description>
+      <description>Handles dividing layout in thymeleaf. Index Trouble with not dividend html layout Divide layout Outro Trouble with not dividend html layout How do I feel about not divide html layout. Suffocating with 2000 line! At first, I didn&amp;rsquo;t know the importance about splitting html and making layout. But when I saw 2000 line html files with so many duplicated code (mostly nav, header, side-bar) I felt like I should change my mind. In my opinion, the good things about such work are &amp;hellip; Pros in dividend html layout I don&amp;rsquo;t have to rewrite every header, footer, side-bar (AKA general frame</description>
     </item>
     
     <item>
-      <title>(en) Implement Drag and Drop to Upload File</title>
+      <title>[Frontend] (en) How to implement drag and drop?</title>
       <link>https://leeleelee3264.github.io/post/2020-10-08-front-dropdown-file/</link>
       <pubDate>Thu, 08 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2020-10-08-front-dropdown-file/</guid>
-      <description>Implement Drag and Drop to upload file
+      <description>Implement drag and drop to upload file.
 Index
 Intro Implement Drag and Drop Intro Upload file with more action! Few days ago, I had to make a function that is about taking excel file from client side and reading it to save to our database. I usually go as simple as possible in terms of HTML/CSS, but this time I did some research and work!
 Instead of using basic file chose button, dragging a file and dropping in to a box. I was very happy when finishing these process because I thought it&amp;rsquo;s quite user friendly interface.
@@ -328,45 +335,45 @@ Instead of using basic file chose button, dragging a file and dropping in to a b
     </item>
     
     <item>
-      <title>(en) Java Stream Cheat Sheet</title>
+      <title>[Cheat Sheet] (en) Java stream cheat sheet</title>
       <link>https://leeleelee3264.github.io/post/2020-10-07-java-stream-cheat/</link>
       <pubDate>Wed, 07 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2020-10-07-java-stream-cheat/</guid>
-      <description>Java Stream Cheat Sheet
+      <description>Cheat sheet for Java stream: computIfPresent, computeIfAbsent, disjoint, joining.
 Index
 Map Stream Map computeIfPresent - update value 1 2 3 4 5 Map&amp;lt;String, Integer&amp;gt; test = new HashMap&amp;lt;&amp;gt;(){{ test.put(&amp;#34;ME&amp;#34;, 25); test.put(&amp;#34;Mom&amp;#34;, 67); }}; test.computeIfPresent(&amp;#34;Me&amp;#34;, (k, v) -&amp;gt; v + 1); computeIfAbsent - put k, v when the key is not there 1 test.computeIfAbsent(&amp;#34;Sister&amp;#34;, k -&amp;gt; 25); Once, I wanted to use computeIfPresent and computeIfAbsent at once. My intend was putting (key, value) in specific map when ther is no key. And later, when the map meet the same key again, then update value.
 But I missed the point. Thoese two method cannot be used at the same time.</description>
     </item>
     
     <item>
-      <title>(en) Git Cheat Sheet</title>
+      <title>[Cheat Sheet] (en) Git cheat sheet</title>
       <link>https://leeleelee3264.github.io/post/2020-09-24-git-cheat-sheet/</link>
       <pubDate>Thu, 24 Sep 2020 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2020-09-24-git-cheat-sheet/</guid>
-      <description>Git Cheat Sheet Index Git Cheat Sheet Git Cheat Sheet make annotated tag 1 git tag -a v1.0.0 -m &amp;#34;leave message here for tag&amp;#34; git log 1 2 3 4 5 6 7 8 # show log with one line git log --oneline # show log with graph tree git log --graph # show log with both git log --oneline --graph compare file between two branches 1 2 3 git diff branch1..branch2 -- &amp;#34;file_name&amp;#34; ex) diff 2021_0405_user..master -- build.gradle change branch name 1 git branch -m &amp;#34;branch_name&amp;#34; making branch with specific commit 1 2 3 git branch branch_name commit_version ex)</description>
+      <description>Cheat sheet for Git: log, diff, branch, switch, checkout, restore, commit, reset etc. Index Git Cheat Sheet Git Cheat Sheet make annotated tag 1 git tag -a v1.0.0 -m &amp;#34;leave message here for tag&amp;#34; git log 1 2 3 4 5 6 7 8 # show log with one line git log --oneline # show log with graph tree git log --graph # show log with both git log --oneline --graph compare file between two branches 1 2 3 git diff branch1..branch2 -- &amp;#34;file_name&amp;#34; ex) diff 2021_0405_user..master -- build.gradle change branch name 1 git branch -m &amp;#34;branch_name&amp;#34; making branch with</description>
     </item>
     
     <item>
-      <title>(en) Make Forked repo to Standalone repo</title>
+      <title>[General] (en) How to change forked repo to standalone repo</title>
       <link>https://leeleelee3264.github.io/post/2020-09-19-forked-repo-commit/</link>
       <pubDate>Sat, 19 Sep 2020 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2020-09-19-forked-repo-commit/</guid>
-      <description>Make Forked repo to Standalone repo.
+      <description>Handles forked repo to standalone repo.
 Index
 Contribution not showing up on forked repo! Make forked repo to standalone repo Reference Contribution not showing up on forked repo! This started with one day one commit It&amp;rsquo;s been a graceful four days since starting one day one commit project. But something weird happen with yesterday commit data. I certainly updated a repo for github.io. I could see the record of it in the repo.
 However, the commit wasn&amp;rsquo;t recording in the contribution table in overview page. This contribution table is everything about one day one commit, so I have to dig in to see what&amp;rsquo;s going wrong.</description>
     </item>
     
     <item>
-      <title>(en) Handle SQL Exception in Spring boot</title>
+      <title>[Backend] (en) How to deal with SQL exception in Spring boot</title>
       <link>https://leeleelee3264.github.io/post/2020-09-18-java-checkuncheck-exception/</link>
       <pubDate>Fri, 18 Sep 2020 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2020-09-18-java-checkuncheck-exception/</guid>
-      <description>Handle SQL Exception in Spring boot. Index Exception in Java Handle SQL Exception Reference Exception in Java A week ago, I felt maybe I need to adjust exception of sql. At that time, I just used try-catch with Exception and print stacktrace for backend, passed some certain value to let front know something went wrong with request. I&amp;rsquo;ve never went deep down to Exception and how to handle, so let&amp;rsquo;s first check what kind of Exception java has. Exception hierarchy [Picture 1] Java Exception Java use Throwable type when something goes wrong. The highest type Throwable then separate to three</description>
+      <description>Handles SQL Exception in Spring boot: Checked exception, unchecked exception, Index Exception in Java Handle SQL Exception Reference Exception in Java A week ago, I felt maybe I need to adjust exception of sql. At that time, I just used try-catch with Exception and print stacktrace for backend, passed some certain value to let front know something went wrong with request. I&amp;rsquo;ve never went deep down to Exception and how to handle, so let&amp;rsquo;s first check what kind of Exception java has. Exception hierarchy [Picture 1] Java Exception Java use Throwable type when something goes wrong. The highest type Throwable</description>
     </item>
     
   </channel>

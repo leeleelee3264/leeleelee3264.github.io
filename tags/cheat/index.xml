@@ -1,58 +1,62 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Cheat on dev_leelee.log</title>
+    <title>Cheat on leelee.log</title>
     <link>https://leeleelee3264.github.io/tags/cheat/</link>
-    <description>Recent content in Cheat on dev_leelee.log</description>
+    <description>Recent content in Cheat on leelee.log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sat, 30 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://leeleelee3264.github.io/tags/cheat/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>(en) Docker Cheat Sheet</title>
+      <title>[Cheat Sheet] (en) Docker Cheat Sheet</title>
       <link>https://leeleelee3264.github.io/post/2021-01-30-docker-cheet-sheet/</link>
       <pubDate>Sat, 30 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2021-01-30-docker-cheet-sheet/</guid>
-      <description>Docker Cheat Sheet에 대해서 다룬다. Index DockerFile Cheat Sheet Docker Command Cheat Sheet Dockerfile Cheat Sheet I have to make image before running docker container with the image. How to get images I need? I can just pull images from my/someone else&amp;rsquo;s docker hub repository or I can even make one all by myself. Do this, I must write Dockerfile. Dockerfile is just like a recipe for building images. [Picture 1] DockerFile Cheat Sheet Docker Command Cheat Sheet Docker is working like linux. It&amp;rsquo;s tiny which contains minimum setting to</description>
+      <description>Cheat sheet for Docker. It consists of Dockerfile like FROM, RUN, ENTRYPOINT, VOLUME and Docker command like docker build, docker image, docker run.
+Index
+DockerFile Cheat Sheet Docker Command Cheat Sheet Dockerfile Cheat Sheet I have to make image before running docker container with the image. How to get images I need? I can just pull images from my/someone else&amp;rsquo;s docker hub repository or I can even make one all by myself.
+Do this, I must write Dockerfile. Dockerfile is just like a recipe for building images.
+[Picture 1] DockerFile Cheat Sheet Docker Command Cheat Sheet Docker is working like linux.</description>
     </item>
     
     <item>
-      <title>(en) Java Regex Cheat Sheet</title>
+      <title>[Cheat Sheet] (en) Java regex cheat sheet</title>
       <link>https://leeleelee3264.github.io/post/2021-01-11-java-regex-cheat-sheet/</link>
       <pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2021-01-11-java-regex-cheat-sheet/</guid>
-      <description>Java Regex Cheat Sheet에 대해서 다룬다. Index Change plain text to Korean Phone Number format Extracting SubString Change plain text to Korean Phone Number format 1 2 3 4 5 6 7 8 public static void testNumber(String src) { Pattern SRC_PHONE_FORMAT = Pattern.compile(&amp;#34;(\\d{3})(\\d{4})(\\d{4})&amp;#34;); Pattern DEST_PHONE_FORMAT = Pattern.compile(&amp;#34;$1-$2-$3&amp;#34;); String dest = src.replaceFirst(SRC_PHONE_FORMAT.toString(), DEST_PHONE_FORMAT.toString()); System.out.println(dest); } 맨처음에는 패턴들에 통째로 replaceAll을 걸었는데 그럼 결과가 그냥 DE</description>
+      <description>Cheat sheet for Java Regex: Changing plain text, extracting substring. Index Change plain text to Korean Phone Number format Extracting SubString Change plain text to Korean Phone Number format 1 2 3 4 5 6 7 8 public static void testNumber(String src) { Pattern SRC_PHONE_FORMAT = Pattern.compile(&amp;#34;(\\d{3})(\\d{4})(\\d{4})&amp;#34;); Pattern DEST_PHONE_FORMAT = Pattern.compile(&amp;#34;$1-$2-$3&amp;#34;); String dest = src.replaceFirst(SRC_PHONE_FORMAT.toString(), DEST_PHONE_FORMAT.toString()); System.out.println(dest); } 맨처음에는 패턴들에 통째로 replaceAll을 걸었는데 그럼 결과가 그냥 DEST_PHO</description>
     </item>
     
     <item>
-      <title>Linux Command Cheat Sheet</title>
+      <title>[Cheat Sheet] Linux command cheat sheet</title>
       <link>https://leeleelee3264.github.io/post/2020-12-12-linux-cheat-sheet/</link>
       <pubDate>Sat, 12 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2020-12-12-linux-cheat-sheet/</guid>
-      <description>Linux Command Cheatsheet. Index If operation 2021 Cheat Sheet 2020 Cheat Sheet If operation IF operation 2021 Cheat Sheet 압축을 풀지 않고 압축 파일 확인하는 방법 1 2 3 4 5 zcat test2.log.gz # pagination with zcat # cat 커맨드 처럼 less를 뒤에 써주면 된다. zcat test2.log.gz | less 가끔 압축되어있는 gz 파일을 확인할 일이 생긴다. 압축된 파일을 보려</description>
+      <description>Cheat sheet for Linux command: zcat, grep, jar, apt-cache, pgrep, route, ip, watch, wc, ss etc. Index If operation 2021 Cheat Sheet 2020 Cheat Sheet If operation IF operation 2021 Cheat Sheet 압축을 풀지 않고 압축 파일 확인하는 방법 1 2 3 4 5 zcat test2.log.gz # pagination with zcat # cat 커맨드 처럼 less를 뒤에 써주면 된다. zcat test2.log.gz | less 가끔 압축되어있는 gz 파일을 확인할 일</description>
     </item>
     
     <item>
-      <title>(en) Java Stream Cheat Sheet</title>
+      <title>[Cheat Sheet] (en) Java stream cheat sheet</title>
       <link>https://leeleelee3264.github.io/post/2020-10-07-java-stream-cheat/</link>
       <pubDate>Wed, 07 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2020-10-07-java-stream-cheat/</guid>
-      <description>Java Stream Cheat Sheet
+      <description>Cheat sheet for Java stream: computIfPresent, computeIfAbsent, disjoint, joining.
 Index
 Map Stream Map computeIfPresent - update value 1 2 3 4 5 Map&amp;lt;String, Integer&amp;gt; test = new HashMap&amp;lt;&amp;gt;(){{ test.put(&amp;#34;ME&amp;#34;, 25); test.put(&amp;#34;Mom&amp;#34;, 67); }}; test.computeIfPresent(&amp;#34;Me&amp;#34;, (k, v) -&amp;gt; v + 1); computeIfAbsent - put k, v when the key is not there 1 test.computeIfAbsent(&amp;#34;Sister&amp;#34;, k -&amp;gt; 25); Once, I wanted to use computeIfPresent and computeIfAbsent at once. My intend was putting (key, value) in specific map when ther is no key. And later, when the map meet the same key again, then update value.
 But I missed the point. Thoese two method cannot be used at the same time.</description>
     </item>
     
     <item>
-      <title>(en) Git Cheat Sheet</title>
+      <title>[Cheat Sheet] (en) Git cheat sheet</title>
       <link>https://leeleelee3264.github.io/post/2020-09-24-git-cheat-sheet/</link>
       <pubDate>Thu, 24 Sep 2020 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2020-09-24-git-cheat-sheet/</guid>
-      <description>Git Cheat Sheet Index Git Cheat Sheet Git Cheat Sheet make annotated tag 1 git tag -a v1.0.0 -m &amp;#34;leave message here for tag&amp;#34; git log 1 2 3 4 5 6 7 8 # show log with one line git log --oneline # show log with graph tree git log --graph # show log with both git log --oneline --graph compare file between two branches 1 2 3 git diff branch1..branch2 -- &amp;#34;file_name&amp;#34; ex) diff 2021_0405_user..master -- build.gradle change branch name 1 git branch -m &amp;#34;branch_name&amp;#34; making branch with specific commit 1 2 3 git branch branch_name commit_version ex)</description>
+      <description>Cheat sheet for Git: log, diff, branch, switch, checkout, restore, commit, reset etc. Index Git Cheat Sheet Git Cheat Sheet make annotated tag 1 git tag -a v1.0.0 -m &amp;#34;leave message here for tag&amp;#34; git log 1 2 3 4 5 6 7 8 # show log with one line git log --oneline # show log with graph tree git log --graph # show log with both git log --oneline --graph compare file between two branches 1 2 3 git diff branch1..branch2 -- &amp;#34;file_name&amp;#34; ex) diff 2021_0405_user..master -- build.gradle change branch name 1 git branch -m &amp;#34;branch_name&amp;#34; making branch with</description>
     </item>
     
   </channel>

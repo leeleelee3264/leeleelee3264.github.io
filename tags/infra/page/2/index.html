@@ -9,23 +9,23 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta http-equiv="Cache-Control" content="no-transform" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
-<meta name="generator" content="Hugo 0.102.3" />
+<meta name="generator" content="Hugo 0.101.0" />
 
 
 <link rel="shortcut icon" href="https://raw.githubusercontent.com/leeleelee3264/twitter_project/master/favicon.ico" />
 
 
 
-<title>Infra - dev_leelee.log</title>
+<title>Infra - leelee.log</title>
 
 
 <meta name="author" content="leeleelee3264" />
 
 
-<meta name="description" content="A minimal Hugo theme with nice theme color." />
+<meta name="description" content="Tech blog for LeeLee" />
 
 
-<link rel="alternate" type="application/rss+xml" href="https://leeleelee3264.github.io/tags/infra/index.xml" title="dev_leelee.log" />
+<link rel="alternate" type="application/rss+xml" href="https://leeleelee3264.github.io/tags/infra/index.xml" title="leelee.log" />
 
 <meta property="og:title" content="Infra" />
 <meta name="twitter:title" content="Infra" />
@@ -82,9 +82,7 @@
     <header>
     <div class="container-lg clearfix">
         <div class="col-12 header">
-            <a class="title-main" href="https://leeleelee3264.github.io/">dev_leelee.log</a>
-            
-            <span class="title-sub">Logfile of Developer LeeLee</span>
+            <a class="title-main" href="https://leeleelee3264.github.io/">leelee.log</a>
             
         </div>
     </div>
@@ -104,18 +102,18 @@
 
 <div class="post">
   <h2 class="post-item post-title">
-    <a href="https://leeleelee3264.github.io/post/2021-01-13-linux-host-name-convention/">(en) Name Convention of Host and URL</a>
+    <a href="https://leeleelee3264.github.io/post/2021-01-13-linux-host-name-convention/">[Infra] (en) Name convention of host and URL</a>
   </h2>
   <div class="post-item post-meta">
     <span><i class="iconfont icon-today-sharp"></i>&nbsp;2021-01-13</span>
 
-<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;671 words</span>
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;673 words</span>
 
 <span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/infra">Infra</a>&nbsp;</span>
 
   </div>
   <div class="post-item post-summary markdown-body">
-    Let&rsquo;s learn about name convention of host and URL.
+    Name Convention of Host and URL: Reserved characters and unsafe characters.
 Index
 Troubleshooting for Name Convention Name Convention Troubleshooting for Name Convention How I occurred the trouble Today, I had to be through very awful exception. There is an api server I have to send a request to update meta data. For performance issue, this server just cached meta data and uses it till updated. Usually it&rsquo;s quite simple. Make request with RestTemplate in Spring boot.
 This situation got started two days age. The server which contains api server moved to new ec2 machine, and it had new ip. So I have to send my request to the new ip.
@@ -124,7 +122,7 @@ This situation got started two days age. The server which contains api server mo
 
 <div class="post">
   <h2 class="post-item post-title">
-    <a href="https://leeleelee3264.github.io/post/2021-01-05-linux-writing-shell-script/">(en) Write Shell Script to Deploy Server and Rotate Log</a>
+    <a href="https://leeleelee3264.github.io/post/2021-01-05-linux-writing-shell-script/">[Infra] (en) Write Shell script to deploy server and rotate log</a>
   </h2>
   <div class="post-item post-meta">
     <span><i class="iconfont icon-today-sharp"></i>&nbsp;2021-01-05</span>
@@ -135,7 +133,7 @@ This situation got started two days age. The server which contains api server mo
 
   </div>
   <div class="post-item post-summary markdown-body">
-    Write shell script to deploy server and rotate log
+    Write shell script to deploy server and rotate log.
 Index
 Shell script to deploy server Shell script to rotate log (plus) /dev/null UPDATE VERSION OF SHELL SCRIPT WITH PASSWORD One month ago, I make this shell script with hard coded user password and I knew that was a bad idea. It is well known fact that leaving password somewhere or some files can be a huge problem with security later. So I decided to fix it.
 How to request password in shell script
@@ -145,18 +143,18 @@ How to request password in shell script
 
 <div class="post">
   <h2 class="post-item post-title">
-    <a href="https://leeleelee3264.github.io/post/2020-10-28-sql-view-union-join/">(en) MySQL View and UNION/JOIN</a>
+    <a href="https://leeleelee3264.github.io/post/2020-10-28-sql-view-union-join/">[Infra] (en) MySQL View and UNION/JOIN</a>
   </h2>
   <div class="post-item post-meta">
     <span><i class="iconfont icon-today-sharp"></i>&nbsp;2020-10-28</span>
 
-<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;1065 words</span>
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;1066 words</span>
 
 <span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/infra">Infra</a>&nbsp;</span>
 
   </div>
   <div class="post-item post-summary markdown-body">
-    MySQL View and UNION/JOIN
+    Handles MySQL View and UNION/JOIN
 Index
 Intro View UNION/JOIN Intro Today, I faced my big mistake with new updated function which is made by me as well. The situation is something like this. We have a message service firing with multiple condition such as accomplish of today&rsquo;s step count or tag reminder of today&rsquo;s goal.
 Table Design When we designed tables, we separate to act_message and goal_message. (Obviously, it&rsquo;s design error. I was supposed to create one table for these two). And there is mp3 file table music_list because the message will be playing designated mp3 file when it gets fired.
