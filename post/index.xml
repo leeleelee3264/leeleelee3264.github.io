@@ -6,7 +6,16 @@
     <description>Recent content in Posts on leelee.log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 26 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://leeleelee3264.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 06 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://leeleelee3264.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[Class] 예제로 배우는 스프링 입문 강의 노트</title>
+      <link>https://leeleelee3264.github.io/post/2023-02-06-inflearn-spring-with-example-note/</link>
+      <pubDate>Mon, 06 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2023-02-06-inflearn-spring-with-example-note/</guid>
+      <description>예제로 배우는 스프링 입문 강의를 들으며 작성한 노트를 정리한다. Index Intro: 나와 Spring의 관계, 이대로 괜찮은가? 스프링 IoC 스프링 AOP 스프링 PSA Intro: 나와 Spring의 관계, 이대로 괜찮은가? Spring을 쓰기 시작하면서 개발자</description>
+    </item>
+    
     <item>
       <title>[Seminar] Handling concurrency in Django</title>
       <link>https://leeleelee3264.github.io/post/2022-12-26-kasa-concurrency-seminar/</link>
