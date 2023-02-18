@@ -8,39 +8,39 @@
     <language>en</language>
     <lastBuildDate>Tue, 25 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://leeleelee3264.github.io/tags/book/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>[Book] Effective Python (2/10) - List &amp; Dictionary</title>
+      <title>[Book] [Effective Python] 노트 정리 (2/10) - List &amp; Dictionary</title>
       <link>https://leeleelee3264.github.io/post/2022-10-25-effevtive-python-betterway-11-to-15/</link>
       <pubDate>Tue, 25 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2022-10-25-effevtive-python-betterway-11-to-15/</guid>
-      <description>Summary of Effective Python written by Breet Slatkin. In this post, we covers List &amp;amp; Dictionary. Index Better way 11 시퀸스를 슬라이싱하는 방법을 익혀라 Better way 12 스트라이드와 슬라이스를 한 식에 함께 사용하지 말라 Better way 13 슬라이싱보다는 나머지를 모두 잡아내는 언패킹을 사용하라 Better way 14 복잡한 기준을 사용</description>
+      <description>Breet Slatkin의 저서 [Effective Python]을 요약한다. 이 포스트에서는 List &amp;amp; Dictionary를 다룬다. Index Better way 11 시퀸스를 슬라이싱하는 방법을 익혀라 Better way 12 스트라이드와 슬라이스를 한 식에 함께 사용하지 말라 Better way 13 슬라이</description>
     </item>
     
     <item>
-      <title>[Book] Effective Python (1/10) - Think like Python</title>
+      <title>[Book] [Effective Python] 노트 정리 (1/10) - Think like Python</title>
       <link>https://leeleelee3264.github.io/post/2022-05-06-effective-python-betteryway-1-to5/</link>
       <pubDate>Fri, 06 May 2022 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2022-05-06-effective-python-betteryway-1-to5/</guid>
-      <description>Summary of Effective Python written by Breet Slatkin. This chapter covers PEP8, bytes and str, f formatter, range, enumerate, zip. Index Better way 1 사용중인 파이썬의 버전을 알아두라 Better way 2 PEP8 스타일 가이드를 따르라 Better way 3 bytes와 str의 차이를 알아두라 Better way 4 C 스타일 형식 문자열을 str.format과 쓰기보</description>
+      <description>Breet Slatkin의 저서 [Effective Python]을 요약한다. 이 포스트에서는 PEP8, bytes and str, f formatter, range, enumerate, zip를 다룬다. Index Better way 1 사용중인 파이썬의 버전을 알아두라 Better way 2 PEP8 스타일 가이드를 따르라 Better way 3 bytes와 str의 차이를 알아두</description>
     </item>
     
     <item>
-      <title>[Book] Introducing Python (1/2)</title>
+      <title>[Book] [Introducing Python] 노트 정리 (1/2)</title>
       <link>https://leeleelee3264.github.io/post/2022-03-08-introducing-python-part-one/</link>
       <pubDate>Tue, 08 Mar 2022 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2022-03-08-introducing-python-part-one/</guid>
-      <description>Summary of Introducing python written by Bill Lubanovic. It covers data type list, tuple, dictionary and set. Also covers code structure and module, package. Index 파이 맛보기 파이 재료: 숫자, 문자열 변수 파이 채우기: 리스트, 튜플, 딕셔너리, 셋 파이 크러스트: 코드 구조 파이 포장하기: 모듈, 패키지, 프로그램 파이 맛보기 파이썬은</description>
+      <description>Bill Lubanovic의 저서 [Introducing Python]를 요약한다. 이 포스트에서는 이와 같은 것들을 다룬다.: list, tuple, dictionary and set. Also covers code structure and module, package. Index 파이 맛보기 파이 재료: 숫자, 문자열 변수 파이 채우기: 리스트, 튜플, 딕셔너리, 셋 파이 크러</description>
     </item>
     
     <item>
-      <title>[Book] Modern Java in Action - Chapter 1,2,3</title>
+      <title>[Book] [Modern Java in Action] 노트 정리 - Chapter 1,2,3</title>
       <link>https://leeleelee3264.github.io/post/2021-02-14-java-in-action-part1/</link>
       <pubDate>Sun, 14 Feb 2021 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2021-02-14-java-in-action-part1/</guid>
-      <description>Summary of Modern Java in Action written by Raoul-Gabriel Urma. Chapter 1 covers new trend of Java 8. Chapter 2 covers behavior parameterization. Chapter 3 covers lambda. Index Chapter 1 Java 8, 9, 10, 11 무슨 일이 일어나고 있는가? Chapter 2 동작 파라미터화 코드 전달하기 Chapter 3 람다 표현식 Chapter 1 Java 8, 9, 10, 11 무슨 일이 일어나고 있는가? 지금까지의 대부분의 자바 프</description>
+      <description>Raoul-Gabriel Urma 의 저서 [Modern Java in Action]을 요약한다. Chapter 1에서는 Java 8의 새로운 트랜드를 다룬다. Chapter 2에서는 behavior parameterization를 다루며, Chapter 3에서는 lambda를 다룬다. Index Chapter 1 Java 8, 9, 10, 11 무슨 일이 일어나고 있</description>
     </item>
     
   </channel>

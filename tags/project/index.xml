@@ -8,66 +8,66 @@
     <language>en</language>
     <lastBuildDate>Mon, 26 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://leeleelee3264.github.io/tags/project/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>[Seminar] Handling concurrency in Django</title>
+      <title>[Seminar] Django에서 동시성을 다루는 방법으로 인생 첫 세미나 진행하기</title>
       <link>https://leeleelee3264.github.io/post/2022-12-26-kasa-concurrency-seminar/</link>
       <pubDate>Mon, 26 Dec 2022 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2022-12-26-kasa-concurrency-seminar/</guid>
-      <description>Seminar for handling concurrent request in Django in Kasa 2022-11-30. Index Intro: 네? 저보고 세미나를 진행하라구요? 세미나 - Handling Concurrent Request in Django 세미나 회고 참고 자료 Intro: 네? 저보고 세미나를 진행하라구요? 얼마 전부터 회사에서 주니어들이 돌아가면서 세미나를 진행하고 있었다. 내 차례가 올 것</description>
+      <description>Kasa에서 2022-11-30 Handling Concurrent request in Django를 주제로 진행한 세미나를 정리한다.. Index Intro: 네? 저보고 세미나를 진행하라구요? 세미나 - Handling Concurrent Request in Django 세미나 회고 참고 자료 Intro: 네? 저보고 세미나를 진행하라구요? 얼마 전부터 회사에서 주니어들</description>
     </item>
     
     <item>
-      <title>[Project] How to make a readable tech blog with Hugo?</title>
+      <title>[Project] 읽고 싶어지는 기술 블로그 만들기</title>
       <link>https://leeleelee3264.github.io/post/2022-12-22-tech-blog-readability/</link>
       <pubDate>Thu, 22 Dec 2022 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2022-12-22-tech-blog-readability/</guid>
-      <description>Making a readable, fun, useful tech blog is not an easy job. How we can accomplish the job? This is a project for renew my tech blog from Jekyll to Hugo to make more readable blog. [티스토리 블로그] [Jekyll 블로그] Index Intro: 기술 블로그, 이대로 괜찮은가? Hugo 도입기 읽고 싶은 기술 블로그 만들기 프로젝트 회고 Intro: 기술 블로그, 이대로 괜찮</description>
+      <description>어떻게 해야 읽기 쉬우면서 재미있고 유용한 기술 블로그를 만들 수 있을까? Jekyll을 사용하던 내 기술 블로그에 Hugo를 도입하여 리뉴얼한 프로젝트에 대해서 다룬다. [티스토리 블로그] [Jekyll 블로그] Index Intro: 기술 블로그, 이대로 괜</description>
     </item>
     
     <item>
-      <title>[Project] How to build Myinfo oauth2 client with Django</title>
+      <title>[Project] Django로  Myinfo oauth2 클라이언트 만들기</title>
       <link>https://leeleelee3264.github.io/post/2022-07-23-project-myinfo-connector-python/</link>
       <pubDate>Sat, 23 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2022-07-23-project-myinfo-connector-python/</guid>
-      <description>Building Singpass Myinfo oauth2 client with Django. At the end, check PKI digital signature in python with jwcrypto and Crypto.. [github] [api document] [quick start] Index Myinfo란? 프로젝트 목표 프로젝트 구현 프로젝트 회고 Myinfo란? 싱가폴 Mydata 서비스 정부가 주도한 Mydata 서비스가 몇 개의 나라에 있다고 하는데, 싱가폴 정부의 Sin</description>
+      <description>이 포스트에서는 Django로 Myinfo oauth2 클아이언트를 만드는 프로젝트를 다룬다. 끝에서는 Python에서 jwcrypto와 Crypto를 이용해 PKI를 다루는 법을 알아본다. [github] [api document] [quick start] Index Myinfo란? 프로젝트 목표 프</description>
     </item>
     
     <item>
-      <title>[Project] Making simple profiler with Python decorator</title>
+      <title>[Project] Python decorator를 사용해 초간단 프로파일러 만들기</title>
       <link>https://leeleelee3264.github.io/post/2022-06-30-python-profiler-decorator/</link>
       <pubDate>Wed, 29 Jun 2022 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2022-06-30-python-profiler-decorator/</guid>
-      <description>Making simple profiler with Python decorator to check memory performance, executed query and elapsed time. Index profiler 구현 계기 profiler 구현 개선해야 하는 부분 profiler 구현 계기 Django 환경에서 unittest를 하며 간단하게 퍼포먼스를 측정하고 싶었다. 아주 간단하게 프로파일링을 하면 되기 때문에 Middleware 같은 것은 만들지 않았다</description>
+      <description>이 포스트에서는 Python decorator를 사용해 메모리 퍼포먼스, 실행된 쿼리, 시간 측정 등을 하는 초간단 프로파일러를 만드는 법을 배워본다. Index profiler 구현 계기 profiler 구현 개선해야 하는 부분 profiler 구현 계기 Django 환경에서 unittest를 하며</description>
     </item>
     
     <item>
-      <title>[Project] MySQL DB full backup with shell script</title>
+      <title>[Project] Shell script로 MySQL DB full backup 구현하기</title>
       <link>https://leeleelee3264.github.io/post/2021-09-09-linux-shell-db-backup/</link>
       <pubDate>Thu, 09 Sep 2021 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2021-09-09-linux-shell-db-backup/</guid>
-      <description>Implement shell script for MySQL DB full backup with mysql command options. Index 백업 진행 순서 백업에 사용된 스크립트 &amp;amp; 세부 사항 개선해야 할 점과 참고자료 백업 진행 순서 Intro: 백업의 종류 SQL 백업에는 전체백업, 증분백업, 차등백업이 있다. 백업 종류에 대한 더 자세한 정보는 이전의 포스팅</description>
+      <description>Shell script로 MySQL DB full backup을 구현하는 방법에 대해 알아본다. Index 백업 진행 순서 백업에 사용된 스크립트 &amp;amp; 세부 사항 개선해야 할 점과 참고자료 백업 진행 순서 Intro: 백업의 종류 SQL 백업에는 전체백업, 증분백업, 차등백업이 있다.</description>
     </item>
     
     <item>
-      <title>[Project] Making Netflix Twitter bot with Github action</title>
+      <title>[Project] Github Action을 활용한 Netflix 트위터 봇 만들기</title>
       <link>https://leeleelee3264.github.io/post/2021-04-16-twitterbot-with-git-action/</link>
       <pubDate>Fri, 16 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2021-04-16-twitterbot-with-git-action/</guid>
-      <description>Handles project of making Netflix Twitter bot with Github action: Python, tweepy, Twitter API, auth, Github action, Github action workflow. [github] [트위터 계정] Index 프로젝트 목표 프로젝트 구현 다음 프로젝트 목표 프로젝트 목표 프로젝트 진행 동기 예전부터 자동으로 응답을 해주는 카톡봇이나 자동으로 트윗을 해주는 트윗봇을 만드는 프</description>
+      <description>Github Action을 활용해서 Netflix 트위터 봇을 만들어보자. 기술 스택: Python, tweepy, Twitter API, auth, Github action, Github action workflow. [github] [트위터 계정] Index 프로젝트 목표 프로젝트 구현 다음 프로젝트 목표 프로젝트 목표 프로젝트 진행 동기 예전부터 자동으로 응답을 해주는 카톡봇이</description>
     </item>
     
     <item>
-      <title>[Project] Making blue green deployment with Shell script</title>
+      <title>[Project] Shell Script로 무중단 배포 흉내내보기</title>
       <link>https://leeleelee3264.github.io/post/2021-03-15-blue-green-deploy/</link>
       <pubDate>Mon, 15 Mar 2021 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2021-03-15-blue-green-deploy/</guid>
-      <description>Handles making blue green deployment with Shell script and Nginx. Also covers deployment method: Blue Green Deployment, Rolling Development, Canary Deployment. Index 무중단 배포란? 무중단 배포 구현하기 결론 무중단 배포란? 무중단 배포란 업데이트를 위해 배포를 할 때 어플리케이션이 멈추지 않는 것이다. 즉 배포를 할 때 서비스가 중단되는 다운타임이</description>
+      <description>Shell script로 무중단 배포를 흉내내는 방법을 알아본다. 또한 deployment method에 대해서 다룬다: Blue Green Deployment, Rolling Development, Canary Deployment. Index 무중단 배포란? 무중단 배포 구현하기 결론 무중단 배포란? 무중단 배포란 업데이트를 위해 배포를 할 때 어플리케이션</description>
     </item>
     
   </channel>
