@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="HandheldFriendly" content="True" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="generator" content="Hugo 0.102.3" />
+
+
+<link rel="shortcut icon" href="https://raw.githubusercontent.com/leeleelee3264/twitter_project/master/favicon.ico" />
+
+
+
+<title>[Class] 예제로 배우는 스프링 입문 강의 노트 - leelee.log</title>
+
+
+<meta name="author" content="leeleelee3264" />
+
+
+<meta name="description" content="예제로 배우는 스프링 입문 강의를 들으며 작성한 노트를 정리한다." />
+
+
+<meta name="keywords" content="Backend" />
+
+
+<meta property="og:title" content="[Class] 예제로 배우는 스프링 입문 강의 노트" />
+<meta name="twitter:title" content="[Class] 예제로 배우는 스프링 입문 강의 노트" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://leeleelee3264.github.io/post/2023-02-06-inflearn-spring-with-example-note/" /><meta property="og:description" content="예제로 배우는 스프링 입문 강의를 들으며 작성한 노트를 정리한다." />
+<meta name="twitter:description" content="예제로 배우는 스프링 입문 강의를 들으며 작성한 노트를 정리한다." /><meta property="og:image" content="https://leeleelee3264.github.io/static/img/og.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://leeleelee3264.github.io/static/img/og.png" /><meta property="article:published_time" content="2023-02-06T00:00:00+00:00" /><meta property="article:modified_time" content="2023-02-06T00:00:00+00:00" />
+
+
+<style>
+    @media (prefers-color-scheme: dark) {
+        body[data-theme='auto'] img {
+            filter: brightness(60%);
+        }
+    }
+
+    body[data-theme='dark'] img {
+        filter: brightness(60%);
+    }
+</style>
+
+
+
+
+<link rel="stylesheet" href="https://leeleelee3264.github.io/assets/css/fuji.min.b4a21b5d3eb1d0a51297e31230a65fc25e387843e45ec3a2d9176cd8d163c216d99b9b13a618b28f537c3b559ec8a408183b0fbfad48daddb9befa7d3ef90eed.css" integrity="sha512-tKIbXT6x0KUSl&#43;MSMKZfwl44eEPkXsOi2Rds2NFjwhbZm5sTphiyj1N8O1WeyKQIGDsPv61I2t25vvp9PvkO7Q==" />
+
+
+
+
+
+
+
+
+</head>
+
+<body
+  data-theme="auto"
+  data-theme-auto='true'
+  >
+    <script data-cfasync="false">
+  
+  var fujiThemeData = localStorage.getItem('fuji_data-theme');
+  
+  if (!fujiThemeData) {
+    localStorage.setItem('fuji_data-theme', 'auto');
+  } else {
+    
+    if (fujiThemeData !== 'auto') {
+      document.body.setAttribute('data-theme', fujiThemeData === 'dark' ? 'dark' : 'light');
+    }
+  }
+</script>
+
+    <header>
+    <div class="container-lg clearfix">
+        <div class="col-12 header">
+            <a class="title-main" href="https://leeleelee3264.github.io/">leelee.log</a>
+            
+        </div>
+    </div>
+</header>
+
+    <main>
+        <div class="container-lg clearfix">
+            
+            <div class="col-12 col-md-9 float-left content">
+                
+<article>
+    
+    <h2 class="post-item post-title">
+        <a href="https://leeleelee3264.github.io/post/2023-02-06-inflearn-spring-with-example-note/">[Class] 예제로 배우는 스프링 입문 강의 노트</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2023-02-06</span>
+
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;4833 words</span>
+
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/backend">Backend</a>&nbsp;</span>
+
+    </div>
+    
+    <div class="post-content markdown-body">
+        <br>
+<br> 
+<blockquote>
+<p>예제로 배우는 스프링 입문 강의를 들으며 작성한 노트를 정리한다.</p>
+</blockquote>
+<br> 
+<p><strong>Index</strong></p>
+<ol>
+<li>Intro: 나와 Spring의 관계, 이대로 괜찮은가?</li>
+<li>스프링 IoC</li>
+<li>스프링 AOP</li>
+<li>스프링 PSA</li>
+</ol>
+<br> 
+<h1 id="intro-나와-spring의-관계-이대로-괜찮은가">Intro: 나와 Spring의 관계, 이대로 괜찮은가?</h1>
+<p>Spring을 쓰기 시작하면서 개발자 경력을 시작했다. 그렇게 2년 동안 Spring을 쓰다가 지금 회사로 이직을 하면서 Django를 쓰게 되었다.
+1년 정도 Django를 쓰다 보니 언제부터인가 Spring이 낯설게 느껴졌다. 나와 Spring의 관계, 이대로 괜찮지 않았다.</p>
+<p>Spring이 더 멀어지기 전에 다시 Spring 공부를 시작할 필요를 느꼈다. 어떻게 공부를 할까 고민하던 중, 예전에 인프런에서 백기선님의 Spring 강의를 듣던 게
+생각이 나서 가볍게 들어보기로 했다. 예제로 배우는 스프링 입문 강의는 스프링 트라이앵클이라고 불리는 <code>IoC</code>, <code>AOP</code>, <code>PSA</code>의 기본 개념을 다루고 있다.</p>
+<br> 
+<blockquote>
+<p>스프링 트라이앵글 = IoC, AOP, PSA</p>
+</blockquote>
+<br>
+<h1 id="스프링-ioc">스프링 IoC</h1>
+<h3 id="inversion-of-control-제어권의-역전">Inversion Of Control (제어권의 역전)</h3>
+<ul>
+<li><U>내가 사용할 의존성을 내가 직접 만들지 않고, 다른 쪽에서 만들어 줄 것이라 생각하여 제어권을 넘겨준다.</U>
+<ul>
+<li>내가 쓸 의존성(객체)를 <code>new</code>로 만들지 않는다.</li>
+</ul>
+</li>
+<li>이때 다른 쪽이란 Spring이며, Spring이 <code>DI</code>로 의존성을 주입해준다.
+<ul>
+<li>내가 사용할 의존성의 인터페이스만 맞으면 어떤 것을 주입해줘도 상관 없다.</li>
+<li>테스트도 편리해진다.</li>
+</ul>
+</li>
+</ul>
+<br> 
+<blockquote>
+<p>내가 사용할 의존성을 내가 직접 만들 경우</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">OwnerController</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> OwnerRepository repository <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> OwnerRepository<span style="color:#f92672">();</span> 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br> 
+<blockquote>
+<p>내가 사용할 의존성을 다른 쪽에서 만들어 주는 경우</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">OwnerController</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> OwnerRepository repo<span style="color:#f92672">;</span> 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">OwnerController</span><span style="color:#f92672">(</span>OwnerRepository repo<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">repo</span> <span style="color:#f92672">=</span> repo<span style="color:#f92672">;</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<ul>
+<li><code>OwnerController</code>는 <code>OwnerRepository</code> 없이는 아예 생성 조차 될 수 없다.</li>
+<li><code>OwnerRepository</code>가 꼭 주어진다는 약속 아래에 코드가 만들어졌기 때문에 <code>OwnerRepository</code>에 구현되어있는 메서드를 써도 안전하다.</li>
+</ul>
+<br> 
+<blockquote>
+<p>OwnerController를 생성할 때 OwnerRepository를 주입해주는 예시</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Test</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">testDoSomething</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    OwnerRepository ownerRepository <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> OwnerRepository<span style="color:#f92672">();</span> 
+</span></span><span style="display:flex;"><span>    OwnerController ownerController <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> OwnerController<span style="color:#f92672">(</span>ownerRepository<span style="color:#f92672">);</span> 
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    ownerController<span style="color:#f92672">.</span><span style="color:#a6e22e">doSomething</span><span style="color:#f92672">();</span> 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br>
+<h3 id="bean">Bean</h3>
+<ul>
+<li>스프링이 관리하는 객체들을 뜻한다.</li>
+<li>빈으로 등록하면 어떤 일이 일어나는가?
+<ul>
+<li><code>OwnerController</code>를 만든다고 하면 Spring이 <code>Bean</code>으로 만들어진 <code>OwnerRepository</code>를 가져와 주입을 해준다.</li>
+<li>Spring이 <code>IoC 컨테이너</code>에서 Bean을 관리하고 있기 때문에, 생성자나 어노테이션을 보고 필요한 의존성을 주입해주면서 의존성 관리를 해준다.</li>
+</ul>
+</li>
+</ul>
+<br> 
+<blockquote>
+<p>일반 객체 생성</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>SimpleClass simpleClass <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SimpleClass<span style="color:#f92672">();</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<ul>
+<li>위에서는 일반 객체를 생성했다. 이렇게 객체를 생성하면 Spring은 이 객체가 무엇인지 알 수 없다.</li>
+</ul>
+<br> 
+<h3 id="spring-컨테이너-안에-빈을-등록하는-방법">Spring 컨테이너 안에 빈을 등록하는 방법</h3>
+<h4 id="bean-어노테이션">@Bean 어노테이션</h4>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Configuration</span> 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SampleConfig</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Bean</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> SampleBean <span style="color:#a6e22e">sampleBean</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> SampleBean<span style="color:#f92672">();</span> 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br>
+<ul>
+<li><code>Configuration</code> 어노테이션을 사용한다.</li>
+<li>Configuration 안에 <code>Bean</code> 어노테이션을 사용해 빈을 만든다.
+<ul>
+<li>new로 생성되어 리턴되는 것이 빈이 되어, IoC 컨테이너 안으로 들어간다.</li>
+</ul>
+</li>
+</ul>
+<br>
+<h4 id="component-어노테이션">@Component 어노테이션</h4>
+<ul>
+<li><code>Controller</code>, <code>Service</code>, <code>Configuration</code> 어노테이션 모두 <code>Component</code> 어노테이션을 가지고 있다.</li>
+<li><code>ComponentScan</code> 어노테이션으로 Spring 런타임에 컴포넌트스캔을 해서 자동으로 detect 되어 IoC 컨테이너 안으로 들어간다.
+<ul>
+<li>ComponentScan은 <code>SpringBootApplication</code> 어노테이션에 들어가 있다. 때떄로 SpringBootApplication 파일보다 위에 객체를 만들면 못 찾는 이유가 이것 때문이다.</li>
+</ul>
+</li>
+</ul>
+<br>
+<p>JPA에서 사용하는 Repository는 <code>@Repository</code>를 사용해서 빈으로 등록되는 것이 아니라, <code>Repository 인터페이스</code>를 상속받아야 빈으로 등록이 된다.</p>
+<br>
+<blockquote>
+<p>SpringApplication</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Target</span><span style="color:#f92672">({</span>ElementType<span style="color:#f92672">.</span><span style="color:#a6e22e">TYPE</span><span style="color:#f92672">})</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Retention</span><span style="color:#f92672">(</span>RetentionPolicy<span style="color:#f92672">.</span><span style="color:#a6e22e">RUNTIME</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Documented</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Inherited</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@SpringBootConfiguration</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@EnableAutoConfiguration</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@ComponentScan</span><span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>excludeFilters <span style="color:#f92672">=</span> <span style="color:#f92672">{</span><span style="color:#a6e22e">@Filter</span><span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>type <span style="color:#f92672">=</span> FilterType<span style="color:#f92672">.</span><span style="color:#a6e22e">CUSTOM</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>classes <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>TypeExcludeFilter<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">),</span> <span style="color:#a6e22e">@Filter</span><span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>type <span style="color:#f92672">=</span> FilterType<span style="color:#f92672">.</span><span style="color:#a6e22e">CUSTOM</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>classes <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>AutoConfigurationExcludeFilter<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">)}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#a6e22e">@interface</span> SpringBootApplication <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">...</span> 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br>
+<h4 id="bean과-component의-차이">Bean과 Component의 차이</h4>
+<ul>
+<li>Spring에서 관리하는 객체를 모두 Bean이라고 하기 때문에 사실 용어 자체로 볼 떄는 Component도 Bean에 포함이 된다.</li>
+<li>개발자가 컨트롤 할 수 없는 <U>외부 라이브러리를 빈으로 등록하고 싶을 때 @Bean을 사용한다.</U>
+<ul>
+<li>빈은 <code>메소드</code>에 사용한다.</li>
+<li>컴포넌트는 <code>클래스</code>에 사용한다.</li>
+</ul>
+</li>
+</ul>
+<br> 
+<h3 id="ioc-컨테이너">IoC 컨테이너</h3>
+<ul>
+<li>IoC 컨테이너는 <code>ApplicationContext</code> 또는 <code>BeanFactory</code>를 사용해서 접근할 수 있다. BeanFactory가 IoC 컨테이너 자체라고 볼 수 있으며, ApplicationContext는 BeanFactory를 상속했다.</li>
+<li>IoC 컨테이너는 빈을 만들고, 해당 빈을 필요로 하는 곳에 의존성을 주입해준다. <U>Spring에서 의존성 주입은 빈끼리만 가능하다.</U> 의존성 주입을 IoC에서 해주고 있기 때문에 빈이 아니라면 IoC에 들어가지 않아, 관리를 할 수 없다.</li>
+</ul>
+<br> 
+<h3 id="singleton">SingleTon</h3>
+<ul>
+<li>Bean은 <code>SingleTon</code>으로 만들어진다. 그래서 ApplicationContext나 BeanFactory로 Bean을 가져와 인스턴스의 값을 봐보면 매번 같다. <U>SingleTon으로 단 한 번 만 만들어졌기 때문이다.</U></li>
+<li>멀티 쓰레드에서 SingleTon을 만드는 것은 번거로운데 IoC 컨테이너를 사용하면 편하게 싱글톤을 만들 수 있고, 이게 IoC 컨테이너를 사용하는 이유 중 하나이다.</li>
+</ul>
+<br> 
+<h3 id="di">DI</h3>
+<h4 id="의존성-주입-방법">의존성 주입 방법</h4>
+<blockquote>
+<p>필드 주입</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Controller</span> 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">OwnerController</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Autowired</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> OwnerRepository owners<span style="color:#f92672">;</span> 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">...</span> </span></span></code></pre></td></tr></table>
+</div>
+</div>
+<blockquote>
+<p>생성자 주입</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Controller</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">OwnerController</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> OwnerRepository owners<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// @Autowired
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">OwnerController</span><span style="color:#f92672">(</span>OwnerRepository owners<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">owners</span> <span style="color:#f92672">=</span> owners<span style="color:#f92672">;</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">...</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<ul>
+<li><U>필수적으로 필요한 파라메터가 없을 때 인스턴스 자체를 만들 수 없어서 강제성을 줄 수 있다.</U>
+<ul>
+<li>그런데 가끔 <code>순환참조</code>의 문제가 일어날 수 있다. 이럴때는 다른 주입법을 써야 하거나 순환참조가 일어나지 않도록 구조를 짜야 한다.</li>
+</ul>
+</li>
+<li>원래는 생성자에서도 <code>@Autowired</code> 를 써야 했는데 Spring 4.3 부터 없어졌다.</li>
+</ul>
+<br>
+<blockquote>
+<p>Setter 주입</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Controller</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">OwnerController</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> OwnerRepository owners<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Autowired</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setOwners</span><span style="color:#f92672">(</span>OwnerRepository owners<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">owners</span> <span style="color:#f92672">=</span> owners<span style="color:#f92672">;</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span> </span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br>
+<h4 id="bean이-아닌-객체를-의존성-주입하려-하면">Bean이 아닌 객체를 의존성 주입하려 하면?</h4>
+<p>Bean으로 등록하지 않고 @Autowired로 의존성 주입을 해달라고 하면 Spring 입장에서는 모르기 때문에 의존성을 주입해 줄 수 없고, 결과적으로 어플리케이션 자체가 안 뜨게 된다.</p>
+<br>
+<h1 id="스프링-aop">스프링 AOP</h1>
+<p><code>Aspect Oriented Programming</code>의 약자로, 관점(관심사)를 기준으로 흩어진 코드를 한 곳으로 모으는 기능이다. Spring의 대표적인 AOP로는 <code>@Transactional</code>이 있다.</p>
+<br>
+<blockquote>
+<p>AS-IS</p>
+</blockquote>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/spring/aaa.png" >
+<figcaption align = "center">[Picture 1] 흩어져있는 코드</figcaption>
+<br>
+<ul>
+<li>같은 동작을 여러 곳에서 하고 있는데, 그 때마다 구현을 했다.</li>
+<li>AAAA가 변경이 일어난다면, 쓰는 곳에 다 찾아가 고쳐줘야 한다.</li>
+<li><U>원래의 기능만 남겨두고 공통적이고 부가적인 기능을 한 곳에 모을 수 없을까?</U></li>
+</ul>
+<br> 
+<blockquote>
+<p>TO-BE</p>
+</blockquote>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/spring/bbb.png" >
+<figcaption align = "center">[Picture 2] 모여있는 코드</figcaption>
+<br>
+<p>AOP의 핵심은 실제 코드에는 없는데, 런타임에는 마치 있는 것처럼 동작을 한다는 것이다. 이렇게 없던 기능을 쏙 넣어주는 것에는 여러 방법이 있다.</p>
+<br>
+<h3 id="기능을-넣어주는-방법">기능을 넣어주는 방법</h3>
+<h4 id="컴파일할-때-넣어주기">컴파일할 때 넣어주기</h4>
+<ul>
+<li>실제 함수에는 AAAA가 없는데, 컴파일을 하면서 마치 함수에 AAAA가 있는 것처럼 넣어준다.</li>
+<li><code>AspectJ</code>가 이런 일을 해주고 있다.</li>
+</ul>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>A<span style="color:#f92672">.</span><span style="color:#a6e22e">java</span> <span style="color:#f92672">--&gt;</span> <span style="color:#f92672">(</span>컴파일<span style="color:#f92672">)</span> <span style="color:#f92672">--&gt;</span> A<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span> 
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>        AAAA 넣어주기</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br>
+<h4 id="바이트코드를-조작해서-넣어주기">바이트코드를 조작해서 넣어주기</h4>
+<ul>
+<li>A.java에서 컴파일을 해 A.class를 만들면 A.class를 사용할 때 <code>ClassLoader</code>로 클래스를 읽어 메모리로 올린다.</li>
+<li>메모리에 올라가는 A.class의 바이트코드를 조작해서 마치 함수에 AAAA가 있는 것처럼 넣어준다.</li>
+<li>이또한 AspectJ가 해준다.</li>
+</ul>
+<br>
+<h4 id="프록시-패턴으로-구현하기">프록시 패턴으로 구현하기</h4>
+<ul>
+<li><strong>Spring AOP가 사용하는 방법이다.</strong></li>
+<li>디자인 패턴 중 하나인 프록시 패턴을 사용해서 AOP를 구현했다.</li>
+<li><a href="https://www.notion.so/7e4bdf0c9ef049e994f802c0eacea551#db43dcc19ab1480fbdd2c67deaf58582" target="_blank">[프록시 패턴]</a>의 핵심은 <U>기존의 코드를 건드리지 않고 새로운 기능을 추가했다는 점이다.</U>
+<ul>
+<li>이렇게 된다면 클라이언트 코드도 변화가 없거나, 최소화 된다.</li>
+</ul>
+</li>
+</ul>
+<br>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/spring/proxy.png" >
+<figcaption align = "center">[Picture 3] 프록시 패턴 예시</figcaption>
+<br>
+<h3 id="프록시-패턴-만들어보기">프록시 패턴 만들어보기</h3>
+<p><strong>시나리오</strong></p>
+<ul>
+<li><code>Cash</code>에서 시간을 축정하는 기능을 추가하고 싶어서 <code>CashPerf</code> 프록시 클래스를 만들었다.</li>
+<li>CashPerf를 사용한다고 해도 클라이언트인 <code>Store</code>에는 아무런 변경이 없다.
+<ul>
+<li>Store를 생성할 떄 의존성으로 Cash 대신 CashPerf를 넣어준다. 이 둘의 인터페이스인 <code>Payment</code>를 사용하기 때문에 이렇게 변경해도 문제가 없다.</li>
+</ul>
+</li>
+</ul>
+<br>
+<blockquote>
+<p>인터페이스</p>
+</blockquote>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/spring/payment.png" >
+<figcaption align = "center">[Picture 4] payment 인터페이스</figcaption>
+<br>
+<blockquote>
+<p>비즈니스 로직 클래스</p>
+</blockquote>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/spring/cash.png" >
+<figcaption align = "center">[Picture 5] cash 클래스</figcaption>
+<br>
+<blockquote>
+<p>프록시 클래스</p>
+</blockquote>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/spring/cashperf.png" >
+<figcaption align = "center">[Picture 6] cash perf 클래스</figcaption>
+<br>
+<ul>
+<li>stopwatch로 시간을 측정하는 부분을 추가했다.</li>
+<li><em>프록스 클래스인 cash perf 클래스에서 비즈니스 로직 클래스인 cash를 호출한다.</em></li>
+</ul>
+<br>
+<blockquote>
+<p>클라언트</p>
+</blockquote>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/spring/store.png" >
+<figcaption align = "center">[Picture 7] Store 클래스</figcaption>
+<br>
+<blockquote>
+<p>테스트</p>
+</blockquote>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/spring/store_test.png" >
+<figcaption align = "center">[Picture 8] Store Test 클래스</figcaption>
+<br>
+<h3 id="spring-aop-실습">Spring AOP 실습</h3>
+<p><strong>목표</strong></p>
+<ul>
+<li>Spring AOP를 사용해서 API의 응답시간을 측정한다.</li>
+</ul>
+<br>
+<blockquote>
+<p>LogExecutionTime 어노테이션 구현</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.lang.annotation.ElementType<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.lang.annotation.Retention<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.lang.annotation.RetentionPolicy<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.lang.annotation.Target<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Target</span><span style="color:#f92672">(</span>ElementType<span style="color:#f92672">.</span><span style="color:#a6e22e">METHOD</span><span style="color:#f92672">)</span> <span style="color:#75715e">//이 어노테이션을 어디에 쓸 것인지
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">@Retention</span><span style="color:#f92672">(</span>RetentionPolicy<span style="color:#f92672">.</span><span style="color:#a6e22e">RUNTIME</span><span style="color:#f92672">)</span> <span style="color:#75715e">// 이 어노테이션 정보를 언제까지 유지할 것인지
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#a6e22e">@interface</span> LogExecutionTime <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<ul>
+<li>이렇게 어노테이션만 있으면 아무런 일도 일어나지 않고, 그냥 <code>주석</code>과 다름이 없다.</li>
+<li><U>이 어노테이션을 읽어서 처리하는 부분이 있어야 한다.</U> -&gt; <code>Aspect</code>가 필요하다.</li>
+</ul>
+<br>
+<blockquote>
+<p>사용처</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@GetMapping</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/owners/new&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@LogExecutionTime</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">initCreationForm</span><span style="color:#f92672">(</span>Map<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> Object<span style="color:#f92672">&gt;</span> model<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    Owner owner <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Owner<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>    model<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;owner&#34;</span><span style="color:#f92672">,</span> owner<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> VIEWS_OWNER_CREATE_OR_UPDATE_FORM<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br>
+<blockquote>
+<p>Aspect 구현</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> org.aspectj.lang.ProceedingJoinPoint<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.aspectj.lang.annotation.Around<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.aspectj.lang.annotation.Aspect<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.slf4j.Logger<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.slf4j.LoggerFactory<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.stereotype.Component<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.util.StopWatch<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Component</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Aspect</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">LogAspect</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	Logger logger <span style="color:#f92672">=</span> LoggerFactory<span style="color:#f92672">.</span><span style="color:#a6e22e">getLogger</span><span style="color:#f92672">(</span>LogAspect<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@Around</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;@annotation(LogExecutionTime)&#34;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> Object <span style="color:#a6e22e">logExecutionTime</span><span style="color:#f92672">(</span>ProceedingJoinPoint joinPoint<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> Throwable <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>		StopWatch stopWatch <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> StopWatch<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>		stopWatch<span style="color:#f92672">.</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		Object proceed <span style="color:#f92672">=</span> joinPoint<span style="color:#f92672">.</span><span style="color:#a6e22e">proceed</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		stopWatch<span style="color:#f92672">.</span><span style="color:#a6e22e">stop</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>		logger<span style="color:#f92672">.</span><span style="color:#a6e22e">info</span><span style="color:#f92672">(</span>stopWatch<span style="color:#f92672">.</span><span style="color:#a6e22e">prettyPrint</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> proceed<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<ul>
+<li>@LogExecutionTime를 읽어서 처리하는 부분이다.</li>
+<li>[Line 15] <code>Around</code>: <U>어디 사이에 Aspect를 실행하면 되는지 알려준다.</U> 여기서는 LogExecutionTime 어노테이션 사이로 설정한다.</li>
+<li>[Line 16] <code>jointPoint</code>: @LogExecutionTime를 부착한 API 메서드를 뜻한다.
+<ul>
+<li>[Line 17]jointPoint를 실행하기 전에 먼저 실행한다.</li>
+<li>[Line 20] jointPoint인 API 메서드를 실행한다.</li>
+<li>[Line 22] jointPoint를 실행한 후 실행한다.</li>
+<li>[Line 25] jointPoint 실행 결과를 반환한다.</li>
+</ul>
+</li>
+</ul>
+<br>
+<h4 id="프록시-패턴예제와-spring-aop-실습-이해">프록시 패턴예제와 Spring AOP 실습 이해</h4>
+<p>프록시 패턴 예제에서는 부가기능을 담은 프록시 클래스인 CashPerf를 만들어줬는데 Spring에서는 <U>@LogExecutionTime를 보고 Spring AOP가 OwnerController 프록시 클래스를 자동으로 만들어준다.</U>
+그리고 이 프록시 클래스 버전의 OwnerController를 직접 주입해주기 까지 한다.</p>
+<br>
+<blockquote>
+<p>비즈니스 로직이 담긴 클래스</p>
+</blockquote>
+<ul>
+<li>OwnerController</li>
+<li>Cash</li>
+</ul>
+<blockquote>
+<p>프록시 클래스</p>
+</blockquote>
+<ul>
+<li>Spring AOP가 만들어준 OwnerController 프록시 클래스</li>
+<li>CashPerf</li>
+</ul>
+<br>
+<p>AOP는 공부할 부분이 굉장히 많다. 추후에는 <code>After</code>, <code>Before</code> 와 Aspect로 Exception 처리로직 만들기, 어노테이션 말고도 어디에 또 Around를 걸 수 있는지 등을 공부할 수 있다.</p>
+<br>
+<h1 id="스프링-psa">스프링 PSA</h1>
+<p><code>Portable Service Abstraction</code>의 약자이다. <U>PSA의 목표는 사용하는 기술스택이 달라도 우리의 코드는 달라지지 않아야 한다는 것이다.</U></p>
+<br>
+<h3 id="service-abstraction">Service Abstraction</h3>
+<p>Spring으로 <code>서블릿 어플리케이션</code>을 만들고 있는데 실제로 <code>Controller</code>를 만들어보면 서블릿에 관련된 것을 특별히 코딩하지 않는다. URL 매핑도 <code>@GetMapping</code>, <code>@PostMapping</code> 을 사용해서 끝내버린다.
+서블릿을 직접 조작한다면 아래와 같은 코드를 짜야 했을 것이다.</p>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/spring/sb.png" >
+<figcaption align = "center">[Picture 9] 서블릿을 직접 사용한다면</figcaption>
+<br>
+<p>이렇게 간단하게 만들어도 그 밑에서는 서블릿 기반으로 동작한다. <em>이게 가능한 이유는 밑단의 서블릿 서비스를 추상화 했기 때문이다.</em> Spring 에서는 서블릿이 포함된 MVC외에도 다양한 Service Abstraction을 제공한다.</p>
+<br>
+<h3 id="portable">Portable</h3>
+<p><code>Spring web mvc</code>는 내장된 <code>tomcat</code>으로 돌아가고 있다. 이 상태에서 <code>Spring web flux</code> 를 도입하면 내장된 서버가 <code>netty</code>로 바뀐다. 완벽한 호환이 되는 것은 아니지만, 이렇게 내장 서버를 변경한다고 해도 별도의 변경 없이 실행이 된다.</p>
+<p><U>Spring에서 내장서버를 이미 추상화를 시켰기 때문에 변경이 되어도 지장없이 실행되는 것이다.</U> 말 그대로 내장서버가 Portable(휴대용)이 된 것이다. Spring의 내장서버로는 <code>tomcat</code>, <code>netty</code>, <code>jetty</code>, <code>undertow</code> 가 있다.</p>
+<h4 id="psa-예시-1-controller">PSA 예시 1: @Controller</h4>
+<ul>
+<li>요청을 매핑할 수 있는 <code>Controller</code> 역할을 한다.</li>
+<li><code>@GetMapping</code> 등으로 요청을 매핑한다.
+<ul>
+<li>매핑: 명시한 URL이 요청으로 들어왔을 때 GetMapping을 부착한 해당 메서드에서 처리한다는 뜻이다.</li>
+<li><code>path</code>를 많이 명시해두지만 <code>header</code>, <code>value</code>, <code>consumes</code>, <code>produces</code> 등 요청과 관련된 것들로도 매핑이 가능하다.</li>
+</ul>
+</li>
+</ul>
+<br>
+<blockquote>
+<p>@GetMapping</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Target</span><span style="color:#f92672">({</span>ElementType<span style="color:#f92672">.</span><span style="color:#a6e22e">METHOD</span><span style="color:#f92672">})</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Retention</span><span style="color:#f92672">(</span>RetentionPolicy<span style="color:#f92672">.</span><span style="color:#a6e22e">RUNTIME</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Documented</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@RequestMapping</span><span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>method <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>RequestMethod<span style="color:#f92672">.</span><span style="color:#a6e22e">GET</span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#a6e22e">@interface</span> GetMapping <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@AliasFor</span><span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>annotation <span style="color:#f92672">=</span> RequestMapping<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>String <span style="color:#a6e22e">name</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">default</span> <span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@AliasFor</span><span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>        annotation <span style="color:#f92672">=</span> RequestMapping<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    String<span style="color:#f92672">[]</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">default</span> <span style="color:#f92672">{};</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@AliasFor</span><span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>        annotation <span style="color:#f92672">=</span> RequestMapping<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    String<span style="color:#f92672">[]</span> <span style="color:#a6e22e">path</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">default</span> <span style="color:#f92672">{};</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@AliasFor</span><span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>        annotation <span style="color:#f92672">=</span> RequestMapping<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    String<span style="color:#f92672">[]</span> <span style="color:#a6e22e">params</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">default</span> <span style="color:#f92672">{};</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@AliasFor</span><span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>        annotation <span style="color:#f92672">=</span> RequestMapping<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    String<span style="color:#f92672">[]</span> <span style="color:#a6e22e">headers</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">default</span> <span style="color:#f92672">{};</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@AliasFor</span><span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>        annotation <span style="color:#f92672">=</span> RequestMapping<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    String<span style="color:#f92672">[]</span> <span style="color:#a6e22e">consumes</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">default</span> <span style="color:#f92672">{};</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@AliasFor</span><span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>        annotation <span style="color:#f92672">=</span> RequestMapping<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    String<span style="color:#f92672">[]</span> <span style="color:#a6e22e">produces</span><span style="color:#f92672">()</span> <span style="color:#66d9ef">default</span> <span style="color:#f92672">{};</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br>
+<h4 id="psa-예시-2-transactional">PSA 예시 2: @Transactional</h4>
+<p>Spring에서 DB의 All or Nothing인 트랜잭션 개념을 지키기 위해서는 <code>@Transactional</code> 만 부착하면 된다. 해당 어노테이션을 쓰지 않는다면 <code>JDBC 트랜잭션</code>을 사용해 매번 로우 레벨로 코딩을 해야 한다.</p>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/spring/roll.png" >
+<figcaption align = "center">[Picture 10] JDBC Transaction</figcaption>
+<br>
+<ul>
+<li><code>setAutoCommit</code>을 false로 둬서 DB에 자동으로 반영되는 것을 방지한다.</li>
+<li>모든 로직이 성공한다면 commit 해준다.</li>
+<li>예외 발생시 catch 하며, 이때까지의 DB 액션은 <code>rollback</code>한다.</li>
+</ul>
+<br>
+<p>@Transactional은 트랜잭션의 경계를 지정하는 기능이 들어있는 <code>PlatformTransactionManager</code> 인터페이스에 구현이 되어있고, <U>PlatformTransactionManager는 내가 어떤 DB 기술 스텍을 사용하는지에 따라 구현체가 달라진다.</U></p>
+<br>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/spring/platform.png" >
+<figcaption align = "center">[Picture 11] PlatformTransactionManager</figcaption>
+<br>
+<blockquote>
+<p>DB 가술 스텍에 따른 TransactionManager</p>
+</blockquote>
+<ul>
+<li>JDBC, IBatis SQLMap -&gt; <code>DataSourceTransactionManager</code></li>
+<li>JPA -&gt; <code>JpaTransactionManager</code></li>
+<li>Hibernate -&gt; <code>HibernateTransactionManger</code></li>
+</ul>
+<br>
+<h5 id="레퍼런스">레퍼런스</h5>
+<ul>
+<li><a href="https://springsource.tistory.com/127" target="_blank">[트랜잭션 추상화 클래스의 종류와 사용법]</a></li>
+<li><a href="https://m.blog.naver.com/zzang9ha/221802081128" target="_blank">[JPA, iBatis, MyBatis, Hibernate ORM]</a></li>
+</ul>
+<br>
+<h4 id="psa-예시-3-spring-cache">PSA 예시 3: Spring Cache</h4>
+<p>Spring에서 사용하는 Cache도 PSA로 되어있다. 구현체로는 <code>javax.cache</code>, <code>ehcahe</code> 등이 있다.</p>
+
+    </div>
+</article>
+
+
+
+<div class="post-comment" data-comment="utterances">
+    <span class="post-comment-notloaded">
+        <i class="iconfont icon-chatbox-ellipses-sharp"></i>&nbsp;Load comments
+    </span>
+    <script>
+        function loadComment() {
+            var commentArea = document.querySelector('.post-comment');
+            var utterancesTheme = document.body.getAttribute('data-theme');
+            if (utterancesTheme === 'auto') {
+                utterancesTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'photon-dark' :
+                    'github-light';
+            } else {
+                utterancesTheme = utterancesTheme === 'dark' ? 'photon-dark' : 'github-light';
+            }
+            var s = document.createElement('script');
+            s.src = 'https://utteranc.es/client.js';
+            s.setAttribute('repo', 'leeleelee3264\/github_io_comment');
+            s.setAttribute('issue-term', 'pathname');
+            s.setAttribute('theme', utterancesTheme);
+            s.setAttribute('crossorigin', 'anonymous');
+            s.setAttribute('async', '');
+            document.querySelector('.post-comment').appendChild(s);
+            document.querySelector('span.post-comment-notloaded').setAttribute('style', 'display: none;');
+        }
+    </script>
+</div>
+
+
+            </div>
+            <aside class="col-12 col-md-3 float-left sidebar">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://github.com/leeleelee3264" target="_blank"><span>GitHub</span></a>
+            </li>
+            
+            <li>
+                <a href="https://www.linkedin.com/in/seungmin4035/" target="_blank"><span>LinkedIn</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/backend/">Backend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/book/">Book</a>
+            </span>
+            
+            <span>
+                <a href="/tags/cheat/">Cheat</a>
+            </span>
+            
+            <span>
+                <a href="/tags/frontend/">Frontend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/general/">General</a>
+            </span>
+            
+            <span>
+                <a href="/tags/infra/">Infra</a>
+            </span>
+            
+            <span>
+                <a href="/tags/project/">Project</a>
+            </span>
+            
+        </div>
+    </div>
+    
+</aside>
+
+        </div>
+        <div class="btn">
+    <div class="btn-menu" id="btn-menu">
+        <i class="iconfont icon-grid-sharp"></i>
+    </div>
+    <div class="btn-toggle-mode">
+        <i class="iconfont icon-contrast-sharp"></i>
+    </div>
+    <div class="btn-scroll-top">
+        <i class="iconfont icon-chevron-up-circle-sharp"></i>
+    </div>
+</div>
+<aside class="sidebar-mobile" style="display: none;">
+  <div class="sidebar-wrapper">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://github.com/leeleelee3264" target="_blank"><span>GitHub</span></a>
+            </li>
+            
+            <li>
+                <a href="https://www.linkedin.com/in/seungmin4035/" target="_blank"><span>LinkedIn</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/backend/">Backend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/book/">Book</a>
+            </span>
+            
+            <span>
+                <a href="/tags/cheat/">Cheat</a>
+            </span>
+            
+            <span>
+                <a href="/tags/frontend/">Frontend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/general/">General</a>
+            </span>
+            
+            <span>
+                <a href="/tags/infra/">Infra</a>
+            </span>
+            
+            <span>
+                <a href="/tags/project/">Project</a>
+            </span>
+            
+        </div>
+    </div>
+    
+    
+    
+    
+  </div>
+</aside>
+    </main>
+
+    <footer>
+    <div class="container-lg clearfix">
+        <div class="col-12 footer">
+            
+            <span>&copy; 2020-2023
+                <a href="https://leeleelee3264.github.io/">leeleelee3264</a>
+                 | <a href="https://github.com/leeleelee3264/leeleelee3264.github.io">Source code</a> 
+                | Powered by <a href="https://github.com/dsrkafuu/hugo-theme-fuji/"
+                   target="_blank">Fuji-v2</a> &amp; <a href="https://gohugo.io/"
+                                                    target="_blank">Hugo</a> 
+            </span>
+        </div>
+    </div>
+</footer>
+
+    
+<script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha512-N9IJRoc3LaP3NDoiGkcPa4gG94kapGpaA5Zq9/Dr04uf5TbLFU5q0o8AbRhLKUUlp8QFS2u7S+Yti0U7QtuZvQ==" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js" integrity="sha512-q583ppKrCRc7N5O0n2nzUiJ+suUv7Et1JGels4bXOaMFQcamPk9HjdUknZuuFjBNs7tsMuadge5k9RzdmO+1GQ==" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/components/prism-core.min.js" integrity="sha512-LCKPTo0gtJ74zCNMbWw04ltmujpzSR4oW+fgN+Y1YclhM5ZrHCZQAJE4quEodcI/G122sRhSGU2BsSRUZ2Gu3w==" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-GP4x8UWxWyh4BMbyJGOGneiTbkrWEF5izsVJByzVLodP8CuJH/n936+yQDMJJrOPUHLgyPbLiGw2rXmdvGdXHA==" crossorigin="anonymous"></script>
+
+
+
+<script defer src="/assets/js/fuji.min.645f1123be695831f419ab54c1bcba327325895c740014006e57070d4f3e5d6b553e929c4b46f40ea707249e9c7f7c2a446d32a39ce7319f80a34525586a8e0f.js" integrity="sha512-ZF8RI75pWDH0GatUwby6MnMliVx0ABQAblcHDU8&#43;XWtVPpKcS0b0DqcHJJ6cf3wqRG0yo5znMZ&#43;Ao0UlWGqODw=="></script>
+
+
+
+</body>
+
+</html>

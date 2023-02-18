@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Infra on dev_leelee.log</title>
+    <title>Infra on leelee.log</title>
     <link>https://leeleelee3264.github.io/tags/infra/</link>
-    <description>Recent content in Infra on dev_leelee.log</description>
+    <description>Recent content in Infra on leelee.log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Mon, 24 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://leeleelee3264.github.io/tags/infra/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>[Infra] Load balancer</title>
+      <title>[Infra] What is Load balancer</title>
       <link>https://leeleelee3264.github.io/post/2022-10-24-load-balancer/</link>
       <pubDate>Mon, 24 Oct 2022 00:00:00 +0000</pubDate>
       
@@ -44,7 +44,7 @@
     </item>
     
     <item>
-      <title>MySQL Study (4/5) - Join &amp; Join Set</title>
+      <title>[Infra] MySQL Study (4/5) - Join &amp; Join Set</title>
       <link>https://leeleelee3264.github.io/post/2021-07-14-mysql-history-of-join-and-join-set/</link>
       <pubDate>Wed, 14 Jul 2021 00:00:00 +0000</pubDate>
       
@@ -53,69 +53,69 @@
     </item>
     
     <item>
-      <title>MySQL 스터디 (3/5) - String Function &amp; Referential Integrity</title>
+      <title>[Infra] MySQL Study (3/5) - String Function &amp; Referential Integrity</title>
       <link>https://leeleelee3264.github.io/post/2021-07-08-mysql-stringfunction-and-refrential-integrity/</link>
       <pubDate>Thu, 08 Jul 2021 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2021-07-08-mysql-stringfunction-and-refrential-integrity/</guid>
-      <description>MySQL String 함수와 참조 무결성 (Referential Integrity) 에 대해서 다룹니다. Index MySQL에서 String 함수 참조 무결정 소소한 하이디 SQL &amp;amp; markdown 팁 Reference 리뷰 후에 알게된 부분들 [Markdown 각주/미주 달기] 1 SUBSTRING_INDEX(문자열, 구분자, 가져올 구문 갯수)</description>
+      <description>Handles MySQL string function: LENGTH(), RIGHT(), MID(), INSERT() and referential integrity: Restrict, No Action, Cascade, Set NULL. Index MySQL에서 String 함수 참조 무결정 소소한 하이디 SQL &amp;amp; markdown 팁 Reference 리뷰 후에 알게된 부분들 [Markdown 각주/미주 달기] 1 SUBSTRING_INDEX(문자열, 구분자, 가져올 구문 갯수) 1 2 3 4</description>
     </item>
     
     <item>
-      <title>MySQL 스터디 (2/5) - SQL &amp; key &amp; collation</title>
+      <title>[Infra] MySQL Study (2/5) - SQL &amp; key &amp; collation</title>
       <link>https://leeleelee3264.github.io/post/2021-06-30-mysql-sql-and-key-collection/</link>
       <pubDate>Wed, 30 Jun 2021 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2021-06-30-mysql-sql-and-key-collection/</guid>
-      <description>MySQL SQL과 key, collation에 대해 다룬다. Index Structured Query Language Key Collation Reference 리뷰 후에 알게된 부분들 Primary Key가 들어간 column 의 이름도 아닌 제약조건에 이름을 만드는 이유 주임님이 주신 의견: 기본키를 항상 하나의 column으로 만드는 건 아니고</description>
+      <description>Handles MySQL SQL &amp;amp; key &amp;amp; collation. SQL: DML, DDL, DCL. Key: primary, foreign, super, candidate, alternative, surrogate. Collation: utf8, utf8mb4. Index Structured Query Language Key Collation Reference 리뷰 후에 알게된 부분들 Primary Key가 들어간 column 의 이름도 아닌 제약조건에 이름을 만드는 이유 주임님이 주신 의견: 기본키를 항상 하나의 column으로 만드는 건 아니고 여</description>
     </item>
     
     <item>
-      <title>MySQL 스터디 (1/5) - Index</title>
+      <title>[Infra] MySQL Study (1/5) - Index</title>
       <link>https://leeleelee3264.github.io/post/2021-06-21-mysql-index/</link>
       <pubDate>Mon, 21 Jun 2021 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2021-06-21-mysql-index/</guid>
-      <description>Summary of post Index Clustered Index / Non-Clustered Index - Concept Clustered Index / Non-Clustered Index - Structure and Index algorithm Side effects of Indexes Related SQL Command with Indexes Reference 리뷰 후에 알게된 부분들 Non-Clustered Index가 여러 개 생성이 가능하지만 무제한으로 만들 수 있는 것은 아니다. 조회는 Clustered Index가 빠르지만, 수정과 입력은 Non-Clustered Ind</description>
+      <description>Handles MySQL Index: clustered, non-clustered structure and algorithm. B-Tree, R-Tree. Side effect of index. Index Clustered Index / Non-Clustered Index - Concept Clustered Index / Non-Clustered Index - Structure and Index algorithm Side effects of Indexes Related SQL Command with Indexes Reference 리뷰 후에 알게된 부분들 Non-Clustered Index가 여러 개 생성이 가능하지만 무제한으로 만들 수 있는 것은 아니다. 조회는 Clustered Index가 빠르지만</description>
     </item>
     
     <item>
-      <title>리눅스 설치 및 초기 세팅하기</title>
+      <title>[Infra] Installation and setup Ubuntu</title>
       <link>https://leeleelee3264.github.io/post/2021-04-21-linux-server-init-setting/</link>
       <pubDate>Wed, 21 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2021-04-21-linux-server-init-setting/</guid>
-      <description>리눅스 서버 설치와 초기 설정에 대해 다룬다. Index 리눅스 설치 초기 네트워크 설정 SSH 설정 사용자 설정 기타 설정 MariDB 설치/설정 리눅스 설치 리눅스 설치용 usb 리눅스를 설치하려면 설치용 usb를 먼저 만들어야 한다. [리눅스 usb 만들기] 이 블로</description>
+      <description>Handles installation and setting for Ubuntu. From basic: installation USB, network, static ip, SSH, user and sudoer to custom: prompt, build-essential, installation Maria DB. Index 리눅스 설치 초기 네트워크 설정 SSH 설정 사용자 설정 기타 설정 MariDB 설치/설정 리눅스 설치 리눅스 설치용 usb 리눅스를 설치하려면 설치용 usb를 먼저 만들어야 한다. [리눅스 usb 만들</description>
     </item>
     
     <item>
-      <title>(en) Migrate Shiny Server with Docker</title>
+      <title>[Infra] (en) Running Shiny server with Docker</title>
       <link>https://leeleelee3264.github.io/post/2021-01-30-build-server-with-docker/</link>
       <pubDate>Sat, 30 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2021-01-30-build-server-with-docker/</guid>
-      <description>Docker를 사용해서 Shiny server를 구동하는 것을 다룬다. Index How I got into Docker Making Shiny Docker Troubleshooting with Network Reference How I got into Docker Docker make server infra as a code and we can share anywhere! Nightmare of installing library for Shiny I had wondered why many developers love docker so much for a while. A few days ago, I got a chance to install docker in my company&amp;rsquo;s test server. The thing is that we have</description>
+      <description>Handles running Shiny server with Docker. Index How I got into Docker Making Shiny Docker Troubleshooting with Network Reference How I got into Docker Docker make server infra as a code and we can share anywhere! Nightmare of installing library for Shiny I had wondered why many developers love docker so much for a while. A few days ago, I got a chance to install docker in my company&amp;rsquo;s test server. The thing is that we have shiny server written in R in the test server. I still remember I had to be though install a bunch of library to</description>
     </item>
     
     <item>
-      <title>(en) Name Convention of Host and URL</title>
+      <title>[Infra] (en) Name convention of host and URL</title>
       <link>https://leeleelee3264.github.io/post/2021-01-13-linux-host-name-convention/</link>
       <pubDate>Wed, 13 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2021-01-13-linux-host-name-convention/</guid>
-      <description>Let&amp;rsquo;s learn about name convention of host and URL.
+      <description>Name Convention of Host and URL: Reserved characters and unsafe characters.
 Index
 Troubleshooting for Name Convention Name Convention Troubleshooting for Name Convention How I occurred the trouble Today, I had to be through very awful exception. There is an api server I have to send a request to update meta data. For performance issue, this server just cached meta data and uses it till updated. Usually it&amp;rsquo;s quite simple. Make request with RestTemplate in Spring boot.
 This situation got started two days age. The server which contains api server moved to new ec2 machine, and it had new ip. So I have to send my request to the new ip.</description>
     </item>
     
     <item>
-      <title>(en) Write Shell Script to Deploy Server and Rotate Log</title>
+      <title>[Infra] (en) Write Shell script to deploy server and rotate log</title>
       <link>https://leeleelee3264.github.io/post/2021-01-05-linux-writing-shell-script/</link>
       <pubDate>Tue, 05 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2021-01-05-linux-writing-shell-script/</guid>
-      <description>Write shell script to deploy server and rotate log
+      <description>Write shell script to deploy server and rotate log.
 Index
 Shell script to deploy server Shell script to rotate log (plus) /dev/null UPDATE VERSION OF SHELL SCRIPT WITH PASSWORD One month ago, I make this shell script with hard coded user password and I knew that was a bad idea. It is well known fact that leaving password somewhere or some files can be a huge problem with security later. So I decided to fix it.
 How to request password in shell script
@@ -123,12 +123,12 @@ How to request password in shell script
     </item>
     
     <item>
-      <title>(en) MySQL View and UNION/JOIN</title>
+      <title>[Infra] (en) MySQL View and UNION/JOIN</title>
       <link>https://leeleelee3264.github.io/post/2020-10-28-sql-view-union-join/</link>
       <pubDate>Wed, 28 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2020-10-28-sql-view-union-join/</guid>
-      <description>MySQL View and UNION/JOIN
+      <description>Handles MySQL View and UNION/JOIN
 Index
 Intro View UNION/JOIN Intro Today, I faced my big mistake with new updated function which is made by me as well. The situation is something like this. We have a message service firing with multiple condition such as accomplish of today&amp;rsquo;s step count or tag reminder of today&amp;rsquo;s goal.
 Table Design When we designed tables, we separate to act_message and goal_message. (Obviously, it&amp;rsquo;s design error. I was supposed to create one table for these two). And there is mp3 file table music_list because the message will be playing designated mp3 file when it gets fired.</description>
