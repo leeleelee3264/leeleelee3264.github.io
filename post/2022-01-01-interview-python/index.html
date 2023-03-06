@@ -103,7 +103,7 @@
     <div class="post-item post-meta">
         <span><i class="iconfont icon-today-sharp"></i>&nbsp;2022-01-01</span>
 
-<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;7217 words</span>
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;7426 words</span>
 
 <span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/general">General</a>&nbsp;</span>
 
@@ -511,13 +511,46 @@ PUT /articles/11120
 </tr>
 <tr>
 <td>방법</td>
-<td>로그인, 생체인식</td>
-<td>session key, JWT, Oauth</td>
+<td>비밀번호 인증, 2FA, Oauth</td>
+<td>RBAC, ABAC, MAC, DAC</td>
 </tr>
 </tbody>
 </table>
 <p>절차는 Authentication ➡️ Authorization 이 이루어진다고 보면 된다.</p>
-<p>Authentication이 되었다고 해도 보내는 리퀘스트마다 이 사용자가 정말로 자격이 있는지 매번 확인을 하는 절차가 Authentication이라고 생각한다.</p>
+<p>Authentication이 되었다고 해도 보내는 리퀘스트마다 이 사용자가 정말로 자격이 있는지 매번 확인을 하는 절차가 Authorization이라고 생각한다.</p>
+<h4 id="authorization-방법">Authorization 방법</h4>
+<blockquote>
+<p>RBAC</p>
+</blockquote>
+<ul>
+<li>Role-based access control</li>
+<li>조직에서 사용자에게 부여한 역할을 근간으로 access 권한을 부여한다.</li>
+<li>예시: 매니저에게 스케줄 접근 권한을 부여한다.</li>
+<li>ABAC보다 더 구현하기가 쉽다.</li>
+</ul>
+<blockquote>
+<p>ABAC</p>
+</blockquote>
+<ul>
+<li>Attribute-based access control</li>
+<li>직함, 부서와 같은 사용자의 특성에 따라서 권한을 부여한다.</li>
+<li>예시: 백엔드 개발팀에게 DB 접근 권한을 부여한다.</li>
+<li>RBAC보다 더 유연하고, 복잡한 access control을 수용할 수 있다.</li>
+</ul>
+<blockquote>
+<p>MAC</p>
+</blockquote>
+<ul>
+<li>Mandatory access control</li>
+<li>미리 정의된 역할, 정책, 규정 등에 따라서 권한을 부여한다.</li>
+</ul>
+<blockquote>
+<p>DAC</p>
+</blockquote>
+<ul>
+<li>Discretionary access control</li>
+<li>리소스의 소유자가 임의로 접근 권한을 부여한다.</li>
+</ul>
 <br> 
 <h3 id="스키마를-짤-때-하는-고민">스키마를 짤 때 하는 고민</h3>
 <p>이건 정말 광범위한 범위가 아닐까? 아직도 어떤 방식으로 스키마를 짜는 게 최적인지 잘 모르겠다. 정말 서비스마다 다른 것 같다. 내가 스키마를 짜면서 확실하게 느꼈던 부분 정도만 정리를 했다.</p>
