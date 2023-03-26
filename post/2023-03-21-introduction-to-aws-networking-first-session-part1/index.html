@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="HandheldFriendly" content="True" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="generator" content="Hugo 0.102.3" />
+
+
+<link rel="shortcut icon" href="https://raw.githubusercontent.com/leeleelee3264/twitter_project/master/favicon.ico" />
+
+
+
+<title>[Book] [따라하며 배우는 AWS 네트워크 입문] 노트정리 1회차 (1/2) - leelee.log</title>
+
+
+<meta name="author" content="leeleelee3264" />
+
+
+<meta name="description" content="김원일, 서종호의 저서 [따라하며 배우는 AWS 네트워크 입문]을 요약한다. 이 포스트에서는 1장 AWS 인프라, 2장 VPC 기초를 다룬다." />
+
+
+<meta name="keywords" content="Book" />
+
+
+<meta property="og:title" content="[Book] [따라하며 배우는 AWS 네트워크 입문] 노트정리 1회차 (1/2)" />
+<meta name="twitter:title" content="[Book] [따라하며 배우는 AWS 네트워크 입문] 노트정리 1회차 (1/2)" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://leeleelee3264.github.io/post/2023-03-21-introduction-to-aws-networking-first-session-part1/" /><meta property="og:description" content="김원일, 서종호의 저서 [따라하며 배우는 AWS 네트워크 입문]을 요약한다. 이 포스트에서는 1장 AWS 인프라, 2장 VPC 기초를 다룬다." />
+<meta name="twitter:description" content="김원일, 서종호의 저서 [따라하며 배우는 AWS 네트워크 입문]을 요약한다. 이 포스트에서는 1장 AWS 인프라, 2장 VPC 기초를 다룬다." /><meta property="og:image" content="https://leeleelee3264.github.io/static/img/og.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://leeleelee3264.github.io/static/img/og.png" /><meta property="article:published_time" content="2023-03-21T00:00:00+00:00" /><meta property="article:modified_time" content="2023-03-21T00:00:00+00:00" />
+
+
+<style>
+    @media (prefers-color-scheme: dark) {
+        body[data-theme='auto'] img {
+            filter: brightness(60%);
+        }
+    }
+
+    body[data-theme='dark'] img {
+        filter: brightness(60%);
+    }
+</style>
+
+
+
+
+<link rel="stylesheet" href="https://leeleelee3264.github.io/assets/css/fuji.min.b4a21b5d3eb1d0a51297e31230a65fc25e387843e45ec3a2d9176cd8d163c216d99b9b13a618b28f537c3b559ec8a408183b0fbfad48daddb9befa7d3ef90eed.css" integrity="sha512-tKIbXT6x0KUSl&#43;MSMKZfwl44eEPkXsOi2Rds2NFjwhbZm5sTphiyj1N8O1WeyKQIGDsPv61I2t25vvp9PvkO7Q==" />
+
+
+
+
+
+
+
+
+</head>
+
+<body
+  data-theme="auto"
+  data-theme-auto='true'
+  >
+    <script data-cfasync="false">
+  
+  var fujiThemeData = localStorage.getItem('fuji_data-theme');
+  
+  if (!fujiThemeData) {
+    localStorage.setItem('fuji_data-theme', 'auto');
+  } else {
+    
+    if (fujiThemeData !== 'auto') {
+      document.body.setAttribute('data-theme', fujiThemeData === 'dark' ? 'dark' : 'light');
+    }
+  }
+</script>
+
+    <header>
+    <div class="container-lg clearfix">
+        <div class="col-12 header">
+            <a class="title-main" href="https://leeleelee3264.github.io/">leelee.log</a>
+            
+        </div>
+    </div>
+</header>
+
+    <main>
+        <div class="container-lg clearfix">
+            
+            <div class="col-12 col-md-9 float-left content">
+                
+<article>
+    
+    <h2 class="post-item post-title">
+        <a href="https://leeleelee3264.github.io/post/2023-03-21-introduction-to-aws-networking-first-session-part1/">[Book] [따라하며 배우는 AWS 네트워크 입문] 노트정리 1회차 (1/2)</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2023-03-21</span>
+
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;3511 words</span>
+
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/book">Book</a>&nbsp;</span>
+
+    </div>
+    
+    <div class="post-content markdown-body">
+        <br>
+<br> 
+<blockquote>
+<p>김원일, 서종호의 저서 [따라하며 배우는 AWS 네트워크 입문]을 요약한다. 이 포스트에서는 1장 AWS 인프라, 2장 VPC 기초를 다룬다.</p>
+</blockquote>
+<br> 
+<p><strong>Index</strong></p>
+<ol>
+<li>1장 AWS 인프라</li>
+<li>2장 VPC 기초</li>
+</ol>
+<br> 
+<h1 id="1장-aws-인프라">1장 AWS 인프라</h1>
+<h2 id="01-aws-소개">01. AWS 소개</h2>
+<h3 id="11-클라우드-란">1.1 클라우드 란?</h3>
+<p>인터넷을 통해 원하는 만큼의 IT 리소스를 손쉽게 사용할 수 있는 서비스를 뜻한다. AWS, Azure, GCP 등 이다.</p>
+<br> 
+<h4 id="클라우드-서비스-종류">클라우드 서비스 종류</h4>
+<ul>
+<li>IaaS
+<ul>
+<li>사업자: 서버, 네트워크, 스토리지 등 자원을 제공</li>
+<li>사용자: 가상 서버에 필요한 프로그램을 설치하여 사용 및 운영</li>
+<li>예시: <code>E2C</code>, <code>VPC</code>, <code>EBS</code></li>
+</ul>
+</li>
+<li>PasS
+<ul>
+<li>사업자: IaaS + Runtime + Middleware 제공 → 앱을 개발하기 위한 build, test, deploy 플랫폼과 환경을 제공</li>
+<li>사용자: Application 개발</li>
+<li>예시: <code>Elastic Beanstalk</code></li>
+</ul>
+</li>
+<li>SaaS
+<ul>
+<li>사업자: 서비스 사용에 필요한 모든 것을 제공</li>
+<li>사용자: 서비스를 사용</li>
+<li>예시: <code>MSK</code>, <code>EFS</code></li>
+</ul>
+</li>
+</ul>
+<br> 
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/network/cloud.png" >
+<figcaption align = "center">[Picture 1] 클라우드 서비스 종류</figcaption>
+<br> 
+<h3 id="12-aws-클라우드-소개">1.2 AWS 클라우드 소개</h3>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/network/infra.png" >
+<figcaption align = "center">[Picture 2] 인프라 논리적 규모</figcaption>
+<br> 
+<p><strong>데이터 센터</strong></p>
+<ul>
+<li>서버, 네트워크, 스토리지, 로드 밸런서, 라우터 등 일반적인 IT 인프라 디바이스를 모아둔 곳을 말한다.</li>
+</ul>
+<p><strong>가용 영역</strong></p>
+<ul>
+<li>한 개 이상의 데이터 센터들의 모음을 말한다.</li>
+<li>각 데이터 센터는 분산 되어 있으며 전용망으로 연결되어있다.</li>
+</ul>
+<p><strong>리전</strong></p>
+<ul>
+<li>지리적인 영역 내에서 격리되어 있는(물리적으로 분리) 여러 개의 가용 영역을 말한다.</li>
+<li>리전은 최소 2개의 가용 영역으로 구성되어있다.</li>
+<li>재난과 재해로 인한 서비스 장애를 막기 위해 가용 영역을 분산하여 구성하는 것을 권장하고 있다.</li>
+</ul>
+<p><strong>엣지</strong></p>
+<ul>
+<li>외부 인터넷과 AWS 글로벌 네트워크망을 연결하는 곳을 말한다.</li>
+<li><code>CloudFront</code>, <code>Direct Connect</code>, <code>Route 53</code>, <code>AWS Shield</code>, <code>AWS Global Accelerator</code>, <code>API Gateway</code>가 동작한다.</li>
+</ul>
+<br> 
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/network/edge.png" >
+<figcaption align = "center">[Picture 3] Edge</figcaption>
+<ul>
+<li>
+<p><U>엣지 pop이 무엇인가?</U></p>
+<ul>
+<li>전 세계적으로 분산된 AWS infra에서 가장자리 지역에서 실행되는 캐싱서버이다.</li>
+<li>AWS 성능 최적화하는데 중요한 역할을 한다.
+<ul>
+<li>클라이언트와 가장 가까운 위치에 있어, CDN을 통한 전송 로드 시간을 최소화한다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><U>가장자리 지역이 무엇인가?</U></p>
+<ul>
+<li>Region과 Availability Zone 이외의 지역으로, 데이터센터와 물리적으로 떨어져있다.</li>
+<li>가장자리 지역은 세계 곳곳에 위치하며, 사용자와의 지리적 거리가 멀어질 수록 네트워크 대기 시간이 증가하는 문제를 해결하기 위해 도입되었다.</li>
+</ul>
+</li>
+</ul>
+<br> 
+<h3 id="13-aws-제품">1.3 AWS 제품</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EC2</td>
+<td>컴퓨팅 리소스를 제공하는 가상 머신 서비스로, 인스턴스라고 부른다.</td>
+</tr>
+<tr>
+<td>EBS</td>
+<td>가용 영역 내의 EC2 인스턴스에 연결해 사용할 수 있는 블록 스토리지이다.</td>
+</tr>
+<tr>
+<td>S3</td>
+<td>객체 기반의 파일을 저장할 수 있는 스토리지이다.</td>
+</tr>
+<tr>
+<td>AWS CloudFormation</td>
+<td>yaml 등의 파일을 사용해 AWS 리소스를 자동으로 배포하는 서비스이다.</td>
+</tr>
+</tbody>
+</table>
+<br> 
+<h2 id="02-aws-network-소개">02. AWS Network 소개</h2>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/network/network.png" >
+<figcaption align = "center">[Picture 4] AWS Network 서비스</figcaption>
+<h4 id="aws-vpc">AWS VPC</h4>
+<ul>
+<li>Virtual Private Cloud</li>
+<li>AWS 클라우드 내 논리적으로 독립된 섹션을 제공한다.</li>
+</ul>
+<h4 id="aws-vpn">AWS VPN</h4>
+<ul>
+<li>Virtual Private Network</li>
+<li>가상의 사설 네트워크를 구성하여 프라이빗 통신을 제공한다.</li>
+<li>AWS에서는 <code>Site-to-Site VPN</code>과 <code>Client VPN</code>을 제공한다.</li>
+</ul>
+<h4 id="elb">ELB</h4>
+<ul>
+<li>Elastic Load Balancing</li>
+<li>AWS에서 제공하는 로드 밸런싱 기술, E2C의 health checking를 더불어 트래픽을 분산하여 전달한다.</li>
+<li>종류
+<ul>
+<li>ALB: Application (HTTP, HTTPS) 분산 처리한다. -&gt; Application 계층에서 사용</li>
+<li>NLB:  TCP, UDP (IP, Port) 분산 처리한다. -&gt; Transport 계층에서 사용</li>
+<li>CLB: Classic Load Balancer, VPC의 전신인 EC2-Classic 에서 사용했다.</li>
+</ul>
+</li>
+</ul>
+<h4 id="aws-privatelink">AWS PrivateLink</h4>
+<ul>
+<li>내부 네트워크를 통해 AWS 서비스를 비공개 연결하는 기능을 제공한다.</li>
+</ul>
+<h4 id="route-53">Route 53</h4>
+<ul>
+<li>관리형 DNS 서비스이다.</li>
+<li>제공하는 서비스
+<ul>
+<li>도메인 구매 대행</li>
+<li>DNS 역할</li>
+<li>라우팅 정책 설정하여 트래픽 흐름 제어</li>
+</ul>
+</li>
+</ul>
+<h4 id="aws-transit-게이트웨어">AWS Transit 게이트웨어</h4>
+<ul>
+<li>VPC나 온프레미스 네트워크를 단일 지점으로 연결할 수 있는 라우팅 서비스이다.</li>
+<li>다른 네트워크에 연결할 필요없이 Transit Gateway에만 연결하면 되어 관리가 쉽다.
+<ul>
+<li>다수의 VPC, VPN 등이 있을 때 복잡하게 개별 연결할 필요 없이 Transit 게이트웨어를 연결해 중앙집중형으로 관리한다.</li>
+</ul>
+</li>
+</ul>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/network/transit.png" >
+<figcaption align = "center">[Picture 5] Transit Gateway</figcaption>
+<h4 id="aws-direct-connect">AWS Direct Connect</h4>
+<ul>
+<li>Direct Connect = 전용선
+<ul>
+<li>물리적이거나 논리적일 수 있다.</li>
+</ul>
+</li>
+<li>사용 이유
+<ul>
+<li>안정적</li>
+<li>높은 보안성</li>
+<li>Low Latency</li>
+</ul>
+</li>
+</ul>
+<h4 id="aws-cloudfront">AWS CloudFront</h4>
+<ul>
+<li>AWS의 CDN (Contents Delivery Network) 서비스이다.</li>
+<li>물리적 한계를 극복하기 위해 사용자와 가까운 곳에 캐시 서버를 두고 Contents를 분배한다.
+<ul>
+<li>엣지 pop을 두고  콘텐츠를 캐싱해 서비스를 제공한다.</li>
+</ul>
+</li>
+</ul>
+<h4 id="aws-global-accelerator">AWS Global Accelerator</h4>
+<ul>
+<li>트래픽 경로를 최적화 해준다.
+<ul>
+<li>싱가포르 서버를 한국이 접속하려면 많은 네트워크 망을 거치며 Latency와 Packet Loss가 증가하는데 이를 방지해준다.</li>
+</ul>
+</li>
+</ul>
+<h4 id="네트워크-보안">네트워크 보안</h4>
+<p>네트워크 접근 제어로 <code>IP</code>, <code>Port</code>, <code>Protocal</code> 기반으로 접근제어를 한다.</p>
+<ul>
+<li>ACL
+<ul>
+<li>서브넷에 적용한다.</li>
+<li>허용/거부 규칙을 만들 수 있다.</li>
+</ul>
+</li>
+<li>보안 그룹 (SG)
+<ul>
+<li>인스턴스에 적용한다.</li>
+<li>허용 규칙만 만들 수 있다.</li>
+</ul>
+</li>
+</ul>
+<br>
+<h1 id="2장-vpc-기초">2장 VPC 기초</h1>
+<h2 id="01-vpc">01. VPC</h2>
+<p>VPC는 <U>독립된 가상의 클라우드 네트워크</U>다. 리전별로 기본 VPC가 1개씩 제공되고, 사용자 커스텀 VPC는 리전 별 5개씩 만들 수 있다. 사용자는 VPC에 생성하고 제어할 수 있는 것들은 아래와 같다.</p>
+<ul>
+<li>IP 대역</li>
+<li>인터페이스</li>
+<li>서브넷</li>
+<li>라우팅 테이블</li>
+<li>인터넷 게이트웨이</li>
+<li>보안그룹/ACL</li>
+</ul>
+<br>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/network/vpc.png" >
+<figcaption align = "center">[Picture 6] VPC</figcaption>
+<br>
+<h2 id="02-기본-네트워크-개념-이해">02. 기본 네트워크 개념 이해</h2>
+<h3 id="21-osi-7-레이어-모델">2.1 OSI 7 레이어 모델</h3>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/attachments/4590043141/4701585561.png" >
+<figcaption align = "center">[Picture 7] OSI 7 레이어</figcaption>
+<p>3 Layer인 Network 계층에서 라우팅을 하며, 최적 경로를 찾는다는 점을 집중해서 봐야 한다.</p>
+<br>
+<h3 id="22-ip와-서브넷-마스크">2.2 IP와 서브넷 마스크</h3>
+<h4 id="public-ip-private-ip">Public IP, Private IP</h4>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/network/ip.png" >
+<figcaption align = "center">[Picture 8] Public & Private IP</figcaption>
+<br>
+<ul>
+<li>Private IP는 NAT를 사용해 Public IP로 변환해야만 외부 인터넷과 통신할 수 있다.</li>
+<li>Docker: 각 컨테이너에 <code>Class B</code>에 해당하는 Private IP를 할당한다.</li>
+<li>K8s: 각 Pod에 Private IP를 할당하는데 <code>CNI (Container Network Interface)</code>에 따라 사용하는 대역이 다르다.</li>
+</ul>
+<br>
+<h4 id="서브넷">서브넷</h4>
+<blockquote>
+<p>IP = <code>네트워크 ID</code> + <code>호스트 ID</code></p>
+</blockquote>
+<p>서브넷은 네트워크를 <code>작은 네트워크</code>로 나누는 기술이다.</p>
+<br>
+<blockquote>
+<p>예시</p>
+</blockquote>
+<ul>
+<li>네트워크 ID가 <code>192.168.0.0/16</code> 서브넷이 존재한다.
+<ul>
+<li>하위에 <code>192.168.0.0/24</code>, <code>192.168.1.0/24</code> 서브넷으로 분리한다.</li>
+<li>위의 2개의 서브넷은 <code>192.168.0.0/16</code> 이라는 같은 네트워크 ID를 가진다.</li>
+</ul>
+</li>
+</ul>
+<br>
+<p>동일한 서브넷에 속해있다면 같은 네트워크 ID를 가지기 때문에 호스트 ID를 통해 구분한다.  이렇게 서브넷을 구분하기 위해 네트워크 ID와 호스트 ID를 분리하는 것을 <code>서브넷 마스크</code>라고 한다.</p>
+<br>
+<h4 id="서브넷-마스크">서브넷 마스크</h4>
+<table>
+<thead>
+<tr>
+<th>Class 대역</th>
+<th>서브넷 마스크</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A  0.0.0.0 ~ 127.255.255.255</td>
+<td>255.0.0.0</td>
+</tr>
+<tr>
+<td>B  128.0.0.0 ~ 191.255.255.255</td>
+<td>255.255.0.0</td>
+</tr>
+<tr>
+<td>C  192.0.0.0 ~ 223.255.255.255</td>
+<td>255.255.255.0</td>
+</tr>
+</tbody>
+</table>
+<br>
+<blockquote>
+<p>예시 <code>210.77.8.3</code></p>
+</blockquote>
+<p>Class C 범위에 속하므로 사용하는 서브넷 마스크는 <code>255.255.255.0</code>이다.<br>
+C 서브넷 마스크 2진수 표현은 <code>1111 1111</code>. <code>1111 1111</code>. <code>1111 1111</code>. <code>0000 0000</code> 이다.</p>
+<ul>
+<li>1이 사용된 지점은 네트워크 ID 이며, 0이 사용된 지점이 호스트 ID이다.</li>
+<li>0의 개수로 하나의 네트워크가 최대 사용할 수 있는 호스트 개수를 유추할 수 있다.
+<ul>
+<li>0의 갯수 8개 -&gt; (2^8) -2 = 254 -&gt; 4 옥텟만 호스트로 사용할 수 있다.
+<ul>
+<li>두 개를 빼는 이유는 맨 앞 은 <code>네트워크 주소</code>, 맨 뒤는 <code>브로드캐스트 주소</code>가  되기 때문이다.
+<ul>
+<li>네트워크 주소: <code>210.77.8.0</code></li>
+<li>브로드캐스트 수조: <code>210.77.8.255</code></li>
+<li>사용 가능 범위: <code>210.77.8.1</code> ~ <code>210.77.8.254</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="cidr">CIDR</h4>
+<p>Class 기반 IP 체계를 사용하면 IP를 A,B,C 세 블록으로 나눠야 하는데, CIDR를 사용하면 블록을 더 작게 나눠 할당할 수 있다.</p>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/network/cidr.png" >
+<figcaption align = "center">[Picture 9] CIDR</figcaption>
+<br>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/network/subnet_mask.png" >
+<figcaption align = "center">[Picture 10] Subnet Mask</figcaption>
+<br>
+<p>CIDR는 /8, /16 이런식으로 표기하는데 <code>/</code> 뒤에 나오는 숫자는 <code>네트워크 ID의 길이</code>이다. 즉 /8 이라면 <code>1111 1111</code>. <code>0000 0000</code>. <code>0000 0000</code>. <code>0000 0000</code> 으로, 사용가능한 호스트 ID가 32-8 = 24로 (2^24) -2가 된다.</p>
+<p>IP를 보는 입장에서는 <code>/24</code> 이렇게 되어있으면 2진수로 풀었을 때 얖의 <code>24자리 까지 같다면 같은 서브넷</code>에 있다고 생각하면 된다. 예를 들어 <code>192.168.1.1</code> 와 <code>192.168.1.254</code>는 같은 서브넷에 있다는 뜻이다. (24자리인 1,2,3 옥텟의 숫자가 같다)</p>
+<br>
+<blockquote>
+<p>예시 210.77.8.3/25</p>
+</blockquote>
+<p><code>/25</code>의 서브넷 마스크는 <code>255.255.255.128</code> 이다.</p>
+<ul>
+<li>2진수로 풀었을 때 앞에서 25자리까지 같아야 한다.</li>
+<li>사용할 수 있는 호스트의 갯수는 32 - 25 = 7 -&gt; (2^7) - 2 = <code>126</code>개가 된다.</li>
+<li>네트워크 주소: <code>210.77.8.0</code></li>
+<li>브로드캐스트 주소: <code>210.77.8.127</code></li>
+<li>사용 가능 점위: <code>210.77.8.1</code> ~ <code>210.77.8.126</code></li>
+</ul>
+<br>
+<h4 id="cidr의-이점">CIDR의 이점</h4>
+<p>Class 기반의 IP 주소 체계를 <code>Classful</code> 이라고 부르고, Class의 한계를 극복하고자 나온 것이 <code>Classless</code>한 주소 체계인 CIDR (Classess Inter-Domain Routing) 이다.
+CIDR은 IP 주소의 더욱 효율적인 사용과 주소 할당 및 라우팅의 더 큰 유연성, 그리고 네트워크 관리의 간소화를 제공하기
+때문에 일반적으로 기존의 IP 주소 클래스보다 더욱 좋은 방법으로 간주되고 있다.</p>
+<br>
+<h3 id="23-tcp와-udp-그리고-포트-번호">2.3 TCP와 UDP 그리고 포트 번호</h3>
+<p>TCP 사용 서비스</p>
+<ul>
+<li>HTTP</li>
+<li>SSH</li>
+<li>FTP</li>
+</ul>
+<p>UDP 사용 서비스</p>
+<ul>
+<li>DNS</li>
+<li>DHCP</li>
+</ul>
+<br>
+<h4 id="232-포트-번호">2.3.2 포트 번호</h4>
+<p>IANA 라는 단체에서 TCP와 UDP의 포트 번호 범위를 정하고 있으며, 범위에 따라 크게 3가지로 구분한다.</p>
+<table>
+<thead>
+<tr>
+<th>포트</th>
+<th>범위</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>잘 알려진 포트</td>
+<td>0 ~ 1023</td>
+</tr>
+<tr>
+<td>등록된 포트</td>
+<td>1024 ~ 49151</td>
+</tr>
+<tr>
+<td>동적 포트</td>
+<td>49152 ~ 65535</td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3 id="24-dhcp">2.4 DHCP</h3>
+<p>동적으로 IPv4 주소를 일정 기간 임대하는 프로토콜로, 임대 시간이 만료되면 반환하거나 갱신을 해야 한다.</p>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/network/dhcp.png" >
+<figcaption align = "center">[Picture 11] DHCP</figcaption>
+<br>
+<h3 id="26-라우팅">2.6 라우팅</h3>
+<ul>
+<li>최적의 경로를 잡아 통신하는 것이 라우팅이다.</li>
+<li>라우터: 라우팅을 수행하는 장비</li>
+<li>라우팅 테이블: 라우터가 테이블을 통해 경로를 파악하고 데이터 전달할 수 있게 함</li>
+</ul>
+<br>
+<h2 id="03-vpc-리소스-소개">03. VPC 리소스 소개</h2>
+<h3 id="31-서브넷">3.1 서브넷</h3>
+<p>VPC도 서브넷을 통해 네트워크를 분리할 수 있는데, 서브넷 IP 대역은 VPC IP 대역에 속해있어야 한다.</p>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/network/sub.png" >
+<figcaption align = "center">[Picture 12] VPC 서브넷</figcaption>
+<br>
+<blockquote>
+<p>예역된 서브넷 IP</p>
+</blockquote>
+<p>예시: <code>10.0.2.0/24</code></p>
+<ul>
+<li>네트워크 주소: <code>10.0.2.0</code></li>
+<li>AWS VPC 가상 라우터 주소: <code>10.0.2.1</code></li>
+<li>AWS DNS 서버 주소: <code>10.0.2.2</code></li>
+<li>AWS 예약: <code>10.0.2.3</code></li>
+<li>브로드캐스트 주소: <code>10.0.2.225</code></li>
+</ul>
+<br>
+<h4 id="312-public-서브넷과-private-서브넷">3.1.2 Public 서브넷과 Private 서브넷</h4>
+<ul>
+<li>Public 서브넷: 외부 인터넷 구간과 통신 가능 -&gt; <code>Public IP</code> 존재</li>
+<li>Private 서브넷: 사설 네트워크로, 내부만 통신 가능 -&gt; NAT 게이트웨이를 사용하면 외부와 통신 가능</li>
+</ul>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/network/private_subnet.png" >
+<figcaption align = "center">[Picture 12] Public & Private 서브넷</figcaption>
+<br>
+<h3 id="32-가상-라우터와-라우팅-테이블">3.2 가상 라우터와 라우팅 테이블</h3>
+<p>가상 라우터?</p>
+<ul>
+<li>VPC의 각 서브넷에 대한 라우팅 관리한다.</li>
+<li>VPC를 생성하면 자동으로 생성된다.</li>
+<li>Custom 라우터를 추가할 수 있다.</li>
+<li>서브넷별로 라우팅 테이블을 매핑할 수 있다.</li>
+</ul>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/network/v_router.png" >
+<figcaption align = "center">[Picture 13] 서브넷 당 라우팅 테이블 매핑</figcaption>
+<br>
+<h3 id="33-인터넷-게이트웨이">3.3 인터넷 게이트웨이</h3>
+<ul>
+<li>VPC에서 인터넷 구간으로 나가는 관문</li>
+<li>VPC 당 1개만 연결 가능</li>
+<li>대상: 퍼블릭 IP를 사용하는 <code>퍼블릭 서브넷</code> 내의 자원</li>
+<li><code>양방향</code> 연결 지원</li>
+</ul>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/network/i_g.png" >
+<figcaption align = "center">[Picture 14] 인터넷 게이트웨이</figcaption>
+<br>
+<h3 id="34-nat-게이트웨이">3.4 NAT 게이트웨이</h3>
+<ul>
+<li>Network Address Translation</li>
+<li><code>프라이빗 IP</code>를 <code>퍼블릭 IP</code> 로 변환
+<ul>
+<li>프라이빗 IP는 인터넷 구간으로 넘어올 수 없기 때문</li>
+</ul>
+</li>
+<li><code>단방향</code> 지원
+<ul>
+<li>외부에서 프라이빗 네트워크 접근 불가</li>
+</ul>
+</li>
+</ul>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/network/ig_route.png" >
+<figcaption align = "center">[Picture 15] NAT 게이트웨이</figcaption>
+<br>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/network/flow.png" >
+<figcaption align = "center">[Picture 16] IG & NAT 게이트웨이 통신 흐름</figcaption>
+<br>
+<h3 id="35-보안-그룹과-네트워크-acl">3.5 보안 그룹과 네트워크 ACL</h3>
+<ul>
+<li>인스턴스 보안: 보안 그룹</li>
+<li>서브넷 보안: ACL</li>
+</ul>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/network/acl.png" >
+<figcaption align = "center">[Picture 17] 보안그룹과 ACL</figcaption>
+
+    </div>
+</article>
+
+
+
+<div class="post-comment" data-comment="utterances">
+    <span class="post-comment-notloaded">
+        <i class="iconfont icon-chatbox-ellipses-sharp"></i>&nbsp;Load comments
+    </span>
+    <script>
+        function loadComment() {
+            var commentArea = document.querySelector('.post-comment');
+            var utterancesTheme = document.body.getAttribute('data-theme');
+            if (utterancesTheme === 'auto') {
+                utterancesTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'photon-dark' :
+                    'github-light';
+            } else {
+                utterancesTheme = utterancesTheme === 'dark' ? 'photon-dark' : 'github-light';
+            }
+            var s = document.createElement('script');
+            s.src = 'https://utteranc.es/client.js';
+            s.setAttribute('repo', 'leeleelee3264\/github_io_comment');
+            s.setAttribute('issue-term', 'pathname');
+            s.setAttribute('theme', utterancesTheme);
+            s.setAttribute('crossorigin', 'anonymous');
+            s.setAttribute('async', '');
+            document.querySelector('.post-comment').appendChild(s);
+            document.querySelector('span.post-comment-notloaded').setAttribute('style', 'display: none;');
+        }
+    </script>
+</div>
+
+
+            </div>
+            <aside class="col-12 col-md-3 float-left sidebar">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://github.com/leeleelee3264" target="_blank"><span>GitHub</span></a>
+            </li>
+            
+            <li>
+                <a href="https://www.linkedin.com/in/seungmin4035/" target="_blank"><span>LinkedIn</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/backend/">Backend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/book/">Book</a>
+            </span>
+            
+            <span>
+                <a href="/tags/cheat/">Cheat</a>
+            </span>
+            
+            <span>
+                <a href="/tags/frontend/">Frontend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/general/">General</a>
+            </span>
+            
+            <span>
+                <a href="/tags/infra/">Infra</a>
+            </span>
+            
+            <span>
+                <a href="/tags/project/">Project</a>
+            </span>
+            
+        </div>
+    </div>
+    
+</aside>
+
+        </div>
+        <div class="btn">
+    <div class="btn-menu" id="btn-menu">
+        <i class="iconfont icon-grid-sharp"></i>
+    </div>
+    <div class="btn-toggle-mode">
+        <i class="iconfont icon-contrast-sharp"></i>
+    </div>
+    <div class="btn-scroll-top">
+        <i class="iconfont icon-chevron-up-circle-sharp"></i>
+    </div>
+</div>
+<aside class="sidebar-mobile" style="display: none;">
+  <div class="sidebar-wrapper">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://github.com/leeleelee3264" target="_blank"><span>GitHub</span></a>
+            </li>
+            
+            <li>
+                <a href="https://www.linkedin.com/in/seungmin4035/" target="_blank"><span>LinkedIn</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/backend/">Backend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/book/">Book</a>
+            </span>
+            
+            <span>
+                <a href="/tags/cheat/">Cheat</a>
+            </span>
+            
+            <span>
+                <a href="/tags/frontend/">Frontend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/general/">General</a>
+            </span>
+            
+            <span>
+                <a href="/tags/infra/">Infra</a>
+            </span>
+            
+            <span>
+                <a href="/tags/project/">Project</a>
+            </span>
+            
+        </div>
+    </div>
+    
+    
+    
+    
+  </div>
+</aside>
+    </main>
+
+    <footer>
+    <div class="container-lg clearfix">
+        <div class="col-12 footer">
+            
+            <span>&copy; 2020-2023
+                <a href="https://leeleelee3264.github.io/">leeleelee3264</a>
+                 | <a href="https://github.com/leeleelee3264/leeleelee3264.github.io">Source code</a> 
+                | Powered by <a href="https://github.com/dsrkafuu/hugo-theme-fuji/"
+                   target="_blank">Fuji-v2</a> &amp; <a href="https://gohugo.io/"
+                                                    target="_blank">Hugo</a> 
+            </span>
+        </div>
+    </div>
+</footer>
+
+    
+<script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha512-N9IJRoc3LaP3NDoiGkcPa4gG94kapGpaA5Zq9/Dr04uf5TbLFU5q0o8AbRhLKUUlp8QFS2u7S+Yti0U7QtuZvQ==" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js" integrity="sha512-q583ppKrCRc7N5O0n2nzUiJ+suUv7Et1JGels4bXOaMFQcamPk9HjdUknZuuFjBNs7tsMuadge5k9RzdmO+1GQ==" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/components/prism-core.min.js" integrity="sha512-LCKPTo0gtJ74zCNMbWw04ltmujpzSR4oW+fgN+Y1YclhM5ZrHCZQAJE4quEodcI/G122sRhSGU2BsSRUZ2Gu3w==" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-GP4x8UWxWyh4BMbyJGOGneiTbkrWEF5izsVJByzVLodP8CuJH/n936+yQDMJJrOPUHLgyPbLiGw2rXmdvGdXHA==" crossorigin="anonymous"></script>
+
+
+
+<script defer src="/assets/js/fuji.min.645f1123be695831f419ab54c1bcba327325895c740014006e57070d4f3e5d6b553e929c4b46f40ea707249e9c7f7c2a446d32a39ce7319f80a34525586a8e0f.js" integrity="sha512-ZF8RI75pWDH0GatUwby6MnMliVx0ABQAblcHDU8&#43;XWtVPpKcS0b0DqcHJJ6cf3wqRG0yo5znMZ&#43;Ao0UlWGqODw=="></script>
+
+
+
+</body>
+
+</html>

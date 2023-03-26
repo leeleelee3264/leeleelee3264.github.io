@@ -6,7 +6,25 @@
     <description>Recent content on leelee.log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 24 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://leeleelee3264.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 25 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://leeleelee3264.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[Infra] Nginx에 서브도메인 연결하기 with Https</title>
+      <link>https://leeleelee3264.github.io/post/2023-03-25-subdomain-with-nginx/</link>
+      <pubDate>Sat, 25 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2023-03-25-subdomain-with-nginx/</guid>
+      <description>Nginx에서 서브도메인을 사용할 수 있도록 설정하는 방법을 알아본다. Index Intro Wildcard 적용한 Let&amp;rsquo;s encrypt 인증서 발급 서브도메인 CNAME 등록 Nginx에 서브도메인 연결 Intro leelee.me 라는 도메인을 사서 쓰고 있었는데 jenkins를 설치하면서 jenki</description>
+    </item>
+    
+    <item>
+      <title>[Book] [따라하며 배우는 AWS 네트워크 입문] 노트정리 1회차 (1/2)</title>
+      <link>https://leeleelee3264.github.io/post/2023-03-21-introduction-to-aws-networking-first-session-part1/</link>
+      <pubDate>Tue, 21 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2023-03-21-introduction-to-aws-networking-first-session-part1/</guid>
+      <description>김원일, 서종호의 저서 [따라하며 배우는 AWS 네트워크 입문]을 요약한다. 이 포스트에서는 1장 AWS 인프라, 2장 VPC 기초를 다룬다. Index 1장 AWS 인프라 2장 VPC 기초 1장 AWS 인프라 01. AWS 소개 1.1 클라우드 란? 인터넷을 통해 원하는 만큼의 IT 리소</description>
+    </item>
+    
     <item>
       <title>[General] Kasa에서 백엔드 엔지니어로서의 1년 회고하기</title>
       <link>https://leeleelee3264.github.io/post/2023-03-01-review-kasa/</link>

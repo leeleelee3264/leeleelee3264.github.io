@@ -6,7 +6,16 @@
     <description>Recent content in Infra on leelee.log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 24 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://leeleelee3264.github.io/tags/infra/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 25 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://leeleelee3264.github.io/tags/infra/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[Infra] Nginx에 서브도메인 연결하기 with Https</title>
+      <link>https://leeleelee3264.github.io/post/2023-03-25-subdomain-with-nginx/</link>
+      <pubDate>Sat, 25 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2023-03-25-subdomain-with-nginx/</guid>
+      <description>Nginx에서 서브도메인을 사용할 수 있도록 설정하는 방법을 알아본다. Index Intro Wildcard 적용한 Let&amp;rsquo;s encrypt 인증서 발급 서브도메인 CNAME 등록 Nginx에 서브도메인 연결 Intro leelee.me 라는 도메인을 사서 쓰고 있었는데 jenkins를 설치하면서 jenki</description>
+    </item>
+    
     <item>
       <title>[Infra] 클라우드 필수 교양, 로드 밸런서</title>
       <link>https://leeleelee3264.github.io/post/2022-10-24-load-balancer/</link>
