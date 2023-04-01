@@ -103,7 +103,7 @@
     <div class="post-item post-meta">
         <span><i class="iconfont icon-today-sharp"></i>&nbsp;2023-03-25</span>
 
-<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;2008 words</span>
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;2408 words</span>
 
 <span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/infra">infra</a>&nbsp;</span>
 
@@ -134,6 +134,28 @@
 <ul>
 <li>Nginx에 서브도메인 연결</li>
 <li>서브도메인 https 적용</li>
+</ul>
+<br>
+<p>본격적인 세팅에 들어가기 전에 Nginx가 여기서 어떤 용도로 사용이 되었나를 간략하게 알아보도록 하겠다.
+더 자세하게 알고 싶다면 <a href="https://leeleelee3264.github.io/post/2022-10-24-load-balancer/" target="_blank">[[Infra] 클라우드 필수 교양, 로드 밸런서]</a> 를 참고하도록 한다.</p>
+<br>
+<h4 id="nginx의-용도">Nginx의 용도</h4>
+<blockquote>
+<p>Nginx는 오픈소스 Web Server로, Reserve Proxy의 역할 또한 수행할 수 있다.</p>
+</blockquote>
+<br>
+<p>여기서는 Nginx는 <code>Reverse Proxy</code>로 사용한다. Reverse Proxy는 클라이언트 요청들을 <code>판단</code>해서 서버 그룹에 넘겨준다. 또한 선택된 서버가 만들어낸 응답을 적합한 클라이언트에 리턴해준다.</p>
+<br>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/subdomain/reverse.png" >
+<figcaption align = "center">[Picture 0] Reverse Proxy Flow</figcaption>
+<br>
+<blockquote>
+<p>시나리오</p>
+</blockquote>
+<ul>
+<li>프로젝트에서 Jenkins의 포트를 8081이라고 했을 때 Nginx를 사용하기 전에는 엑세스를 위해 8081 포트를 열어둬야 했다.</li>
+<li>하지만 Nginx가 <code>단일접점</code>이 되어 모든 요청을 받아 담당 서버로 전달하게 되면서 더이상 8081 포트를 열어둘 필요가 없어졌다.</li>
+<li>결과적으로 Nginx가 사용하기 위한 <code>80</code>과 <code>443</code> 포트만 열어두면 된다.</li>
 </ul>
 <br>
 <h1 id="wildcard-적용한-lets-encrypt-인증서-발급">Wildcard 적용한 Let&rsquo;s encrypt 인증서 발급</h1>
@@ -456,13 +478,32 @@
 </span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
 </span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
 </span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 <pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Jenkins server block to proxy requests to Jenkins running on port 8081</span>
 </span></span><span style="display:flex;"><span>server <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>listen <span style="color:#ae81ff">443</span> ssl http2;
-</span></span><span style="display:flex;"><span>listen <span style="color:#f92672">[</span>::<span style="color:#f92672">]</span>:443 ssl http2;
+</span></span><span style="display:flex;"><span>listen 80;
 </span></span><span style="display:flex;"><span>server_name jenkins.leelee.me;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">return</span> <span style="color:#ae81ff">301</span> https://$host$request_uri;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>server <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    listen <span style="color:#ae81ff">443</span> ssl http2;
+</span></span><span style="display:flex;"><span>    listen <span style="color:#f92672">[</span>::<span style="color:#f92672">]</span>:443 ssl http2;
+</span></span><span style="display:flex;"><span>    server_name jenkins.leelee.me;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e"># SSL/TLS configuration using Let&#39;s Encrypt certificate</span>
 </span></span><span style="display:flex;"><span>    ssl_certificate /etc/letsencrypt/live/leelee.me-0001/fullchain.pem;
@@ -471,10 +512,15 @@
 </span></span><span style="display:flex;"><span>    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    location / <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>        proxy_pass http://localhost:8081/;
-</span></span><span style="display:flex;"><span>        proxy_set_header Host $host;
-</span></span><span style="display:flex;"><span>        proxy_set_header X-Real-IP $remote_addr;
-</span></span><span style="display:flex;"><span>        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      proxy_set_header        Host $host;
+</span></span><span style="display:flex;"><span>      proxy_set_header        X-Real-IP $remote_addr;
+</span></span><span style="display:flex;"><span>      proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+</span></span><span style="display:flex;"><span>      proxy_set_header        X-Forwarded-Proto $scheme;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># Fix the &#34;It appears that your reverse proxy set up is broken&#34; error.</span>
+</span></span><span style="display:flex;"><span>      proxy_pass          http://127.0.0.1:8081;
+</span></span><span style="display:flex;"><span>      proxy_read_timeout  90;
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span></span></span></code></pre></td></tr></table>
 </div>

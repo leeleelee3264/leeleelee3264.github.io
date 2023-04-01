@@ -6,7 +6,16 @@
     <description>Recent content on leelee.log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 25 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://leeleelee3264.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 27 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://leeleelee3264.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[Book] [따라하며 배우는 AWS 네트워크 입문] 노트정리 1회차 (2/2)</title>
+      <link>https://leeleelee3264.github.io/post/2023-03-27-introduction-to-aws-networking-first-session-part2/</link>
+      <pubDate>Mon, 27 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2023-03-27-introduction-to-aws-networking-first-session-part2/</guid>
+      <description>김원일, 서종호의 저서 [따라하며 배우는 AWS 네트워크 입문]을 요약한다. 이 포스트에서는 3장 VPC 고급, 4장 인터넷 연결을 다룬다. Index 3장 VPC 고급 4장 인터넷 연결 3장 VPC 고급 01. VPC 엔드포인트 VPC 엔드포인트 VPC 엔드포인트는 AWS의 퍼</description>
+    </item>
+    
     <item>
       <title>[Infra] Nginx에 서브도메인 연결하기 with Https</title>
       <link>https://leeleelee3264.github.io/post/2023-03-25-subdomain-with-nginx/</link>

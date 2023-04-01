@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="HandheldFriendly" content="True" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="generator" content="Hugo 0.102.3" />
+
+
+<link rel="shortcut icon" href="https://raw.githubusercontent.com/leeleelee3264/twitter_project/master/favicon.ico" />
+
+
+
+<title>[Book] [따라하며 배우는 AWS 네트워크 입문] 노트정리 1회차 (2/2) - leelee.log</title>
+
+
+<meta name="author" content="leeleelee3264" />
+
+
+<meta name="description" content="김원일, 서종호의 저서 [따라하며 배우는 AWS 네트워크 입문]을 요약한다. 이 포스트에서는 3장 VPC 고급, 4장 인터넷 연결을 다룬다." />
+
+
+<meta name="keywords" content="Book" />
+
+
+<meta property="og:title" content="[Book] [따라하며 배우는 AWS 네트워크 입문] 노트정리 1회차 (2/2)" />
+<meta name="twitter:title" content="[Book] [따라하며 배우는 AWS 네트워크 입문] 노트정리 1회차 (2/2)" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://leeleelee3264.github.io/post/2023-03-27-introduction-to-aws-networking-first-session-part2/" /><meta property="og:description" content="김원일, 서종호의 저서 [따라하며 배우는 AWS 네트워크 입문]을 요약한다. 이 포스트에서는 3장 VPC 고급, 4장 인터넷 연결을 다룬다." />
+<meta name="twitter:description" content="김원일, 서종호의 저서 [따라하며 배우는 AWS 네트워크 입문]을 요약한다. 이 포스트에서는 3장 VPC 고급, 4장 인터넷 연결을 다룬다." /><meta property="og:image" content="https://leeleelee3264.github.io/static/img/og.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://leeleelee3264.github.io/static/img/og.png" /><meta property="article:published_time" content="2023-03-27T00:00:00+00:00" /><meta property="article:modified_time" content="2023-03-27T00:00:00+00:00" />
+
+
+<style>
+    @media (prefers-color-scheme: dark) {
+        body[data-theme='auto'] img {
+            filter: brightness(60%);
+        }
+    }
+
+    body[data-theme='dark'] img {
+        filter: brightness(60%);
+    }
+</style>
+
+
+
+
+<link rel="stylesheet" href="https://leeleelee3264.github.io/assets/css/fuji.min.b4a21b5d3eb1d0a51297e31230a65fc25e387843e45ec3a2d9176cd8d163c216d99b9b13a618b28f537c3b559ec8a408183b0fbfad48daddb9befa7d3ef90eed.css" integrity="sha512-tKIbXT6x0KUSl&#43;MSMKZfwl44eEPkXsOi2Rds2NFjwhbZm5sTphiyj1N8O1WeyKQIGDsPv61I2t25vvp9PvkO7Q==" />
+
+
+
+
+
+
+
+
+</head>
+
+<body
+  data-theme="auto"
+  data-theme-auto='true'
+  >
+    <script data-cfasync="false">
+  
+  var fujiThemeData = localStorage.getItem('fuji_data-theme');
+  
+  if (!fujiThemeData) {
+    localStorage.setItem('fuji_data-theme', 'auto');
+  } else {
+    
+    if (fujiThemeData !== 'auto') {
+      document.body.setAttribute('data-theme', fujiThemeData === 'dark' ? 'dark' : 'light');
+    }
+  }
+</script>
+
+    <header>
+    <div class="container-lg clearfix">
+        <div class="col-12 header">
+            <a class="title-main" href="https://leeleelee3264.github.io/">leelee.log</a>
+            
+        </div>
+    </div>
+</header>
+
+    <main>
+        <div class="container-lg clearfix">
+            
+            <div class="col-12 col-md-9 float-left content">
+                
+<article>
+    
+    <h2 class="post-item post-title">
+        <a href="https://leeleelee3264.github.io/post/2023-03-27-introduction-to-aws-networking-first-session-part2/">[Book] [따라하며 배우는 AWS 네트워크 입문] 노트정리 1회차 (2/2)</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2023-03-27</span>
+
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;1668 words</span>
+
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/book">Book</a>&nbsp;</span>
+
+    </div>
+    
+    <div class="post-content markdown-body">
+        <br>
+<br> 
+<blockquote>
+<p>김원일, 서종호의 저서 [따라하며 배우는 AWS 네트워크 입문]을 요약한다. 이 포스트에서는 3장 VPC 고급, 4장 인터넷 연결을 다룬다.</p>
+</blockquote>
+<br> 
+<p><strong>Index</strong></p>
+<ol>
+<li>3장 VPC 고급</li>
+<li>4장 인터넷 연결</li>
+</ol>
+<br> 
+<h1 id="3장-vpc-고급">3장 VPC 고급</h1>
+<h2 id="01-vpc-엔드포인트">01. VPC 엔드포인트</h2>
+<p><U>VPC 엔드포인트</U></p>
+<p>VPC 엔드포인트는 AWS의 퍼블릭 서비스나 직접적으로 생성한 AWS 서비스에 대해 외부 인터넷 구간을 통한 접근이 아닌 직접적으로 접근할 수 있는 <code>프라이빗 엑세스</code> 기능이다.</p>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/network/endpoint.png" >
+<figcaption align = "center">[Picture 1] VPC 엔드포인트 종류</figcaption>
+<br>
+<p>인터페이스 엔드포인트와 엔드포인트 서비스를 통한 연결을 <code>프라이빗 링크</code>라고 부른다.</p>
+<br>
+<p><U>주된 특징</U></p>
+<ul>
+<li>연결 대상 서비스가 동일 리전으로 제한</li>
+<li>하나의 VPC에만 연결 가능</li>
+</ul>
+<br>
+<p><U>예시</U></p>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/network/endpoint_flow.png" >
+<figcaption align = "center">[Picture 2] VPC 엔드포인트 적용했을 때의 흐름</figcaption>
+<br>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/network/gw_endpoint_flow.png" >
+<figcaption align = "center">[Picture 3] VPC 게이트웨이 엔드포인트 적용했을 때의 흐름</figcaption>
+<br>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/network/if_endpoint_flow.png" >
+<figcaption align = "center">[Picture 4] VPC 인터페이스 엔드포인트 적용했을 때의 흐름</figcaption>
+<br>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/network/endpoint_service_flow.png" >
+<figcaption align = "center">[Picture 5] VPC 엔드포인트 서비스 적용했을 때의 흐름</figcaption>
+<br>
+<p><code>엔드포인트 서비스</code>를 사용할 때 <code>인터페이스 엔드포인트</code>도 함께 구성해야한다는 점이 인상깊었다.
+-&gt; 인터페이스 엔드포인트로 데이터를 전달하고, 프라이빗 링크로 엔드포인트 서비스가 생성된 CustomVPC의 NLB로 전달된다.</p>
+<br>
+<h3 id="04-배치-그룹">04. 배치 그룹</h3>
+<p><U>배치 그룹</U></p>
+<ul>
+<li>배치 그룹은 그룹 내 인스턴스의 배치를 조정하는 기능이다. 즉, 하드웨어적으로 어디에 인스턴스를 배치할 것인지 조정하는 기능이다.</li>
+<li>물리 호스트의 장애에 대해 영향도를 최소화하기 위해 기본 설정으로 <code>분산 배치</code>된다.</li>
+</ul>
+<br>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/network/placement.png" >
+<figcaption align = "center">[Picture 6] 기본적인 인스턴스 배치</figcaption>
+<br>
+<p><U>종류</U></p>
+<p>클러스터 배치 그룹</p>
+<ul>
+<li>단일 가용 영역 내에 인스턴스를 배치한다.</li>
+<li>짧은 네트워크 지연시간, 높은 네트워크 처리량이 필요한 어플리케이션에 적합하다.</li>
+<li>한 랙에 문제가 생기면 모든 인스턴스들에 문제가 생길 수 있다.</li>
+</ul>
+<br>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/network/cluster.png" >
+<figcaption align = "center">[Picture 7] 클러스터 배치 그룹</figcaption>
+<br>
+<p>파티션 배치 그룹</p>
+<ul>
+<li>동일한 파티션(랙) 안에 인스턴스를 배치하지만, 여러 AZ에 파티션을 분산하는 배치이다.</li>
+<li>파티션이 나눠져있어, 장애 분산이 안된다.</li>
+<li><code>Hadoop</code>, <code>Cassandra</code>, <code>Kafkka</code> 등 대규모 분산 및 복제 워크로드를 별개의 렉으로 분산해 배포하는데 적합하다.</li>
+</ul>
+<br>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/network/partition.png" >
+<figcaption align = "center">[Picture 8] 파티션 배치 그룹</figcaption>
+<br>
+<p>분산형 배치 그룹</p>
+<ul>
+<li>각각 고유한 하드웨어에 인스턴스를 배치한다.</li>
+<li>여러 가용 영역에 인스턴스를 분산 배치 했기 떄문에 처리량을 높일 수 있다.</li>
+</ul>
+<br>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/network/dist.png" >
+<figcaption align = "center">[Picture 9] 분산형 배치 그룹</figcaption>
+<br>
+<h3 id="05-메타데이터">05. 메타데이터</h3>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/network/meta.png" >
+<figcaption align = "center">[Picture 10] 메타데이터 카테고리</figcaption>
+<br>
+<p>EC2 인스턴스는 인스턴스에 대한 메타데이터를 가지고 있고, <code>169.254.169.254</code>라는 빌트인 주소에 요청하면 HTTP 응답으로 확인할 수 있다. <code>v1</code>은 인스턴스에 접속한 누구나 메타 정보를 볼 수 있어 보안상 좋지 못했기 떄문에 토큰 방식이 추가된 <code>v2</code>가 만들어졌다.</p>
+<br>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl http://169.254.169.254/latest/meta-data 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 예시1: 퍼블릭 주소 </span>
+</span></span><span style="display:flex;"><span>curl http://169.254.169.254/latest/meta-data/public-ipv4</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br>
+<br>
+<h1 id="4장-인터넷-연결">4장 인터넷 연결</h1>
+<p><U>AWS VPC &lt;-&gt; 인터넷 연결 조건</U></p>
+<ul>
+<li>인터넷 게이트웨이</li>
+<li>라우팅 테이블</li>
+<li>공인 IP</li>
+<li>보안 그룹과 ACL</li>
+</ul>
+<br>
+<p><U>인터넷 연결 방안</U></p>
+<ul>
+<li>인터넷 게이트웨이</li>
+<li>NAT 디바이스</li>
+<li>Proxy 인스턴스</li>
+</ul>
+<br>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/network/way.png" >
+<figcaption align = "center">[Picture 11] 인터넷 연결 방안</figcaption>
+<br>
+<p><U>인터넷 게이트웨이</U></p>
+<ul>
+<li>Public IP와 Private IP <code>1:1 NAT</code>한다.
+<ul>
+<li>1:1 연결이기 때문에 해당 IP를 독점적으로 사용하는 것과 유사하다.</li>
+<li>외부에서 Public IP를 통해 내부 VPC 인스턴스 (Private IP)에 접근 가능하다.</li>
+</ul>
+</li>
+<li><code>하나의 VPC</code>는 <code>하나의 인터넷 게이트웨이</code>만 사용할 수 있다.</li>
+</ul>
+<br>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/network/ig_nat.png" >
+<figcaption align = "center">[Picture 12] 인터넷 게이트웨이를 통한 외부 접속</figcaption>
+<br>
+<p><U>NAT 디바이스</U></p>
+<blockquote>
+<p>NAT 인스턴스와 NAT 게이트웨이를 통칭해 NAT 디바이스라고 한다.</p>
+</blockquote>
+<br>
+<ul>
+<li>Public IP와 Private IP <code>1:N NAT</code> 한다.</li>
+<li>프라이빗 서브넷에서 외부 인터넷으로 통신하기 위한 방식이다.
+<ul>
+<li>프라이빗 서브넷 -&gt; 외부 인터넷만 가능하다.</li>
+</ul>
+</li>
+<li>NAT 디바이스는 <code>Public 서브넷</code>에 유치하며 <code>인터넷 게이트웨이</code>와 연동한다.</li>
+</ul>
+<br>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/network/nat_nat.png" >
+<figcaption align = "center">[Picture 13] NAT 디바이스를 통한 외부 접속</figcaption>
+<br>
+<p><U>NAT 게이트웨이 vs. NAT 인스턴스</U></p>
+<ol>
+<li>성능: 고성능 vs. 인스턴스 유형에 따라</li>
+<li>가용성: 고가용성 vs. 수동 HA</li>
+<li>관리: AWS vs. 사용자</li>
+<li>비용: 전송량 vs. 인스턴스 요금 + 네트워크 요금</li>
+</ol>
+<br>
+<p><U>NAT 인스턴스 시나리오</U></p>
+<blockquote>
+<p>NAT 인스턴스와 NAT 게이트웨이 흐름은 유사하다.</p>
+</blockquote>
+<br>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/network/nat_instance.png" >
+<figcaption align = "center">[Picture 14] NAT 인스턴스 흐름</figcaption>
+<br>
+<p>이 예시에서는 나오지 않았지만 NAT 인스턴스는 <code>IP masquerading</code>을 통해서 <code>내부 인스턴스의 IP와 포트</code>를 <code>NAT 인스턴스의 IP와 포트</code>로 변환한다.</p>
+<br>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/network/mul_nat.png" >
+<figcaption align = "center">[Picture 15] 다수의 인스턴스에서의 NAT 인스턴스 흐름</figcaption>
+<br>
+<p>다수의 인스턴스의 출발지 IP들이 1개의 NAT IP를 공유해서 사용하기 때문에 포트 번호 정보를 기준으로 내부 인스턴스의 트래픽을 구별할 수 있다. 이를 <code>PAT</code> 이라 한다.</p>
+<p>예시에는 나오지 않았지만, 원본 포트가 같을 경우 PAT을 할 때 포트를 다르게 할당한다. 이를 <code>포트 오버로딩</code>이라 한다.</p>
+<br>
+<table>
+<thead>
+<tr>
+<th>원본 IP - Port</th>
+<th>변경 IP - Port</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10.40.2.101 - 40001</td>
+<td>10.20.1.100 - 40001</td>
+</tr>
+<tr>
+<td>10.40.2.201 - 40001</td>
+<td>10.20.1.100 - <code>50001</code></td>
+</tr>
+</tbody>
+</table>
+<br>
+<p><U>Proxy 인스턴스</U></p>
+<ul>
+<li>서버의 대리자이다.</li>
+<li>목적지 IP가 Proxy 인스턴스로 향하도록 되어있다.</li>
+</ul>
+<br>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/network/proxy.png" >
+<figcaption align = "center">[Picture 16] Proxy를 통한 외부 접속</figcaption>
+    </div>
+</article>
+
+
+
+<div class="post-comment" data-comment="utterances">
+    <span class="post-comment-notloaded">
+        <i class="iconfont icon-chatbox-ellipses-sharp"></i>&nbsp;Load comments
+    </span>
+    <script>
+        function loadComment() {
+            var commentArea = document.querySelector('.post-comment');
+            var utterancesTheme = document.body.getAttribute('data-theme');
+            if (utterancesTheme === 'auto') {
+                utterancesTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'photon-dark' :
+                    'github-light';
+            } else {
+                utterancesTheme = utterancesTheme === 'dark' ? 'photon-dark' : 'github-light';
+            }
+            var s = document.createElement('script');
+            s.src = 'https://utteranc.es/client.js';
+            s.setAttribute('repo', 'leeleelee3264\/github_io_comment');
+            s.setAttribute('issue-term', 'pathname');
+            s.setAttribute('theme', utterancesTheme);
+            s.setAttribute('crossorigin', 'anonymous');
+            s.setAttribute('async', '');
+            document.querySelector('.post-comment').appendChild(s);
+            document.querySelector('span.post-comment-notloaded').setAttribute('style', 'display: none;');
+        }
+    </script>
+</div>
+
+
+            </div>
+            <aside class="col-12 col-md-3 float-left sidebar">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://github.com/leeleelee3264" target="_blank"><span>GitHub</span></a>
+            </li>
+            
+            <li>
+                <a href="https://www.linkedin.com/in/seungmin4035/" target="_blank"><span>LinkedIn</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/backend/">Backend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/book/">Book</a>
+            </span>
+            
+            <span>
+                <a href="/tags/cheat/">Cheat</a>
+            </span>
+            
+            <span>
+                <a href="/tags/frontend/">Frontend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/general/">General</a>
+            </span>
+            
+            <span>
+                <a href="/tags/infra/">Infra</a>
+            </span>
+            
+            <span>
+                <a href="/tags/project/">Project</a>
+            </span>
+            
+        </div>
+    </div>
+    
+</aside>
+
+        </div>
+        <div class="btn">
+    <div class="btn-menu" id="btn-menu">
+        <i class="iconfont icon-grid-sharp"></i>
+    </div>
+    <div class="btn-toggle-mode">
+        <i class="iconfont icon-contrast-sharp"></i>
+    </div>
+    <div class="btn-scroll-top">
+        <i class="iconfont icon-chevron-up-circle-sharp"></i>
+    </div>
+</div>
+<aside class="sidebar-mobile" style="display: none;">
+  <div class="sidebar-wrapper">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://github.com/leeleelee3264" target="_blank"><span>GitHub</span></a>
+            </li>
+            
+            <li>
+                <a href="https://www.linkedin.com/in/seungmin4035/" target="_blank"><span>LinkedIn</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/backend/">Backend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/book/">Book</a>
+            </span>
+            
+            <span>
+                <a href="/tags/cheat/">Cheat</a>
+            </span>
+            
+            <span>
+                <a href="/tags/frontend/">Frontend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/general/">General</a>
+            </span>
+            
+            <span>
+                <a href="/tags/infra/">Infra</a>
+            </span>
+            
+            <span>
+                <a href="/tags/project/">Project</a>
+            </span>
+            
+        </div>
+    </div>
+    
+    
+    
+    
+  </div>
+</aside>
+    </main>
+
+    <footer>
+    <div class="container-lg clearfix">
+        <div class="col-12 footer">
+            
+            <span>&copy; 2020-2023
+                <a href="https://leeleelee3264.github.io/">leeleelee3264</a>
+                 | <a href="https://github.com/leeleelee3264/leeleelee3264.github.io">Source code</a> 
+                | Powered by <a href="https://github.com/dsrkafuu/hugo-theme-fuji/"
+                   target="_blank">Fuji-v2</a> &amp; <a href="https://gohugo.io/"
+                                                    target="_blank">Hugo</a> 
+            </span>
+        </div>
+    </div>
+</footer>
+
+    
+<script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha512-N9IJRoc3LaP3NDoiGkcPa4gG94kapGpaA5Zq9/Dr04uf5TbLFU5q0o8AbRhLKUUlp8QFS2u7S+Yti0U7QtuZvQ==" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js" integrity="sha512-q583ppKrCRc7N5O0n2nzUiJ+suUv7Et1JGels4bXOaMFQcamPk9HjdUknZuuFjBNs7tsMuadge5k9RzdmO+1GQ==" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/components/prism-core.min.js" integrity="sha512-LCKPTo0gtJ74zCNMbWw04ltmujpzSR4oW+fgN+Y1YclhM5ZrHCZQAJE4quEodcI/G122sRhSGU2BsSRUZ2Gu3w==" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-GP4x8UWxWyh4BMbyJGOGneiTbkrWEF5izsVJByzVLodP8CuJH/n936+yQDMJJrOPUHLgyPbLiGw2rXmdvGdXHA==" crossorigin="anonymous"></script>
+
+
+
+<script defer src="/assets/js/fuji.min.645f1123be695831f419ab54c1bcba327325895c740014006e57070d4f3e5d6b553e929c4b46f40ea707249e9c7f7c2a446d32a39ce7319f80a34525586a8e0f.js" integrity="sha512-ZF8RI75pWDH0GatUwby6MnMliVx0ABQAblcHDU8&#43;XWtVPpKcS0b0DqcHJJ6cf3wqRG0yo5znMZ&#43;Ao0UlWGqODw=="></script>
+
+
+
+</body>
+
+</html>
