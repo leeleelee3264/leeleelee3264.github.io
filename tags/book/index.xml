@@ -8,7 +8,7 @@
     <language>en</language>
     <lastBuildDate>Mon, 27 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://leeleelee3264.github.io/tags/book/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>[Book] [따라하며 배우는 AWS 네트워크 입문] 노트정리 1회차 (2/2)</title>
+      <title>[Book] [따라하며 배우는 AWS 네트워크 입문] VPC, VPC 엔드포인트, 인터넷/NAT 게이트웨이</title>
       <link>https://leeleelee3264.github.io/post/2023-03-27-introduction-to-aws-networking-first-session-part2/</link>
       <pubDate>Mon, 27 Mar 2023 00:00:00 +0000</pubDate>
       
@@ -17,7 +17,7 @@
     </item>
     
     <item>
-      <title>[Book] [따라하며 배우는 AWS 네트워크 입문] 노트정리 1회차 (1/2)</title>
+      <title>[Book] [따라하며 배우는 AWS 네트워크 입문] 서브넷 마스크, CIDR, VPC</title>
       <link>https://leeleelee3264.github.io/post/2023-03-21-introduction-to-aws-networking-first-session-part1/</link>
       <pubDate>Tue, 21 Mar 2023 00:00:00 +0000</pubDate>
       
@@ -26,7 +26,7 @@
     </item>
     
     <item>
-      <title>[Book] [Effective Python] 노트 정리 (2/10) - List &amp; Dictionary</title>
+      <title>[Book] [Effective Python] List, Dictionary</title>
       <link>https://leeleelee3264.github.io/post/2022-10-25-effevtive-python-betterway-11-to-15/</link>
       <pubDate>Tue, 25 Oct 2022 00:00:00 +0000</pubDate>
       
@@ -35,7 +35,7 @@
     </item>
     
     <item>
-      <title>[Book] [Effective Python] 노트 정리 (1/10) - Think like Python</title>
+      <title>[Book] [Effective Python] 알면 고수 같아 보이는 파이썬 개념</title>
       <link>https://leeleelee3264.github.io/post/2022-05-06-effective-python-betteryway-1-to5/</link>
       <pubDate>Fri, 06 May 2022 00:00:00 +0000</pubDate>
       

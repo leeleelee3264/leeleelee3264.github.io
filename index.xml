@@ -8,7 +8,7 @@
     <language>en</language>
     <lastBuildDate>Mon, 27 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://leeleelee3264.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>[Book] [따라하며 배우는 AWS 네트워크 입문] 노트정리 1회차 (2/2)</title>
+      <title>[Book] [따라하며 배우는 AWS 네트워크 입문] VPC, VPC 엔드포인트, 인터넷/NAT 게이트웨이</title>
       <link>https://leeleelee3264.github.io/post/2023-03-27-introduction-to-aws-networking-first-session-part2/</link>
       <pubDate>Mon, 27 Mar 2023 00:00:00 +0000</pubDate>
       
@@ -17,7 +17,7 @@
     </item>
     
     <item>
-      <title>[Infra] Nginx에 서브도메인 연결하기 with Https</title>
+      <title>[Infra] Nginx에 서브도메인 연결하기</title>
       <link>https://leeleelee3264.github.io/post/2023-03-25-subdomain-with-nginx/</link>
       <pubDate>Sat, 25 Mar 2023 00:00:00 +0000</pubDate>
       
@@ -26,7 +26,7 @@
     </item>
     
     <item>
-      <title>[Book] [따라하며 배우는 AWS 네트워크 입문] 노트정리 1회차 (1/2)</title>
+      <title>[Book] [따라하며 배우는 AWS 네트워크 입문] 서브넷 마스크, CIDR, VPC</title>
       <link>https://leeleelee3264.github.io/post/2023-03-21-introduction-to-aws-networking-first-session-part1/</link>
       <pubDate>Tue, 21 Mar 2023 00:00:00 +0000</pubDate>
       
@@ -35,7 +35,7 @@
     </item>
     
     <item>
-      <title>[General] Kasa에서 백엔드 엔지니어로서의 1년 회고하기</title>
+      <title>[General] 핀테크 스타트업에서 백엔드 엔지니어로 1년 근무한 소감</title>
       <link>https://leeleelee3264.github.io/post/2023-03-01-review-kasa/</link>
       <pubDate>Wed, 01 Mar 2023 00:00:00 +0000</pubDate>
       
@@ -44,7 +44,7 @@
     </item>
     
     <item>
-      <title>[Class] [예제로 배우는 스프링 입문] 노트 정리</title>
+      <title>[Class] [예제로 배우는 스프링 입문] IoC, AOP, PSA 기초</title>
       <link>https://leeleelee3264.github.io/post/2023-02-06-inflearn-spring-with-example-note/</link>
       <pubDate>Mon, 06 Feb 2023 00:00:00 +0000</pubDate>
       
@@ -53,7 +53,7 @@
     </item>
     
     <item>
-      <title>[Seminar] [Django에서 동시성을 다루는 방법]을 주제로 인생 첫 세미나 진행하기</title>
+      <title>[Seminar] Django에서 ORM과 Redis로 동시성을 다루는 방법</title>
       <link>https://leeleelee3264.github.io/post/2022-12-26-kasa-concurrency-seminar/</link>
       <pubDate>Mon, 26 Dec 2022 00:00:00 +0000</pubDate>
       
@@ -62,7 +62,7 @@
     </item>
     
     <item>
-      <title>[Project] 읽고 싶어지는 기술 블로그 만들기</title>
+      <title>[Project] Hugo를 이용해 Darkmode 지원하는 기술 블로그 만들기</title>
       <link>https://leeleelee3264.github.io/post/2022-12-22-tech-blog-readability/</link>
       <pubDate>Thu, 22 Dec 2022 00:00:00 +0000</pubDate>
       
@@ -71,7 +71,7 @@
     </item>
     
     <item>
-      <title>[Book] [Effective Python] 노트 정리 (2/10) - List &amp; Dictionary</title>
+      <title>[Book] [Effective Python] List, Dictionary</title>
       <link>https://leeleelee3264.github.io/post/2022-10-25-effevtive-python-betterway-11-to-15/</link>
       <pubDate>Tue, 25 Oct 2022 00:00:00 +0000</pubDate>
       
@@ -80,7 +80,7 @@
     </item>
     
     <item>
-      <title>[Infra] 클라우드 필수 교양, 로드 밸런서</title>
+      <title>[Infra] 로드 밸런서란 무엇인가?</title>
       <link>https://leeleelee3264.github.io/post/2022-10-24-load-balancer/</link>
       <pubDate>Mon, 24 Oct 2022 00:00:00 +0000</pubDate>
       
@@ -89,7 +89,7 @@
     </item>
     
     <item>
-      <title>[Infra] 네트워크 필수교양, 인증서 (2/2) - 심화학습</title>
+      <title>[Infra] 인증서 (2/2): CA와 Chain of trust란 무엇인가?</title>
       <link>https://leeleelee3264.github.io/post/2022-08-27-digital-certificate-part-final/</link>
       <pubDate>Sat, 27 Aug 2022 00:00:00 +0000</pubDate>
       
@@ -116,7 +116,7 @@
     </item>
     
     <item>
-      <title>[Infra] 네트워크 필수교양, 인증서 (1/2) - 쌩기초</title>
+      <title>[Infra] 인증서 (1/2): Certificate, PKI, X.509란 무엇인가?</title>
       <link>https://leeleelee3264.github.io/post/2022-06-15-digital-certificate-part-one/</link>
       <pubDate>Wed, 15 Jun 2022 00:00:00 +0000</pubDate>
       
@@ -125,7 +125,7 @@
     </item>
     
     <item>
-      <title>[Book] [Effective Python] 노트 정리 (1/10) - Think like Python</title>
+      <title>[Book] [Effective Python] 알면 고수 같아 보이는 파이썬 개념</title>
       <link>https://leeleelee3264.github.io/post/2022-05-06-effective-python-betteryway-1-to5/</link>
       <pubDate>Fri, 06 May 2022 00:00:00 +0000</pubDate>
       
@@ -224,7 +224,7 @@
     </item>
     
     <item>
-      <title>[Infra] Ubuntu 설치와 초기 설정하기</title>
+      <title>[Infra] 안 쓰는 노트북에 Ubuntu 설치하고 초기 설정하기</title>
       <link>https://leeleelee3264.github.io/post/2021-04-21-linux-server-init-setting/</link>
       <pubDate>Wed, 21 Apr 2021 00:00:00 +0000</pubDate>
       

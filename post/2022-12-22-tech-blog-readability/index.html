@@ -16,7 +16,7 @@
 
 
 
-<title>[Project] 읽고 싶어지는 기술 블로그 만들기 - leelee.log</title>
+<title>[Project] Hugo를 이용해 Darkmode 지원하는 기술 블로그 만들기 - leelee.log</title>
 
 
 <meta name="author" content="leeleelee3264" />
@@ -28,8 +28,8 @@
 <meta name="keywords" content="Project" />
 
 
-<meta property="og:title" content="[Project] 읽고 싶어지는 기술 블로그 만들기" />
-<meta name="twitter:title" content="[Project] 읽고 싶어지는 기술 블로그 만들기" />
+<meta property="og:title" content="[Project] Hugo를 이용해 Darkmode 지원하는 기술 블로그 만들기" />
+<meta name="twitter:title" content="[Project] Hugo를 이용해 Darkmode 지원하는 기술 블로그 만들기" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://leeleelee3264.github.io/post/2022-12-22-tech-blog-readability/" /><meta property="og:description" content="어떻게 해야 읽기 쉬우면서 재미있고 유용한 기술 블로그를 만들 수 있을까? Jekyll을 사용하던 내 기술 블로그에 Hugo를 도입하여 리뉴얼한 프로젝트에 대해서 다룬다." />
 <meta name="twitter:description" content="어떻게 해야 읽기 쉬우면서 재미있고 유용한 기술 블로그를 만들 수 있을까? Jekyll을 사용하던 내 기술 블로그에 Hugo를 도입하여 리뉴얼한 프로젝트에 대해서 다룬다." /><meta property="og:image" content="https://leeleelee3264.github.io/static/img/og.png" />
@@ -40,7 +40,7 @@
 
 
 
-<link rel="stylesheet" href="https://leeleelee3264.github.io/assets/css/fuji.min.e181e60016938cd78162d7c22f7ec19f5880c6aacdaab7ae8592045d2d789c21bf744ef23e8f88730329075863f798e21e966b92b81ed4bb64578b6ba1ecfdcf.css" integrity="sha512-4YHmABaTjNeBYtfCL37Bn1iAxqrNqreuhZIEXS14nCG/dE7yPo&#43;IcwMpB1hj95jiHpZrkrge1LtkV4troez9zw==" />
+<link rel="stylesheet" href="https://leeleelee3264.github.io/assets/css/fuji.min.f465179295d3a8a1b7dd2a219c27b03926b10f8caa3e362977d8c14a06e5ca1d1e074591d6900bbc0251d107c6ad6d1ba9f1e3eeaa344c51e97b9ae9490fff59.css" integrity="sha512-9GUXkpXTqKG33SohnCewOSaxD4yqPjYpd9jBSgblyh0eB0WR1pALvAJR0QfGrW0bqfHj7qo0TFHpe5rpSQ//WQ==" />
 
 
 
@@ -86,12 +86,12 @@
 <article>
     
     <h2 class="post-item post-title">
-        <a href="https://leeleelee3264.github.io/post/2022-12-22-tech-blog-readability/">[Project] 읽고 싶어지는 기술 블로그 만들기</a>
+        <a href="https://leeleelee3264.github.io/post/2022-12-22-tech-blog-readability/">[Project] Hugo를 이용해 Darkmode 지원하는 기술 블로그 만들기</a>
     </h2>
     <div class="post-item post-meta">
         <span><i class="iconfont icon-today-sharp"></i>&nbsp;2022-12-22</span>
 
-<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;5395 words</span>
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;5506 words</span>
 
 <span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/project">Project</a>&nbsp;</span>
 
@@ -115,6 +115,7 @@
 <li>Hugo 도입기</li>
 <li>읽고 싶은 기술 블로그 만들기</li>
 <li>프로젝트 회고</li>
+<li>2023-0502 update</li>
 </ol>
 <br> 
 <h1 id="intro-기술-블로그-이대로-괜찮은가">Intro: 기술 블로그, 이대로 괜찮은가?</h1>
@@ -603,6 +604,32 @@ github 사이트에서 leeleelee.github.io 레포지토리를 만들어, 연결�
 <br> 
 <p>항상 블로그 포스팅에는 사소한 주제보다는 의미있는, 큰 규모의 글을 다뤄야 한다는 부담 때문에 더 자주 포스팅을 하지 못한다.
 앞으로는 부담을 내려두고 정말 기록을 위한 사소한 주제를 다뤄야겠다.</p>
+<br>
+<h1 id="2023-0502-update">2023-0502 update</h1>
+<p>블로그에 사용하는 폰트와 백그라운드를 커스텀하기 위해 코드를 추가했다.
+서브 모듈로 추가한 <code>themes/fuji</code> 디렉터리에서 수정했기 때문에 프로젝트를 clone 해 올 때 마다 이 코드를 추가한다.</p>
+<br>
+<blockquote>
+<p>themes/fuji/assets/scss/_custom_var.scss</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">//</span> <span style="color:#f92672">Override</span> <span style="color:#f92672">variables</span> <span style="color:#f92672">with</span> <span style="color:#f92672">that</span> <span style="color:#f92672">file</span>
+</span></span><span style="display:flex;"><span>@<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#39;_custom&#39;</span>; <span style="color:#f92672">//</span> <span style="color:#f92672">Keep</span> <span style="color:#f92672">that</span> <span style="color:#f92672">for</span> <span style="color:#f92672">back-compatibility</span><span style="color:#f92672">.</span> <span style="color:#f92672">This</span> <span style="color:#f92672">shouldn</span><span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#f92672">t</span> <span style="color:#f92672">be</span> <span style="color:#f92672">used</span> <span style="color:#f92672">anymore</span><span style="color:#f92672">.</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">$</span><span style="color:#f92672">light-color-primary</span><span style="color:#f92672">:</span> #222222<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">$</span><span style="color:#f92672">dark-color-font</span><span style="color:#f92672">:</span> #222222<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">$</span><span style="color:#f92672">dark-color-font</span><span style="color:#f92672">:</span> #f1f1f1<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">$</span><span style="color:#f92672">dark-color-bg</span><span style="color:#f92672">:</span> #121212<span style="color:#f92672">;</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
 
     </div>
 </article>

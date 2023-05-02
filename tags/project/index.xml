@@ -8,7 +8,7 @@
     <language>en</language>
     <lastBuildDate>Mon, 26 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://leeleelee3264.github.io/tags/project/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>[Seminar] [Django에서 동시성을 다루는 방법]을 주제로 인생 첫 세미나 진행하기</title>
+      <title>[Seminar] Django에서 ORM과 Redis로 동시성을 다루는 방법</title>
       <link>https://leeleelee3264.github.io/post/2022-12-26-kasa-concurrency-seminar/</link>
       <pubDate>Mon, 26 Dec 2022 00:00:00 +0000</pubDate>
       
@@ -17,7 +17,7 @@
     </item>
     
     <item>
-      <title>[Project] 읽고 싶어지는 기술 블로그 만들기</title>
+      <title>[Project] Hugo를 이용해 Darkmode 지원하는 기술 블로그 만들기</title>
       <link>https://leeleelee3264.github.io/post/2022-12-22-tech-blog-readability/</link>
       <pubDate>Thu, 22 Dec 2022 00:00:00 +0000</pubDate>
       

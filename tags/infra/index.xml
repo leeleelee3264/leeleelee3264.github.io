@@ -8,7 +8,7 @@
     <language>en</language>
     <lastBuildDate>Sat, 25 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://leeleelee3264.github.io/tags/infra/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>[Infra] Nginx에 서브도메인 연결하기 with Https</title>
+      <title>[Infra] Nginx에 서브도메인 연결하기</title>
       <link>https://leeleelee3264.github.io/post/2023-03-25-subdomain-with-nginx/</link>
       <pubDate>Sat, 25 Mar 2023 00:00:00 +0000</pubDate>
       
@@ -17,7 +17,7 @@
     </item>
     
     <item>
-      <title>[Infra] 클라우드 필수 교양, 로드 밸런서</title>
+      <title>[Infra] 로드 밸런서란 무엇인가?</title>
       <link>https://leeleelee3264.github.io/post/2022-10-24-load-balancer/</link>
       <pubDate>Mon, 24 Oct 2022 00:00:00 +0000</pubDate>
       
@@ -26,7 +26,7 @@
     </item>
     
     <item>
-      <title>[Infra] 네트워크 필수교양, 인증서 (2/2) - 심화학습</title>
+      <title>[Infra] 인증서 (2/2): CA와 Chain of trust란 무엇인가?</title>
       <link>https://leeleelee3264.github.io/post/2022-08-27-digital-certificate-part-final/</link>
       <pubDate>Sat, 27 Aug 2022 00:00:00 +0000</pubDate>
       
@@ -35,7 +35,7 @@
     </item>
     
     <item>
-      <title>[Infra] 네트워크 필수교양, 인증서 (1/2) - 쌩기초</title>
+      <title>[Infra] 인증서 (1/2): Certificate, PKI, X.509란 무엇인가?</title>
       <link>https://leeleelee3264.github.io/post/2022-06-15-digital-certificate-part-one/</link>
       <pubDate>Wed, 15 Jun 2022 00:00:00 +0000</pubDate>
       
@@ -89,7 +89,7 @@
     </item>
     
     <item>
-      <title>[Infra] Ubuntu 설치와 초기 설정하기</title>
+      <title>[Infra] 안 쓰는 노트북에 Ubuntu 설치하고 초기 설정하기</title>
       <link>https://leeleelee3264.github.io/post/2021-04-21-linux-server-init-setting/</link>
       <pubDate>Wed, 21 Apr 2021 00:00:00 +0000</pubDate>
       
