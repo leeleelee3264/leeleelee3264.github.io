@@ -6,7 +6,16 @@
     <description>Recent content in Posts on leelee.log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 05 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://leeleelee3264.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 30 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://leeleelee3264.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[Project] Github Action을 이용해 server-less 하게 서버 healthcheck와 이메일 notification 보내기</title>
+      <link>https://leeleelee3264.github.io/post/2023-07-30-github-action-email/</link>
+      <pubDate>Sun, 30 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2023-07-30-github-action-email/</guid>
+      <description>Github Action을 이용해 server-less 하게 서버 healthcheck와 이메일 notification 보내는 방법을 포스팅한다. Index Intro Github Action 설정 Gmail 설정 결과물 Intro 몇 년 전 부터 안쓰는 노트북에 우분투를 설치해, 집에서 서버로 사용하고 있다. 그런데 얼마전부터 노트</description>
+    </item>
+    
     <item>
       <title>[Class] 스프링 입문 - 코드로 배우는 스프링 부트, 웹 MVC, DB 접근 기술</title>
       <link>https://leeleelee3264.github.io/post/2023-07-05-spring-lecture-one/</link>
