@@ -6,7 +6,16 @@
     <description>Recent content in Posts on leelee.log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 30 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://leeleelee3264.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 14 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://leeleelee3264.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[Seminar] 30분 투자로 CORS 전문가로 성장하기</title>
+      <link>https://leeleelee3264.github.io/post/2023-08-14-cors-seminar/</link>
+      <pubDate>Mon, 14 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2023-08-14-cors-seminar/</guid>
+      <description>Kasa에서 2023-08-14에 30분 투자로 CORS 전문가로 성장하기 라는 주제로 진행한 세미나를 정리한다. Index Intro 발표 영상 발표 자료 세미나 회고 Intro 오랜만에 회사에서 세미나를 진행했다. 기술 공유 시간에 자발적으로 작은 세션을 진</description>
+    </item>
+    
     <item>
       <title>[Project] Github Action을 이용해 server-less 하게 서버 healthcheck와 이메일 notification 보내기</title>
       <link>https://leeleelee3264.github.io/post/2023-07-30-github-action-email/</link>
