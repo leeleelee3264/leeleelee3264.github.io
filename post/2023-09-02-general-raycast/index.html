@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="HandheldFriendly" content="True" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="generator" content="Hugo 0.102.3" />
+
+
+<link rel="shortcut icon" href="https://raw.githubusercontent.com/leeleelee3264/twitter_project/master/favicon.ico" />
+
+
+
+<title>[General] 이것만 있으면 나도 슈퍼 개발자? 생산성 앱 Raycast - leelee.log</title>
+
+
+<meta name="author" content="leeleelee3264" />
+
+
+<meta name="description" content="Mac 생산성 앱 Raycast에 대해 소개한다." />
+
+
+<meta name="keywords" content="General" />
+
+
+<meta property="og:title" content="[General] 이것만 있으면 나도 슈퍼 개발자? 생산성 앱 Raycast" />
+<meta name="twitter:title" content="[General] 이것만 있으면 나도 슈퍼 개발자? 생산성 앱 Raycast" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://leeleelee3264.github.io/post/2023-09-02-general-raycast/" /><meta property="og:description" content="Mac 생산성 앱 Raycast에 대해 소개한다." />
+<meta name="twitter:description" content="Mac 생산성 앱 Raycast에 대해 소개한다." /><meta property="og:image" content="https://leeleelee3264.github.io/static/img/og.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://leeleelee3264.github.io/static/img/og.png" /><meta property="article:published_time" content="2023-09-02T00:00:00+00:00" /><meta property="article:modified_time" content="2023-09-02T00:00:00+00:00" />
+
+
+
+
+
+<link rel="stylesheet" href="https://leeleelee3264.github.io/assets/css/fuji.min.f465179295d3a8a1b7dd2a219c27b03926b10f8caa3e362977d8c14a06e5ca1d1e074591d6900bbc0251d107c6ad6d1ba9f1e3eeaa344c51e97b9ae9490fff59.css" integrity="sha512-9GUXkpXTqKG33SohnCewOSaxD4yqPjYpd9jBSgblyh0eB0WR1pALvAJR0QfGrW0bqfHj7qo0TFHpe5rpSQ//WQ==" />
+
+
+
+
+
+
+
+
+</head>
+
+<body
+  data-theme="light"
+  data-theme-auto='false'
+  >
+    <script data-cfasync="false">
+  
+  var fujiThemeData = localStorage.getItem('fuji_data-theme');
+  
+  if (!fujiThemeData) {
+    localStorage.setItem('fuji_data-theme', 'auto');
+  } else {
+    
+    if (fujiThemeData !== 'auto') {
+      document.body.setAttribute('data-theme', fujiThemeData === 'dark' ? 'dark' : 'light');
+    }
+  }
+</script>
+
+    <header>
+    <div class="container-lg clearfix">
+        <div class="col-12 header">
+            <a class="title-main" href="https://leeleelee3264.github.io/">leelee.log</a>
+            
+        </div>
+    </div>
+</header>
+
+    <main>
+        <div class="container-lg clearfix">
+            
+            <div class="col-12 col-md-9 float-left content">
+                
+<article>
+    
+    <h2 class="post-item post-title">
+        <a href="https://leeleelee3264.github.io/post/2023-09-02-general-raycast/">[General] 이것만 있으면 나도 슈퍼 개발자? 생산성 앱 Raycast</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2023-09-02</span>
+
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;1102 words</span>
+
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/general">General</a>&nbsp;</span>
+
+    </div>
+    
+    <div class="post-content markdown-body">
+        <br>
+<br> 
+<blockquote>
+<p>Mac 생산성 앱 Raycast에 대해 소개한다.</p>
+</blockquote>
+<br> 
+<p><strong>Index</strong></p>
+<ol>
+<li>사용 사례</li>
+<li>Raycast 세팅 방법</li>
+</ol>
+<br> 
+<h1 id="사용-사례">사용 사례</h1>
+<p>맥북은 생산성을 올려주는 여러 가지 방법을 제공하고 있다. 이미 맥북 자체를 쓰면서 작업 속도가 많이 빨라지는데 여기서 안주해서는 안된다.  그럼 어떻게 생산성을 더 올릴 수 있을까? 바로 키보드 커맨드 기반의 생산성 앱인 Raycast를 사용하는 것이다.</p>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/raycast/zero.png" >
+<figcaption align = "center">[Picture 1] Raycast</figcaption>
+<br> 
+<p>더 많은 기능이 있겠지만, 아래의 4가지 기능만을 보고 Raycast 사용을 결심했다.</p>
+<br> 
+<h3 id="raycast-핵심-기능">Raycast 핵심 기능</h3>
+<ol>
+<li>원하는 웹사이트에 바로 접근할 수 있는 단축키를 제공한다.</li>
+<li>원하는 앱에 바로 접근할 수 있는 단축키를 제공한다.</li>
+<li>클립보드 히스토리를 보여준다.</li>
+<li>방금 찍은 스크린샷을 복붙하기가 쉽다.</li>
+</ol>
+<br> 
+<h4 id="원하는-웹사이트에-바로-접근할-수-있는-단축키를-제공한다">원하는 웹사이트에 바로 접근할 수 있는 단축키를 제공한다.</h4>
+<p><U>Raycast를 사용하지 않을 때</U></p>
+<ol>
+<li>크롬을 연다.</li>
+<li>브라우저에 들어가고 싶은 웹사이트의 URL을 입력한다.</li>
+</ol>
+<br> 
+<p><U>Raycast를 사용할 때</U></p>
+<ul>
+<li>단축키를 입력한다.</li>
+</ul>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/raycast/one.gif" >
+<figcaption align = "center">[Picture 2] ChatGPT 커맨드</figcaption>
+<br> 
+<h4 id="원하는-앱에-바로-접근할-수-있는-단축키를-제공한다">원하는 앱에 바로 접근할 수 있는 단축키를 제공한다.</h4>
+<p><U>Raycast를 사용하지 않을 때</U></p>
+<ul>
+<li>원하는 앱이 나올 때 까지 alt + tab을 누른다.</li>
+</ul>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/raycast/two.gif" >
+<figcaption align = "center">[Picture 3] alt + tab 연타</figcaption>
+<br> 
+<p><U>Raycast를 사용할 때</U></p>
+<ul>
+<li>단축키를 입력한다.</li>
+</ul>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/raycast/three.gif" >
+<figcaption align = "center">[Picture 4] 파이참 커맨드</figcaption>
+<br> 
+<h4 id="클립보드-히스토리를-보여준다">클립보드 히스토리를 보여준다.</h4>
+<p><U>Raycast를 사용하지 않을 때</U></p>
+<ul>
+<li>맥북은 클립보드 히스토리 조회 기능을 제공하지 않는다.</li>
+</ul>
+<br> 
+<p><U>Raycast를 사용할 때</U></p>
+<ul>
+<li>단축키를 입력해서 클립보드 히스토리를 조회한다.</li>
+</ul>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/raycast/four.png" >
+<figcaption align = "center">[Picture 5] 클립보드 커맨드</figcaption>
+<br> 
+<h4 id="방금-찍은-스크린샷을-복붙하기가-쉽다">방금 찍은 스크린샷을 복붙하기가 쉽다.</h4>
+<p><U>Raycast를 사용하지 않을 때</U></p>
+<ul>
+<li>마우스로 열심히 끌고 와서 붙여넣는다.</li>
+</ul>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/raycast/five.gif" >
+<figcaption align = "center">[Picture 6] 이미지 끌고 오기</figcaption>
+<br> 
+<p><U>Raycast를 사용할 때</U></p>
+<ul>
+<li>단축키를 입력한다.</li>
+</ul>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/raycast/six.gif" >
+<figcaption align = "center">[Picture 7] 스크린샷 복붙 커맨드</figcaption>
+<br> 
+<p>맥북은 스크린샷을 찍을 때 핫 코너에 스크린샷 preview가 뜨는데 몇 초후에 사라진다. 그래서 그 전에 재빨리 드래그를 했어야 했는데 Raycast에서 방금 찍은 스크린샷을 다시 불러올 수 있으니 빨리 해야 한다는 부담이 사라졌다.</p>
+<br> 
+<h3 id="내가-자주-쓰는-기능">내가 자주 쓰는 기능</h3>
+<p>대부분 웹사이트를 접근하거나 앱을 접근하기 위한 단축키를 만들어두었다. 특히 많이 쓰는 단축키는 아래와 같다.</p>
+<ol>
+<li>메모장 앱 단축키</li>
+<li>노션 특정 페이지 단축키</li>
+<li>깃허브 repository 단축키</li>
+</ol>
+<br> 
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/raycast/seven.png" >
+<figcaption align = "center">[Picture 8] 자주 쓰는 기능</figcaption>
+<br> 
+<h1 id="raycast-세팅-방법">Raycast 세팅 방법</h1>
+<p><strong>Step 1: Raycast 앱을 다운로드한다.</strong> <a href="https://www.raycast.com/" target="_blank">Raycast 공식 홈페이지</a></p>
+<br> 
+<p><strong>Step 2: <code>Option + Space</code> 로 Raycast 프롬프트를 연다.</strong></p>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/raycast/eight.png" >
+<figcaption align = "center">[Picture 9] Raycast 프롬프트</figcaption>
+<br> 
+<p><strong>Step 3: <code>Command + ,</code> 로 setting을 연다.</strong></p>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/raycast/nine.png" >
+<figcaption align = "center">[Picture 10] Setting 화면</figcaption>
+<br> 
+<p><strong>step 4: 원하는 앱의 Hotkey(단축키)를 등록해준다.</strong></p>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/raycast/ten.gif" >
+<figcaption align = "center">[Picture 11] 단축키 등록</figcaption>
+<br> 
+<p><strong>step 5: <code>+</code> 버튼을 누른 후, Create Quicklink를 클릭한다.</strong></p>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/raycast/eleven.png" >
+<figcaption align = "center">[Picture 12] Quicklink 만들기</figcaption>
+<br> 
+<p><strong>Step 6: 원하는 브라우저 URL을 입력한 후 <code>Commnad + Enter</code> 를 눌러 Quicklink를 저장한다.</strong></p>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/raycast/twelve.png" >
+<figcaption align = "center">[Picture 13] Quicklink 저장</figcaption>
+<br> 
+<p><strong>Step 7: Step 4와 동일한 방식으로 방금 만든 Quicklink의 Hotkey를 등록한다.</strong></p>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/raycast/thirteen.png" >
+<figcaption align = "center">[Picture 14] Hotkey 등록</figcaption>
+<br> 
+<p>이로써 Raycast를 사용하기 위한 모든 설정을 마쳤다! Raycast를 사용해서 생산성을 향상시키고 즐거운 코딩 하도록 하자~!</p>
+
+    </div>
+</article>
+
+
+
+<div class="post-comment" data-comment="utterances">
+    <span class="post-comment-notloaded">
+        <i class="iconfont icon-chatbox-ellipses-sharp"></i>&nbsp;Load comments
+    </span>
+    <script>
+        function loadComment() {
+            var commentArea = document.querySelector('.post-comment');
+            var utterancesTheme = document.body.getAttribute('data-theme');
+            if (utterancesTheme === 'auto') {
+                utterancesTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'photon-dark' :
+                    'github-light';
+            } else {
+                utterancesTheme = utterancesTheme === 'dark' ? 'photon-dark' : 'github-light';
+            }
+            var s = document.createElement('script');
+            s.src = 'https://utteranc.es/client.js';
+            s.setAttribute('repo', 'leeleelee3264\/github_io_comment');
+            s.setAttribute('issue-term', 'pathname');
+            s.setAttribute('theme', utterancesTheme);
+            s.setAttribute('crossorigin', 'anonymous');
+            s.setAttribute('async', '');
+            document.querySelector('.post-comment').appendChild(s);
+            document.querySelector('span.post-comment-notloaded').setAttribute('style', 'display: none;');
+        }
+    </script>
+</div>
+
+
+            </div>
+            <aside class="col-12 col-md-3 float-left sidebar">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://github.com/leeleelee3264" target="_blank"><span>GitHub</span></a>
+            </li>
+            
+            <li>
+                <a href="https://www.linkedin.com/in/seungmin4035/" target="_blank"><span>LinkedIn</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/backend/">Backend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/book/">Book</a>
+            </span>
+            
+            <span>
+                <a href="/tags/cheat/">Cheat</a>
+            </span>
+            
+            <span>
+                <a href="/tags/frontend/">Frontend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/general/">General</a>
+            </span>
+            
+            <span>
+                <a href="/tags/infra/">Infra</a>
+            </span>
+            
+            <span>
+                <a href="/tags/project/">Project</a>
+            </span>
+            
+            <span>
+                <a href="/tags/seminar/">Seminar</a>
+            </span>
+            
+        </div>
+    </div>
+    
+</aside>
+
+        </div>
+        <div class="btn">
+    <div class="btn-menu" id="btn-menu">
+        <i class="iconfont icon-grid-sharp"></i>
+    </div>
+    <div class="btn-toggle-mode">
+        <i class="iconfont icon-contrast-sharp"></i>
+    </div>
+    <div class="btn-scroll-top">
+        <i class="iconfont icon-chevron-up-circle-sharp"></i>
+    </div>
+</div>
+<aside class="sidebar-mobile" style="display: none;">
+  <div class="sidebar-wrapper">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://github.com/leeleelee3264" target="_blank"><span>GitHub</span></a>
+            </li>
+            
+            <li>
+                <a href="https://www.linkedin.com/in/seungmin4035/" target="_blank"><span>LinkedIn</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/backend/">Backend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/book/">Book</a>
+            </span>
+            
+            <span>
+                <a href="/tags/cheat/">Cheat</a>
+            </span>
+            
+            <span>
+                <a href="/tags/frontend/">Frontend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/general/">General</a>
+            </span>
+            
+            <span>
+                <a href="/tags/infra/">Infra</a>
+            </span>
+            
+            <span>
+                <a href="/tags/project/">Project</a>
+            </span>
+            
+            <span>
+                <a href="/tags/seminar/">Seminar</a>
+            </span>
+            
+        </div>
+    </div>
+    
+    
+    
+    
+  </div>
+</aside>
+    </main>
+
+    <footer>
+    <div class="container-lg clearfix">
+        <div class="col-12 footer">
+            
+            <span>&copy; 2020-2023
+                <a href="https://leeleelee3264.github.io/">leeleelee3264</a>
+                 | <a href="https://github.com/leeleelee3264/leeleelee3264.github.io">Source code</a> 
+                | Powered by <a href="https://github.com/dsrkafuu/hugo-theme-fuji/"
+                   target="_blank">Fuji-v2</a> &amp; <a href="https://gohugo.io/"
+                                                    target="_blank">Hugo</a> 
+            </span>
+        </div>
+    </div>
+</footer>
+
+    
+<script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha512-N9IJRoc3LaP3NDoiGkcPa4gG94kapGpaA5Zq9/Dr04uf5TbLFU5q0o8AbRhLKUUlp8QFS2u7S+Yti0U7QtuZvQ==" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js" integrity="sha512-q583ppKrCRc7N5O0n2nzUiJ+suUv7Et1JGels4bXOaMFQcamPk9HjdUknZuuFjBNs7tsMuadge5k9RzdmO+1GQ==" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/components/prism-core.min.js" integrity="sha512-LCKPTo0gtJ74zCNMbWw04ltmujpzSR4oW+fgN+Y1YclhM5ZrHCZQAJE4quEodcI/G122sRhSGU2BsSRUZ2Gu3w==" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-GP4x8UWxWyh4BMbyJGOGneiTbkrWEF5izsVJByzVLodP8CuJH/n936+yQDMJJrOPUHLgyPbLiGw2rXmdvGdXHA==" crossorigin="anonymous"></script>
+
+
+
+<script defer src="/assets/js/fuji.min.645f1123be695831f419ab54c1bcba327325895c740014006e57070d4f3e5d6b553e929c4b46f40ea707249e9c7f7c2a446d32a39ce7319f80a34525586a8e0f.js" integrity="sha512-ZF8RI75pWDH0GatUwby6MnMliVx0ABQAblcHDU8&#43;XWtVPpKcS0b0DqcHJJ6cf3wqRG0yo5znMZ&#43;Ao0UlWGqODw=="></script>
+
+
+
+</body>
+
+</html>
