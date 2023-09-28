@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="HandheldFriendly" content="True" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="generator" content="Hugo 0.102.3" />
+
+
+<link rel="shortcut icon" href="https://raw.githubusercontent.com/leeleelee3264/twitter_project/master/favicon.ico" />
+
+
+
+<title>[Infra] CORS (3/3): Cache와 CORS - leelee.log</title>
+
+
+<meta name="author" content="leeleelee3264" />
+
+
+<meta name="description" content="Cache와 CORS가 함께 동작할 때 발생할 수 있는 에러를 알아본다." />
+
+
+<meta name="keywords" content="infra" />
+
+
+<meta property="og:title" content="[Infra] CORS (3/3): Cache와 CORS" />
+<meta name="twitter:title" content="[Infra] CORS (3/3): Cache와 CORS" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://leeleelee3264.github.io/post/2023-09-26-cors-three/" /><meta property="og:description" content="Cache와 CORS가 함께 동작할 때 발생할 수 있는 에러를 알아본다." />
+<meta name="twitter:description" content="Cache와 CORS가 함께 동작할 때 발생할 수 있는 에러를 알아본다." /><meta property="og:image" content="https://leeleelee3264.github.io/static/img/og.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://leeleelee3264.github.io/static/img/og.png" /><meta property="article:published_time" content="2023-09-26T00:00:00+00:00" /><meta property="article:modified_time" content="2023-09-26T00:00:00+00:00" />
+
+
+
+
+
+<link rel="stylesheet" href="https://leeleelee3264.github.io/assets/css/fuji.min.f465179295d3a8a1b7dd2a219c27b03926b10f8caa3e362977d8c14a06e5ca1d1e074591d6900bbc0251d107c6ad6d1ba9f1e3eeaa344c51e97b9ae9490fff59.css" integrity="sha512-9GUXkpXTqKG33SohnCewOSaxD4yqPjYpd9jBSgblyh0eB0WR1pALvAJR0QfGrW0bqfHj7qo0TFHpe5rpSQ//WQ==" />
+
+
+
+
+
+
+
+
+</head>
+
+<body
+  data-theme="light"
+  data-theme-auto='false'
+  >
+    <script data-cfasync="false">
+  
+  var fujiThemeData = localStorage.getItem('fuji_data-theme');
+  
+  if (!fujiThemeData) {
+    localStorage.setItem('fuji_data-theme', 'auto');
+  } else {
+    
+    if (fujiThemeData !== 'auto') {
+      document.body.setAttribute('data-theme', fujiThemeData === 'dark' ? 'dark' : 'light');
+    }
+  }
+</script>
+
+    <header>
+    <div class="container-lg clearfix">
+        <div class="col-12 header">
+            <a class="title-main" href="https://leeleelee3264.github.io/">leelee.log</a>
+            
+        </div>
+    </div>
+</header>
+
+    <main>
+        <div class="container-lg clearfix">
+            
+            <div class="col-12 col-md-9 float-left content">
+                
+<article>
+    
+    <h2 class="post-item post-title">
+        <a href="https://leeleelee3264.github.io/post/2023-09-26-cors-three/">[Infra] CORS (3/3): Cache와 CORS</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2023-09-26</span>
+
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;1968 words</span>
+
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/infra">infra</a>&nbsp;</span>
+
+    </div>
+    
+    <div class="post-content markdown-body">
+        <br>
+<br> 
+<blockquote>
+<p>Cache와 CORS가 함께 동작할 때 발생할 수 있는 에러를 알아본다.</p>
+</blockquote>
+<br> 
+<p><strong>Index</strong></p>
+<ol>
+<li>Intro</li>
+<li>Cache와 CORS</li>
+</ol>
+<br> 
+<h1 id="intro">Intro</h1>
+<p><a href="https://leeleelee3264.github.io/post/2023-08-14-cors-seminar/" target="_blank">30분 투자로 CORS 전문가로 성장하기</a> 세미나에서 사용했던 발표 자료를 정리해서 포스팅한다.
+해당 포스트에서는 발표의 마지막 꼭지 였던 Cache와 CORS가 함께 동작할 때 발생할 수 있는 에러를 알아본다.</p>
+<p>캐시와 CORS가 만나면 동작이 조금 이상해지는 경우가 있다. 어떤 경우이며, 이럴 때는 어떻게 대처하면 좋을지 살펴보겠다.</p>
+<br>
+<h1 id="cache와-cors">Cache와 CORS</h1>
+<h3 id="허용하지-않은-origin이-cloudfront-캐시를-가져가는-경우">허용하지 않은 Origin이 cloudfront 캐시를 가져가는 경우</h3>
+<p>위에서도 cloudfront 캐시를 이용해서 허용되지 않은 Origin이 리소스를 받아가는 경우를 언급했다. 왜 이런 일이 일어날까?</p>
+<p>cloudfront에 캐시를 할 때 캐시 key의 기본값은 리소스의 url이다. 기본값을 사용하면 다른 다른 도메인들에서 요청을 하더라도 동일한 리소스를 받게 된다. 때문에 허용되지 않은 Origin이라고 해도 요청하는 리소스의 url이 같다면 cloudfront는 엣지 로케이션에 캐시 되어있는 리소스를 건내준다.</p>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/cors/hit.png" >
+<figcaption align = "center">[Picture 1] Cloudfront의 의도하지 않은 hit 시나리오</figcaption>
+<br>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>[
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;AllowedHeaders&#34;</span>: [
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;*&#34;</span>
+</span></span><span style="display:flex;"><span>        ],
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;AllowedMethods&#34;</span>: [
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;GET&#34;</span>
+</span></span><span style="display:flex;"><span>        ],
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;AllowedOrigins&#34;</span>: [
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;https://test-a.com&#34;</span>
+</span></span><span style="display:flex;"><span>        ],
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;ExposeHeaders&#34;</span>: [],
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>]</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>CORS 정책 상, test-a.com과 test-b.com이 모두 s3 리소스에 접근을 할 수 있다면 상관이 없지만 test-b.com이 원래는 s3 리소스에 접근하지 못 하게 설정했다면? <strong>cloudfront 캐시를 우회해서 권한 없는 리소스에 접근하게 된 것이다.</strong></p>
+<p>이럴때는 <code>cache key</code>에 <code>Origin 헤더</code>를 추가해주면 cloudfront 리소스 접근을 막을 수 있다.</p>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/cors/cache_key.png" >
+<figcaption align = "center">[Picture 2] Cache Key</figcaption>
+<br>
+<p>이렇게 키를 관리하면 cloudfront가 Origin이 test-a.com인 요청에만 리소스를 건내준다.</p>
+<br>
+<h4 id="cache-key-추가해주기">Cache key 추가해주기</h4>
+<p><strong>Step 1: Cache key settings에 header 값 추가 후 캐시 정책을 생성한다.</strong></p>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/cors/cache_policy.png" >
+<figcaption align = "center">[Picture 3] Cache Policy</figcaption>
+<br>
+<p><strong>Step 2: 대상 Distribution의 Behaviors에 Cache policy 적용한다.</strong></p>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/cors/policy2.png" >
+<figcaption align = "center">[Picture 4] Cache Policy in Cloudfront Behavior</figcaption>
+<br>
+<h3 id="브라우저-캐시로-인한-cors-에러">브라우저 캐시로 인한 CORS 에러</h3>
+<p>브라우저는 img, script 태그를 통해 리소스를 요청할 경우 CORS를 제한하지 않는다. 때문에 요청을 보내면 요청에 CORS를 담고 있지 않아, 응답 또한 CORS 관련 정보가 없다. 즉, Access-Control-Allow-Origin 정보가 없다.
+이 리소스가 캐시 되었다가 <code>fetch</code>나 <code>XMLHttpRequest를</code> 사용해 리소스에 다시 접근하면 CORS error가 발생한다. 이럴 때는 리소스에 대한 캐시 동작 방법을 제어해줘야 한다.</p>
+<h4 id="cache-control-헤더">cache-control 헤더</h4>
+<p>cache-control 헤더란 서버가 브라우저에게 리소스의 cache를 어떻게 관리하는지 알려주는 값이다. 흔히 사용하는 값은 no-store과 no-cache인데 동작이 조금 다르다.</p>
+<p><code>no-store</code></p>
+<ul>
+<li>클라이언트 및 중간 서버가 응답을 캐시에 저장하지 않아야 한다. 때문에 클라이언트는 매 응답마다 서버에 다녀와야 한다.</li>
+</ul>
+<p><code>no-cache</code></p>
+<ul>
+<li>클라이언트가 캐시를 할 수 있지만, 다시 사용할 때 마다 캐시된 응답이 유효한지 서버에 가서 확인해야 한다. no-cache가 캐시를 하지 마세요, 라는 뜻은 아니다.</li>
+<li>컨텐츠가 유효한지 확인하기 때문에 헤더가 변경된 것에 대해서는 변경이라고 인식하지 않는다.</li>
+</ul>
+<br>
+<p>cloudfront에 no-cache를 설정해두면 브라우저가 로컬 캐시에 있는 리소스를 사용할 때나, cloudfront에 캐시된 리소스를 사용할 때 매번 오리진 서버인 s3에 가서 유효성을 검증한다. 변경이 일어나지 않았다면 304 not modified를 받아, 브라우저에서 사용한다.</p>
+<br>
+<h4 id="성능-상-이점">성능 상 이점</h4>
+<ul>
+<li><code>그냥 로컬 캐시 쓰기</code> &gt; <code>no-cache</code> &gt; <code>no-store</code></li>
+<li>no-cache가 서버를 다녀와야 하기 때문에 성능 저하가 있지만, 리소스가 자주 변경되지 않고, 변경되더라도 미미하게 변경되는 경우에는 크게 성능 저하가 일어나지 않는다.</li>
+</ul>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/cors/modi.png" >
+<figcaption align = "center">[Picture 5] 304 Modification</figcaption>
+<br>
+<p>no-cache를 사용해도 크게 성능 저하가 일어나지 않는 이유는 컨텐츠 자체를 들고 가서 변경이 있는지 확인하지 않기 때문이다. 요청 헤더만을 이용해서 서버의 컨텐츠와 캐시 된 컨텐츠가 변경이 있는지를 확인한다. <code>If-Modified-Since</code>는 이전 응답 헤더에서 받은 <code>last-modified</code> 값을 나타낸다. 서버에서는 이 날짜와 비교해서 컨텐츠가 변경이 되었는지를 판단한다.</p>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/cors/modi_flow.png" >
+<figcaption align = "center">[Picture 6] 304 Modification Flow</figcaption>
+<br>
+<h4 id="캐시-제어-방법">캐시 제어 방법</h4>
+<p><strong>방법 1: cloudfront 응답 헤더 정책으로 캐시 동작 제어해주기</strong></p>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/cors/one.png" >
+<figcaption align = "center">[Picture 7] Custom Header in Response Header Policy</figcaption>
+<br>
+<p><strong>방법 2: s3의 metadata로 캐시 동작 제어해주기</strong></p>
+<p>cloudfront 응답 헤더 정책은 path가 일치하면 일괄적으로 적용이 되는데, s3에서 제어를 하면 객체 하나 하나에 적용을 해줄 수 있다.</p>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/cors/meta.png" >
+<figcaption align = "center">[Picture 8] Metadata in s3</figcaption>
+<br>
+<h4 id="no-cache와-no-store가-cors-error막을-수-있을까">no-cache와 no-store가 cors error막을 수 있을까?</h4>
+<p>만약 이전에 cors 설정을 잘못했는데 로컬 캐시가 된 경우, 다음에 사용할 때 오리진 서버에 가서 유효성을 검사한다. 그때 캐시된 리소스의 cors 정책이 유효하지 않은 것을 확인한다. 브라우저는 즉시 캐시에서 해당 리소스를 지우고 서버에서 다시 리소스를 받아와 사용한다. no-store는 캐시 자체를 하지 않기 때문에 매번 새로 받아오다보니 이전에 잘못 설정한 cors는 저장 조차 하지 않고 새로운 리소스를 사용하게 된다.</p>
+<p><strong>결과적으로 no-cache, no-store가 캐시 한정으로 발생하는 cors error를 막을 것이다.</strong> 하지만 cors 설정 자체를 잘못한 경우에는 캐시를 지우고 사용한다고 해도 캐시와 상관없이 cors error가 발생하기 때문에 <strong>처음부터 cors 설정을 잘 하는 게 정말 중요하다.</strong></p>
+
+    </div>
+</article>
+
+
+
+<div class="post-comment" data-comment="utterances">
+    <span class="post-comment-notloaded">
+        <i class="iconfont icon-chatbox-ellipses-sharp"></i>&nbsp;Load comments
+    </span>
+    <script>
+        function loadComment() {
+            var commentArea = document.querySelector('.post-comment');
+            var utterancesTheme = document.body.getAttribute('data-theme');
+            if (utterancesTheme === 'auto') {
+                utterancesTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'photon-dark' :
+                    'github-light';
+            } else {
+                utterancesTheme = utterancesTheme === 'dark' ? 'photon-dark' : 'github-light';
+            }
+            var s = document.createElement('script');
+            s.src = 'https://utteranc.es/client.js';
+            s.setAttribute('repo', 'leeleelee3264\/github_io_comment');
+            s.setAttribute('issue-term', 'pathname');
+            s.setAttribute('theme', utterancesTheme);
+            s.setAttribute('crossorigin', 'anonymous');
+            s.setAttribute('async', '');
+            document.querySelector('.post-comment').appendChild(s);
+            document.querySelector('span.post-comment-notloaded').setAttribute('style', 'display: none;');
+        }
+    </script>
+</div>
+
+
+            </div>
+            <aside class="col-12 col-md-3 float-left sidebar">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://github.com/leeleelee3264" target="_blank"><span>GitHub</span></a>
+            </li>
+            
+            <li>
+                <a href="https://www.linkedin.com/in/seungmin4035/" target="_blank"><span>LinkedIn</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/backend/">Backend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/book/">Book</a>
+            </span>
+            
+            <span>
+                <a href="/tags/cheat/">Cheat</a>
+            </span>
+            
+            <span>
+                <a href="/tags/frontend/">Frontend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/general/">General</a>
+            </span>
+            
+            <span>
+                <a href="/tags/infra/">Infra</a>
+            </span>
+            
+            <span>
+                <a href="/tags/project/">Project</a>
+            </span>
+            
+            <span>
+                <a href="/tags/seminar/">Seminar</a>
+            </span>
+            
+        </div>
+    </div>
+    
+</aside>
+
+        </div>
+        <div class="btn">
+    <div class="btn-menu" id="btn-menu">
+        <i class="iconfont icon-grid-sharp"></i>
+    </div>
+    <div class="btn-toggle-mode">
+        <i class="iconfont icon-contrast-sharp"></i>
+    </div>
+    <div class="btn-scroll-top">
+        <i class="iconfont icon-chevron-up-circle-sharp"></i>
+    </div>
+</div>
+<aside class="sidebar-mobile" style="display: none;">
+  <div class="sidebar-wrapper">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://github.com/leeleelee3264" target="_blank"><span>GitHub</span></a>
+            </li>
+            
+            <li>
+                <a href="https://www.linkedin.com/in/seungmin4035/" target="_blank"><span>LinkedIn</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/backend/">Backend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/book/">Book</a>
+            </span>
+            
+            <span>
+                <a href="/tags/cheat/">Cheat</a>
+            </span>
+            
+            <span>
+                <a href="/tags/frontend/">Frontend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/general/">General</a>
+            </span>
+            
+            <span>
+                <a href="/tags/infra/">Infra</a>
+            </span>
+            
+            <span>
+                <a href="/tags/project/">Project</a>
+            </span>
+            
+            <span>
+                <a href="/tags/seminar/">Seminar</a>
+            </span>
+            
+        </div>
+    </div>
+    
+    
+    
+    
+  </div>
+</aside>
+    </main>
+
+    <footer>
+    <div class="container-lg clearfix">
+        <div class="col-12 footer">
+            
+            <span>&copy; 2020-2023
+                <a href="https://leeleelee3264.github.io/">leeleelee3264</a>
+                 | <a href="https://github.com/leeleelee3264/leeleelee3264.github.io">Source code</a> 
+                | Powered by <a href="https://github.com/dsrkafuu/hugo-theme-fuji/"
+                   target="_blank">Fuji-v2</a> &amp; <a href="https://gohugo.io/"
+                                                    target="_blank">Hugo</a> 
+            </span>
+        </div>
+    </div>
+</footer>
+
+    
+<script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha512-N9IJRoc3LaP3NDoiGkcPa4gG94kapGpaA5Zq9/Dr04uf5TbLFU5q0o8AbRhLKUUlp8QFS2u7S+Yti0U7QtuZvQ==" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js" integrity="sha512-q583ppKrCRc7N5O0n2nzUiJ+suUv7Et1JGels4bXOaMFQcamPk9HjdUknZuuFjBNs7tsMuadge5k9RzdmO+1GQ==" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/components/prism-core.min.js" integrity="sha512-LCKPTo0gtJ74zCNMbWw04ltmujpzSR4oW+fgN+Y1YclhM5ZrHCZQAJE4quEodcI/G122sRhSGU2BsSRUZ2Gu3w==" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-GP4x8UWxWyh4BMbyJGOGneiTbkrWEF5izsVJByzVLodP8CuJH/n936+yQDMJJrOPUHLgyPbLiGw2rXmdvGdXHA==" crossorigin="anonymous"></script>
+
+
+
+<script defer src="/assets/js/fuji.min.645f1123be695831f419ab54c1bcba327325895c740014006e57070d4f3e5d6b553e929c4b46f40ea707249e9c7f7c2a446d32a39ce7319f80a34525586a8e0f.js" integrity="sha512-ZF8RI75pWDH0GatUwby6MnMliVx0ABQAblcHDU8&#43;XWtVPpKcS0b0DqcHJJ6cf3wqRG0yo5znMZ&#43;Ao0UlWGqODw=="></script>
+
+
+
+</body>
+
+</html>

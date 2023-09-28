@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="HandheldFriendly" content="True" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="generator" content="Hugo 0.102.3" />
+
+
+<link rel="shortcut icon" href="https://raw.githubusercontent.com/leeleelee3264/twitter_project/master/favicon.ico" />
+
+
+
+<title>[Infra] CORS (2/3): Cloudfront &#43; s3 환경에서의 CORS - leelee.log</title>
+
+
+<meta name="author" content="leeleelee3264" />
+
+
+<meta name="description" content="Cloudfront와 s3를 연결한 환경에서 CORS를 설정하는 방법을 알아본다." />
+
+
+<meta name="keywords" content="infra" />
+
+
+<meta property="og:title" content="[Infra] CORS (2/3): Cloudfront &#43; s3 환경에서의 CORS" />
+<meta name="twitter:title" content="[Infra] CORS (2/3): Cloudfront &#43; s3 환경에서의 CORS" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://leeleelee3264.github.io/post/2023-09-25-cors-two/" /><meta property="og:description" content="Cloudfront와 s3를 연결한 환경에서 CORS를 설정하는 방법을 알아본다." />
+<meta name="twitter:description" content="Cloudfront와 s3를 연결한 환경에서 CORS를 설정하는 방법을 알아본다." /><meta property="og:image" content="https://leeleelee3264.github.io/static/img/og.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://leeleelee3264.github.io/static/img/og.png" /><meta property="article:published_time" content="2023-09-25T00:00:00+00:00" /><meta property="article:modified_time" content="2023-09-25T00:00:00+00:00" />
+
+
+
+
+
+<link rel="stylesheet" href="https://leeleelee3264.github.io/assets/css/fuji.min.f465179295d3a8a1b7dd2a219c27b03926b10f8caa3e362977d8c14a06e5ca1d1e074591d6900bbc0251d107c6ad6d1ba9f1e3eeaa344c51e97b9ae9490fff59.css" integrity="sha512-9GUXkpXTqKG33SohnCewOSaxD4yqPjYpd9jBSgblyh0eB0WR1pALvAJR0QfGrW0bqfHj7qo0TFHpe5rpSQ//WQ==" />
+
+
+
+
+
+
+
+
+</head>
+
+<body
+  data-theme="light"
+  data-theme-auto='false'
+  >
+    <script data-cfasync="false">
+  
+  var fujiThemeData = localStorage.getItem('fuji_data-theme');
+  
+  if (!fujiThemeData) {
+    localStorage.setItem('fuji_data-theme', 'auto');
+  } else {
+    
+    if (fujiThemeData !== 'auto') {
+      document.body.setAttribute('data-theme', fujiThemeData === 'dark' ? 'dark' : 'light');
+    }
+  }
+</script>
+
+    <header>
+    <div class="container-lg clearfix">
+        <div class="col-12 header">
+            <a class="title-main" href="https://leeleelee3264.github.io/">leelee.log</a>
+            
+        </div>
+    </div>
+</header>
+
+    <main>
+        <div class="container-lg clearfix">
+            
+            <div class="col-12 col-md-9 float-left content">
+                
+<article>
+    
+    <h2 class="post-item post-title">
+        <a href="https://leeleelee3264.github.io/post/2023-09-25-cors-two/">[Infra] CORS (2/3): Cloudfront &#43; s3 환경에서의 CORS</a>
+    </h2>
+    <div class="post-item post-meta">
+        <span><i class="iconfont icon-today-sharp"></i>&nbsp;2023-09-25</span>
+
+<span><i class="iconfont icon-file-tray-sharp"></i>&nbsp;2597 words</span>
+
+<span><i class="iconfont icon-pricetags-sharp"></i>&nbsp;<a href="/tags/infra">infra</a>&nbsp;</span>
+
+    </div>
+    
+    <div class="post-content markdown-body">
+        <br>
+<br> 
+<blockquote>
+<p>Cloudfront와 s3를 연결한 환경에서 CORS를 설정하는 방법을 알아본다.</p>
+</blockquote>
+<br> 
+<p><strong>Index</strong></p>
+<ol>
+<li>Intro</li>
+<li>s3 CORS 구성</li>
+<li>Cloudfront 캐시 정책</li>
+<li>간단한 CORS 요청을 위한 설정</li>
+<li>CORS 요청을 위한 설정</li>
+</ol>
+<br> 
+<h1 id="intro">Intro</h1>
+<p><a href="https://leeleelee3264.github.io/post/2023-08-14-cors-seminar/" target="_blank">30분 투자로 CORS 전문가로 성장하기</a> 세미나에서 사용했던 발표 자료를 정리해서 포스팅한다.
+해당 포스트에서는 발표의 두번째 꼭지 였던 Cloudfront와 s3를 연결한 환경에서 CORS 설정 방법을 알아본다. 처음에는 s3의 CORS 구성, Cloudfront의 캐시 정책을 알아보고
+간단한 CORS 요청과 CORS 요청을 위한 설정 방법을 알아본다.</p>
+<p>현재 s3를 오리진 서버로 쓰고 있고 cloudfront를 CDN 서버, 즉 캐시 서버로 사용하고 있다. 이럴 경우 CORS를 위한 설정을 s3와 cloudfront 두 곳에서 해줘야 한다. best practice로 들어가기 전에 두 서비스의 설정에 대해 알아보겠다.</p>
+<br> 
+<h1 id="s3-cors-구성">s3 CORS 구성</h1>
+<p>CORS 구성은 s3 버킷에 엑세스 할 수 있도록 허용할 오리진과 각 오리진에 대해 지원되는 HTTP 메서드 및 기타 작업별 정보를 식별하는 규칙이 포함된 문서이다.</p>
+<p>예시 4) 모든 것을 허용하는 CORS 구성
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>[
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;AllowedMethods&#34;</span>: [
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;*&#34;</span>
+</span></span><span style="display:flex;"><span>        ],
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;AllowedOrigins&#34;</span>: [
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;*&#34;</span>
+</span></span><span style="display:flex;"><span>        ],
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;AllowedHeaders&#34;</span>: [
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;*&#34;</span>
+</span></span><span style="display:flex;"><span>        ],
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;ExposeHeaders&#34;</span>: [
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;*&#34;</span>
+</span></span><span style="display:flex;"><span>        ]
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>]</span></span></code></pre></td></tr></table>
+</div>
+</div></p>
+<br> 
+<p><code>AllowedMethods</code></p>
+<p>CORS 요청에서 허용되는 HTTP 메서드를 설정한다. 응답 헤더의 Access-Control-Allow-Method에 들어가는 값을 관리한다. Support 하는 HTTP 메서드는 아래와 같다.</p>
+<ul>
+<li>GET</li>
+<li>PUT</li>
+<li>POST</li>
+<li>DELETE</li>
+<li>HEAD</li>
+</ul>
+<p>OPTIONS가 없어서 의아할 수 있다. <code>AllowedMethods</code> 는 리소스를 위한 실제 요청을 보낼 때 사용할 수 있는 Method를 설정하는 것이기 때문에 여기서는 prefligjt를 위한 설정을 하지 않는다.</p>
+ <br> 
+<p><code>AllowedOrigins</code></p>
+<p>Cross-Origin 요청을 허용하는 오리진을 지정한다. <code>AllowedOrigins</code> 가 응답 헤더의 Access-Control-Allow-Origin에 들어가는 값을 관리한다. 여기처럼 와일드카드를 넣으면 Access-Control-Allow-Origin에 항상 와일드카드가 들어간다.</p>
+ <br> 
+<p><code>AllowedHeaders</code></p>
+<p>요청에 허용되는 헤더를 지정한다. <code>AllowedHeaders</code> 가 응답 헤더의 Access-Control-Allow-Header에 들어가는 값을 관리한다.</p>
+<br> 
+<p><code>ExposeHeaders</code></p>
+<p>응답 헤더의 <code>Access-Control-Expose-Headers</code>에 들어가는 값을 관리한다.</p>
+<br> 
+<h4 id="s3-버킷이-브라우저-요청의-cors-구성을-평가하는-방법">s3 버킷이 브라우저 요청의 CORS 구성을 평가하는 방법</h4>
+<p>브라우저에서 보낸 요청이 s3의 CORS 구성에 적합해야 Cross-Origin 요청이 허용될 수 있다. s3 버킷은 아래의 방법으로 브라우저 요청의 CORS 구성을 평가한다.</p>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/cors/s3_cors.png" >
+<figcaption align = "center">[Picture 1] 비교 표</figcaption>
+<br> 
+<h1 id="cloudfront-캐시-정책">Cloudfront 캐시 정책</h1>
+<h4 id="캐시-정책">캐시 정책</h4>
+<blockquote>
+<p>CORS와 큰 관련이 없다.</p>
+</blockquote>
+<p>cloudfront 엣지 로케이션에 캐싱되는 객체의 캐시 키를 제어할 수 있다. 캐시 키는 캐시에 있는 모든 객체의 <strong>고유 식별자</strong>로,  최종 사용자(가장 최근에 요청을 보낸 사용자) 요청이 캐시 적중이 될 것인지 여부를 결정한다.</p>
+<p>캐시 적중은 최종 사용자의 요청이 이전 요청과 동일한 캐시 키를 생성하고, 해당 캐시 키의 객체가 엣지 로케이션 캐시에 있으며, 그 캐시가 유효한 상태일 때 발생한다.</p>
+<p>캐시 정책에서는  cloudfront 캐시의 객체가 유효한 상태를 유지하는 기간을 결정하는 TTL과 캐시 키 설정을 설정할 수 있다.</p>
+<br> 
+<h4 id="오리진-요청-정책">오리진 요청 정책</h4>
+<blockquote>
+<p>여기서 오리진은 Origin 헤더의 오리진이 아니다. AWS 에서 cloudfront에 연결이 되어있는 원본 서버를 오리진이라고 한다.</p>
+</blockquote>
+<p>cloudfront에서 최종 사용자 요청이 miss 되면 cloudfront는 오리진에 요청을 보내 객체를 검색한다. 여기서 오리진은 s3이고, 이런 요청을 <code>오리진 요청</code>이라고 한다. 오리진 요청에는 URL 경로, 요청 본문, cloudfront에서 오리진 요청을 보낼 때 자동으로 포함하는 X-Ams-Cf-Id 등의 정보가 항상 포함된다. <strong>HTTP 헤더 및 쿠기와 같은 최종 사용자의 기타 정보는 오리진 요청에 포함되지 않는다.</strong></p>
+<p>오리진 요청에 커스텀 헤더 등의 특정 헤더를 포함해서 보내고 싶다면 오리진 요청 정책을 설정하면 된다. 간단한 요청의 경우 preflight를 보내지 않기 때문에 오리진 요청 정책을 설정하지 않아도 된다. 하지만 AWS에서는 간단한 요청일 때도 설정하는 것을 권장하고 있다.</p>
+<br> 
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/cors/aws_managed_origin.png" >
+<figcaption align = "center">[Picture 2] AWS 관리현 오리진 요청 정책</figcaption>
+<br> 
+<h4 id="응답-헤더-정책">응답 헤더 정책</h4>
+<p>응답 헤더 정책을 사용해서 사용자에게 보내는 응답에 HTTP 헤더를 수정할 수 있다. 이를 통해 cloudfront는 최종 사용자에게 응답을 보내기 전에 서버에서 수신한 헤더를 제거하거나 헤더를 추가할 수 있다. 아래의 값들을 응답 헤더 정책을 통해 조작할 수 있다.</p>
+<ul>
+<li>메타 데이터 - 이름, 설명 등을 포함한다.</li>
+<li>CORS 헤더</li>
+<li>보안 헤더</li>
+<li>사용자 지정 헤더</li>
+<li>Server-Timing - cloudfront 지표를 만들기 위한 용도이다.</li>
+</ul>
+<br> 
+<p><strong>한가지 주의할 점은 cloudfront 응답 헤더 정책에 있는 Access-Control-Allow-Origin은 s3에 설정한 CORS 구성과 맞추는 게 좋다.</strong> 예를 들어 cloudfront 응답 헤더에는 <code>*</code>가 있고, s3 CORS에서는 <code>*</code>가 없다면 클라이언트는 어떤 응답 헤더를 받게 될까?</p>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/cors/result.png" >
+<figcaption align = "center">[Picture 3] Cloudfront 응답 헤더 정책과 CORS 구성이 다를 때</figcaption>
+<br> 
+<p>access-control-allow-origin이 *로 설정되어 응답헤더가 내려갔다. <strong>오리진인 s3의 CORS 구성과 다른 헤더가 내려간 것이다.</strong> cloudfront에 응답 헤더 정책을 설정하지 않았다면 s3 CORS 정책에 설정한 대로 응답 헤더가 만들어지지만 cloudfront 응답 헤더 정책을 설정했다면  cloudfront의 응답 헤더 정책을 우선시 하게 된다.</p>
+<br> 
+<p><strong>cloudfront와 s3 정책이 다를 때의 문제</strong></p>
+<ol>
+<li>cloudfront에 캐시가 되어있을 때는 s3까지 가지 않기 때문에 허용이 안된 Origin도 리소스를 가져간다.</li>
+<li>cloudfront 캐시가 만료되면 오리진인 s3에 다녀오고, 허용하지 않은 Origin이라서 CORS error가 발생한다.</li>
+</ol>
+<p>결과적으로 CORS error가 발생했다, 발생하지 않았다하는 이상한 버그를 만들게 된다.</p>
+<br> 
+<h1 id="간단한-cors-요청을-위한-설정">간단한 CORS 요청을 위한 설정</h1>
+<p>간단한 요청의 경우, preflight를 날리지 않기 때문에 이 부분에 대한 설정을 별도로 해주지 않아도 된다. 때문에 설정이 비교적 간단해진다.</p>
+<p><code>s3</code></p>
+<p><strong>Step 1: CORS 정책을 추가해준다.</strong></p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>[
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;AllowedHeaders&#34;</span>: [
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;*&#34;</span>
+</span></span><span style="display:flex;"><span>        ],
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;AllowedMethods&#34;</span>: [
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;GET&#34;</span>
+</span></span><span style="display:flex;"><span>        ],
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;AllowedOrigins&#34;</span>: [
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;http://exchange.staging.kasa.sg&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;https://exchange.staging.kasa.sg&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;http://*.exchange.staging.kasa.sg&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;https://*.exchange.staging.kasa.sg&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;*&#34;</span>
+</span></span><span style="display:flex;"><span>        ],
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;ExposeHeaders&#34;</span>: []
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>]</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<br> 
+<p><code>Cloudfront</code></p>
+<p><strong>Step 1: 응답 헤더 정책을 설정한다.</strong></p>
+<p>Cloudfront의 응답 헤더 정책은 Cloudfront가 캐시된 응답에 추가적인 헤더를 포함시키는 역할을 한다. 여기서 조작한대로 클라이언트가 응답 헤더를 받게 된다.</p>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/cors/header_policy.png" >
+<figcaption align = "center">[Picture 4] Response Header Policy in Cloudfront behavior</figcaption>
+<br> 
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/cors/workload.png" >
+<figcaption align = "center">[Picture 5] Response Header Policy</figcaption>
+<br> 
+<p>cloudfront 응답 헤더 정책에 Access-Control-Allow-Origin과 cache-control 등의 응답 헤더 값을 설정해줬다.</p>
+<br> 
+<h1 id="cors-요청을-위한-설정">CORS 요청을 위한 설정</h1>
+<p><code>s3</code></p>
+<p><em>간단한 CORS 요청인 경우와 동일하게 설정한다.</em></p>
+<br> 
+<p><code>Cloudfront</code></p>
+<p><strong>Step 1: 응답 헤더 정책을 설정한다.</strong></p>
+<p><em>간단한 CORS 요청인 경우와 동일하게 설정한다.</em></p>
+<br> 
+<p><strong>Step 2: cloudfront 동작에서 Allowed HTTP methods를 수정해준다.</strong></p>
+<p>preflight는 HTTP Method OPTIONS로 보내지기 때문에 Allowed HTTP methods를 OPTIONS이 포함된 선택지로 변경해야 한다.</p>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/cors/allow_method.png" >
+<figcaption align = "center">[Picture 6] Allow Method in Cloudfront Behavior</figcaption>
+<br>
+<p><strong>step 3: 오리진 요청 정책을 설정한다.</strong></p>
+<p>CORS 관련 요청 헤더를 오리진 요청을 보낼 때도 넘겨줄 수 있도록 오리진 요청 정책을 설정한다.</p>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/cors/b.png" >
+<figcaption align = "center">[Picture 7]Origin Request Policy in  Cloudfront Behavior</figcaption>
+<br>
+<img class="img-zoomable medium-zoom-image __web-inspector-hide-shortcut__" src="/static/img/post/cors/origin_request.png" >
+<figcaption align = "center">[Picture 8] Origin Requset Policy</figcaption>
+
+    </div>
+</article>
+
+
+
+<div class="post-comment" data-comment="utterances">
+    <span class="post-comment-notloaded">
+        <i class="iconfont icon-chatbox-ellipses-sharp"></i>&nbsp;Load comments
+    </span>
+    <script>
+        function loadComment() {
+            var commentArea = document.querySelector('.post-comment');
+            var utterancesTheme = document.body.getAttribute('data-theme');
+            if (utterancesTheme === 'auto') {
+                utterancesTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'photon-dark' :
+                    'github-light';
+            } else {
+                utterancesTheme = utterancesTheme === 'dark' ? 'photon-dark' : 'github-light';
+            }
+            var s = document.createElement('script');
+            s.src = 'https://utteranc.es/client.js';
+            s.setAttribute('repo', 'leeleelee3264\/github_io_comment');
+            s.setAttribute('issue-term', 'pathname');
+            s.setAttribute('theme', utterancesTheme);
+            s.setAttribute('crossorigin', 'anonymous');
+            s.setAttribute('async', '');
+            document.querySelector('.post-comment').appendChild(s);
+            document.querySelector('span.post-comment-notloaded').setAttribute('style', 'display: none;');
+        }
+    </script>
+</div>
+
+
+            </div>
+            <aside class="col-12 col-md-3 float-left sidebar">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://github.com/leeleelee3264" target="_blank"><span>GitHub</span></a>
+            </li>
+            
+            <li>
+                <a href="https://www.linkedin.com/in/seungmin4035/" target="_blank"><span>LinkedIn</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/backend/">Backend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/book/">Book</a>
+            </span>
+            
+            <span>
+                <a href="/tags/cheat/">Cheat</a>
+            </span>
+            
+            <span>
+                <a href="/tags/frontend/">Frontend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/general/">General</a>
+            </span>
+            
+            <span>
+                <a href="/tags/infra/">Infra</a>
+            </span>
+            
+            <span>
+                <a href="/tags/project/">Project</a>
+            </span>
+            
+            <span>
+                <a href="/tags/seminar/">Seminar</a>
+            </span>
+            
+        </div>
+    </div>
+    
+</aside>
+
+        </div>
+        <div class="btn">
+    <div class="btn-menu" id="btn-menu">
+        <i class="iconfont icon-grid-sharp"></i>
+    </div>
+    <div class="btn-toggle-mode">
+        <i class="iconfont icon-contrast-sharp"></i>
+    </div>
+    <div class="btn-scroll-top">
+        <i class="iconfont icon-chevron-up-circle-sharp"></i>
+    </div>
+</div>
+<aside class="sidebar-mobile" style="display: none;">
+  <div class="sidebar-wrapper">
+    
+    <div class="sidebar-item sidebar-pages">
+        <h3>Pages</h3>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+            <li>
+                <a href="/archives/">Archives</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-links">
+        <h3>Links</h3>
+        <ul>
+            
+            <li>
+                <a href="https://github.com/leeleelee3264" target="_blank"><span>GitHub</span></a>
+            </li>
+            
+            <li>
+                <a href="https://www.linkedin.com/in/seungmin4035/" target="_blank"><span>LinkedIn</span></a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="sidebar-item sidebar-tags">
+        <h3>Tags</h3>
+        <div>
+            
+            <span>
+                <a href="/tags/backend/">Backend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/book/">Book</a>
+            </span>
+            
+            <span>
+                <a href="/tags/cheat/">Cheat</a>
+            </span>
+            
+            <span>
+                <a href="/tags/frontend/">Frontend</a>
+            </span>
+            
+            <span>
+                <a href="/tags/general/">General</a>
+            </span>
+            
+            <span>
+                <a href="/tags/infra/">Infra</a>
+            </span>
+            
+            <span>
+                <a href="/tags/project/">Project</a>
+            </span>
+            
+            <span>
+                <a href="/tags/seminar/">Seminar</a>
+            </span>
+            
+        </div>
+    </div>
+    
+    
+    
+    
+  </div>
+</aside>
+    </main>
+
+    <footer>
+    <div class="container-lg clearfix">
+        <div class="col-12 footer">
+            
+            <span>&copy; 2020-2023
+                <a href="https://leeleelee3264.github.io/">leeleelee3264</a>
+                 | <a href="https://github.com/leeleelee3264/leeleelee3264.github.io">Source code</a> 
+                | Powered by <a href="https://github.com/dsrkafuu/hugo-theme-fuji/"
+                   target="_blank">Fuji-v2</a> &amp; <a href="https://gohugo.io/"
+                                                    target="_blank">Hugo</a> 
+            </span>
+        </div>
+    </div>
+</footer>
+
+    
+<script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha512-N9IJRoc3LaP3NDoiGkcPa4gG94kapGpaA5Zq9/Dr04uf5TbLFU5q0o8AbRhLKUUlp8QFS2u7S+Yti0U7QtuZvQ==" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js" integrity="sha512-q583ppKrCRc7N5O0n2nzUiJ+suUv7Et1JGels4bXOaMFQcamPk9HjdUknZuuFjBNs7tsMuadge5k9RzdmO+1GQ==" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/components/prism-core.min.js" integrity="sha512-LCKPTo0gtJ74zCNMbWw04ltmujpzSR4oW+fgN+Y1YclhM5ZrHCZQAJE4quEodcI/G122sRhSGU2BsSRUZ2Gu3w==" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-GP4x8UWxWyh4BMbyJGOGneiTbkrWEF5izsVJByzVLodP8CuJH/n936+yQDMJJrOPUHLgyPbLiGw2rXmdvGdXHA==" crossorigin="anonymous"></script>
+
+
+
+<script defer src="/assets/js/fuji.min.645f1123be695831f419ab54c1bcba327325895c740014006e57070d4f3e5d6b553e929c4b46f40ea707249e9c7f7c2a446d32a39ce7319f80a34525586a8e0f.js" integrity="sha512-ZF8RI75pWDH0GatUwby6MnMliVx0ABQAblcHDU8&#43;XWtVPpKcS0b0DqcHJJ6cf3wqRG0yo5znMZ&#43;Ao0UlWGqODw=="></script>
+
+
+
+</body>
+
+</html>
