@@ -6,7 +6,16 @@
     <description>Recent content on leelee.log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 26 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://leeleelee3264.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 17 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://leeleelee3264.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[General] DevOps Engineer에 최적화된 맥 설정하기 (1/2): APP</title>
+      <link>https://leeleelee3264.github.io/post/2024-01-17-mac-setting/</link>
+      <pubDate>Wed, 17 Jan 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2024-01-17-mac-setting/</guid>
+      <description>DevOps Engineer에 최적화된 맥을 설정하는 방법을 알아본다. - APP 편 Index Intro 설치하는 앱 인텔리제이 세부 설정 맥 설정 Intro 직장에서 사용하는 컴퓨터를 포맷해야 하거나 교체되거나 해서 다시 설정을 해줘야 할 일이 요즘들어 왕왕 있었다. 맥에</description>
+    </item>
+    
     <item>
       <title>[Infra] CORS (3/3): Cache와 CORS</title>
       <link>https://leeleelee3264.github.io/post/2023-09-26-cors-three/</link>
@@ -493,6 +502,15 @@ However, the commit wasn&amp;rsquo;t recording in the contribution table in over
       <description>Hi, I&amp;rsquo;m LeeLee. I&amp;rsquo;m a Backend developer who dreams Devops. Here is something about me. 🥇 2022 Goal Try to understand business domain. Implement code with complicated business logic. Attribute to open source projects. 🏛️ Career Kasa Singapore as Backend developer (2021.12 ~ )
 Launched Kasa Singapore Service (2022-08-25) Implemented API with Django. Designed entire API in deal, offering function. Applied Singapore government&amp;rsquo;s mydata service, Singpass. DNX Korea as Backend developer (2019.08 ~ 2021.11)
 Implemented API with Spring. Implemented Monitoring website. Designed data schema with Mysql. Set infrastructure with AWS and Docker. 💻 Skills 👩‍💻 Interest Skills 📬 Contact Email: absinthe4902@naver.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://leeleelee3264.github.io/post/2024-01-20-kube-ps1-toggle/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2024-01-20-kube-ps1-toggle/</guid>
+      <description>=== 규칙 포스트 앞에는 항상 summary와 index를 작성한다. big title과 middle title 사이에는 br이 없다. middle title, small title, image, example 사이에는 br이 있다. image 전에 설명을 써두도록 한다. image caption은 [Picture 1] 설명설명 식으로 작성한다</description>
     </item>
     
   </channel>

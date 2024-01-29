@@ -6,7 +6,16 @@
     <description>Recent content in General on leelee.log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 02 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://leeleelee3264.github.io/tags/general/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 17 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://leeleelee3264.github.io/tags/general/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[General] DevOps Engineer에 최적화된 맥 설정하기 (1/2): APP</title>
+      <link>https://leeleelee3264.github.io/post/2024-01-17-mac-setting/</link>
+      <pubDate>Wed, 17 Jan 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2024-01-17-mac-setting/</guid>
+      <description>DevOps Engineer에 최적화된 맥을 설정하는 방법을 알아본다. - APP 편 Index Intro 설치하는 앱 인텔리제이 세부 설정 맥 설정 Intro 직장에서 사용하는 컴퓨터를 포맷해야 하거나 교체되거나 해서 다시 설정을 해줘야 할 일이 요즘들어 왕왕 있었다. 맥에</description>
+    </item>
+    
     <item>
       <title>[General] 이것만 있으면 나도 슈퍼 개발자? 생산성 앱 Raycast</title>
       <link>https://leeleelee3264.github.io/post/2023-09-02-general-raycast/</link>
