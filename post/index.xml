@@ -6,14 +6,23 @@
     <description>Recent content in Posts on leelee.log</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 17 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://leeleelee3264.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 28 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://leeleelee3264.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[General] shellscript로 kube-ps1 토글 기능 구현하기</title>
+      <link>https://leeleelee3264.github.io/post/2024-01-28-kube-ps1-toggle/</link>
+      <pubDate>Sun, 28 Jan 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://leeleelee3264.github.io/post/2024-01-28-kube-ps1-toggle/</guid>
+      <description>shellscript로 kube-ps1 토글 기능 구현하는 방법에 대해 알아본다. Index Intro 구현하기 Intro [General] DevOps Engineer에 최적화된 맥 설정하기 에서 지금 사용중인 쿠버네티스 클러스터와 네임스페이스를 터미널 Prompt에 보여주는 kub</description>
+    </item>
+    
     <item>
       <title>[General] DevOps Engineer에 최적화된 맥 설정하기</title>
       <link>https://leeleelee3264.github.io/post/2024-01-17-mac-setting/</link>
       <pubDate>Wed, 17 Jan 2024 00:00:00 +0000</pubDate>
       
       <guid>https://leeleelee3264.github.io/post/2024-01-17-mac-setting/</guid>
-      <description>DevOps Engineer에 최적화된 맥을 설정하는 방법을 알아본다. - APP 편 Index Intro 설치하는 앱 인텔리제이 세부 설정 맥 설정 Intro 직장에서 사용하는 컴퓨터를 포맷해야 하거나 교체되거나 해서 다시 설정을 해줘야 할 일이 요즘들어 왕왕 있었다. 맥에</description>
+      <description>DevOps Engineer에 최적화된 맥을 설정하는 방법을 알아본다. Index Intro 설치하는 앱 인텔리제이 세부 설정 맥 설정 Intro 직장에서 사용하는 컴퓨터를 포맷해야 하거나 교체되거나 해서 다시 설정을 해줘야 할 일이 요즘들어 왕왕 있었다. 맥에서 맥으</description>
     </item>
     
     <item>
@@ -491,15 +500,6 @@ However, the commit wasn&amp;rsquo;t recording in the contribution table in over
       
       <guid>https://leeleelee3264.github.io/post/2020-09-18-java-checkuncheck-exception/</guid>
       <description>Handles SQL Exception in Spring boot: Checked exception, unchecked exception, Index Exception in Java Handle SQL Exception Reference Exception in Java A week ago, I felt maybe I need to adjust exception of sql. At that time, I just used try-catch with Exception and print stacktrace for backend, passed some certain value to let front know something went wrong with request. I&amp;rsquo;ve never went deep down to Exception and how to handle, so let&amp;rsquo;s first check what kind of Exception java has. Exception hierarchy [Picture 1] Java Exception Java use Throwable type when something goes wrong. The highest type Throwable</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://leeleelee3264.github.io/post/2024-01-20-kube-ps1-toggle/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://leeleelee3264.github.io/post/2024-01-20-kube-ps1-toggle/</guid>
-      <description>=== 규칙 포스트 앞에는 항상 summary와 index를 작성한다. big title과 middle title 사이에는 br이 없다. middle title, small title, image, example 사이에는 br이 있다. image 전에 설명을 써두도록 한다. image caption은 [Picture 1] 설명설명 식으로 작성한다</description>
     </item>
     
   </channel>
